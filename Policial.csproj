@@ -153,20 +153,20 @@
     <None Include="Resources\Club-Sportivo-Policial.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EntidadesCompartidas\EntidadesCompartidas.csproj">
-      <Project>{4f88157a-d3c9-4cd3-ab30-832db73d37ff}</Project>
-      <Name>EntidadesCompartidas</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Logica\Logica.csproj">
-      <Project>{55000919-9f0e-4e5c-89cb-e8bdcc4d3155}</Project>
-      <Name>Logica</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Reportes\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Policial\EntidadesCompartidas\EntidadesCompartidas.csproj">
+      <Project>{4f88157a-d3c9-4cd3-ab30-832db73d37ff}</Project>
+      <Name>EntidadesCompartidas</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\Policial\Logica\Logica.csproj">
+      <Project>{55000919-9f0e-4e5c-89cb-e8bdcc4d3155}</Project>
+      <Name>Logica</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
