@@ -13,13 +13,10 @@ namespace Policial
 {
     public partial class frmNucleoFamiliar : Form
     {
-        #region Propiedades / Variables
         private string titulo = "Nucleo Familiar";
         NucleoFamiliar nucleoFamiliar;
         private string mensaje = "";
-        #endregion
-
-        #region Metodos
+        
         public frmNucleoFamiliar()
         {
             InitializeComponent();
@@ -29,7 +26,6 @@ namespace Policial
             btnGuardarNF.BackColor = RGBColors.color2;
             btnVolverAPrincipal.BackColor = RGBColors.color2;
             btnGuardarNF.Text = "Guardar";
-            cmbTipoPersona.SelectedIndex = 0;
         }
         public struct RGBColors
         {
@@ -40,90 +36,6 @@ namespace Policial
             public static Color color4 = Color.FromArgb(249, 88, 155);
             public static Color color5 = Color.FromArgb(24, 161, 251);
         }
-        private bool HayError()
-        {
-            #region Controlo errores campos
-            bool error = false;
-            if (string.IsNullOrEmpty(txtPrimerApellidoNF.Text.Trim()))
-            {
-                errorProvider.SetError(label12, "Ingrese Primer Apellido.");
-                error = true;
-            }
-            if (string.IsNullOrEmpty(txtSegundoApellidoNF.Text.Trim()))
-            {
-                errorProvider.SetError(label11, "Ingrese Segundo Apellido.");
-                error = true;
-            }
-            if (string.IsNullOrEmpty(txtPrimerNombreNF.Text.Trim()))
-            {
-                errorProvider.SetError(label9, "Ingrese Primer Nombre.");
-                error = true;
-            }
-            if (string.IsNullOrEmpty(txtCINF.Text.Trim()))
-            {
-                errorProvider.SetError(label19, "Ingrese cedula.");
-                error = true;
-            }
-            if (dtpFechaNacimientoNF.Value.Date >= DateTime.Now.Date.AddYears(-8))
-            {
-                errorProvider.SetError(label17, "Seleccione fecha de nacimiento.");
-                error = true;
-            }
-            if((int)cmbTipoPersona.SelectedIndex <= 0)
-            {
-                errorProvider.SetError(label10, "Seleccione vinculo.");
-                error = true;
-            }
-            return error;
-            #endregion
-        }
-        public void LimpioFrmNF()
-        {
-            txtPrimerApellidoNF.Text = "";
-            txtPrimerNombreNF.Text = "";
-            txtSegundoNombreNF.Text = "";
-            txtSegundoApellidoNF.Text = "";
-            txtCINF.Text = "";
-            txtTelNF.Text = "";
-            txtCelularNF.Text = "";
-            txtObservacionesNF.Text = "";
-            dtpFechaNacimientoNF.Value = DateTime.Now;
-        }
-        private bool PersistirNucleoFamiliar(NucleoFamiliar c, Usuario usu)
-        {
-            bool resp = false;
-            try
-            {
-                ILogicaNucleoFamiliar FSocio = FabricaLogica.getLogicaNucleoFamiliar();
-                resp = FSocio.AltaNucleoFamiliar(c, usu);
-                return resp;
-            }
-            catch (Exception ex)
-            {
-                mensaje = ex.Message;
-                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            return resp;
-        }
-        private bool ModficarNucleoFamiliar(NucleoFamiliar c, Usuario usu)
-        {
-            bool resp = false;
-            try
-            {
-                ILogicaNucleoFamiliar FSocio = FabricaLogica.getLogicaNucleoFamiliar();
-                resp = FSocio.ModificarNF(c, usu);
-                return resp;
-            }
-            catch (Exception ex)
-            {
-                mensaje = ex.Message;
-                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            return resp;
-        }
-        #endregion
-
-        #region Eventos
         private void btnBuscarNF_Click(object sender, EventArgs e)
         {
             try
@@ -141,19 +53,19 @@ namespace Policial
                     if (soc != null)
                     {
                         txtSocIdNF.Text = Convert.ToString(soc.SocId);
-                        txtNombreSocNF.Text = soc.SocPrimerNombre + " " + soc.SocPrimerApellido;
-                        socListaNF = lSocioNF.BuscarNucleoFamiliarPorCI(soc.SocId);
+                        txtNombreSocNF.Text = soc.SocPrimerNombre + " " + soc.SocPrimerApellido;                      
+                        socListaNF = lSocioNF.BuscarNucleoFamiliarPorCI(soc.SocId);                      
                         DateTime fecha = DateTime.Today;
-
+                        
                         if (socListaNF.Count > 0)
                         {
-                            foreach (NucleoFamiliar c in socListaNF)
+                            foreach(NucleoFamiliar c in socListaNF)
                             {
                                 int edad1 = fecha.Year - c.NFFechaNacimiento.Year;
 
                                 if (DateTime.Today < c.NFFechaNacimiento.AddYears(edad1)) edad1--;
-                                dgvSociosNF.Rows.Add(c.SocId, c.NFCI, c.NFPrimerNombre, c.NFPrimerApellido, edad1 + " años", c.NFTel, c.NFCelular,
-                                    "Editar", "Eliminar", c.NFFechaNacimiento, c.NFSegundoNombre, c.NFSegundoApellido, c.NFobservaciones, c.NFId);
+                                dgvSociosNF.Rows.Add(c.SocId, c.NFCI, c.NFPrimerNombre, c.NFPrimerApellido, edad1 + " años" ,c.NFTel, c.NFCelular, 
+                                    "Editar", "Eliminar",c.NFFechaNacimiento,c.NFSegundoNombre,c.NFSegundoApellido, c.NFobservaciones,c.NFId);
                             }
                         }
                     }
@@ -170,6 +82,38 @@ namespace Policial
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+        private bool HayError()
+        {
+            #region Controlo errores campos
+            bool error = false;
+            if (string.IsNullOrEmpty(txtPrimerApellidoNF.Text.Trim()))
+            {
+                errorProvider.SetError(label9, "Ingrese Primer Apellido.");
+                error = true;
+            }
+            if (string.IsNullOrEmpty(txtSegundoApellidoNF.Text.Trim()))
+            {
+                errorProvider.SetError(label1, "Ingrese Segundo Apellido.");
+                error = true;
+            }
+            if (string.IsNullOrEmpty(txtPrimerNombreNF.Text.Trim()))
+            {
+                errorProvider.SetError(label12, "Ingrese Primer Nombre.");
+                error = true;
+            }
+            if (string.IsNullOrEmpty(txtCINF.Text.Trim()))
+            {
+                errorProvider.SetError(label19, "Ingrese cedula.");
+                error = true;
+            }
+            if (dtpFechaNacimientoNF.Value.Date > DateTime.Now.Date)
+            {
+                errorProvider.SetError(label22, "Seleccione fecha de nacimiento.");
+                error = true;
+            }
+            return error;
+            #endregion
+        }
         private void btnGuardarNF_Click(object sender, EventArgs e)
         {
             try
@@ -181,7 +125,7 @@ namespace Policial
                 Usuario _usu = Program.usuarioLogueado;
                 bool resultado = false;
                 bool ret = HayError();
-                if (btnGuardarNF.Text == "Guardar")
+                if(btnGuardarNF.Text == "Guardar")
                 {
                     if (ret == false)
                     {
@@ -212,45 +156,37 @@ namespace Policial
                         else
                             socNF.NFobservaciones = "";
 
-                        if ((int)cmbTipoPersona.SelectedIndex <= 0)
-                            socNF.NTipoPersona = (string)cmbTipoPersona.SelectedItem;
-
                         socNF.NFFechaNacimiento = dtpFechaNacimientoNF.Value;
                         socNF.NFActivo = true;
                         socNF.FecAlta = DateTime.Now;
                         socNF.FecModif = DateTime.Now;
                         socNF.UsuIdAlta = Program.usuarioLogueado.UsuId;
                         socNF.UsuIdModif = Program.usuarioLogueado.UsuId;
-
-                        if (socNF != null)
-                        {
-                            resultado = PersistirNucleoFamiliar(socNF, _usu);
-
-                            if (resultado)
-                            {
-                                mensaje = "La información se guardó exitosamente.";
-                                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                dgvSociosNF.Rows.Add(socNF.SocId, socNF.NFCI, socNF.NFPrimerNombre, socNF.NFPrimerApellido, socNF.NFTel, socNF.NFCelular, "Editar", "Eliminar");
-                                LimpioFrmNF();
-                                txtSocIdNF.Text = "";
-                                txtNombreSocNF.Text = "";
-                            }
-                            else
-                            {
-                                mensaje = "No se guardó la información.";
-                                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            }
-                        }
                     }
-                    else
+
+                    if (socNF != null)
                     {
-                        mensaje = "Faltan completar datos requeridos.";
-                        MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        resultado = PersistirNucleoFamiliar(socNF, _usu);
+
+                        if (resultado)
+                        {
+                            mensaje = "La información se guardó exitosamente.";
+                            MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            dgvSociosNF.Rows.Add(socNF.SocId, socNF.NFCI, socNF.NFPrimerNombre, socNF.NFPrimerApellido, socNF.NFTel, socNF.NFCelular, "Editar", "Eliminar");
+                            LimpioFrmNF();
+                            txtSocIdNF.Text = "";
+                            txtNombreSocNF.Text = "";
+                        }
+                        else
+                        {
+                            mensaje = "No se guardó la información.";
+                            MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
                     }
                 }
                 #endregion
                 #region Modificar
-                if (btnGuardarNF.Text == "Modificar")
+                if(btnGuardarNF.Text == "Modificar")
                 {
                     if (ret == false)
                     {
@@ -288,7 +224,7 @@ namespace Policial
 
                     if (socNF != null)
                     {
-                        resultado = lNF.ModificarNF(socNF, _usu);
+                        resultado =lNF.ModificarNF(socNF, _usu);
 
                         if (resultado)
                         {
@@ -300,7 +236,7 @@ namespace Policial
                             dgvSociosNF.Rows.Clear();
                             if (socListaNF.Count > 0)
                             {
-                                foreach (NucleoFamiliar c in socListaNF)
+                                foreach(NucleoFamiliar c in socListaNF)
                                 {
                                     int edad1 = fecha.Year - c.NFFechaNacimiento.Year;
                                     if (DateTime.Today < c.NFFechaNacimiento.AddYears(edad1)) edad1--;
@@ -394,11 +330,55 @@ namespace Policial
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+        public void LimpioFrmNF()
+        {
+            txtPrimerApellidoNF.Text = "";
+            txtPrimerNombreNF.Text = "";
+            txtSegundoNombreNF.Text = "";
+            txtSegundoApellidoNF.Text = "";
+            txtCINF.Text = "";
+            txtTelNF.Text = "";
+            txtCelularNF.Text = "";
+            txtObservacionesNF.Text = "";
+            dtpFechaNacimientoNF.Value = DateTime.Now;
+        }
+        private bool PersistirNucleoFamiliar(NucleoFamiliar c, Usuario usu)
+        {
+            bool resp = false;
+            try
+            {
+                ILogicaNucleoFamiliar FSocio = FabricaLogica.getLogicaNucleoFamiliar();
+                resp = FSocio.AltaNucleoFamiliar(c, usu);
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            return resp;
+        }
+        private bool ModficarNucleoFamiliar(NucleoFamiliar c, Usuario usu)
+        {
+            bool resp = false;
+            try
+            {
+                ILogicaNucleoFamiliar FSocio = FabricaLogica.getLogicaNucleoFamiliar();
+                resp = FSocio.ModificarNF(c, usu);
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            return resp;
+        }
         private void dgvSociosNF_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (e.ColumnIndex == 7) //editar
+                if(e.ColumnIndex == 7) //editar
                 {
                     var filaSeleccionada = dgvSociosNF.CurrentRow;
                     if (dgvSociosNF.SelectedRows != null)
@@ -421,7 +401,7 @@ namespace Policial
                         txtNFId.Text = filaSeleccionada.Cells["SocSegundoNombre"].Value.ToString();
                         txtSegundoNombreNF.Text = filaSeleccionada.Cells["SocSegundoApellido"].Value.ToString();
 
-                        btnGuardarNF.Text = "Modificar";
+                        btnGuardarNF.Text = "Modificar";   
                     }
                     else
                     {
@@ -472,30 +452,5 @@ namespace Policial
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-        private void txtPrimerNombreNF_Click(object sender, EventArgs e)
-        {
-            label9.Text = "*";
-        }
-        private void txtPrimerApellidoNF_TextChanged(object sender, EventArgs e)
-        {
-            label12.Text = "*";
-        }
-        private void txtSegundoApellidoNF_TextChanged(object sender, EventArgs e)
-        {
-            label11.Text = "*";
-        }
-        private void txtCINF_TextChanged(object sender, EventArgs e)
-        {
-            label19.Text = "*";
-        }
-        private void dtpFechaNacimientoNF_ValueChanged(object sender, EventArgs e)
-        {
-            label17.Text = "*";
-        }
-        private void cmbTipoPersona_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            label10.Text = "*";
-        }
-        #endregion
     }
 }
