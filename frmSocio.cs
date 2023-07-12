@@ -392,6 +392,19 @@ namespace Policial
         {
             CargoGrillaSocios();
         }
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtParametro.Text = "";
+                CargoGrillaSocios();
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
         #endregion
         #region Metodos
         private bool HayError()
@@ -597,7 +610,6 @@ namespace Policial
                 ILogicaSocio FSocio = FabricaLogica.getLogicaSocio();
                 listaSocios = FSocio.ListarSocios();
                 bool socioActivo = checkBox1.Checked ? true : false;
-
                 if (socioActivo)
                 {
                      var _resultado = (from unSocio in listaSocios
@@ -648,6 +660,7 @@ namespace Policial
                                           SocAtivo = unSocio.SocAtivo,
                                       }).ToList();
                     dgvSocios.Rows.Clear();
+
                     if (listaSocios != null)
                     {
                         foreach (Socio s in _resultado)
@@ -689,5 +702,53 @@ namespace Policial
             }
         }
         #endregion
+
+        private void txtBuscarEliminar_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (txtBuscarEliminar.Text.Trim().Length >= 10)
+                {
+                    throw new Exception("Largo maximo para el documento - 9 digitos.");
+                }
+                else if (txtBuscarEliminar.Text.Trim() != "")
+                {
+                    try
+                    {
+                        ulong.Parse(txtBuscarEliminar.Text.Trim());
+                    }
+                    catch (Exception)
+                    {
+                        throw new Exception("El documento debe ser numérico.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void dgvSocios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int boton = int.Parse(e.ColumnIndex + "");
+                switch (boton)
+                {
+                    case 8:
+                        tabModifcar.Focus();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }

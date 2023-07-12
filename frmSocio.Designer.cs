@@ -241,6 +241,7 @@ namespace Policial
             this.btnVolver.TabIndex = 28;
             this.btnVolver.Text = "Limpiar";
             this.btnVolver.UseVisualStyleBackColor = false;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // dgvSocios
             // 
@@ -260,7 +261,7 @@ namespace Policial
             this.SocActivo,
             this.Ver});
             this.dgvSocios.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvSocios.Location = new System.Drawing.Point(66, 112);
+            this.dgvSocios.Location = new System.Drawing.Point(36, 116);
             this.dgvSocios.Name = "dgvSocios";
             this.dgvSocios.ReadOnly = true;
             this.dgvSocios.RowHeadersVisible = false;
@@ -268,6 +269,7 @@ namespace Policial
             this.dgvSocios.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvSocios.Size = new System.Drawing.Size(987, 345);
             this.dgvSocios.TabIndex = 24;
+            this.dgvSocios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSocios_CellContentClick);
             // 
             // tabAgregarSocio
             // 
@@ -326,7 +328,7 @@ namespace Policial
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(861, 173);
+            this.label25.Location = new System.Drawing.Point(859, 178);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(16, 21);
             this.label25.TabIndex = 85;
@@ -406,7 +408,7 @@ namespace Policial
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(859, 143);
+            this.label20.Location = new System.Drawing.Point(859, 138);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(16, 21);
             this.label20.TabIndex = 76;
@@ -438,7 +440,7 @@ namespace Policial
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(461, 147);
+            this.label18.Location = new System.Drawing.Point(461, 142);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(75, 17);
             this.label18.TabIndex = 73;
@@ -450,7 +452,7 @@ namespace Policial
             this.txtObservaciones.Location = new System.Drawing.Point(593, 323);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.Size = new System.Drawing.Size(327, 31);
+            this.txtObservaciones.Size = new System.Drawing.Size(327, 43);
             this.txtObservaciones.TabIndex = 71;
             // 
             // dtpFechaNacimiento
@@ -506,7 +508,7 @@ namespace Policial
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(388, 172);
+            this.label12.Location = new System.Drawing.Point(388, 179);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(16, 21);
             this.label12.TabIndex = 65;
@@ -517,7 +519,7 @@ namespace Policial
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(388, 205);
+            this.label11.Location = new System.Drawing.Point(388, 211);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(16, 21);
             this.label11.TabIndex = 64;
@@ -528,7 +530,7 @@ namespace Policial
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(388, 105);
+            this.label9.Location = new System.Drawing.Point(388, 109);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(16, 21);
             this.label9.TabIndex = 62;
@@ -708,7 +710,7 @@ namespace Policial
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.label1.Location = new System.Drawing.Point(46, 3);
+            this.label1.Location = new System.Drawing.Point(59, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(212, 38);
             this.label1.TabIndex = 42;
@@ -799,9 +801,10 @@ namespace Policial
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(189, 90);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 21);
+            this.button1.Size = new System.Drawing.Size(199, 21);
             this.button1.TabIndex = 134;
-            this.button1.Text = "Buscar";
+            this.button1.Text = "Buscar  Documento";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
@@ -872,7 +875,7 @@ namespace Policial
             this.txtObservacionesModif.Location = new System.Drawing.Point(599, 256);
             this.txtObservacionesModif.Multiline = true;
             this.txtObservacionesModif.Name = "txtObservacionesModif";
-            this.txtObservacionesModif.Size = new System.Drawing.Size(327, 31);
+            this.txtObservacionesModif.Size = new System.Drawing.Size(327, 54);
             this.txtObservacionesModif.TabIndex = 117;
             // 
             // label39
@@ -1111,7 +1114,7 @@ namespace Policial
             this.label52.AutoSize = true;
             this.label52.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.label52.Location = new System.Drawing.Point(52, 13);
+            this.label52.Location = new System.Drawing.Point(59, 17);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(257, 38);
             this.label52.TabIndex = 89;
@@ -1179,7 +1182,7 @@ namespace Policial
             // 
             this.dtpFechaBaja.Location = new System.Drawing.Point(582, 187);
             this.dtpFechaBaja.Name = "dtpFechaBaja";
-            this.dtpFechaBaja.Size = new System.Drawing.Size(327, 21);
+            this.dtpFechaBaja.Size = new System.Drawing.Size(231, 21);
             this.dtpFechaBaja.TabIndex = 158;
             // 
             // label54
@@ -1227,6 +1230,7 @@ namespace Policial
             // txtCiBaja
             // 
             this.txtCiBaja.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCiBaja.Enabled = false;
             this.txtCiBaja.Location = new System.Drawing.Point(205, 291);
             this.txtCiBaja.Name = "txtCiBaja";
             this.txtCiBaja.Size = new System.Drawing.Size(199, 21);
@@ -1246,6 +1250,7 @@ namespace Policial
             // txtPrimerApellidoBaja
             // 
             this.txtPrimerApellidoBaja.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPrimerApellidoBaja.Enabled = false;
             this.txtPrimerApellidoBaja.Location = new System.Drawing.Point(205, 227);
             this.txtPrimerApellidoBaja.Name = "txtPrimerApellidoBaja";
             this.txtPrimerApellidoBaja.Size = new System.Drawing.Size(199, 21);
@@ -1265,6 +1270,7 @@ namespace Policial
             // txtSegundoApellidoBaja
             // 
             this.txtSegundoApellidoBaja.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSegundoApellidoBaja.Enabled = false;
             this.txtSegundoApellidoBaja.Location = new System.Drawing.Point(205, 259);
             this.txtSegundoApellidoBaja.Name = "txtSegundoApellidoBaja";
             this.txtSegundoApellidoBaja.Size = new System.Drawing.Size(199, 21);
@@ -1284,6 +1290,7 @@ namespace Policial
             // txtPrimerNombreBaja
             // 
             this.txtPrimerNombreBaja.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPrimerNombreBaja.Enabled = false;
             this.txtPrimerNombreBaja.Location = new System.Drawing.Point(205, 189);
             this.txtPrimerNombreBaja.Name = "txtPrimerNombreBaja";
             this.txtPrimerNombreBaja.Size = new System.Drawing.Size(199, 21);
@@ -1327,20 +1334,21 @@ namespace Policial
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(205, 137);
+            this.button2.Location = new System.Drawing.Point(205, 118);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(199, 21);
             this.button2.TabIndex = 137;
-            this.button2.Text = "Buscar";
+            this.button2.Text = "Buscar Documento";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // txtBuscarEliminar
             // 
-            this.txtBuscarEliminar.Location = new System.Drawing.Point(75, 137);
+            this.txtBuscarEliminar.Location = new System.Drawing.Point(75, 118);
             this.txtBuscarEliminar.Name = "txtBuscarEliminar";
             this.txtBuscarEliminar.Size = new System.Drawing.Size(119, 21);
             this.txtBuscarEliminar.TabIndex = 136;
+            this.txtBuscarEliminar.Validating += new System.ComponentModel.CancelEventHandler(this.txtBuscarEliminar_Validating);
             // 
             // label53
             // 
@@ -1348,7 +1356,7 @@ namespace Policial
             this.label53.AutoSize = true;
             this.label53.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.label53.Location = new System.Drawing.Point(68, 21);
+            this.label53.Location = new System.Drawing.Point(59, 17);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(232, 38);
             this.label53.TabIndex = 135;
