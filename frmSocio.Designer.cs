@@ -30,7 +30,6 @@ namespace Policial
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabModifcar = new System.Windows.Forms.TabControl();
             this.tabListaSocios = new System.Windows.Forms.TabPage();
             this.txtParametro = new System.Windows.Forms.TextBox();
@@ -142,6 +141,7 @@ namespace Policial
             this.txtBuscarEliminar = new System.Windows.Forms.TextBox();
             this.label53 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tabModifcar.SuspendLayout();
             this.tabListaSocios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
@@ -168,6 +168,7 @@ namespace Policial
             // tabListaSocios
             // 
             this.tabListaSocios.BackColor = System.Drawing.SystemColors.Control;
+            this.tabListaSocios.Controls.Add(this.checkBox1);
             this.tabListaSocios.Controls.Add(this.txtParametro);
             this.tabListaSocios.Controls.Add(this.lblCantSocios);
             this.tabListaSocios.Controls.Add(this.lblTituloFormulario);
@@ -185,7 +186,7 @@ namespace Policial
             // 
             this.txtParametro.Location = new System.Drawing.Point(66, 76);
             this.txtParametro.Name = "txtParametro";
-            this.txtParametro.Size = new System.Drawing.Size(226, 21);
+            this.txtParametro.Size = new System.Drawing.Size(262, 21);
             this.txtParametro.TabIndex = 134;
             this.txtParametro.TextChanged += new System.EventHandler(this.textBox18_TextChanged);
             // 
@@ -246,14 +247,6 @@ namespace Policial
             this.dgvSocios.Location = new System.Drawing.Point(66, 112);
             this.dgvSocios.Name = "dgvSocios";
             this.dgvSocios.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSocios.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSocios.RowHeadersVisible = false;
             this.dgvSocios.RowHeadersWidth = 51;
             this.dgvSocios.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1407,6 +1400,19 @@ namespace Policial
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.ForeColor = System.Drawing.Color.Black;
+            this.checkBox1.Location = new System.Drawing.Point(334, 78);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(126, 20);
+            this.checkBox1.TabIndex = 135;
+            this.checkBox1.Text = "solo Socios activos";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // frmSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1548,5 +1554,6 @@ namespace Policial
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

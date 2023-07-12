@@ -26,6 +26,7 @@ namespace Policial
             InitializeComponent();
             ColorFrm();
             CargoTC();
+            CargoGrillaSocios();
         }
         #region Eventos
         private void button1_Click(object sender, EventArgs e)
@@ -141,6 +142,8 @@ namespace Policial
             {
                 ILogicaSocio FSocio = FabricaLogica.getLogicaSocio();
                 listaSocios = FSocio.ListarSocios();
+                bool socioActivo = checkBox1.Checked ? true : false;
+
                 var _resultado = (from unSocio in listaSocios
                                   where unSocio.SocId.ToString().ToUpper().Contains(txtParametro.Text.ToUpper()) ||
                                   unSocio.SocCI.ToString().ToUpper().Contains(txtParametro.Text.ToUpper()) ||
@@ -148,11 +151,11 @@ namespace Policial
                                   unSocio.SocPrimerApellido.ToString().ToUpper().Contains(txtParametro.Text.ToUpper()) ||
                                   unSocio.SocDireccion.ToString().ToUpper().Contains(txtParametro.Text.ToUpper()) ||
                                   unSocio.SocSegundoApellido.ToString().ToUpper().Contains(txtParametro.Text.ToUpper())
+                                  //|| unSocio.SocAtivo == socioActivo
                                   select new Socio
                                   {
                                       //agragar comentario
                                       SocId = unSocio.SocId,
-                                      //SocId = unSocio.SocId,
                                       SocCI = unSocio.SocCI,
                                       SocPrimerNombre = unSocio.SocPrimerNombre,
                                       SocPrimerApellido = unSocio.SocPrimerApellido,
@@ -575,6 +578,51 @@ namespace Policial
             public static Color color4 = Color.FromArgb(249, 88, 155);
             public static Color color5 = Color.FromArgb(24, 161, 251);
         }
+
+        private void CargoGrillaSocios()
+        {
+            try
+            {
+                ILogicaSocio FSocio = FabricaLogica.getLogicaSocio();
+                listaSocios = FSocio.ListarSocios();
+                bool socioActivo = checkBox1.Checked ? true : false;
+
+                var _resultado = (from unSocio in listaSocios
+                                  where unSocio.SocAtivo == socioActivo
+                                  select new Socio
+                                  {
+                                      //agragar comentario
+                                      SocId = unSocio.SocId,
+                                      SocCI = unSocio.SocCI,
+                                      SocPrimerNombre = unSocio.SocPrimerNombre,
+                                      SocPrimerApellido = unSocio.SocPrimerApellido,
+                                      SocSegundoNombre = unSocio.SocSegundoNombre,
+                                      SocSegundoApellido = unSocio.SocSegundoApellido,
+                                      SocFechaNacimiento = unSocio.SocFechaNacimiento,
+                                      SocFechaIngreso = unSocio.SocFechaIngreso,
+                                      SocDireccion = unSocio.SocDireccion,
+                                      SocEmail = unSocio.SocEmail,
+                                      SocTel = unSocio.SocTel,
+                                      SocCelular = unSocio.SocCelular,
+                                      SocAtivo = unSocio.SocAtivo,
+                                  }).ToList();
+
+                dgvSocios.Rows.Clear();
+                if (listaSocios != null)
+                {
+                    foreach (Socio s in _resultado)
+                    {
+                        dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, s.SocDireccion, s.SocTel, s.SocCelular, "Editar");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
         private void CargoTC()
         {
             try
