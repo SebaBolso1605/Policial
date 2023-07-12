@@ -464,5 +464,32 @@ namespace Policial
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
+        private void txtBuscarNF_Validated(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtBuscarNF.Text.Trim().Length >= 10)
+                {
+                    throw new Exception("Largo maximo para el documento - 9 digitos.");
+                }
+                else if (txtBuscarNF.Text.Trim() != "")
+                {
+                    try
+                    {
+                        ulong.Parse(txtBuscarNF.Text.Trim());
+                    }
+                    catch (Exception)
+                    {
+                        throw new Exception("El documento debe ser numérico.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }
