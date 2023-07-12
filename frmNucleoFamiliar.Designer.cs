@@ -30,9 +30,8 @@ namespace Policial
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label24 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.txtObservacionesNF = new System.Windows.Forms.TextBox();
             this.dtpFechaNacimientoNF = new System.Windows.Forms.DateTimePicker();
@@ -83,7 +82,9 @@ namespace Policial
             this.txtNFId = new System.Windows.Forms.TextBox();
             this.txtSocCI = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbTipoVinculo = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSociosNF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -98,17 +99,6 @@ namespace Policial
             this.label24.Size = new System.Drawing.Size(103, 17);
             this.label24.TabIndex = 123;
             this.label24.Text = "Observaciones";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(746, 140);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(16, 21);
-            this.label22.TabIndex = 121;
-            this.label22.Text = "*";
             // 
             // label19
             // 
@@ -404,14 +394,14 @@ namespace Policial
             this.NFId,
             this.SocSegundoApellido,
             this.SocSegundoNombre});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSociosNF.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSociosNF.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSociosNF.Location = new System.Drawing.Point(12, 370);
             this.dgvSociosNF.Name = "dgvSociosNF";
             this.dgvSociosNF.ReadOnly = true;
@@ -605,20 +595,43 @@ namespace Policial
             this.label6.TabIndex = 142;
             this.label6.Text = "Tipo Persona";
             // 
-            // comboBox1
+            // cmbTipoVinculo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(540, 174);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 21);
-            this.comboBox1.TabIndex = 143;
+            this.cmbTipoVinculo.FormattingEnabled = true;
+            this.cmbTipoVinculo.Location = new System.Drawing.Point(540, 174);
+            this.cmbTipoVinculo.Name = "cmbTipoVinculo";
+            this.cmbTipoVinculo.Size = new System.Drawing.Size(200, 21);
+            this.cmbTipoVinculo.TabIndex = 143;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Black;
+            this.label22.Location = new System.Drawing.Point(746, 140);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(16, 21);
+            this.label22.TabIndex = 121;
+            this.label22.Text = "*";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(746, 174);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(16, 21);
+            this.label10.TabIndex = 144;
+            this.label10.Text = "*";
             // 
             // frmNucleoFamiliar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 659);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.cmbTipoVinculo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtSocCI);
             this.Controls.Add(this.txtNFId);
@@ -668,7 +681,6 @@ namespace Policial
         #endregion
 
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtObservacionesNF;
         private System.Windows.Forms.DateTimePicker dtpFechaNacimientoNF;
@@ -718,7 +730,9 @@ namespace Policial
         private System.Windows.Forms.DataGridViewTextBoxColumn SocSegundoApellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocSegundoNombre;
         private System.Windows.Forms.TextBox txtSocCI;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbTipoVinculo;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label22;
     }
 }

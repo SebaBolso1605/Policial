@@ -88,17 +88,17 @@ namespace Policial
             bool error = false;
             if (string.IsNullOrEmpty(txtPrimerApellidoNF.Text.Trim()))
             {
-                errorProvider.SetError(label9, "Ingrese Primer Apellido.");
+                errorProvider.SetError(label12, "Ingrese Primer Apellido.");
                 error = true;
             }
             if (string.IsNullOrEmpty(txtSegundoApellidoNF.Text.Trim()))
             {
-                errorProvider.SetError(label1, "Ingrese Segundo Apellido.");
+                errorProvider.SetError(label11, "Ingrese Segundo Apellido.");
                 error = true;
             }
             if (string.IsNullOrEmpty(txtPrimerNombreNF.Text.Trim()))
             {
-                errorProvider.SetError(label12, "Ingrese Primer Nombre.");
+                errorProvider.SetError(label9, "Ingrese Primer Nombre.");
                 error = true;
             }
             if (string.IsNullOrEmpty(txtCINF.Text.Trim()))
@@ -106,7 +106,12 @@ namespace Policial
                 errorProvider.SetError(label19, "Ingrese cedula.");
                 error = true;
             }
-            if (dtpFechaNacimientoNF.Value.Date > DateTime.Now.Date)
+            if((int)cmbTipoVinculo.SelectedIndex <= 0)
+            {
+                errorProvider.SetError(label10, "Selecciones vinculo.");
+                error = true;
+            }
+            if (dtpFechaNacimientoNF.Value.Date > DateTime.Now.Date.AddYears(-8))
             {
                 errorProvider.SetError(label22, "Seleccione fecha de nacimiento.");
                 error = true;
@@ -162,26 +167,31 @@ namespace Policial
                         socNF.FecModif = DateTime.Now;
                         socNF.UsuIdAlta = Program.usuarioLogueado.UsuId;
                         socNF.UsuIdModif = Program.usuarioLogueado.UsuId;
+
+                        if (socNF != null)
+                        {
+                            resultado = PersistirNucleoFamiliar(socNF, _usu);
+
+                            if (resultado)
+                            {
+                                mensaje = "La información se guardó exitosamente.";
+                                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                dgvSociosNF.Rows.Add(socNF.SocId, socNF.NFCI, socNF.NFPrimerNombre, socNF.NFPrimerApellido, socNF.NFTel, socNF.NFCelular, "Editar", "Eliminar");
+                                LimpioFrmNF();
+                                txtSocIdNF.Text = "";
+                                txtNombreSocNF.Text = "";
+                            }
+                            else
+                            {
+                                mensaje = "No se guardó la información.";
+                                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                        }
                     }
-
-                    if (socNF != null)
+                    else
                     {
-                        resultado = PersistirNucleoFamiliar(socNF, _usu);
-
-                        if (resultado)
-                        {
-                            mensaje = "La información se guardó exitosamente.";
-                            MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            dgvSociosNF.Rows.Add(socNF.SocId, socNF.NFCI, socNF.NFPrimerNombre, socNF.NFPrimerApellido, socNF.NFTel, socNF.NFCelular, "Editar", "Eliminar");
-                            LimpioFrmNF();
-                            txtSocIdNF.Text = "";
-                            txtNombreSocNF.Text = "";
-                        }
-                        else
-                        {
-                            mensaje = "No se guardó la información.";
-                            MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
+                        mensaje = "Faltan completar datos requeridos.";
+                        MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
                 #endregion
