@@ -30,6 +30,7 @@ namespace Policial
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabModifcar = new System.Windows.Forms.TabControl();
             this.tabListaSocios = new System.Windows.Forms.TabPage();
             this.txtParametro = new System.Windows.Forms.TextBox();
@@ -241,11 +242,21 @@ namespace Policial
             this.SocTel,
             this.SocCelular,
             this.Ver});
+            this.dgvSocios.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvSocios.Location = new System.Drawing.Point(66, 112);
             this.dgvSocios.Name = "dgvSocios";
             this.dgvSocios.ReadOnly = true;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSocios.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSocios.RowHeadersVisible = false;
             this.dgvSocios.RowHeadersWidth = 51;
+            this.dgvSocios.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvSocios.Size = new System.Drawing.Size(887, 345);
             this.dgvSocios.TabIndex = 24;
             // 
