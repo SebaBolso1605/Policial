@@ -162,7 +162,9 @@ namespace Policial
                                   unSocio.SocSegundoApellido.ToString().ToUpper().Contains(txtParametro.Text.ToUpper())
                                   select new Socio
                                   {
+                                      //agragar comentario
                                       SocId = unSocio.SocId,
+                                      //SocId = unSocio.SocId,
                                       SocCI = unSocio.SocCI,
                                       SocPrimerNombre = unSocio.SocPrimerNombre,
                                       SocPrimerApellido = unSocio.SocPrimerApellido,
