@@ -7,7 +7,13 @@ namespace EntidadesCompartidas
 {
     internal class Conexion
     {
-        private static string _cnn = "Data Source=SEBABOLSO1605\\SQLEXPRESS; Initial Catalog = Policial; Integrated Security = true";
+
+        //Para SQL Sebastián
+        //private static string _cnn = "Data Source=SEBABOLSO1605\\SQLEXPRESS; Initial Catalog = Policial; Integrated Security = true";
+
+        //Para SQL Fernando
+        private static string _cnn = "Data Source=.; Initial Catalog = Policial; Integrated Security = true";
+
 
         public static string Cnn
         {
