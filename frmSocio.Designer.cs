@@ -32,19 +32,12 @@ namespace Policial
             this.components = new System.ComponentModel.Container();
             this.tabModifcar = new System.Windows.Forms.TabControl();
             this.tabListaSocios = new System.Windows.Forms.TabPage();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.txtParametro = new System.Windows.Forms.TextBox();
             this.lblCantSocios = new System.Windows.Forms.Label();
             this.lblTituloFormulario = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.dgvSocios = new System.Windows.Forms.DataGridView();
-            this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocPrimerNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocPrimerApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocTel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocCelular = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ver = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabAgregarSocio = new System.Windows.Forms.TabPage();
             this.label25 = new System.Windows.Forms.Label();
             this.dtpFechaCuotaDesde = new System.Windows.Forms.DateTimePicker();
@@ -141,7 +134,15 @@ namespace Policial
             this.txtBuscarEliminar = new System.Windows.Forms.TextBox();
             this.label53 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocPrimerNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocPrimerApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocTel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocCelular = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ver = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabModifcar.SuspendLayout();
             this.tabListaSocios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
@@ -181,6 +182,20 @@ namespace Policial
             this.tabListaSocios.Size = new System.Drawing.Size(1059, 559);
             this.tabListaSocios.TabIndex = 0;
             this.tabListaSocios.Text = "Gestión Socios";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.ForeColor = System.Drawing.Color.Black;
+            this.checkBox1.Location = new System.Drawing.Point(334, 78);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(126, 20);
+            this.checkBox1.TabIndex = 135;
+            this.checkBox1.Text = "solo Socios activos";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
             // txtParametro
             // 
@@ -242,6 +257,7 @@ namespace Policial
             this.SocDireccion,
             this.SocTel,
             this.SocCelular,
+            this.SocActivo,
             this.Ver});
             this.dgvSocios.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvSocios.Location = new System.Drawing.Point(66, 112);
@@ -250,66 +266,8 @@ namespace Policial
             this.dgvSocios.RowHeadersVisible = false;
             this.dgvSocios.RowHeadersWidth = 51;
             this.dgvSocios.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvSocios.Size = new System.Drawing.Size(887, 345);
+            this.dgvSocios.Size = new System.Drawing.Size(987, 345);
             this.dgvSocios.TabIndex = 24;
-            // 
-            // SocId
-            // 
-            this.SocId.HeaderText = "Socio Nº";
-            this.SocId.Name = "SocId";
-            this.SocId.ReadOnly = true;
-            this.SocId.Width = 80;
-            // 
-            // SocCI
-            // 
-            this.SocCI.HeaderText = "Cédula";
-            this.SocCI.MinimumWidth = 6;
-            this.SocCI.Name = "SocCI";
-            this.SocCI.ReadOnly = true;
-            this.SocCI.Width = 80;
-            // 
-            // SocPrimerNombre
-            // 
-            this.SocPrimerNombre.HeaderText = "Nombre";
-            this.SocPrimerNombre.MinimumWidth = 6;
-            this.SocPrimerNombre.Name = "SocPrimerNombre";
-            this.SocPrimerNombre.ReadOnly = true;
-            // 
-            // SocPrimerApellido
-            // 
-            this.SocPrimerApellido.HeaderText = "Apellido";
-            this.SocPrimerApellido.Name = "SocPrimerApellido";
-            this.SocPrimerApellido.ReadOnly = true;
-            // 
-            // SocDireccion
-            // 
-            this.SocDireccion.HeaderText = "Dirección";
-            this.SocDireccion.MinimumWidth = 6;
-            this.SocDireccion.Name = "SocDireccion";
-            this.SocDireccion.ReadOnly = true;
-            this.SocDireccion.Width = 180;
-            // 
-            // SocTel
-            // 
-            this.SocTel.HeaderText = "Teléfono";
-            this.SocTel.MinimumWidth = 6;
-            this.SocTel.Name = "SocTel";
-            this.SocTel.ReadOnly = true;
-            this.SocTel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SocTel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.SocTel.Width = 140;
-            // 
-            // SocCelular
-            // 
-            this.SocCelular.HeaderText = "Celular";
-            this.SocCelular.Name = "SocCelular";
-            this.SocCelular.ReadOnly = true;
-            // 
-            // Ver
-            // 
-            this.Ver.HeaderText = "Ver";
-            this.Ver.Name = "Ver";
-            this.Ver.ReadOnly = true;
             // 
             // tabAgregarSocio
             // 
@@ -1400,18 +1358,69 @@ namespace Policial
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // checkBox1
+            // SocId
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.ForeColor = System.Drawing.Color.Black;
-            this.checkBox1.Location = new System.Drawing.Point(334, 78);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(126, 20);
-            this.checkBox1.TabIndex = 135;
-            this.checkBox1.Text = "solo Socios activos";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.SocId.HeaderText = "Socio Nº";
+            this.SocId.Name = "SocId";
+            this.SocId.ReadOnly = true;
+            this.SocId.Width = 80;
+            // 
+            // SocCI
+            // 
+            this.SocCI.HeaderText = "Cédula";
+            this.SocCI.MinimumWidth = 6;
+            this.SocCI.Name = "SocCI";
+            this.SocCI.ReadOnly = true;
+            this.SocCI.Width = 80;
+            // 
+            // SocPrimerNombre
+            // 
+            this.SocPrimerNombre.HeaderText = "Nombre";
+            this.SocPrimerNombre.MinimumWidth = 6;
+            this.SocPrimerNombre.Name = "SocPrimerNombre";
+            this.SocPrimerNombre.ReadOnly = true;
+            // 
+            // SocPrimerApellido
+            // 
+            this.SocPrimerApellido.HeaderText = "Apellido";
+            this.SocPrimerApellido.Name = "SocPrimerApellido";
+            this.SocPrimerApellido.ReadOnly = true;
+            // 
+            // SocDireccion
+            // 
+            this.SocDireccion.HeaderText = "Dirección";
+            this.SocDireccion.MinimumWidth = 6;
+            this.SocDireccion.Name = "SocDireccion";
+            this.SocDireccion.ReadOnly = true;
+            this.SocDireccion.Width = 180;
+            // 
+            // SocTel
+            // 
+            this.SocTel.HeaderText = "Teléfono";
+            this.SocTel.MinimumWidth = 6;
+            this.SocTel.Name = "SocTel";
+            this.SocTel.ReadOnly = true;
+            this.SocTel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SocTel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.SocTel.Width = 140;
+            // 
+            // SocCelular
+            // 
+            this.SocCelular.HeaderText = "Celular";
+            this.SocCelular.Name = "SocCelular";
+            this.SocCelular.ReadOnly = true;
+            // 
+            // SocActivo
+            // 
+            this.SocActivo.HeaderText = "Estado";
+            this.SocActivo.Name = "SocActivo";
+            this.SocActivo.ReadOnly = true;
+            // 
+            // Ver
+            // 
+            this.Ver.HeaderText = "Ver";
+            this.Ver.Name = "Ver";
+            this.Ver.ReadOnly = true;
             // 
             // frmSocio
             // 
@@ -1520,13 +1529,6 @@ namespace Policial
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Button btnModificarSocio;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SocId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SocCI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SocPrimerNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SocPrimerApellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SocDireccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SocTel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SocCelular;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtBuscarModif;
         private System.Windows.Forms.TabPage tabEliminar;
@@ -1547,7 +1549,6 @@ namespace Policial
         private System.Windows.Forms.TextBox txtSegundoApellidoBaja;
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.TextBox txtPrimerNombreBaja;
-        private System.Windows.Forms.DataGridViewButtonColumn Ver;
         private System.Windows.Forms.TextBox txtParametro;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label39;
@@ -1555,5 +1556,14 @@ namespace Policial
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SocId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SocCI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SocPrimerNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SocPrimerApellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SocDireccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SocTel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SocCelular;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SocActivo;
+        private System.Windows.Forms.DataGridViewButtonColumn Ver;
     }
 }
