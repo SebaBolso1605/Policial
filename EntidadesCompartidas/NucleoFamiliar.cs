@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace EntidadesCompartidas
 {
+    [DataContract]
     public class NucleoFamiliar
     {
         private int nFId;
@@ -24,21 +26,37 @@ namespace EntidadesCompartidas
         private int usuIdModif;
         private int usuIdAlta;
 
+        [DataMember]
         public int NFId { get => nFId; set => nFId = value; }
+        [DataMember]
         public int SocId { get => socId; set => socId = value; }
+        [DataMember]
         public string NFPrimerApellido { get => nFPrimerApellido; set => nFPrimerApellido = value; }
+        [DataMember]
         public string NFSegundoApellido { get => nFSegundoApellido; set => nFSegundoApellido = value; }
+        [DataMember]
         public string NFPrimerNombre { get => nFPrimerNombre; set => nFPrimerNombre = value; }
+        [DataMember]
         public string NFSegundoNombre { get => nFSegundoNombre; set => nFSegundoNombre = value; }
+        [DataMember]
         public int NFCI { get => nFCI; set => nFCI = value; }
+        [DataMember]
         public DateTime NFFechaNacimiento { get => nFFechaNacimiento; set => nFFechaNacimiento = value; }
+        [DataMember]
         public string NFTel { get => nFTel; set => nFTel = value; }
+        [DataMember]
         public string NFCelular { get => nFCelular; set => nFCelular = value; }
+        [DataMember]
         public bool NFActivo { get => nFActivo; set => nFActivo = value; }
+        [DataMember]
         public DateTime FecAlta { get => fecAlta; set => fecAlta = value; }
+        [DataMember]
         public DateTime FecModif { get => fecModif; set => fecModif = value; }
+        [DataMember]
         public int UsuIdModif { get => usuIdModif; set => usuIdModif = value; }
+        [DataMember]
         public int UsuIdAlta { get => usuIdAlta; set => usuIdAlta = value; }
+        [DataMember]
         public string NFobservaciones { get => nFobservaciones; set => nFobservaciones = value; }
 
         public NucleoFamiliar(){ }

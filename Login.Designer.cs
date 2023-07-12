@@ -42,7 +42,7 @@ namespace Policial
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(185, 20);
             this.txtUsuario.TabIndex = 0;
-            this.txtUsuario.Text = "Usuario";
+            this.txtUsuario.Text = "Seba";
             this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // txtPass
@@ -52,7 +52,7 @@ namespace Policial
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(185, 20);
             this.txtPass.TabIndex = 1;
-            this.txtPass.Text = "Pass";
+            this.txtPass.Text = "1234";
             this.txtPass.TextChanged += new System.EventHandler(this.txtPass_TextChanged);
             // 
             // lblBienvenido

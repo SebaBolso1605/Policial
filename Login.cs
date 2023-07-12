@@ -7,8 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
-using EntidadesCompartidas;
-using Logica;
+//using EntidadesCompartidas;
+//using Logica;
+
+using Policial.ServicioPolicialWCF;
+using System.Xml;
+using System.IO;
 
 namespace Policial
 {
@@ -37,7 +41,8 @@ namespace Policial
                     }
                     else
                     {
-                        ILogicaUsuario _uns = FabricaLogica.getLogicaUsuario();
+                        IServicioPolicial _uns = new ServicioPolicialClient();
+                        //ILogicaUsuario _uns = FabricaLogica.getLogicaUsuario();
                         Usuario _unEmpleado = _uns.Login(txtUsuario.Text.Trim(), txtPass.Text.Trim());
 
                         if (_unEmpleado == null)
