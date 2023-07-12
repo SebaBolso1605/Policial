@@ -1,0 +1,24 @@
+USE [Policial]
+GO
+
+/****** Object:  Table [dbo].[Usuario]    Script Date: 9/4/2022 15:13:37 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Usuario](
+	[UsuId] [int] IDENTITY(1,1) NOT NULL,
+	[UsuClaveAcceso] [nchar](50) NOT NULL,
+	[UsuPass] [nchar](8) NOT NULL,
+	[UsuNombre] [nchar](100) NOT NULL,
+	[UsuActivo] [bit] NOT NULL,
+ CONSTRAINT [PK_Usuario] PRIMARY KEY CLUSTERED 
+(
+	[UsuId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
