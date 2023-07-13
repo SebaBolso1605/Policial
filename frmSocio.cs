@@ -324,9 +324,9 @@ namespace Policial
                 ILogicaSocio lSocio = FabricaLogica.getLogicaSocio();
                 Socio soc = new Socio();
 
-                if (!string.IsNullOrEmpty(txtCiBaja.Text))
+                if (!string.IsNullOrEmpty(txtBuscarEliminar.Text))
                 {
-                    int ci = Convert.ToInt32(txtCiBaja.Text);
+                    int ci = Convert.ToInt32(txtBuscarEliminar.Text);
                     soc.SocCI = ci;
                     if (!string.IsNullOrEmpty(txtMotivoBaja.Text))
                         soc.SocMotivoEgreso = txtMotivoBaja.Text;
@@ -343,6 +343,7 @@ namespace Policial
                         txtPrimerNombreBaja.Text = "";
                         txtSegundoApellidoBaja.Text = "";
                         txtCiBaja.Text = "";
+                        txtBuscarEliminar.Text = "";
                     }
                     else
                     {
@@ -352,6 +353,10 @@ namespace Policial
                         txtSegundoApellidoBaja.Text = "";
                         txtCiBaja.Text = "";
                     }
+                }
+                else
+                {
+                    MessageBox.Show("No se econtro socio.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
