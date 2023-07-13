@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Policial", "Policial.csproj", "{D07E59C8-9A7B-42ED-B590-3BFFDE23FB98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntidadesCompartidas", "..\..\..\..\..\Policial\EntidadesCompartidas\EntidadesCompartidas.csproj", "{4F88157A-D3C9-4CD3-AB30-832DB73D37FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntidadesCompartidas", "..\Policial\EntidadesCompartidas\EntidadesCompartidas.csproj", "{4F88157A-D3C9-4CD3-AB30-832DB73D37FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistencia", "..\..\..\..\..\Policial\Persistencia\Persistencia.csproj", "{37DCCAE6-01D8-4DFD-A338-A098D27ADAF0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistencia", "..\Policial\Persistencia\Persistencia.csproj", "{37DCCAE6-01D8-4DFD-A338-A098D27ADAF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "..\..\..\..\..\Policial\Logica\Logica.csproj", "{55000919-9F0E-4E5C-89CB-E8BDCC4D3155}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "..\Policial\Logica\Logica.csproj", "{55000919-9F0E-4E5C-89CB-E8BDCC4D3155}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
