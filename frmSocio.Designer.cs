@@ -775,7 +775,7 @@ namespace Policial
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.label1.Location = new System.Drawing.Point(59, 17);
+            this.label1.Location = new System.Drawing.Point(46, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(212, 38);
             this.label1.TabIndex = 42;
@@ -1180,7 +1180,7 @@ namespace Policial
             this.label52.AutoSize = true;
             this.label52.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.label52.Location = new System.Drawing.Point(59, 17);
+            this.label52.Location = new System.Drawing.Point(52, 17);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(257, 38);
             this.label52.TabIndex = 89;
@@ -1423,7 +1423,7 @@ namespace Policial
             this.label53.AutoSize = true;
             this.label53.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.label53.Location = new System.Drawing.Point(59, 17);
+            this.label53.Location = new System.Drawing.Point(68, 17);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(232, 38);
             this.label53.TabIndex = 135;
