@@ -17,17 +17,6 @@ namespace EntidadesCompartidas
         private string usuNombre;
         private bool usuActivo;
 
-        public Usuario(int usuId, string usuClaveAcceso, string usuPass, string usuNombre, bool usuActivo)
-        {
-            this.usuId = usuId;
-            this.usuClaveAcceso = usuClaveAcceso;
-            this.usuPass = usuPass;
-            this.usuNombre = usuNombre;
-            this.usuActivo = usuActivo;
-        }
-
-        public Usuario() {}
-
         [DataMember]
         public int UsuId { get => usuId; set => usuId = value; }
         [DataMember]
@@ -38,5 +27,16 @@ namespace EntidadesCompartidas
         public string UsuNombre { get => usuNombre; set => usuNombre = value; }
         [DataMember]
         public bool UsuActivo { get => usuActivo; set => usuActivo = value; }
+
+        public Usuario(int usuId, string usuClaveAcceso, string usuPass, string usuNombre, bool usuActivo)
+        {
+            this.usuId = usuId;
+            this.usuClaveAcceso = usuClaveAcceso;
+            this.usuPass = usuPass;
+            this.usuNombre = usuNombre;
+            this.usuActivo = usuActivo;
+        }
+
+        public Usuario() { }
     }
 }
