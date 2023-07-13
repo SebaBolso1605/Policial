@@ -145,8 +145,10 @@ namespace Policial
                             socNF.NFSegundoNombre = txtSegundoNombreNF.Text;
                         else
                             socNF.NFSegundoNombre = "";
-                        if ((int)cmbTipoVinculo.SelectedIndex <= 0)
-                            socNF.NTipoPersona = cmbTipoVinculo.SelectedItem.ToString();
+
+                        //REVISAR
+                        //if ((int)cmbTipoVinculo.SelectedIndex <= 0)
+                        //    socNF.NTipoPersona = cmbTipoVinculo.SelectedItem.ToString();
 
                         if (!string.IsNullOrEmpty(txtCelularNF.Text))
                             socNF.NFCelular = txtCelularNF.Text;
