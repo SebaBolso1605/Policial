@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="2d6d21ed-f840-4398-83a3-d29e8af7e9d5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.1.15/ServicePolicial/ServicePolicial.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServicePolicial.xsd" MetadataType="Schema" ID="09cd6e01-9977-4d55-80ab-6960baef0617" SourceId="1" SourceUrl="http://192.168.1.15/ServicePolicial/ServicePolicial.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServicePolicial.wsdl" MetadataType="Wsdl" ID="c2fd75fd-dcd2-42b4-9218-4b94d5de8f55" SourceId="1" SourceUrl="http://192.168.1.15/ServicePolicial/ServicePolicial.svc?wsdl" />
+    <MetadataFile FileName="ServicePolicial1.xsd" MetadataType="Schema" ID="0a823caa-2769-43c7-b46a-af6065e59f92" SourceId="1" SourceUrl="http://192.168.1.15/ServicePolicial/ServicePolicial.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServicePolicial.disco" MetadataType="Disco" ID="efb97edb-12bb-4a16-9a28-7ec6a51b959e" SourceId="1" SourceUrl="http://192.168.1.15/ServicePolicial/ServicePolicial.svc?disco" />
+    <MetadataFile FileName="ServicePolicial2.xsd" MetadataType="Schema" ID="f0511008-7d91-47b0-9af7-c1651a7b5966" SourceId="1" SourceUrl="http://192.168.1.15/ServicePolicial/ServicePolicial.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

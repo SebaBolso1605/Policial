@@ -43,7 +43,7 @@ namespace Logica
             return resp;
         }
 
-        List<NucleoFamiliar> ILogicaNucleoFamiliar.BuscarNucleoFamiliarPorCI(int socId)
+        public List<NucleoFamiliar> BuscarNucleoFamiliarPorCI(int socId)
         {
             List<NucleoFamiliar> s = null;
             IPersistenciaNucleoFamiliar FSocio = FabricaPersistencia.getPersistenciaNucleoFamilial();

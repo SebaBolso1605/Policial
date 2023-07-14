@@ -6,8 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using EntidadesCompartidas;
-using Logica;
+//using EntidadesCompartidas;
+//using Logica;
+using System.Xml;
+using System.IO;
+using Policial.ServicePolicial;
 
 namespace Policial
 {
@@ -40,8 +43,9 @@ namespace Policial
             try
             {
                 List<TipoCuota> listaTC = new List<TipoCuota>();
-                ILogicaSocio tipoCuota = FabricaLogica.getLogicaSocio();
-                listaTC = tipoCuota.ListarTC();
+                //ILogicaSocio tipoCuota = FabricaLogica.getLogicaSocio();
+                IServicePolicial tipoCuota = new ServicePolicialClient();
+                listaTC = tipoCuota.ListarTC().ToList();
                 dgvCategorias.Rows.Clear();
 
                 foreach (TipoCuota e in listaTC)
@@ -116,7 +120,7 @@ namespace Policial
             bool resp = false;
             try
             {
-                ILogicaCuota FSocio = FabricaLogica.getLogicaCuota();
+                IServicePolicial FSocio = new ServicePolicialClient();
                 resp = FSocio.AltaCuota(c, usu);
                 return resp;
             }
@@ -133,7 +137,7 @@ namespace Policial
             {
                 #region Aceptar
                 errorProvider.Clear();
-                ILogicaCuota lNF = FabricaLogica.getLogicaCuota();
+                IServicePolicial lNF = new ServicePolicialClient();
                 TipoCuota tipoCuota = new TipoCuota();
                 Usuario _usu = Program.usuarioLogueado;
                 bool resultado = false;
