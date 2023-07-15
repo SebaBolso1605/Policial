@@ -86,7 +86,6 @@ namespace Policial
             this.label14 = new System.Windows.Forms.Label();
             this.txtPrimerNombre = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnVolverAPrincipal = new System.Windows.Forms.Button();
             this.tabModificar = new System.Windows.Forms.TabPage();
@@ -143,6 +142,7 @@ namespace Policial
             this.txtBuscarEliminar = new System.Windows.Forms.TextBox();
             this.label53 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.tabModifcar.SuspendLayout();
             this.tabListaSocios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
@@ -768,18 +768,6 @@ namespace Policial
             this.btnCancelar.TabIndex = 44;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.label1.Location = new System.Drawing.Point(46, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 38);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "Nuevo Socio";
             // 
             // btnGuardar
             // 
@@ -1433,6 +1421,19 @@ namespace Policial
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.label1.Location = new System.Drawing.Point(46, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(212, 38);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "Nuevo Socio";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // frmSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1471,7 +1472,6 @@ namespace Policial
         private System.Windows.Forms.DataGridView dgvSocios;
         private System.Windows.Forms.TabPage tabAgregarSocio;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnVolverAPrincipal;
         private System.Windows.Forms.Label label13;
@@ -1576,5 +1576,6 @@ namespace Policial
         private System.Windows.Forms.DataGridViewTextBoxColumn SocCelular;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocActivo;
         private System.Windows.Forms.DataGridViewButtonColumn Ver;
+        private System.Windows.Forms.Label label1;
     }
 }

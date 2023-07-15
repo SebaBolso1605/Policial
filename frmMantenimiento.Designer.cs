@@ -38,7 +38,6 @@ namespace Policial
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnVolverAPrincipal = new System.Windows.Forms.Button();
             this.dgvCategorias = new System.Windows.Forms.DataGridView();
             this.TCId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TCDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -118,7 +117,7 @@ namespace Policial
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(257, 371);
+            this.btnCancelar.Location = new System.Drawing.Point(400, 371);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(176, 25);
             this.btnCancelar.TabIndex = 94;
@@ -133,28 +132,13 @@ namespace Policial
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(62, 371);
+            this.btnGuardar.Location = new System.Drawing.Point(146, 371);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(176, 25);
             this.btnGuardar.TabIndex = 93;
             this.btnGuardar.Text = "Agregar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnVolverAPrincipal
-            // 
-            this.btnVolverAPrincipal.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVolverAPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.btnVolverAPrincipal.FlatAppearance.BorderSize = 0;
-            this.btnVolverAPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolverAPrincipal.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolverAPrincipal.ForeColor = System.Drawing.Color.White;
-            this.btnVolverAPrincipal.Location = new System.Drawing.Point(453, 371);
-            this.btnVolverAPrincipal.Name = "btnVolverAPrincipal";
-            this.btnVolverAPrincipal.Size = new System.Drawing.Size(176, 25);
-            this.btnVolverAPrincipal.TabIndex = 95;
-            this.btnVolverAPrincipal.Text = "Volver";
-            this.btnVolverAPrincipal.UseVisualStyleBackColor = false;
             // 
             // dgvCategorias
             // 
@@ -177,12 +161,12 @@ namespace Policial
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvCategorias.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvCategorias.Location = new System.Drawing.Point(43, 219);
+            this.dgvCategorias.Location = new System.Drawing.Point(59, 209);
             this.dgvCategorias.Name = "dgvCategorias";
             this.dgvCategorias.ReadOnly = true;
             this.dgvCategorias.RowHeadersVisible = false;
             this.dgvCategorias.RowHeadersWidth = 51;
-            this.dgvCategorias.Size = new System.Drawing.Size(615, 125);
+            this.dgvCategorias.Size = new System.Drawing.Size(586, 149);
             this.dgvCategorias.TabIndex = 125;
             this.dgvCategorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategorias_CellContentClick);
             // 
@@ -228,6 +212,7 @@ namespace Policial
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(101, 20);
             this.txtMonto.TabIndex = 147;
+            this.txtMonto.TextChanged += new System.EventHandler(this.txtMonto_TextChanged);
             // 
             // txtDescripcion
             // 
@@ -236,6 +221,7 @@ namespace Policial
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(282, 20);
             this.txtDescripcion.TabIndex = 146;
+            this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
             // textBox1
             // 
@@ -273,7 +259,6 @@ namespace Policial
             this.Controls.Add(this.dgvCategorias);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.btnVolverAPrincipal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.label26);
@@ -297,7 +282,6 @@ namespace Policial
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnVolverAPrincipal;
         private System.Windows.Forms.DataGridView dgvCategorias;
         private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.TextBox txtDescripcion;

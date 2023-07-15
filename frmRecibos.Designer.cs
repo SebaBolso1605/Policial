@@ -39,6 +39,14 @@ namespace Policial
             this.btnBuscarNF = new System.Windows.Forms.Button();
             this.txtBuscarCuota = new System.Windows.Forms.TextBox();
             this.dgvSociosNF = new System.Windows.Forms.DataGridView();
+            this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CuotaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CuotaFechaDesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Paga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MesAño = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaPaga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Imprimir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label15 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,14 +67,6 @@ namespace Policial
             this.label6 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
-            this.Imprimir = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.FechaPaga = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MesAño = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Paga = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoCuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CuotaFechaDesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CuotaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSociosNF)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -132,7 +132,7 @@ namespace Policial
             this.btnBuscarNF.Name = "btnBuscarNF";
             this.btnBuscarNF.Size = new System.Drawing.Size(198, 21);
             this.btnBuscarNF.TabIndex = 172;
-            this.btnBuscarNF.Text = "Buscar";
+            this.btnBuscarNF.Text = "Buscar Documento";
             this.btnBuscarNF.UseVisualStyleBackColor = false;
             this.btnBuscarNF.Click += new System.EventHandler(this.btnBuscarNF_Click);
             // 
@@ -175,6 +175,65 @@ namespace Policial
             this.dgvSociosNF.Size = new System.Drawing.Size(811, 116);
             this.dgvSociosNF.TabIndex = 170;
             this.dgvSociosNF.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSociosNF_CellContentClick);
+            // 
+            // SocId
+            // 
+            this.SocId.HeaderText = "Socio";
+            this.SocId.Name = "SocId";
+            this.SocId.ReadOnly = true;
+            this.SocId.Width = 60;
+            // 
+            // CuotaId
+            // 
+            this.CuotaId.HeaderText = "Cuota";
+            this.CuotaId.MinimumWidth = 6;
+            this.CuotaId.Name = "CuotaId";
+            this.CuotaId.ReadOnly = true;
+            this.CuotaId.Width = 60;
+            // 
+            // CuotaFechaDesde
+            // 
+            this.CuotaFechaDesde.FillWeight = 120F;
+            this.CuotaFechaDesde.HeaderText = "Emision";
+            this.CuotaFechaDesde.MinimumWidth = 6;
+            this.CuotaFechaDesde.Name = "CuotaFechaDesde";
+            this.CuotaFechaDesde.ReadOnly = true;
+            // 
+            // TipoCuenta
+            // 
+            this.TipoCuenta.HeaderText = "Categoria";
+            this.TipoCuenta.MinimumWidth = 6;
+            this.TipoCuenta.Name = "TipoCuenta";
+            this.TipoCuenta.ReadOnly = true;
+            this.TipoCuenta.Width = 120;
+            // 
+            // Paga
+            // 
+            this.Paga.HeaderText = "Paga";
+            this.Paga.MinimumWidth = 6;
+            this.Paga.Name = "Paga";
+            this.Paga.ReadOnly = true;
+            this.Paga.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Paga.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // MesAño
+            // 
+            this.MesAño.HeaderText = "Mes/Año";
+            this.MesAño.Name = "MesAño";
+            this.MesAño.ReadOnly = true;
+            // 
+            // FechaPaga
+            // 
+            this.FechaPaga.HeaderText = "Fecha pago";
+            this.FechaPaga.Name = "FechaPaga";
+            this.FechaPaga.ReadOnly = true;
+            // 
+            // Imprimir
+            // 
+            this.Imprimir.HeaderText = "Imprimir";
+            this.Imprimir.Name = "Imprimir";
+            this.Imprimir.ReadOnly = true;
+            this.Imprimir.Width = 90;
             // 
             // label15
             // 
@@ -405,65 +464,6 @@ namespace Policial
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(283, 21);
             this.cmbCategoria.TabIndex = 186;
-            // 
-            // Imprimir
-            // 
-            this.Imprimir.HeaderText = "Imprimir";
-            this.Imprimir.Name = "Imprimir";
-            this.Imprimir.ReadOnly = true;
-            this.Imprimir.Width = 90;
-            // 
-            // FechaPaga
-            // 
-            this.FechaPaga.HeaderText = "Fecha pago";
-            this.FechaPaga.Name = "FechaPaga";
-            this.FechaPaga.ReadOnly = true;
-            // 
-            // MesAño
-            // 
-            this.MesAño.HeaderText = "Mes/Año";
-            this.MesAño.Name = "MesAño";
-            this.MesAño.ReadOnly = true;
-            // 
-            // Paga
-            // 
-            this.Paga.HeaderText = "Paga";
-            this.Paga.MinimumWidth = 6;
-            this.Paga.Name = "Paga";
-            this.Paga.ReadOnly = true;
-            this.Paga.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Paga.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TipoCuenta
-            // 
-            this.TipoCuenta.HeaderText = "Categoria";
-            this.TipoCuenta.MinimumWidth = 6;
-            this.TipoCuenta.Name = "TipoCuenta";
-            this.TipoCuenta.ReadOnly = true;
-            this.TipoCuenta.Width = 120;
-            // 
-            // CuotaFechaDesde
-            // 
-            this.CuotaFechaDesde.FillWeight = 120F;
-            this.CuotaFechaDesde.HeaderText = "Emision";
-            this.CuotaFechaDesde.MinimumWidth = 6;
-            this.CuotaFechaDesde.Name = "CuotaFechaDesde";
-            this.CuotaFechaDesde.ReadOnly = true;
-            // 
-            // CuotaId
-            // 
-            this.CuotaId.HeaderText = "Cuota";
-            this.CuotaId.MinimumWidth = 6;
-            this.CuotaId.Name = "CuotaId";
-            this.CuotaId.ReadOnly = true;
-            this.CuotaId.Width = 60;
-            // 
-            // SocId
-            // 
-            this.SocId.HeaderText = "Socio";
-            this.SocId.Name = "SocId";
-            this.SocId.ReadOnly = true;
-            this.SocId.Width = 60;
             // 
             // frmRecibos
             // 
