@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace EntidadesCompartidas
 {
+    [DataContract]
     public class Socio
     {
         private int socId;
@@ -29,27 +31,67 @@ namespace EntidadesCompartidas
         private int usuIdModif;
         private int usuIdAlta;
 
-       
+        [DataMember]
         public int SocId { get => socId; set => socId = value; }
+
+        [DataMember]
         public string SocPrimerApellido { get => socPrimerApellido; set => socPrimerApellido = value; }
+
+        [DataMember]
         public string SocSegundoApellido { get => socSegundoApellido; set => socSegundoApellido = value; }
+
+        [DataMember]
         public string SocPrimerNombre { get => socPrimerNombre; set => socPrimerNombre = value; }
+
+        [DataMember]
         public string SocSegundoNombre { get => socSegundoNombre; set => socSegundoNombre = value; }
+
+        [DataMember]
         public int SocCI { get => socCI; set => socCI = value; }
+
+        [DataMember]
         public DateTime SocFechaNacimiento { get => socFechaNacimiento; set => socFechaNacimiento = value; }
+
+        [DataMember]
         public string SocDireccion { get => socDireccion; set => socDireccion = value; }
+
+        [DataMember]
         public string SocTel { get => socTel; set => socTel = value; }
+
+        [DataMember]
         public string SocCelular { get => socCelular; set => socCelular = value; }
+
+        [DataMember]
         public string SocEmail { get => socEmail; set => socEmail = value; }
+
+        [DataMember]
         public string SocObservaciones { get => socObservaciones; set => socObservaciones = value; }
+
+        [DataMember]
         public bool SocAtivo { get => socAtivo; set => socAtivo = value; }
+
+        [DataMember]
         public DateTime SocFechaIngreso { get => socFechaIngreso; set => socFechaIngreso = value; }
+
+        [DataMember]
         public DateTime SocFechaEgreso { get => socFechaEgreso; set => socFechaEgreso = value; }
+
+        [DataMember]
         public string SocMotivoEgreso { get => socMotivoEgreso; set => socMotivoEgreso = value; }
+
+        [DataMember]
         public DateTime FecAlta { get => fecAlta; set => fecAlta = value; }
+
+        [DataMember]
         public DateTime FecModif { get => fecModif; set => fecModif = value; }
+
+        [DataMember]
         public int UsuIdModif { get => usuIdModif; set => usuIdModif = value; }
+
+        [DataMember]
         public int UsuIdAlta { get => usuIdAlta; set => usuIdAlta = value; }
+
+        [DataMember]
         public int SocTipoCuota { get => socTipoCuota; set => socTipoCuota = value; }
 
         public Socio(){ }

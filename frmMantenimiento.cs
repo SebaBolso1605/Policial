@@ -6,8 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using EntidadesCompartidas;
-using Logica;
+//using EntidadesCompartidas;
+//using Logica;
+using System.Xml;
+using System.IO;
+using Policial.ServicePolicial;
 
 namespace Policial
 {
@@ -43,8 +46,9 @@ namespace Policial
             try
             {
                 List<TipoCuota> listaTC = new List<TipoCuota>();
-                ILogicaSocio tipoCuota = FabricaLogica.getLogicaSocio();
-                listaTC = tipoCuota.ListarTC();
+                //ILogicaSocio tipoCuota = FabricaLogica.getLogicaSocio();
+                IServicePolicial tipoCuota = new ServicePolicialClient();
+                listaTC = tipoCuota.ListarTC().ToList();
                 dgvCategorias.Rows.Clear();
 
                 foreach (TipoCuota e in listaTC)
@@ -132,13 +136,45 @@ namespace Policial
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+        private bool HayError()
+        {
+            #region Controlo errores campos
+            bool error = false;
+            if (txtMonto.Text == "")
+            {
+                errorProvider.SetError(label20, "Seleccione categoria.");
+                error = true;
+            }
+            if (string.IsNullOrEmpty(txtMonto.Text.Trim()))
+            {
+                errorProvider.SetError(label25, "Ingrese Primer Apellido.");
+                error = true;
+            }
+            return error;
+            #endregion
+        }
+        private bool PersistirTipoCuota(TipoCuota c, Usuario usu)
+        {
+            bool resp = false;
+            try
+            {
+                IServicePolicial FSocio = new ServicePolicialClient();
+                resp = FSocio.AltaCuota(c, usu);
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
                 #region Aceptar
                 errorProvider.Clear();
-                ILogicaCuota lNF = FabricaLogica.getLogicaCuota();
+                IServicePolicial lNF = new ServicePolicialClient();
                 TipoCuota tipoCuota = new TipoCuota();
                 Usuario _usu = Program.usuarioLogueado;
                 bool resultado = false;
