@@ -53,7 +53,6 @@ namespace Policial
             this.btnCancelarNF = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnGuardarNF = new System.Windows.Forms.Button();
-            this.btnVolverAPrincipal = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.label22 = new System.Windows.Forms.Label();
@@ -276,7 +275,7 @@ namespace Policial
             this.btnCancelarNF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarNF.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarNF.ForeColor = System.Drawing.Color.White;
-            this.btnCancelarNF.Location = new System.Drawing.Point(357, 522);
+            this.btnCancelarNF.Location = new System.Drawing.Point(451, 522);
             this.btnCancelarNF.Name = "btnCancelarNF";
             this.btnCancelarNF.Size = new System.Drawing.Size(176, 25);
             this.btnCancelarNF.TabIndex = 144;
@@ -309,21 +308,6 @@ namespace Policial
             this.btnGuardarNF.Text = "Agregar";
             this.btnGuardarNF.UseVisualStyleBackColor = false;
             this.btnGuardarNF.Click += new System.EventHandler(this.btnGuardarNF_Click);
-            // 
-            // btnVolverAPrincipal
-            // 
-            this.btnVolverAPrincipal.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVolverAPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.btnVolverAPrincipal.FlatAppearance.BorderSize = 0;
-            this.btnVolverAPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolverAPrincipal.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolverAPrincipal.ForeColor = System.Drawing.Color.White;
-            this.btnVolverAPrincipal.Location = new System.Drawing.Point(553, 522);
-            this.btnVolverAPrincipal.Name = "btnVolverAPrincipal";
-            this.btnVolverAPrincipal.Size = new System.Drawing.Size(176, 25);
-            this.btnVolverAPrincipal.TabIndex = 145;
-            this.btnVolverAPrincipal.Text = "Volver";
-            this.btnVolverAPrincipal.UseVisualStyleBackColor = false;
             // 
             // label16
             // 
@@ -493,7 +477,6 @@ namespace Policial
             this.Controls.Add(this.btnCancelarNF);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGuardarNF);
-            this.Controls.Add(this.btnVolverAPrincipal);
             this.Name = "frmRecibos";
             this.Text = "Cuotas Socios";
             ((System.ComponentModel.ISupportInitialize)(this.dgvSociosNF)).EndInit();
@@ -521,7 +504,6 @@ namespace Policial
         private System.Windows.Forms.Button btnCancelarNF;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnGuardarNF;
-        private System.Windows.Forms.Button btnVolverAPrincipal;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker dtpDesde;
         private System.Windows.Forms.Label label22;

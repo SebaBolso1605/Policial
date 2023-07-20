@@ -27,7 +27,6 @@ namespace Policial
             btnBuscarNF.BackColor = RGBColors.color2;
             btnCancelarNF.BackColor = RGBColors.color2;
             btnGuardarNF.BackColor = RGBColors.color2;
-            btnVolverAPrincipal.BackColor = RGBColors.color2;
             btnGuardarNF.Text = "Guardar";
         }
         public struct RGBColors

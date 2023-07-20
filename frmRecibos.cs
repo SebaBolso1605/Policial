@@ -25,7 +25,6 @@ namespace Policial
             btnBuscarNF.BackColor = RGBColors.color3;
             btnCancelarNF.BackColor = RGBColors.color3;
             btnGuardarNF.BackColor = RGBColors.color3;
-            btnVolverAPrincipal.BackColor = RGBColors.color3;
             label1.ForeColor = RGBColors.color3;
             CargoTC();
             btnGuardarNF.Text = "Agregar";
