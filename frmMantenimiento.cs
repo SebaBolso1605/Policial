@@ -27,7 +27,6 @@ namespace Policial
             ListarTC();
             btnGuardar.BackColor = RGBColors.color;
             btnCancelar.BackColor = RGBColors.color;
-            btnVolverAPrincipal.BackColor = RGBColors.color;
             btnGuardar.Text = "Agregar";
             label1.ForeColor = RGBColors.color;
 
@@ -84,7 +83,7 @@ namespace Policial
             bool resp = false;
             try
             {
-                ILogicaCuota FSocio = FabricaLogica.getLogicaCuota();
+                IServicePolicial FSocio = new ServicePolicialClient();
                 resp = FSocio.AltaCuota(c, usu);
                 return resp;
             }
@@ -135,39 +134,7 @@ namespace Policial
                 mensaje = ex.Message;
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-        }
-        private bool HayError()
-        {
-            #region Controlo errores campos
-            bool error = false;
-            if (txtMonto.Text == "")
-            {
-                errorProvider.SetError(label20, "Seleccione categoria.");
-                error = true;
-            }
-            if (string.IsNullOrEmpty(txtMonto.Text.Trim()))
-            {
-                errorProvider.SetError(label25, "Ingrese Primer Apellido.");
-                error = true;
-            }
-            return error;
-            #endregion
-        }
-        private bool PersistirTipoCuota(TipoCuota c, Usuario usu)
-        {
-            bool resp = false;
-            try
-            {
-                IServicePolicial FSocio = new ServicePolicialClient();
-                resp = FSocio.AltaCuota(c, usu);
-                return resp;
-            }
-            catch (Exception ex)
-            {
-                mensaje = ex.Message;
-                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
+        }   
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
