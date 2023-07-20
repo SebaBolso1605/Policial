@@ -6,8 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using EntidadesCompartidas;
-using Logica;
+//using EntidadesCompartidas;
+//using Logica;
+using System.Xml;
+using System.IO;
+using Policial.ServicePolicial;
 
 namespace Policial
 {
@@ -41,8 +44,10 @@ namespace Policial
             try
             {
                 errorProvider.Clear();
-                ILogicaNucleoFamiliar lSocioNF = FabricaLogica.getLogicaNucleoFamiliar();
-                ILogicaSocio lSocio = FabricaLogica.getLogicaSocio();
+                //ILogicaNucleoFamiliar lSocioNF = FabricaLogica.getLogicaNucleoFamiliar();
+                //ILogicaSocio lSocio = FabricaLogica.getLogicaSocio();
+                IServicePolicial lSocioNF = new ServicePolicialClient();
+                IServicePolicial lSocio = new ServicePolicialClient();
                 List<NucleoFamiliar> socListaNF = new List<NucleoFamiliar>();
                 NucleoFamiliar nf = new NucleoFamiliar();
                 Socio soc = new Socio();
@@ -53,8 +58,8 @@ namespace Policial
                     if (soc != null)
                     {
                         txtSocIdNF.Text = Convert.ToString(soc.SocId);
-                        txtNombreSocNF.Text = soc.SocPrimerNombre + " " + soc.SocPrimerApellido;                      
-                        socListaNF = lSocioNF.BuscarNucleoFamiliarPorCI(soc.SocId);                      
+                        txtNombreSocNF.Text = soc.SocPrimerNombre + " " + soc.SocPrimerApellido;
+                        socListaNF = lSocioNF.BuscarNucleoFamiliarPorCI(soc.SocId).ToList();                     
                         DateTime fecha = DateTime.Today;
                         
                         if (socListaNF.Count > 0)
@@ -125,7 +130,8 @@ namespace Policial
             {
                 #region Aceptar
                 errorProvider.Clear();
-                ILogicaNucleoFamiliar lNF = FabricaLogica.getLogicaNucleoFamiliar();
+                //ILogicaNucleoFamiliar lNF = FabricaLogica.getLogicaNucleoFamiliar();
+                IServicePolicial lNF = new ServicePolicialClient();
                 NucleoFamiliar socNF = new NucleoFamiliar();
                 Usuario _usu = Program.usuarioLogueado;
                 bool resultado = false;
@@ -145,8 +151,10 @@ namespace Policial
                             socNF.NFSegundoNombre = txtSegundoNombreNF.Text;
                         else
                             socNF.NFSegundoNombre = "";
-                        if ((int)cmbTipoVinculo.SelectedIndex <= 0)
-                            socNF.NTipoPersona = cmbTipoVinculo.SelectedItem.ToString();
+
+                        //REVISAR
+                        //if ((int)cmbTipoVinculo.SelectedIndex <= 0)
+                        //    socNF.NTipoPersona = cmbTipoVinculo.SelectedItem.ToString();
 
                         if (!string.IsNullOrEmpty(txtCelularNF.Text))
                             socNF.NFCelular = txtCelularNF.Text;
@@ -244,7 +252,7 @@ namespace Policial
                             MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DateTime fecha = DateTime.Today;
                             List<NucleoFamiliar> socListaNF = new List<NucleoFamiliar>();
-                            socListaNF = lNF.BuscarNucleoFamiliarPorCI(socNF.SocId);
+                            socListaNF = lNF.BuscarNucleoFamiliarPorCI(socNF.SocId).ToList();
                             dgvSociosNF.Rows.Clear();
                             if (socListaNF.Count > 0)
                             {
@@ -313,7 +321,7 @@ namespace Policial
                             MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DateTime fecha = DateTime.Today;
                             List<NucleoFamiliar> socListaNF = new List<NucleoFamiliar>();
-                            socListaNF = lNF.BuscarNucleoFamiliarPorCI(socNF.SocId);
+                            socListaNF = lNF.BuscarNucleoFamiliarPorCI(socNF.SocId).ToList();
                             dgvSociosNF.Rows.Clear();
                             if (socListaNF.Count > 0)
                             {
@@ -359,7 +367,8 @@ namespace Policial
             bool resp = false;
             try
             {
-                ILogicaNucleoFamiliar FSocio = FabricaLogica.getLogicaNucleoFamiliar();
+                //ILogicaNucleoFamiliar FSocio = FabricaLogica.getLogicaNucleoFamiliar();
+                IServicePolicial FSocio = new ServicePolicialClient();
                 resp = FSocio.AltaNucleoFamiliar(c, usu);
                 return resp;
             }
@@ -375,7 +384,8 @@ namespace Policial
             bool resp = false;
             try
             {
-                ILogicaNucleoFamiliar FSocio = FabricaLogica.getLogicaNucleoFamiliar();
+                //ILogicaNucleoFamiliar FSocio = FabricaLogica.getLogicaNucleoFamiliar();
+                IServicePolicial FSocio = new ServicePolicialClient();
                 resp = FSocio.ModificarNF(c, usu);
                 return resp;
             }

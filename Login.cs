@@ -7,8 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
-using EntidadesCompartidas;
-using Logica;
+//using EntidadesCompartidas;
+//using Logica;
+using System.Xml;
+using System.IO;
+using Policial.ServicePolicial;
 
 namespace Policial
 {
@@ -23,53 +26,54 @@ namespace Policial
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-                try
+            try
+            {
+                if (txtUsuario.Text == "")
                 {
-                    if (txtUsuario.Text == "")
+                    string menssage = "Ingrese usuario.";
+                    MessageBox.Show(menssage, tituloMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (txtPass.Text == "")
+                {
+                    string menssage = "Ingrese contraseña.";
+                    MessageBox.Show(menssage, tituloMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    //ILogicaUsuario _uns = FabricaLogica.getLogicaUsuario();
+                    IServicePolicial _uns = new ServicePolicialClient();
+                    Usuario _unEmpleado = _uns.Login(txtUsuario.Text.Trim(), txtPass.Text.Trim());
+
+                    if (_unEmpleado == null)
                     {
-                        string menssage = "Ingrese usuario.";
+                        string menssage = "No existe usuario.";
                         MessageBox.Show(menssage, tituloMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtUsuario.Focus();
                     }
-                    else if (txtPass.Text == "")
+                    else if (_unEmpleado.UsuPass == txtPass.Text.Trim())
                     {
-                        string menssage = "Ingrese contraseña.";
-                        MessageBox.Show(menssage, tituloMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        string path = Application.StartupPath;
+                        this.Hide();
+                        usuLogueado = _unEmpleado;
+
+                        Program.usuarioLogueado = usuLogueado;
+                        frmPrincipal _unForm = new frmPrincipal();
+                        frmPrincipal.usuarioLogueado = usuLogueado;
+                        _unForm.ShowDialog();
+                        this.Close();
                     }
                     else
                     {
-                        ILogicaUsuario _uns = FabricaLogica.getLogicaUsuario();
-                        Usuario _unEmpleado = _uns.Login(txtUsuario.Text.Trim(), txtPass.Text.Trim());
-
-                        if (_unEmpleado == null)
-                        {
-                            string menssage = "No existe usuario.";
-                            MessageBox.Show(menssage, tituloMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtUsuario.Focus();
-                        }
-                        else if (_unEmpleado.UsuPass == txtPass.Text.Trim())
-                        {
-                            string path = Application.StartupPath;
-                            this.Hide();
-                            usuLogueado = _unEmpleado;
-
-                            Program.usuarioLogueado = usuLogueado;
-                            frmPrincipal _unForm = new frmPrincipal();
-                            frmPrincipal.usuarioLogueado = usuLogueado;
-                            _unForm.ShowDialog();
-                            this.Close();
-                        }
-                        else
-                        {
-                            string menssage = "Contraseña incorrecta.";
-                            MessageBox.Show(menssage, tituloMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtPass.Focus();
-                        }
+                        string menssage = "Contraseña incorrecta.";
+                        MessageBox.Show(menssage, tituloMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtPass.Focus();
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, tituloMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, tituloMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             }
 
         private void txtUsuario_TextChanged(object sender, EventArgs e)

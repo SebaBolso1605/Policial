@@ -6,8 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using EntidadesCompartidas;
-using Logica;
+//using EntidadesCompartidas;
+//using Logica;
+using System.Xml;
+using System.IO;
+using Policial.ServicePolicial;
 
 namespace Policial
 {
@@ -124,8 +127,9 @@ namespace Policial
         {
             try
             {
-                ILogicaSocio FSocio = FabricaLogica.getLogicaSocio();
-                listaSocios = FSocio.ListarSocios();
+                //ILogicaSocio FSocio = FabricaLogica.getLogicaSocio();
+                IServicePolicial FSocio = new ServicePolicialClient();
+                listaSocios = FSocio.ListarSocios().ToList();
 
                 if (txtParametro.Text != "")
                 {
@@ -150,8 +154,9 @@ namespace Policial
         {
             try
             {
-                ILogicaSocio FSocio = FabricaLogica.getLogicaSocio();
-                listaSocios = FSocio.ListarSocios();
+                //ILogicaSocio FSocio = FabricaLogica.getLogicaSocio();
+                IServicePolicial FSocio = new ServicePolicialClient();
+                listaSocios = FSocio.ListarSocios().ToList();
                 bool socioActivo = checkBox1.Checked ? true : false;
                 var _resultado = (from unSocio in listaSocios
                                   where unSocio.SocId.ToString().ToUpper().Contains(txtParametro.Text.ToUpper()) ||
@@ -200,7 +205,8 @@ namespace Policial
             try
             {
                 errorProvider.Clear();
-                ILogicaSocio lSocio = FabricaLogica.getLogicaSocio();
+                //ILogicaSocio lSocio = FabricaLogica.getLogicaSocio();
+                IServicePolicial lSocio = new ServicePolicialClient();
                 Socio soc = null;
                 if (!string.IsNullOrEmpty(txtBuscarModif.Text))
                 {
@@ -232,7 +238,8 @@ namespace Policial
         {
             try
             {
-                ILogicaSocio lSocio = FabricaLogica.getLogicaSocio();
+                //ILogicaSocio lSocio = FabricaLogica.getLogicaSocio();
+                IServicePolicial lSocio = new ServicePolicialClient();
                 Socio soc = new Socio();
                 if (!string.IsNullOrEmpty(txtBuscarModif.Text))
                 {
@@ -290,7 +297,8 @@ namespace Policial
             try
             {
                 errorProvider.Clear();
-                ILogicaSocio lSocio = FabricaLogica.getLogicaSocio();
+                //ILogicaSocio lSocio = FabricaLogica.getLogicaSocio();
+                IServicePolicial lSocio = new ServicePolicialClient();
                 Socio soc = null;
                 if (!string.IsNullOrEmpty(txtBuscarEliminar.Text))
                 {
@@ -321,7 +329,8 @@ namespace Policial
             {
                 errorProvider.Clear();
                 bool resp = false;
-                ILogicaSocio lSocio = FabricaLogica.getLogicaSocio();
+                //ILogicaSocio lSocio = FabricaLogica.getLogicaSocio();
+                IServicePolicial lSocio = new ServicePolicialClient();
                 Socio soc = new Socio();
 
                 if (!string.IsNullOrEmpty(txtBuscarEliminar.Text))
@@ -571,7 +580,8 @@ namespace Policial
             bool resp = false;
             try
             {
-                ILogicaSocio FSocio = FabricaLogica.getLogicaSocio();
+                //ILogicaSocio FSocio = FabricaLogica.getLogicaSocio();
+                IServicePolicial FSocio = new ServicePolicialClient();
                 resp = FSocio.AltaSocio(s, c,usu);
 
                 return resp;
@@ -614,8 +624,9 @@ namespace Policial
         {
             try
             {
-                ILogicaSocio FSocio = FabricaLogica.getLogicaSocio();
-                listaSocios = FSocio.ListarSocios();
+                //ILogicaSocio FSocio = FabricaLogica.getLogicaSocio();
+                IServicePolicial FSocio = new ServicePolicialClient();
+                listaSocios = FSocio.ListarSocios().ToList();
                 bool socioActivo = checkBox1.Checked ? true : false;
                 if (socioActivo)
                 {
@@ -689,8 +700,9 @@ namespace Policial
             try
             {
                 cmbTC.Items.Clear();
-                ILogicaSocio tipoCuota = FabricaLogica.getLogicaSocio();
-                listaTC = tipoCuota.ListarTC();
+                //ILogicaSocio tipoCuota = FabricaLogica.getLogicaSocio();
+                IServicePolicial tipoCuota = new ServicePolicialClient();
+                listaTC = tipoCuota.ListarTC().ToList();
                 cmbTC.Items.Add("Seleccionar");
 
                 foreach (TipoCuota e in listaTC)

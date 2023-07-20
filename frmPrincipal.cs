@@ -7,8 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
-using EntidadesCompartidas;
+//using EntidadesCompartidas;
 using System.Runtime.InteropServices;
+using System.Xml;
+using System.IO;
+using Policial.ServicePolicial;
 
 namespace Policial
 {

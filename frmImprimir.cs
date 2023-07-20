@@ -6,9 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using EntidadesCompartidas;
-using EntidadesCompartidas.Enums;
-using Logica;
+//using EntidadesCompartidas;
+//using EntidadesCompartidas.Enums;
+//using Logica;
+using System.Xml;
+using System.IO;
+using Policial.ServicePolicial;
 
 namespace Policial
 {
@@ -54,18 +57,20 @@ namespace Policial
         {
             try
             {
-                ILogicaCuota lc = LogicaCuota.GetInstancia();
-                ILogicaSocio ls = LogicaSocio.GetInstancia();
+                //ILogicaCuota lc = LogicaCuota.GetInstancia();
+                //ILogicaSocio ls = LogicaSocio.GetInstancia();
+                IServicePolicial lc = new ServicePolicialClient();
+                IServicePolicial ls = new ServicePolicialClient();
                 List<Cuota> listaCuotas = new List<Cuota>();
                 List<Socio> listaSocios = new List<Socio>();
 
-                  listaSocios = ls.ListarSocios();
+                  listaSocios = ls.ListarSocios().ToList();
 
                 if(listaSocios.Count > 0)
                 {
                     foreach (Socio s in listaSocios)
                     {
-                        listaCuotas = lc.BuscarCuotasSocio(s.SocId);
+                        listaCuotas = lc.BuscarCuotasSocio(s.SocId).ToList();
                         if (listaCuotas != null)    
                         {
                             foreach (Cuota c in listaCuotas)
