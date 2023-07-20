@@ -6,15 +6,21 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using EntidadesCompartidas;
-using Logica;
+//using EntidadesCompartidas;
+//using Logica;
+using System.Xml;
+using System.IO;
+using Policial.ServicePolicial;
 
 namespace Policial
 {
     public partial class frmMantenimiento : Form
     {
+        #region Variables/Pripiedades
         string mensaje = "";
         string titulo = "";
+        #endregion
+        #region Metodos
         public frmMantenimiento()
         {
             InitializeComponent();
@@ -40,8 +46,9 @@ namespace Policial
             try
             {
                 List<TipoCuota> listaTC = new List<TipoCuota>();
-                ILogicaSocio tipoCuota = FabricaLogica.getLogicaSocio();
-                listaTC = tipoCuota.ListarTC();
+                //ILogicaSocio tipoCuota = FabricaLogica.getLogicaSocio();
+                IServicePolicial tipoCuota = new ServicePolicialClient();
+                listaTC = tipoCuota.ListarTC().ToList();
                 dgvCategorias.Rows.Clear();
 
                 foreach (TipoCuota e in listaTC)
@@ -55,6 +62,41 @@ namespace Policial
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+        private bool HayError()
+        {
+            #region Controlo errores campos
+            bool error = false;
+            if (txtDescripcion.Text == "")
+            {
+                errorProvider.SetError(label20, "Ingrese categoria.");
+                error = true;
+            }
+            if (string.IsNullOrEmpty(txtMonto.Text.Trim()))
+            {
+                errorProvider.SetError(label25, "Ingrese monto.");
+                error = true;
+            }
+            return error;
+            #endregion
+        }
+        private bool PersistirTipoCuota(TipoCuota c, Usuario usu)
+        {
+            bool resp = false;
+            try
+            {
+                ILogicaCuota FSocio = FabricaLogica.getLogicaCuota();
+                resp = FSocio.AltaCuota(c, usu);
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            return resp;
+        }
+        #endregion
+        #region Eventos
         private void dgvCategorias_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -116,7 +158,7 @@ namespace Policial
             bool resp = false;
             try
             {
-                ILogicaCuota FSocio = FabricaLogica.getLogicaCuota();
+                IServicePolicial FSocio = new ServicePolicialClient();
                 resp = FSocio.AltaCuota(c, usu);
                 return resp;
             }
@@ -125,7 +167,6 @@ namespace Policial
                 mensaje = ex.Message;
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            return resp;
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -133,7 +174,7 @@ namespace Policial
             {
                 #region Aceptar
                 errorProvider.Clear();
-                ILogicaCuota lNF = FabricaLogica.getLogicaCuota();
+                IServicePolicial lNF = new ServicePolicialClient();
                 TipoCuota tipoCuota = new TipoCuota();
                 Usuario _usu = Program.usuarioLogueado;
                 bool resultado = false;
@@ -147,25 +188,25 @@ namespace Policial
 
                         tipoCuota.FecAlta = DateTime.Now;
                         tipoCuota.UsuIdAlta = Program.usuarioLogueado.UsuId;
-                    }
 
-                    if (tipoCuota != null)
-                    {
-                        resultado = PersistirTipoCuota(tipoCuota, _usu);
+                        if (tipoCuota != null)
+                        {
+                            resultado = PersistirTipoCuota(tipoCuota, _usu);
 
-                        if (resultado)
-                        {
-                            dgvCategorias.Rows.Add(tipoCuota.TCId,tipoCuota.TCDescripcion,tipoCuota.TCMonto, "Editar", "Eliminar");
-                            txtDescripcion.Text = "";
-                            txtMonto.Text = "";
-                            ListarTC();
-                            mensaje = "La información se guardó exitosamente.";
-                            MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            mensaje = "No se guardó la información.";
-                            MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            if (resultado)
+                            {
+                                dgvCategorias.Rows.Add(tipoCuota.TCId, tipoCuota.TCDescripcion, tipoCuota.TCMonto, "Editar", "Eliminar");
+                                txtDescripcion.Text = "";
+                                txtMonto.Text = "";
+                                ListarTC();
+                                mensaje = "La información se guardó exitosamente.";
+                                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                mensaje = "No se guardó la información.";
+                                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
                         }
                     }
                 }
@@ -244,5 +285,14 @@ namespace Policial
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+        private void txtDescripcion_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+        private void txtMonto_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+        #endregion
     }
 }

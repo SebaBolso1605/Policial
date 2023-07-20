@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ServicePolicial" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.1.15/ServicePolicial/ServicePolicial.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.1.15/ServicePolicial/ServicePolicial.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.1.15/ServicePolicial/ServicePolicial.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicePolicial_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_ListarTC_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTC" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_ListarTC_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTCResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_AltaSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:AltaSocio" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_AltaSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AltaSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_BuscarSocioPorCI_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarSocioPorCI" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_BuscarSocioPorCI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarSocioPorCIResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_ListarSocios_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarSocios" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_ListarSocios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarSociosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_ModificarSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarSocio" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_ModificarSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_BajaSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:BajaSocio" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_BajaSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BajaSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_AltaNucleoFamiliar_InputMessage">
+    <wsdl:part name="parameters" element="tns:AltaNucleoFamiliar" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_AltaNucleoFamiliar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AltaNucleoFamiliarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_ModificarNF_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarNF" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_ModificarNF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarNFResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_BajaNF_InputMessage">
+    <wsdl:part name="parameters" element="tns:BajaNF" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_BajaNF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BajaNFResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_BuscarNucleoFamiliarPorCI_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarNucleoFamiliarPorCI" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_BuscarNucleoFamiliarPorCI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarNucleoFamiliarPorCIResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_BuscarCuotasSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarCuotasSocio" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_BuscarCuotasSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuscarCuotasSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_AltaCuentaSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:AltaCuentaSocio" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_AltaCuentaSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AltaCuentaSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_PagarCuotaSocio_InputMessage">
+    <wsdl:part name="parameters" element="tns:PagarCuotaSocio" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_PagarCuotaSocio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PagarCuotaSocioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_AltaCuota_InputMessage">
+    <wsdl:part name="parameters" element="tns:AltaCuota" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_AltaCuota_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AltaCuotaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_ModificarCuota_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarCuota" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_ModificarCuota_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarCuotaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_BajarCuota_InputMessage">
+    <wsdl:part name="parameters" element="tns:BajarCuota" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_BajarCuota_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BajarCuotaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicePolicial">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/Login" message="tns:IServicePolicial_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/LoginResponse" message="tns:IServicePolicial_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarTC">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/ListarTC" message="tns:IServicePolicial_ListarTC_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/ListarTCResponse" message="tns:IServicePolicial_ListarTC_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AltaSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/AltaSocio" message="tns:IServicePolicial_AltaSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/AltaSocioResponse" message="tns:IServicePolicial_AltaSocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarSocioPorCI">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/BuscarSocioPorCI" message="tns:IServicePolicial_BuscarSocioPorCI_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/BuscarSocioPorCIResponse" message="tns:IServicePolicial_BuscarSocioPorCI_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarSocios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/ListarSocios" message="tns:IServicePolicial_ListarSocios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/ListarSociosResponse" message="tns:IServicePolicial_ListarSocios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/ModificarSocio" message="tns:IServicePolicial_ModificarSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/ModificarSocioResponse" message="tns:IServicePolicial_ModificarSocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/BajaSocio" message="tns:IServicePolicial_BajaSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/BajaSocioResponse" message="tns:IServicePolicial_BajaSocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AltaNucleoFamiliar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/AltaNucleoFamiliar" message="tns:IServicePolicial_AltaNucleoFamiliar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/AltaNucleoFamiliarResponse" message="tns:IServicePolicial_AltaNucleoFamiliar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarNF">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/ModificarNF" message="tns:IServicePolicial_ModificarNF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/ModificarNFResponse" message="tns:IServicePolicial_ModificarNF_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BajaNF">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/BajaNF" message="tns:IServicePolicial_BajaNF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/BajaNFResponse" message="tns:IServicePolicial_BajaNF_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarNucleoFamiliarPorCI">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/BuscarNucleoFamiliarPorCI" message="tns:IServicePolicial_BuscarNucleoFamiliarPorCI_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/BuscarNucleoFamiliarPorCIResponse" message="tns:IServicePolicial_BuscarNucleoFamiliarPorCI_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCuotasSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/BuscarCuotasSocio" message="tns:IServicePolicial_BuscarCuotasSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/BuscarCuotasSocioResponse" message="tns:IServicePolicial_BuscarCuotasSocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AltaCuentaSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/AltaCuentaSocio" message="tns:IServicePolicial_AltaCuentaSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/AltaCuentaSocioResponse" message="tns:IServicePolicial_AltaCuentaSocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PagarCuotaSocio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/PagarCuotaSocio" message="tns:IServicePolicial_PagarCuotaSocio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/PagarCuotaSocioResponse" message="tns:IServicePolicial_PagarCuotaSocio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AltaCuota">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/AltaCuota" message="tns:IServicePolicial_AltaCuota_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/AltaCuotaResponse" message="tns:IServicePolicial_AltaCuota_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarCuota">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/ModificarCuota" message="tns:IServicePolicial_ModificarCuota_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/ModificarCuotaResponse" message="tns:IServicePolicial_ModificarCuota_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BajarCuota">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/BajarCuota" message="tns:IServicePolicial_BajarCuota_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/BajarCuotaResponse" message="tns:IServicePolicial_BajarCuota_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicePolicial" type="tns:IServicePolicial">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarTC">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/ListarTC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaSocio">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/AltaSocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarSocioPorCI">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/BuscarSocioPorCI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarSocios">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/ListarSocios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarSocio">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/ModificarSocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaSocio">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/BajaSocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaNucleoFamiliar">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/AltaNucleoFamiliar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarNF">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/ModificarNF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajaNF">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/BajaNF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarNucleoFamiliarPorCI">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/BuscarNucleoFamiliarPorCI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscarCuotasSocio">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/BuscarCuotasSocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaCuentaSocio">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/AltaCuentaSocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PagarCuotaSocio">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/PagarCuotaSocio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AltaCuota">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/AltaCuota" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarCuota">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/ModificarCuota" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BajarCuota">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/BajarCuota" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicePolicial">
+    <wsdl:port name="BasicHttpBinding_IServicePolicial" binding="tns:BasicHttpBinding_IServicePolicial">
+      <soap:address location="http://192.168.1.15/ServicePolicial/ServicePolicial.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

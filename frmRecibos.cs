@@ -1,4 +1,4 @@
-﻿using EntidadesCompartidas;
+﻿//using EntidadesCompartidas;
 using Logica;
 using System;
 using System.Collections.Generic;
@@ -8,6 +8,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
+using System.IO;
+using Policial.ServicePolicial;
 
 namespace Policial
 {
@@ -46,8 +49,9 @@ namespace Policial
             {
                 List<TipoCuota> listaTC = new List<TipoCuota>();
                 cmbCategoria.Items.Clear();
-                ILogicaSocio tipoCuota = FabricaLogica.getLogicaSocio();
-                listaTC = tipoCuota.ListarTC();
+                //ILogicaSocio tipoCuota = FabricaLogica.getLogicaSocio();
+                IServicePolicial tipoCuota = new ServicePolicialClient();
+                listaTC = tipoCuota.ListarTC().ToList();
                 cmbCategoria.Items.Add("Seleccionar");
 
                 foreach (TipoCuota e in listaTC)
@@ -69,8 +73,9 @@ namespace Policial
             {
                 string cat = "";
                 List<TipoCuota> listaTC = new List<TipoCuota>();
-                ILogicaSocio tipoCuota = FabricaLogica.getLogicaSocio();
-                listaTC = tipoCuota.ListarTC();
+                //ILogicaSocio tipoCuota = FabricaLogica.getLogicaSocio();
+                IServicePolicial tipoCuota = new ServicePolicialClient();
+                listaTC = tipoCuota.ListarTC().ToList();
 
                 TipoCuota c = new TipoCuota();
                 c = listaTC.Where(x => x.TCId == id).FirstOrDefault();
@@ -89,8 +94,10 @@ namespace Policial
             {
                 errorProvider.Clear();
                 dgvSociosNF.Rows.Clear();
-                ILogicaCuota lSocioNF = FabricaLogica.getLogicaCuota();
-                ILogicaSocio lSocio = FabricaLogica.getLogicaSocio();
+                //ILogicaCuota lSocioNF = FabricaLogica.getLogicaCuota();
+                //ILogicaSocio lSocio = FabricaLogica.getLogicaSocio();
+                IServicePolicial lSocioNF = new ServicePolicialClient();
+                IServicePolicial lSocio = new ServicePolicialClient();
                 List<Cuota> socListaNF = new List<Cuota>();
                 Cuota nf = new Cuota();
                 Socio soc = new Socio();
@@ -109,7 +116,7 @@ namespace Policial
                         txtSocIdNF.Text = Convert.ToString(soc.SocId);
                         txtNombreSocNF.Text = soc.SocPrimerNombre + " " + soc.SocPrimerApellido;
                         cmbCategoria.SelectedIndex = soc.SocTipoCuota;
-                        socListaNF = lSocioNF.BuscarCuotasSocio(soc.SocId);
+                        socListaNF = lSocioNF.BuscarCuotasSocio(soc.SocId).ToList();
 
                         if (socListaNF != null && socListaNF.Count > 0)
                         {
@@ -164,7 +171,8 @@ namespace Policial
             bool resp = false;
             try
             {
-                ILogicaCuota FSocio = FabricaLogica.getLogicaCuota();
+                //ILogicaCuota FSocio = FabricaLogica.getLogicaCuota();
+                IServicePolicial FSocio = new ServicePolicialClient();
                 resp = FSocio.AltaCuentaSocio(c, usu);
                 return resp;
             }
@@ -180,7 +188,8 @@ namespace Policial
             bool resp = false;
             try
             {
-                ILogicaCuota FSocio = FabricaLogica.getLogicaCuota();
+                //ILogicaCuota FSocio = FabricaLogica.getLogicaCuota();
+                IServicePolicial FSocio = new ServicePolicialClient();
                 resp = FSocio.PagarCuotaSocio(c, usu);
                 return resp;
             }
@@ -223,7 +232,8 @@ namespace Policial
             try
             {
                 errorProvider.Clear();
-                ILogicaCuota lNF = FabricaLogica.getLogicaCuota();
+                //ILogicaCuota lNF = FabricaLogica.getLogicaCuota();
+                IServicePolicial lNF = new ServicePolicialClient();
                 Cuota cuota = new Cuota();
                 Usuario _usu = Program.usuarioLogueado;
                 bool resultado = false;
@@ -307,7 +317,7 @@ namespace Policial
                             mensaje = "La información se guardó correctamente.";
                             MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             List<Cuota> lSocioNF = new List<Cuota>();
-                            lSocioNF = lNF.BuscarCuotasSocio(Convert.ToInt32(txtBuscarCuota.Text));
+                            lSocioNF = lNF.BuscarCuotasSocio(Convert.ToInt32(txtBuscarCuota.Text)).ToList();
 
                             if (lSocioNF != null && lSocioNF.Count > 0)
                             {
