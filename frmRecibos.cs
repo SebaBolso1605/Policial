@@ -16,9 +16,12 @@ namespace Policial
 {
     public partial class frmRecibos : Form
     {
+        #region Atributos/VAriables
         public string titulo = "Cuotas Socios";
         public string mensaje = "";
         public bool pagar = false;
+        #endregion
+        #region Metodos
         public frmRecibos()
         {
             InitializeComponent();
@@ -32,7 +35,6 @@ namespace Policial
             cmbAño.Enabled = true;
             dtpDesde.Enabled = true;
         }
-
         public struct RGBColors
         {
             public static Color color = Color.FromArgb(172, 126, 241);
@@ -87,6 +89,69 @@ namespace Policial
                 throw new Exception(mensaje, ex);
             }
         }
+        private bool PersistirCuota(Cuota c, Usuario usu)
+        {
+            bool resp = false;
+            try
+            {
+                //ILogicaCuota FSocio = FabricaLogica.getLogicaCuota();
+                IServicePolicial FSocio = new ServicePolicialClient();
+                resp = FSocio.AltaCuentaSocio(c, usu);
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            return resp;
+        }
+        private bool PagarCuota(Cuota c, Usuario usu)
+        {
+            bool resp = false;
+            try
+            {
+                //ILogicaCuota FSocio = FabricaLogica.getLogicaCuota();
+                IServicePolicial FSocio = new ServicePolicialClient();
+                resp = FSocio.PagarCuotaSocio(c, usu);
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            return resp;
+        }
+        private bool HayError()
+        {
+            #region Controlo errores campos
+            bool error = false;
+            if (rbtPaga.Checked)
+            {
+                if (dtpFEchaCuotaPaga.Value.Date > DateTime.Now.Date)
+                {
+                    errorProvider.SetError(label11, "Seleccione fecha pago.");
+                    error = true;
+                }
+            }
+
+            if (cmbAño.SelectedIndex == -1 || cmbMes.SelectedIndex == -1)
+            {
+                errorProvider.SetError(label7, "Seleccione mes/año para la cuota.");
+                error = true;
+            }
+
+            if (dtpDesde.Value.Date > DateTime.Now.Date)
+            {
+                errorProvider.SetError(label22, "Seleccione fecha de emisión .");
+                error = true;
+            }
+            return error;
+            #endregion
+        }
+        #endregion
+        #region Eventos
         private void btnBuscarNF_Click(object sender, EventArgs e)
         {
             try
@@ -164,67 +229,6 @@ namespace Policial
                 string mensaje = ex.Message;
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-        }
-        private bool PersistirCuota(Cuota c, Usuario usu)
-        {
-            bool resp = false;
-            try
-            {
-                //ILogicaCuota FSocio = FabricaLogica.getLogicaCuota();
-                IServicePolicial FSocio = new ServicePolicialClient();
-                resp = FSocio.AltaCuentaSocio(c, usu);
-                return resp;
-            }
-            catch (Exception ex)
-            {
-                mensaje = ex.Message;
-                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            return resp;
-        }
-        private bool PagarCuota(Cuota c, Usuario usu)
-        {
-            bool resp = false;
-            try
-            {
-                //ILogicaCuota FSocio = FabricaLogica.getLogicaCuota();
-                IServicePolicial FSocio = new ServicePolicialClient();
-                resp = FSocio.PagarCuotaSocio(c, usu);
-                return resp;
-            }
-            catch (Exception ex)
-            {
-                mensaje = ex.Message;
-                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            return resp;
-        }
-        private bool HayError()
-        {
-            #region Controlo errores campos
-            bool error = false;
-            if (rbtPaga.Checked) 
-            {
-                if (dtpFEchaCuotaPaga.Value.Date > DateTime.Now.Date)  
-                {
-                    errorProvider.SetError(label11, "Seleccione fecha pago.");
-                    error = true;
-                }      
-            }
-
-            if (cmbAño.SelectedIndex == -1 || cmbMes.SelectedIndex == -1)
-            {
-                errorProvider.SetError(label7, "Seleccione mes/año para la cuota.");
-                error = true;
-            }   
-
-            if (dtpDesde.Value.Date > DateTime.Now.Date)
-             {
-                errorProvider.SetError(label22, "Seleccione fecha de emisión .");
-                error = true;
-             }
-            return error;
-            #endregion
         }
         private void btnGuardarNF_Click(object sender, EventArgs e)
         {
@@ -421,5 +425,22 @@ namespace Policial
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+        private void btnCancelarNF_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtBuscarCuota.Text = "";
+                txtNFId.Text = "";
+                txtNombreSocNF.Text = "";
+                txtSocCI.Text = "";
+                txtSocIdNF.Text = "";
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+        #endregion
     }
 }

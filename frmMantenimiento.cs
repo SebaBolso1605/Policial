@@ -261,5 +261,19 @@ namespace Policial
             errorProvider.Clear();
         }
         #endregion
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtDescripcion.Text = "";
+                txtMonto.Text = "";
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }
