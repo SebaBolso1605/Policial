@@ -30,7 +30,7 @@ namespace Policial
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label24 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.txtObservacionesNF = new System.Windows.Forms.TextBox();
@@ -57,7 +57,6 @@ namespace Policial
             this.btnCancelarNF = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnGuardarNF = new System.Windows.Forms.Button();
-            this.btnVolverAPrincipal = new System.Windows.Forms.Button();
             this.dgvSociosNF = new System.Windows.Forms.DataGridView();
             this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -324,7 +323,7 @@ namespace Policial
             this.btnCancelarNF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarNF.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarNF.ForeColor = System.Drawing.Color.White;
-            this.btnCancelarNF.Location = new System.Drawing.Point(358, 534);
+            this.btnCancelarNF.Location = new System.Drawing.Point(453, 534);
             this.btnCancelarNF.Name = "btnCancelarNF";
             this.btnCancelarNF.Size = new System.Drawing.Size(176, 25);
             this.btnCancelarNF.TabIndex = 88;
@@ -350,28 +349,13 @@ namespace Policial
             this.btnGuardarNF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarNF.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarNF.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarNF.Location = new System.Drawing.Point(162, 534);
+            this.btnGuardarNF.Location = new System.Drawing.Point(245, 534);
             this.btnGuardarNF.Name = "btnGuardarNF";
             this.btnGuardarNF.Size = new System.Drawing.Size(176, 25);
             this.btnGuardarNF.TabIndex = 87;
             this.btnGuardarNF.Text = "Agregar";
             this.btnGuardarNF.UseVisualStyleBackColor = false;
             this.btnGuardarNF.Click += new System.EventHandler(this.btnGuardarNF_Click);
-            // 
-            // btnVolverAPrincipal
-            // 
-            this.btnVolverAPrincipal.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVolverAPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.btnVolverAPrincipal.FlatAppearance.BorderSize = 0;
-            this.btnVolverAPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolverAPrincipal.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolverAPrincipal.ForeColor = System.Drawing.Color.White;
-            this.btnVolverAPrincipal.Location = new System.Drawing.Point(554, 534);
-            this.btnVolverAPrincipal.Name = "btnVolverAPrincipal";
-            this.btnVolverAPrincipal.Size = new System.Drawing.Size(176, 25);
-            this.btnVolverAPrincipal.TabIndex = 89;
-            this.btnVolverAPrincipal.Text = "Volver";
-            this.btnVolverAPrincipal.UseVisualStyleBackColor = false;
             // 
             // dgvSociosNF
             // 
@@ -395,14 +379,14 @@ namespace Policial
             this.NFId,
             this.SocSegundoApellido,
             this.SocSegundoNombre});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSociosNF.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSociosNF.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSociosNF.Location = new System.Drawing.Point(12, 370);
             this.dgvSociosNF.Name = "dgvSociosNF";
             this.dgvSociosNF.ReadOnly = true;
@@ -670,7 +654,6 @@ namespace Policial
             this.Controls.Add(this.btnCancelarNF);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGuardarNF);
-            this.Controls.Add(this.btnVolverAPrincipal);
             this.Name = "frmNucleoFamiliar";
             this.Text = "Nucleo Familiar";
             ((System.ComponentModel.ISupportInitialize)(this.dgvSociosNF)).EndInit();
@@ -708,7 +691,6 @@ namespace Policial
         private System.Windows.Forms.Button btnCancelarNF;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnGuardarNF;
-        private System.Windows.Forms.Button btnVolverAPrincipal;
         private System.Windows.Forms.DataGridView dgvSociosNF;
         private System.Windows.Forms.Button btnBuscarNF;
         private System.Windows.Forms.TextBox txtBuscarNF;
