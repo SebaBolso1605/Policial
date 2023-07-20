@@ -86,8 +86,8 @@ namespace Policial
             this.label14 = new System.Windows.Forms.Label();
             this.txtPrimerNombre = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnVolverAPrincipal = new System.Windows.Forms.Button();
             this.tabModificar = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.txtBuscarModif = new System.Windows.Forms.TextBox();
@@ -122,7 +122,6 @@ namespace Policial
             this.btnCancelarModificarSocio = new System.Windows.Forms.Button();
             this.label52 = new System.Windows.Forms.Label();
             this.btnModificarSocio = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.tabEliminar = new System.Windows.Forms.TabPage();
             this.dtpFechaBaja = new System.Windows.Forms.DateTimePicker();
             this.label54 = new System.Windows.Forms.Label();
@@ -137,12 +136,10 @@ namespace Policial
             this.label62 = new System.Windows.Forms.Label();
             this.txtPrimerNombreBaja = new System.Windows.Forms.TextBox();
             this.btnEliminarSocio = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.txtBuscarEliminar = new System.Windows.Forms.TextBox();
             this.label53 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.tabModifcar.SuspendLayout();
             this.tabListaSocios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
@@ -378,7 +375,6 @@ namespace Policial
             this.tabAgregarSocio.Controls.Add(this.btnCancelar);
             this.tabAgregarSocio.Controls.Add(this.label1);
             this.tabAgregarSocio.Controls.Add(this.btnGuardar);
-            this.tabAgregarSocio.Controls.Add(this.btnVolverAPrincipal);
             this.tabAgregarSocio.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabAgregarSocio.Location = new System.Drawing.Point(4, 25);
             this.tabAgregarSocio.Name = "tabAgregarSocio";
@@ -526,6 +522,7 @@ namespace Policial
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(200, 23);
             this.dtpFechaNacimiento.TabIndex = 70;
+            this.dtpFechaNacimiento.ValueChanged += new System.EventHandler(this.dtpFechaNacimiento_ValueChanged);
             // 
             // label16
             // 
@@ -696,6 +693,7 @@ namespace Policial
             this.txtPrimerApellido.Name = "txtPrimerApellido";
             this.txtPrimerApellido.Size = new System.Drawing.Size(199, 23);
             this.txtPrimerApellido.TabIndex = 52;
+            this.txtPrimerApellido.TextChanged += new System.EventHandler(this.txtPrimerApellido_TextChanged);
             // 
             // label3
             // 
@@ -715,6 +713,7 @@ namespace Policial
             this.txtSegundoApellido.Name = "txtSegundoApellido";
             this.txtSegundoApellido.Size = new System.Drawing.Size(199, 23);
             this.txtSegundoApellido.TabIndex = 50;
+            this.txtSegundoApellido.TextChanged += new System.EventHandler(this.txtSegundoApellido_TextChanged);
             // 
             // label2
             // 
@@ -753,6 +752,7 @@ namespace Policial
             this.txtPrimerNombre.Name = "txtPrimerNombre";
             this.txtPrimerNombre.Size = new System.Drawing.Size(199, 23);
             this.txtPrimerNombre.TabIndex = 46;
+            this.txtPrimerNombre.TextChanged += new System.EventHandler(this.txtPrimerNombre_TextChanged);
             // 
             // btnCancelar
             // 
@@ -762,12 +762,23 @@ namespace Policial
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(401, 433);
+            this.btnCancelar.Location = new System.Drawing.Point(545, 433);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(176, 25);
             this.btnCancelar.TabIndex = 44;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.label1.Location = new System.Drawing.Point(46, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(212, 38);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "Nuevo Socio";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnGuardar
             // 
@@ -777,29 +788,13 @@ namespace Policial
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(206, 433);
+            this.btnGuardar.Location = new System.Drawing.Point(276, 433);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(176, 25);
             this.btnGuardar.TabIndex = 43;
             this.btnGuardar.Text = "Agregar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnVolverAPrincipal
-            // 
-            this.btnVolverAPrincipal.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVolverAPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.btnVolverAPrincipal.FlatAppearance.BorderSize = 0;
-            this.btnVolverAPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolverAPrincipal.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolverAPrincipal.ForeColor = System.Drawing.Color.White;
-            this.btnVolverAPrincipal.Location = new System.Drawing.Point(597, 433);
-            this.btnVolverAPrincipal.Name = "btnVolverAPrincipal";
-            this.btnVolverAPrincipal.Size = new System.Drawing.Size(176, 25);
-            this.btnVolverAPrincipal.TabIndex = 45;
-            this.btnVolverAPrincipal.Text = "Volver";
-            this.btnVolverAPrincipal.UseVisualStyleBackColor = false;
-            this.btnVolverAPrincipal.Click += new System.EventHandler(this.button1_Click);
             // 
             // tabModificar
             // 
@@ -837,7 +832,6 @@ namespace Policial
             this.tabModificar.Controls.Add(this.btnCancelarModificarSocio);
             this.tabModificar.Controls.Add(this.label52);
             this.tabModificar.Controls.Add(this.btnModificarSocio);
-            this.tabModificar.Controls.Add(this.button3);
             this.tabModificar.Location = new System.Drawing.Point(4, 25);
             this.tabModificar.Name = "tabModificar";
             this.tabModificar.Padding = new System.Windows.Forms.Padding(3);
@@ -1155,7 +1149,7 @@ namespace Policial
             this.btnCancelarModificarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarModificarSocio.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarModificarSocio.ForeColor = System.Drawing.Color.White;
-            this.btnCancelarModificarSocio.Location = new System.Drawing.Point(407, 458);
+            this.btnCancelarModificarSocio.Location = new System.Drawing.Point(548, 458);
             this.btnCancelarModificarSocio.Name = "btnCancelarModificarSocio";
             this.btnCancelarModificarSocio.Size = new System.Drawing.Size(176, 25);
             this.btnCancelarModificarSocio.TabIndex = 91;
@@ -1164,11 +1158,10 @@ namespace Policial
             // 
             // label52
             // 
-            this.label52.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label52.AutoSize = true;
             this.label52.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.label52.Location = new System.Drawing.Point(52, 17);
+            this.label52.Location = new System.Drawing.Point(46, 17);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(257, 38);
             this.label52.TabIndex = 89;
@@ -1182,28 +1175,13 @@ namespace Policial
             this.btnModificarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarSocio.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificarSocio.ForeColor = System.Drawing.Color.White;
-            this.btnModificarSocio.Location = new System.Drawing.Point(212, 458);
+            this.btnModificarSocio.Location = new System.Drawing.Point(278, 458);
             this.btnModificarSocio.Name = "btnModificarSocio";
             this.btnModificarSocio.Size = new System.Drawing.Size(176, 25);
             this.btnModificarSocio.TabIndex = 90;
             this.btnModificarSocio.Text = "Modificar";
             this.btnModificarSocio.UseVisualStyleBackColor = false;
             this.btnModificarSocio.Click += new System.EventHandler(this.btnModificarSocio_Click);
-            // 
-            // button3
-            // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(603, 458);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(176, 25);
-            this.button3.TabIndex = 92;
-            this.button3.Text = "Volver";
-            this.button3.UseVisualStyleBackColor = false;
             // 
             // tabEliminar
             // 
@@ -1221,7 +1199,6 @@ namespace Policial
             this.tabEliminar.Controls.Add(this.label62);
             this.tabEliminar.Controls.Add(this.txtPrimerNombreBaja);
             this.tabEliminar.Controls.Add(this.btnEliminarSocio);
-            this.tabEliminar.Controls.Add(this.button6);
             this.tabEliminar.Controls.Add(this.button2);
             this.tabEliminar.Controls.Add(this.txtBuscarEliminar);
             this.tabEliminar.Controls.Add(this.label53);
@@ -1359,28 +1336,13 @@ namespace Policial
             this.btnEliminarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarSocio.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarSocio.ForeColor = System.Drawing.Color.White;
-            this.btnEliminarSocio.Location = new System.Drawing.Point(268, 386);
+            this.btnEliminarSocio.Location = new System.Drawing.Point(404, 393);
             this.btnEliminarSocio.Name = "btnEliminarSocio";
             this.btnEliminarSocio.Size = new System.Drawing.Size(176, 25);
             this.btnEliminarSocio.TabIndex = 138;
             this.btnEliminarSocio.Text = "Eliminar";
             this.btnEliminarSocio.UseVisualStyleBackColor = false;
             this.btnEliminarSocio.Click += new System.EventHandler(this.btnEliminarSocio_Click);
-            // 
-            // button6
-            // 
-            this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(468, 386);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(176, 25);
-            this.button6.TabIndex = 140;
-            this.button6.Text = "Volver";
-            this.button6.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
@@ -1407,7 +1369,6 @@ namespace Policial
             // 
             // label53
             // 
-            this.label53.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label53.AutoSize = true;
             this.label53.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
@@ -1420,19 +1381,6 @@ namespace Policial
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.label1.Location = new System.Drawing.Point(46, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 38);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "Nuevo Socio";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // frmSocio
             // 
@@ -1473,7 +1421,6 @@ namespace Policial
         private System.Windows.Forms.TabPage tabAgregarSocio;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnVolverAPrincipal;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtCelular;
         private System.Windows.Forms.Label label12;
@@ -1539,12 +1486,10 @@ namespace Policial
         private System.Windows.Forms.Button btnCancelarModificarSocio;
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Button btnModificarSocio;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtBuscarModif;
         private System.Windows.Forms.TabPage tabEliminar;
         private System.Windows.Forms.Button btnEliminarSocio;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtBuscarEliminar;
         private System.Windows.Forms.Label label53;

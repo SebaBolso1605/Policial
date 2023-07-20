@@ -335,7 +335,7 @@ namespace Policial
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.label1.Location = new System.Drawing.Point(270, 9);
+            this.label1.Location = new System.Drawing.Point(12, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(258, 38);
             this.label1.TabIndex = 86;
@@ -554,7 +554,7 @@ namespace Policial
             // 
             this.txtNFId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNFId.Enabled = false;
-            this.txtNFId.Location = new System.Drawing.Point(16, 28);
+            this.txtNFId.Location = new System.Drawing.Point(557, 29);
             this.txtNFId.Name = "txtNFId";
             this.txtNFId.Size = new System.Drawing.Size(62, 20);
             this.txtNFId.TabIndex = 140;
@@ -564,7 +564,7 @@ namespace Policial
             // 
             this.txtSocCI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSocCI.Enabled = false;
-            this.txtSocCI.Location = new System.Drawing.Point(84, 27);
+            this.txtSocCI.Location = new System.Drawing.Point(625, 28);
             this.txtSocCI.Name = "txtSocCI";
             this.txtSocCI.Size = new System.Drawing.Size(62, 20);
             this.txtSocCI.TabIndex = 141;

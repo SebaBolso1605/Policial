@@ -421,6 +421,68 @@ namespace Policial
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+        private void txtPrimerNombre_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+        private void txtPrimerApellido_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+        private void txtSegundoApellido_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+        private void dtpFechaNacimiento_ValueChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+        private void txtBuscarEliminar_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (txtBuscarEliminar.Text.Trim().Length >= 10)
+                {
+                    throw new Exception("Largo maximo para el documento - 9 digitos.");
+                }
+                else if (txtBuscarEliminar.Text.Trim() != "")
+                {
+                    try
+                    {
+                        ulong.Parse(txtBuscarEliminar.Text.Trim());
+                    }
+                    catch (Exception)
+                    {
+                        throw new Exception("El documento debe ser numérico.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+        private void dgvSocios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int boton = int.Parse(e.ColumnIndex + "");
+                switch (boton)
+                {
+                    case 8:
+                        tabModifcar.Focus();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
         #endregion
         #region Metodos
         private bool HayError()
@@ -452,7 +514,7 @@ namespace Policial
                 errorProvider.SetError(label19, "Ingrese cedula.");
                 error = true;
             }
-            if (dtpFechaNacimiento.Value.Date > DateTime.Now.Date)
+            if (dtpFechaNacimiento.Value.Date > DateTime.Now.Date.AddYears(-8))
             {
                 errorProvider.SetError(label22, "Seleccione fecha de nacimiento.");
                 error = true;
@@ -600,15 +662,12 @@ namespace Policial
             btnVolver.BackColor = RGBColors.color5;
             lblTituloFormulario.ForeColor = RGBColors.color5;
             label1.ForeColor = RGBColors.color5;
-            btnVolverAPrincipal.BackColor = RGBColors.color5;
             label52.ForeColor = RGBColors.color5;
             btnModificarSocio.BackColor = RGBColors.color5;
             btnCancelarModificarSocio.BackColor = RGBColors.color5;
-            button3.BackColor = RGBColors.color5;
             label53.ForeColor = RGBColors.color5;
             button2.BackColor = RGBColors.color5;
             btnEliminarSocio.BackColor = RGBColors.color5;
-            button6.BackColor = RGBColors.color5;
             button1.BackColor = RGBColors.color5;
         }
         public struct RGBColors
@@ -721,53 +780,5 @@ namespace Policial
             }
         }
         #endregion
-
-        private void txtBuscarEliminar_Validating(object sender, CancelEventArgs e)
-        {
-            try
-            {
-                if (txtBuscarEliminar.Text.Trim().Length >= 10)
-                {
-                    throw new Exception("Largo maximo para el documento - 9 digitos.");
-                }
-                else if (txtBuscarEliminar.Text.Trim() != "")
-                {
-                    try
-                    {
-                        ulong.Parse(txtBuscarEliminar.Text.Trim());
-                    }
-                    catch (Exception)
-                    {
-                        throw new Exception("El documento debe ser numérico.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                mensaje = ex.Message;
-                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void dgvSocios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                int boton = int.Parse(e.ColumnIndex + "");
-                switch (boton)
-                {
-                    case 8:
-                        tabModifcar.Focus();
-                        break;
-                    default:
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                mensaje = ex.Message;
-                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
     }
 }
