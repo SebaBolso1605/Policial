@@ -628,29 +628,61 @@ namespace Policial
                 IServicePolicial FSocio = new ServicePolicialClient();
                 listaSocios = FSocio.ListarSocios().ToList();
                 bool socioActivo = checkBox1.Checked ? true : false;
-                if (socioActivo)
+                if (listaSocios.Count > 0)
                 {
-                     var _resultado = (from unSocio in listaSocios
-                                  where unSocio.SocAtivo == socioActivo
-                                  select new Socio
-                                  {
-                                      SocId = unSocio.SocId,
-                                      SocCI = unSocio.SocCI,
-                                      SocPrimerNombre = unSocio.SocPrimerNombre,
-                                      SocPrimerApellido = unSocio.SocPrimerApellido,
-                                      SocSegundoNombre = unSocio.SocSegundoNombre,
-                                      SocSegundoApellido = unSocio.SocSegundoApellido,
-                                      SocFechaNacimiento = unSocio.SocFechaNacimiento,
-                                      SocFechaIngreso = unSocio.SocFechaIngreso,
-                                      SocDireccion = unSocio.SocDireccion,
-                                      SocEmail = unSocio.SocEmail,
-                                      SocTel = unSocio.SocTel,
-                                      SocCelular = unSocio.SocCelular,
-                                      SocAtivo = unSocio.SocAtivo,
-                                  }).ToList();
-                    dgvSocios.Rows.Clear();
-                    if (listaSocios != null)
+                    if (socioActivo)
                     {
+                        var _resultado = (from unSocio in listaSocios
+                                          where unSocio.SocAtivo == socioActivo
+                                          select new Socio
+                                          {
+                                              SocId = unSocio.SocId,
+                                              SocCI = unSocio.SocCI,
+                                              SocPrimerNombre = unSocio.SocPrimerNombre,
+                                              SocPrimerApellido = unSocio.SocPrimerApellido,
+                                              SocSegundoNombre = unSocio.SocSegundoNombre,
+                                              SocSegundoApellido = unSocio.SocSegundoApellido,
+                                              SocFechaNacimiento = unSocio.SocFechaNacimiento,
+                                              SocFechaIngreso = unSocio.SocFechaIngreso,
+                                              SocDireccion = unSocio.SocDireccion,
+                                              SocEmail = unSocio.SocEmail,
+                                              SocTel = unSocio.SocTel,
+                                              SocCelular = unSocio.SocCelular,
+                                              SocAtivo = unSocio.SocAtivo,
+                                          }).ToList();
+                        dgvSocios.Rows.Clear();
+                        //if (listaSocios != null)
+                        //{
+                        foreach (Socio s in _resultado)
+                        {
+                            string estado = s.SocAtivo ? "Activo" : "Inactivo";
+                            dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, s.SocDireccion, s.SocTel, s.SocCelular, estado, "Editar");
+                        }
+                    }
+                    //}
+                    else
+                    {
+                        var _resultado = (from unSocio in listaSocios
+                                          select new Socio
+                                          {
+                                              SocId = unSocio.SocId,
+                                              SocCI = unSocio.SocCI,
+                                              SocPrimerNombre = unSocio.SocPrimerNombre,
+                                              SocPrimerApellido = unSocio.SocPrimerApellido,
+                                              SocSegundoNombre = unSocio.SocSegundoNombre,
+                                              SocSegundoApellido = unSocio.SocSegundoApellido,
+                                              SocFechaNacimiento = unSocio.SocFechaNacimiento,
+                                              SocFechaIngreso = unSocio.SocFechaIngreso,
+                                              SocDireccion = unSocio.SocDireccion,
+                                              SocEmail = unSocio.SocEmail,
+                                              SocTel = unSocio.SocTel,
+                                              SocCelular = unSocio.SocCelular,
+                                              SocAtivo = unSocio.SocAtivo,
+                                          }).ToList();
+                        dgvSocios.Rows.Clear();
+
+                        //if (listaSocios != null)
+                        //{
                         foreach (Socio s in _resultado)
                         {
                             string estado = s.SocAtivo ? "Activo" : "Inactivo";
@@ -660,33 +692,8 @@ namespace Policial
                 }
                 else
                 {
-                    var _resultado = (from unSocio in listaSocios
-                                      select new Socio
-                                      {
-                                          SocId = unSocio.SocId,
-                                          SocCI = unSocio.SocCI,
-                                          SocPrimerNombre = unSocio.SocPrimerNombre,
-                                          SocPrimerApellido = unSocio.SocPrimerApellido,
-                                          SocSegundoNombre = unSocio.SocSegundoNombre,
-                                          SocSegundoApellido = unSocio.SocSegundoApellido,
-                                          SocFechaNacimiento = unSocio.SocFechaNacimiento,
-                                          SocFechaIngreso = unSocio.SocFechaIngreso,
-                                          SocDireccion = unSocio.SocDireccion,
-                                          SocEmail = unSocio.SocEmail,
-                                          SocTel = unSocio.SocTel,
-                                          SocCelular = unSocio.SocCelular,
-                                          SocAtivo = unSocio.SocAtivo,
-                                      }).ToList();
-                    dgvSocios.Rows.Clear();
-
-                    if (listaSocios != null)
-                    {
-                        foreach (Socio s in _resultado)
-                        {
-                            string estado = s.SocAtivo ? "Activo" : "Inactivo";
-                            dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, s.SocDireccion, s.SocTel, s.SocCelular, estado, "Editar");
-                        }
-                    }
+                    mensaje = "No hay socios para mostrar.";
+                    MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
@@ -705,14 +712,22 @@ namespace Policial
                 listaTC = tipoCuota.ListarTC().ToList();
                 cmbTC.Items.Add("Seleccionar");
 
-                foreach (TipoCuota e in listaTC)
+                if (listaTC.Count > 0)
                 {
-                    cmbTC.Items.Add(e.TCDescripcion.Trim() + "   - Monto: $" + e.TCMonto);
-                    cmbTPModif.Items.Add(e.TCDescripcion.Trim() + "   - Monto: $" + e.TCMonto);
-                }
+                    foreach (TipoCuota e in listaTC)
+                    {
+                        cmbTC.Items.Add(e.TCDescripcion.Trim() + "   - Monto: $" + e.TCMonto);
+                        cmbTPModif.Items.Add(e.TCDescripcion.Trim() + "   - Monto: $" + e.TCMonto);
+                    }
 
-                cmbTC.SelectedIndex = 0;
-                cmbTPModif.SelectedIndex = 0;
+                    cmbTC.SelectedIndex = 0;
+                    cmbTPModif.SelectedIndex = 0;
+                }
+                else
+                {
+                    mensaje = "No hay tipos de cuotas para mostrar.";
+                    MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
             catch (Exception ex)
             {
