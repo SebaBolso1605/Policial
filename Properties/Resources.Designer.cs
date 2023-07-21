@@ -79,5 +79,20 @@ namespace Policial.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///   &lt;head&gt;
+        ///   &lt;/head&gt;
+        ///   &lt;body&gt;
+        ///   &lt;/body&gt;
+        ///&lt;/html&gt;.
+        /// </summary>
+        internal static string plantillaHTML {
+            get {
+                return ResourceManager.GetString("plantillaHTML", resourceCulture);
+            }
+        }
     }
 }
