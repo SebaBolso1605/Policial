@@ -251,7 +251,7 @@ namespace Persistencia
             SqlCommand _comando = new SqlCommand("buscar_cuotaSocio", _cnn);
             _comando.CommandType = CommandType.StoredProcedure;
             Cuota c = new Cuota();
-            List<Cuota> s = null;
+            List<Cuota> s = new List<Cuota>();
 
             try
             {

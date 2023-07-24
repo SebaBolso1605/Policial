@@ -26,10 +26,9 @@ namespace Policial
             btnImprimir.BackColor = RGBColors.color4;
             btnVolver.BackColor = RGBColors.color4;
             lblTituloFormulario.ForeColor = RGBColors.color4;
+            btnBuscar.BackColor = RGBColors.color4;
+            btnPagarCuotas.BackColor = RGBColors.color4;
             ListarCuotasSocios();
-            
-            //List<Enum> lstStatus = Enum.GetValues(typeof(Enum)).ToList();
-            //cmbMes.Items
         }
         public struct RGBColors
         {
@@ -114,33 +113,33 @@ namespace Policial
                 IServicePolicial ls = new ServicePolicialClient();
                 List<Cuota> listaCuotas = new List<Cuota>();
                 List<Socio> listaSocios = new List<Socio>();
-
+                dgvSocios.Rows.Clear();
                 listaSocios = ls.ListarSocios().ToList();
+                bool soloCuotasImpagas = checkBox1.Checked ? true : false;
 
-                if(listaSocios.Count > 0)
+                if (listaSocios.Count > 0)
                 {
                     foreach (Socio s in listaSocios)
                     {
                         listaCuotas = lc.BuscarCuotasSocio(s.SocId).ToList();
-                        //bool socioActivo = checkBox1.Checked ? true : false;
-                        //var _resultado = (from unaCuota in listaCuotas
-                        //                  where unaCuota.CuotaPaga == socioActivo
-                        //                  select new Cuota
-                        //                  {
-                        //                      SocId = unaCuota.SocId,
-                        //                      CuotaId = unaCuota.CuotaId,
-                        //                      CuotaPaga = unaCuota.CuotaPaga,
-                        //                      CuotaFechaPaga = unaCuota.CuotaFechaPaga,
-                        //                      CuotaAAAAMM = unaCuota.CuotaAAAAMM,
-                        //                  }).ToList();
-                        //dgvSocios.Rows.Clear();
-                        if (listaCuotas != null)    
+
+                        if (listaCuotas.Count > 0 && soloCuotasImpagas)    
+                        {
+                            foreach (Cuota c in listaCuotas)
+                            {
+                                //dgvSocios.Rows.Cast<DataGridViewRow>().
+                                //Where(p => Convert.ToBoolean(p.Cells["Pagar"].Value) == false);
+                                if (!c.CuotaPaga)
+                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, c.CuotaId, c.CuotaAAAAMM, c.CuotaPaga);
+                            }
+                        }
+                        if (listaCuotas.Count > 0 && !soloCuotasImpagas)
                         {
                             foreach (Cuota c in listaCuotas)
                             {
                                 dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, c.CuotaId, c.CuotaAAAAMM, c.CuotaPaga);
                             }
-                        } 
+                        }
                     }
                 }
             }
@@ -155,6 +154,8 @@ namespace Policial
             try
             {
                 ListarCuotasSocios();
+                cmbAño.SelectedIndex = -1;
+                cmbMes.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -230,7 +231,34 @@ namespace Policial
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            ListarCuotasSocios().
+            try
+            {
+                ListarCuotasSocios(); 
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }            
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                IServicePolicial FSocio = new ServicePolicialClient();
+                dgvSocios.Rows.Clear();
+                string año = cmbAño.SelectedIndex != -1 ? cmbAño.SelectedItem.ToString() : "";
+                string mes = cmbMes.SelectedIndex != -1 ? cmbMes.SelectedItem.ToString() : "";
+
+                dgvSocios.Rows.Cast<DataGridViewRow>().
+                    Where(p => p.Cells["CuotaAAAAMM"].Value.ToString() == string.Format("CuotaAAAAMM = '{0}'", año + mes));
+            }
+            catch (Exception ex)
+            {
+                string mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }
