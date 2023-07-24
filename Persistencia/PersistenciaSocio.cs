@@ -151,7 +151,7 @@ namespace Persistencia
             SqlConnection _cnn = new SqlConnection(Conexion.Cnn);
             SqlCommand _comando = new SqlCommand("listar_socios_todos", _cnn);
             _comando.CommandType = CommandType.StoredProcedure;
-            List<Socio> _ListaSocios = null;
+            List<Socio> _ListaSocios = new List<Socio>();
 
             try
             {
@@ -313,7 +313,7 @@ namespace Persistencia
             SqlConnection _cnn = new SqlConnection(Conexion.Cnn);
             SqlCommand _comando = new SqlCommand("listar_tipoCuota", _cnn);
             _comando.CommandType = CommandType.StoredProcedure;
-            List<TipoCuota> _ListaTC = null;
+            List<TipoCuota> _ListaTC = new List<TipoCuota>();
 
             try
             {
