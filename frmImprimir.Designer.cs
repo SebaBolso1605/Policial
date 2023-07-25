@@ -182,15 +182,15 @@ namespace Policial
             // 
             this.cmbMes.FormattingEnabled = true;
             this.cmbMes.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
             "10",
             "11",
             "12"});
