@@ -65,7 +65,7 @@ namespace Policial
         {
             #region Controlo errores campos
             bool error = false;
-            if (txtDescripcion.Text == "")
+            if (txtDescripcion.Text.Trim() == "")
             {
                 errorProvider.SetError(label20, "Ingrese categoria.");
                 error = true;
@@ -106,9 +106,9 @@ namespace Policial
                     if (dgvCategorias.SelectedRows != null)
                     {
                         int id = Convert.ToInt32(filaSeleccionada.Cells[0].Value);
-                        textBox1.Text = filaSeleccionada.Cells["TCId"].Value.ToString();
-                        txtDescripcion.Text = filaSeleccionada.Cells["TCDescripcion"].Value.ToString();
-                        txtMonto.Text = filaSeleccionada.Cells["TCMonto"].Value.ToString();
+                        textBox1.Text = filaSeleccionada.Cells["TCId"].Value.ToString().Trim();
+                        txtDescripcion.Text = filaSeleccionada.Cells["TCDescripcion"].Value.ToString().Trim();
+                        txtMonto.Text = filaSeleccionada.Cells["TCMonto"].Value.ToString().Trim();
                         btnGuardar.Text = "Modificar";
                     }
                     else
@@ -179,31 +179,40 @@ namespace Policial
                 }
                 #endregion
                 #region Modificar
+                errorProvider.Clear();
+                ret = HayError();
                 if (btnGuardar.Text == "Modificar")
                 {
                     if (ret == false)
-                        tipoCuota.TCId = Convert.ToInt32(textBox1.Text.Trim());
-
-                    if (tipoCuota != null)
                     {
-                        resultado = lNF.ModificarCuota(tipoCuota, _usu);
+                        tipoCuota.TCId = Convert.ToInt32(textBox1.Text.Trim());
+                        tipoCuota.TCDescripcion = txtDescripcion.Text.Trim();
+                        tipoCuota.TCMonto = Convert.ToInt32(txtMonto.Text.Trim());
 
-                        if (resultado)
+                        tipoCuota.FecModif = DateTime.Now;
+                        tipoCuota.UsuIdModif = Program.usuarioLogueado.UsuId;
+
+                        if (tipoCuota != null)
                         {
-                            DateTime fecha = DateTime.Today;
-                            dgvCategorias.Rows.Clear();
-                            ListarTC();
-                            txtMonto.Text = "";
-                            txtDescripcion.Text = "";
-                            mensaje = "La información se modifico correctamente.";
-                            MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            btnGuardar.Text = "Agregar";
-                        }
-                        else
-                        {
-                            mensaje = "No se modifico la información.";
-                            MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            btnGuardar.Text = "Agregar";
+                            resultado = lNF.ModificarCuota(tipoCuota, _usu);
+
+                            if (resultado)
+                            {
+                                DateTime fecha = DateTime.Today;
+                                dgvCategorias.Rows.Clear();
+                                ListarTC();
+                                txtMonto.Text = "";
+                                txtDescripcion.Text = "";
+                                mensaje = "La información se modifico correctamente.";
+                                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                btnGuardar.Text = "Agregar";
+                            }
+                            else
+                            {
+                                mensaje = "No se modifico la información.";
+                                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                btnGuardar.Text = "Agregar";
+                            }
                         }
                     }
                 }
@@ -268,6 +277,7 @@ namespace Policial
             {
                 txtDescripcion.Text = "";
                 txtMonto.Text = "";
+                btnGuardar.Text = "Agregar";
             }
             catch (Exception ex)
             {
