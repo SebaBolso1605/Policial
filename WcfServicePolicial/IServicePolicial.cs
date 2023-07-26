@@ -35,7 +35,7 @@ namespace WcfServicePolicial
         bool ModificarSocio(Socio s, Usuario _usu);
 
         [OperationContract]
-        bool BajaSocio(Socio c);
+        bool BajaSocio(Socio c, Usuario _usu);
 
         [OperationContract]
         bool AltaNucleoFamiliar(NucleoFamiliar c, Usuario _usu);

@@ -219,7 +219,7 @@ namespace Persistencia
             cmd.Parameters.AddWithValue("@SocEmail", s.SocEmail);
             cmd.Parameters.AddWithValue("@SocObservaciones", s.SocEmail);
             cmd.Parameters.AddWithValue("@SocTipoCuota", s.SocTipoCuota);
-            cmd.Parameters.AddWithValue("@UsuIdAlta", s.UsuIdAlta);
+            cmd.Parameters.AddWithValue("@UsuIdModif", _usu.UsuId);
             cmd.Parameters.Add("@SocId", SqlDbType.Int).Direction = ParameterDirection.Output;
 
             SqlParameter prmRetorno = new SqlParameter("@Retorno", SqlDbType.Int);
@@ -268,7 +268,7 @@ namespace Persistencia
                 cnn.Close();
             }
         }
-        public bool BajaSocio(Socio s)
+        public bool BajaSocio(Socio s, Usuario _usu)
         {
             bool res = false;
             SqlConnection cnn = new SqlConnection(Conexion.Cnn);
@@ -277,6 +277,7 @@ namespace Persistencia
             cmd.Parameters.AddWithValue("@SocCI", s.SocCI);
             cmd.Parameters.AddWithValue("@SocFechaEgreso", s.SocFechaEgreso);
             cmd.Parameters.AddWithValue("@SocMotivoEgreso", s.SocMotivoEgreso);
+            cmd.Parameters.AddWithValue("@UsuIdModif", _usu.UsuId);
             SqlParameter prmRetorno = new SqlParameter("@Retorno", SqlDbType.Int);
             prmRetorno.Direction = ParameterDirection.ReturnValue;
             cmd.Parameters.Add(prmRetorno);
@@ -296,13 +297,21 @@ namespace Persistencia
                 }
                 else
                 {
+                    tran.Commit();
                     res = true;
                     return res;
                 }
             }
             catch (Exception ex)
             {
-                throw new ApplicationException(ex.Message);
+                //    throw new ApplicationException(ex.Message);
+                //}
+                tran.Rollback();
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cnn.Close();
             }
         }
         #endregion

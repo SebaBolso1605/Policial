@@ -23,6 +23,7 @@ namespace Policial
         private Socio socio;
         private Cuota cuota;
         private List<Socio> listaSocios;
+        private Usuario usuarioLogueado = Program.usuarioLogueado;
         #endregion
         public frmSocio()
         {
@@ -306,15 +307,22 @@ namespace Policial
                     soc = lSocio.BuscarSocioPorCI(ci);
                     if (soc != null)
                     {
-                        txtPrimerApellidoBaja.Text = soc.SocPrimerApellido;
-                        txtPrimerNombreBaja.Text = soc.SocPrimerNombre;
-                        txtSegundoApellidoBaja.Text = soc.SocSegundoApellido;
-                        txtCiBaja.Text = soc.SocCI.ToString();
+                        if (soc.SocAtivo)
+                        {
+                            txtPrimerApellidoBaja.Text = soc.SocPrimerApellido;
+                            txtPrimerNombreBaja.Text = soc.SocPrimerNombre;
+                            txtSegundoApellidoBaja.Text = soc.SocSegundoApellido;
+                            txtCiBaja.Text = soc.SocCI.ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show("El socio con cédula: " + soc.SocCI + " , ya esta dado de baja.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No existe socio con esa cedula.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Debe indicar un documento.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
@@ -333,7 +341,7 @@ namespace Policial
                 IServicePolicial lSocio = new ServicePolicialClient();
                 Socio soc = new Socio();
 
-                if (!string.IsNullOrEmpty(txtBuscarEliminar.Text))
+                if (!string.IsNullOrEmpty(txtCiBaja.Text))
                 {
                     int ci = Convert.ToInt32(txtBuscarEliminar.Text);
                     soc.SocCI = ci;
@@ -344,28 +352,22 @@ namespace Policial
 
                     soc.SocFechaEgreso = dtpFechaBaja.Value;
 
-                    resp = lSocio.BajaSocio(soc);
+
+                    resp = lSocio.BajaSocio(soc, usuarioLogueado);
                     if (resp)
                     {
                         MessageBox.Show("Se dio de baja correctamente al socio.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtPrimerApellidoBaja.Text = "";
-                        txtPrimerNombreBaja.Text = "";
-                        txtSegundoApellidoBaja.Text = "";
-                        txtCiBaja.Text = "";
-                        txtBuscarEliminar.Text = "";
+                        LimpiarEliminar();
                     }
                     else
                     {
                         MessageBox.Show("No dio de baja correctamente al socio.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtPrimerApellidoBaja.Text = "";
-                        txtPrimerNombreBaja.Text = "";
-                        txtSegundoApellidoBaja.Text = "";
-                        txtCiBaja.Text = "";
+                        LimpiarEliminar();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No se econtro socio.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Debe indicar un documento y buscar el socio a eliminar.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
@@ -669,6 +671,7 @@ namespace Policial
             button2.BackColor = RGBColors.color5;
             btnEliminarSocio.BackColor = RGBColors.color5;
             button1.BackColor = RGBColors.color5;
+            button3.BackColor = RGBColors.color5;
         }
         public struct RGBColors
         {
@@ -780,5 +783,44 @@ namespace Policial
             }
         }
         #endregion
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LimpiarEliminar();
+        }
+
+        private void LimpiarEliminar()
+        {
+            txtBuscarEliminar.Text = "";
+            txtPrimerNombreBaja.Text = "";
+            txtPrimerApellidoBaja.Text = "";
+            txtSegundoApellidoBaja.Text = "";
+            txtCiBaja.Text = "";
+            txtMotivoBaja.Text = "";
+            dtpFechaBaja.Value = DateTime.Now;
+        }
+
+        private void tabModifcar_Selected(object sender, TabControlEventArgs e)
+        {
+            string tab = tabModifcar.SelectedIndex.ToString();
+
+            switch (tab)
+            {
+                case "0":
+                    CargoGrillaSocios();
+                    break;
+                case "1":
+                    
+                    break;
+                case "2":
+                    
+                    break;
+                case "3":
+                    LimpiarEliminar();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

@@ -13,6 +13,6 @@ namespace Logica
         Socio BuscarSocioPorCI(int _ci);
         List<Socio> ListarSocios();
         bool ModificarSocio(Socio s, Usuario _usu);
-        bool BajaSocio(Socio s);
+        bool BajaSocio(Socio s, Usuario _usu);
     }
 }

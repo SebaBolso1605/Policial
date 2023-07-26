@@ -45,9 +45,9 @@ namespace WcfServicePolicial
             return (FabricaLogica.getLogicaSocio().ModificarSocio(s, _usu));
         }
 
-        bool IServicePolicial.BajaSocio(Socio c)
+        bool IServicePolicial.BajaSocio(Socio c, Usuario _usu)
         {
-            return (FabricaLogica.getLogicaSocio().BajaSocio(c));
+            return (FabricaLogica.getLogicaSocio().BajaSocio(c, _usu));
         }
 
         bool IServicePolicial.AltaNucleoFamiliar(NucleoFamiliar c, Usuario _usu)
