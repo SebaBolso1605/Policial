@@ -32,13 +32,6 @@ namespace Policial
             this.lblTituloFormulario = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.dgvSocios = new System.Windows.Forms.DataGridView();
-            this.cmbAño = new System.Windows.Forms.ComboBox();
-            this.cmbMes = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnPagarCuotas = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocPrimerNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +42,13 @@ namespace Policial
             this.Imprimir = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SocDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CuotaFechaPaga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbAño = new System.Windows.Forms.ComboBox();
+            this.cmbMes = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnPagarCuotas = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,6 +83,7 @@ namespace Policial
             this.dgvSocios.AllowUserToAddRows = false;
             this.dgvSocios.AllowUserToDeleteRows = false;
             this.dgvSocios.AllowUserToOrderColumns = true;
+            this.dgvSocios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSocios.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvSocios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSocios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -102,6 +103,72 @@ namespace Policial
             this.dgvSocios.RowHeadersWidth = 51;
             this.dgvSocios.Size = new System.Drawing.Size(887, 343);
             this.dgvSocios.TabIndex = 135;
+            // 
+            // SocId
+            // 
+            this.SocId.HeaderText = "Socio";
+            this.SocId.Name = "SocId";
+            this.SocId.ReadOnly = true;
+            // 
+            // SocCI
+            // 
+            this.SocCI.HeaderText = "Cédula";
+            this.SocCI.MinimumWidth = 6;
+            this.SocCI.Name = "SocCI";
+            this.SocCI.ReadOnly = true;
+            // 
+            // SocPrimerNombre
+            // 
+            this.SocPrimerNombre.HeaderText = "Nombre";
+            this.SocPrimerNombre.MinimumWidth = 6;
+            this.SocPrimerNombre.Name = "SocPrimerNombre";
+            this.SocPrimerNombre.ReadOnly = true;
+            // 
+            // SocPrimerApellido
+            // 
+            this.SocPrimerApellido.HeaderText = "Apellido";
+            this.SocPrimerApellido.Name = "SocPrimerApellido";
+            this.SocPrimerApellido.ReadOnly = true;
+            // 
+            // CuotaId
+            // 
+            this.CuotaId.HeaderText = "Cuota";
+            this.CuotaId.MinimumWidth = 6;
+            this.CuotaId.Name = "CuotaId";
+            this.CuotaId.ReadOnly = true;
+            // 
+            // CuotaAAAAMM
+            // 
+            this.CuotaAAAAMM.HeaderText = "Mes/Año";
+            this.CuotaAAAAMM.MinimumWidth = 6;
+            this.CuotaAAAAMM.Name = "CuotaAAAAMM";
+            this.CuotaAAAAMM.ReadOnly = true;
+            this.CuotaAAAAMM.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CuotaAAAAMM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Pagar
+            // 
+            this.Pagar.HeaderText = "Pagar";
+            this.Pagar.Name = "Pagar";
+            this.Pagar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Imprimir
+            // 
+            this.Imprimir.HeaderText = "Imprimir";
+            this.Imprimir.Name = "Imprimir";
+            // 
+            // SocDireccion
+            // 
+            this.SocDireccion.HeaderText = "SocDireccion";
+            this.SocDireccion.Name = "SocDireccion";
+            this.SocDireccion.ReadOnly = true;
+            this.SocDireccion.Visible = false;
+            // 
+            // CuotaFechaPaga
+            // 
+            this.CuotaFechaPaga.HeaderText = "CuotaFechaPaga";
+            this.CuotaFechaPaga.Name = "CuotaFechaPaga";
+            this.CuotaFechaPaga.Visible = false;
             // 
             // cmbAño
             // 
@@ -206,76 +273,6 @@ namespace Policial
             this.checkBox1.Text = "solo Cuotas Impagas";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // SocId
-            // 
-            this.SocId.HeaderText = "Socio";
-            this.SocId.Name = "SocId";
-            this.SocId.ReadOnly = true;
-            this.SocId.Width = 80;
-            // 
-            // SocCI
-            // 
-            this.SocCI.HeaderText = "Cédula";
-            this.SocCI.MinimumWidth = 6;
-            this.SocCI.Name = "SocCI";
-            this.SocCI.ReadOnly = true;
-            this.SocCI.Width = 80;
-            // 
-            // SocPrimerNombre
-            // 
-            this.SocPrimerNombre.HeaderText = "Nombre";
-            this.SocPrimerNombre.MinimumWidth = 6;
-            this.SocPrimerNombre.Name = "SocPrimerNombre";
-            this.SocPrimerNombre.ReadOnly = true;
-            // 
-            // SocPrimerApellido
-            // 
-            this.SocPrimerApellido.HeaderText = "Apellido";
-            this.SocPrimerApellido.Name = "SocPrimerApellido";
-            this.SocPrimerApellido.ReadOnly = true;
-            // 
-            // CuotaId
-            // 
-            this.CuotaId.HeaderText = "Cuota";
-            this.CuotaId.MinimumWidth = 6;
-            this.CuotaId.Name = "CuotaId";
-            this.CuotaId.ReadOnly = true;
-            this.CuotaId.Width = 80;
-            // 
-            // CuotaAAAAMM
-            // 
-            this.CuotaAAAAMM.HeaderText = "Mes/Año";
-            this.CuotaAAAAMM.MinimumWidth = 6;
-            this.CuotaAAAAMM.Name = "CuotaAAAAMM";
-            this.CuotaAAAAMM.ReadOnly = true;
-            this.CuotaAAAAMM.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CuotaAAAAMM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CuotaAAAAMM.Width = 140;
-            // 
-            // Pagar
-            // 
-            this.Pagar.HeaderText = "Pagar";
-            this.Pagar.Name = "Pagar";
-            this.Pagar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Imprimir
-            // 
-            this.Imprimir.HeaderText = "Imprimir";
-            this.Imprimir.Name = "Imprimir";
-            // 
-            // SocDireccion
-            // 
-            this.SocDireccion.HeaderText = "SocDireccion";
-            this.SocDireccion.Name = "SocDireccion";
-            this.SocDireccion.ReadOnly = true;
-            this.SocDireccion.Visible = false;
-            // 
-            // CuotaFechaPaga
-            // 
-            this.CuotaFechaPaga.HeaderText = "CuotaFechaPaga";
-            this.CuotaFechaPaga.Name = "CuotaFechaPaga";
-            this.CuotaFechaPaga.Visible = false;
             // 
             // frmImprimir
             // 

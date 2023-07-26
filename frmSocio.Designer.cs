@@ -190,7 +190,7 @@ namespace Policial
             this.checkBox1.ForeColor = System.Drawing.Color.Black;
             this.checkBox1.Location = new System.Drawing.Point(334, 78);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(125, 20);
+            this.checkBox1.Size = new System.Drawing.Size(126, 20);
             this.checkBox1.TabIndex = 135;
             this.checkBox1.Text = "solo Socios activos";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -247,6 +247,7 @@ namespace Policial
             this.dgvSocios.AllowUserToAddRows = false;
             this.dgvSocios.AllowUserToDeleteRows = false;
             this.dgvSocios.AllowUserToOrderColumns = true;
+            this.dgvSocios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSocios.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvSocios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSocios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -275,7 +276,6 @@ namespace Policial
             this.SocId.HeaderText = "Socio Nº";
             this.SocId.Name = "SocId";
             this.SocId.ReadOnly = true;
-            this.SocId.Width = 80;
             // 
             // SocCI
             // 
@@ -283,7 +283,6 @@ namespace Policial
             this.SocCI.MinimumWidth = 6;
             this.SocCI.Name = "SocCI";
             this.SocCI.ReadOnly = true;
-            this.SocCI.Width = 80;
             // 
             // SocPrimerNombre
             // 
@@ -304,7 +303,6 @@ namespace Policial
             this.SocDireccion.MinimumWidth = 6;
             this.SocDireccion.Name = "SocDireccion";
             this.SocDireccion.ReadOnly = true;
-            this.SocDireccion.Width = 180;
             // 
             // SocTel
             // 
@@ -314,7 +312,6 @@ namespace Policial
             this.SocTel.ReadOnly = true;
             this.SocTel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.SocTel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.SocTel.Width = 140;
             // 
             // SocCelular
             // 
