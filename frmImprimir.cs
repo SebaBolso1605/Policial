@@ -127,8 +127,6 @@ namespace Policial
                         {
                             foreach (Cuota c in listaCuotas)
                             {
-                                //dgvSocios.Rows.Cast<DataGridViewRow>().
-                                //Where(p => Convert.ToBoolean(p.Cells["Pagar"].Value) == false);
                                 if (!c.CuotaPaga)
                                     dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, c.CuotaId, c.CuotaAAAAMM, c.CuotaPaga);
                             }
@@ -171,7 +169,7 @@ namespace Policial
                 Cuota cuota = new Cuota();
                 DataTable dtRetorno = new DataTable();
                 var filaSeleccionada = dgvSocios.CurrentRow;
-                DialogResult drPagar;
+                DialogResult drPagar = new DialogResult();
                 DialogResult drImprimir;
 
                 int totalSeleccion = dgvSocios.Rows.Cast<DataGridViewRow>().
@@ -182,19 +180,26 @@ namespace Policial
                          "Pagar seleccion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 }
 
-                foreach (DataGridViewRow row in dgvSocios.Rows)
+                if(drPagar == DialogResult.OK)
                 {
-                    if(Convert.ToBoolean(row.Cells["Pagar"].Value))
+                    foreach (DataGridViewRow row in dgvSocios.Rows)
                     {
-                        Usuario usuario = new Usuario();
-                        //cmd.Parameters.AddWithValue("@IdSocio", c.SocId);
-                        //cmd.Parameters.AddWithValue("@IdCuota", c.CuotaId);
-                        //cmd.Parameters.AddWithValue("@CuotaFechaPaga", c.CuotaFechaPaga);
-                        cuota.SocId = Convert.ToInt32(row.Cells["SocId"].Value);
-                        cuota.CuotaId = Convert.ToInt32(row.Cells["CuotaId"].Value);
-                        cuota.CuotaFechaPaga = DateTime.Now;
-                        ls.PagarCuotaSocio(cuota, usuario);
+                        if (Convert.ToBoolean(row.Cells["Pagar"].Value))
+                        {
+                            Usuario usuario = Program.usuarioLogueado;
+                            cuota.SocId = Convert.ToInt32(row.Cells["SocId"].Value);
+                            cuota.CuotaId = Convert.ToInt32(row.Cells["CuotaId"].Value);
+                            DateTime fechaPago = DateTime.Now;
+                            string dateTime = fechaPago.ToString("yyyyMMdd");
+                            cuota.CuotaFechaPaga = Convert.ToDateTime(dateTime);
+                            //Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd"));
+                            ls.PagarCuotaSocio(cuota, usuario);
+                        }
                     }
+                }
+                else
+                {
+
                 }
             }
             catch (Exception ex)
@@ -248,12 +253,11 @@ namespace Policial
             {
                 string año = cmbAño.SelectedIndex != -1 ? cmbAño.SelectedItem.ToString() : "";
                 string mes = cmbMes.SelectedIndex != -1 ? cmbMes.SelectedItem.ToString() : "";
-
+                dgvSocios.Rows.Clear();
                 IServicePolicial lc = new ServicePolicialClient();
                 IServicePolicial ls = new ServicePolicialClient();
                 List<Cuota> listaCuotas = new List<Cuota>();
                 List<Socio> listaSocios = new List<Socio>();
-                dgvSocios.Rows.Clear();
                 listaSocios = ls.ListarSocios().ToList();
                 bool soloCuotasImpagas = checkBox1.Checked ? true : false;
 
@@ -267,8 +271,6 @@ namespace Policial
                         {
                             foreach (Cuota c in listaCuotas)
                             {
-                                //dgvSocios.Rows.Cast<DataGridViewRow>().
-                                //Where(p => p.Cells["CuotaAAAAMM"].Value.ToString() == mes + "/" + año);
                                 if (!c.CuotaPaga && c.CuotaAAAAMM == mes + "/" + año)
                                     dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, c.CuotaId, c.CuotaAAAAMM, c.CuotaPaga);
                             }
@@ -277,52 +279,12 @@ namespace Policial
                         {
                             foreach (Cuota c in listaCuotas)
                             {
-                                //dgvSocios.Rows.Cast<DataGridViewRow>().
-                                //Where(p => p.Cells["CuotaAAAAMM"].Value.ToString() == mes + "/" + año);
-                                //if (c.CuotaPaga && c.CuotaAAAAMM == mes + "/" + año)
+                                if (c.CuotaPaga && c.CuotaAAAAMM == mes + "/" + año)
                                     dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, c.CuotaId, c.CuotaAAAAMM, c.CuotaPaga);
                             }
                         }
                     }
                 }
-
-
-
-
-                //DataTable dataTable = new DataTable();
-                //dataTable.Columns.Add("Socio");
-                //dataTable.Columns.Add("Cédula");
-                //dataTable.Columns.Add("Nombre");
-                //dataTable.Columns.Add("Apellido");
-                //dataTable.Columns.Add("Cuota");
-                //dataTable.Columns.Add("Mes/Año");
-                //dataTable.Columns.Add("Pagar");
-                //dataTable.Columns.Add("Imprimir");
-                //dataTable.Columns.Add("SocDireccion");
-
-                ////Recorrer filas
-                //foreach (DataGridViewRow fila in this.dgvSocios.Rows)
-                //{
-                //    DataRow dr = dataTable.NewRow();
-                //    dr[0] = fila.Cells[0].Value.ToString();
-                //    dr[1] = fila.Cells[1].Value.ToString();
-                //    dr[2] = fila.Cells[2].Value.ToString();
-                //    dr[3] = fila.Cells[3].Value.ToString();
-                //    dr[4] = fila.Cells[4].Value.ToString();
-                //    dr[5] = fila.Cells[5].Value.ToString();
-                //    dr[6] = fila.Cells[6].Value;
-                //    dr[7] = fila.Cells[7].Value;
-                //    dataTable.Rows.Add(dr);
-                //}
-
-                //dgvSocios.Rows.Clear();
-                //if (dataTable.Rows.Count > 0)
-                //{
-                //    foreach (DataRow c in dataTable.Rows)
-                //    {
-                //        dgvSocios.Rows.Add(c[0].ToString);
-                //    }
-                //}
             }
             catch (Exception ex)
             {

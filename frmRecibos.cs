@@ -20,6 +20,7 @@ namespace Policial
         public string titulo = "Cuotas Socios";
         public string mensaje = "";
         public bool pagar = false;
+        private List<Socio> listaSocios;
         #endregion
         #region Metodos
         public frmRecibos()
@@ -28,12 +29,17 @@ namespace Policial
             btnBuscarNF.BackColor = RGBColors.color3;
             btnCancelarNF.BackColor = RGBColors.color3;
             btnGuardarNF.BackColor = RGBColors.color3;
+            btnGenerar.BackColor = RGBColors.color3;
+            btnVolver.BackColor = RGBColors.color3;
             label1.ForeColor = RGBColors.color3;
+            lblTituloFormulario.ForeColor = RGBColors.color3;
             CargoTC();
             btnGuardarNF.Text = "Agregar";
             cmbMes.Enabled = true;
             cmbAño.Enabled = true;
+            comboBox3.Enabled = true;
             dtpDesde.Enabled = true;
+            CargoGrillaSocios();
         }
         public struct RGBColors
         {
@@ -150,8 +156,113 @@ namespace Policial
             return error;
             #endregion
         }
+        private bool HayErrorGenerar()
+        {
+            #region Controlo errores campos
+            bool error = false;
+
+            if (dtpEmision.Value.Date > DateTime.Now.Date)
+            {
+                errorProvider.SetError(label11, "Seleccione de emisión.");
+                error = true;
+            }
+
+            if (dtpEmision.Value.Date > DateTime.Now.Date)
+            {
+                errorProvider.SetError(label9, "Seleccione de vencimiento.");
+                error = true;
+            }
+
+            if (comboBox1.SelectedIndex == -1 || comboBox2.SelectedIndex == -1)
+            {
+                errorProvider.SetError(label7, "Seleccione mes/año para la cuota.");
+                error = true;
+            }
+            return error;
+            #endregion
+        }
+        private void CargoGrillaSocios()
+        {
+            try
+            {
+                IServicePolicial FSocio = new ServicePolicialClient();
+                listaSocios = FSocio.ListarSocios().ToList();
+                bool socioActivo = checkBox1.Checked ? true : false;
+                if (socioActivo)
+                {
+                    var _resultado = (from unSocio in listaSocios
+                                      where unSocio.SocAtivo == socioActivo
+                                      select new Socio
+                                      {
+                                          SocId = unSocio.SocId,
+                                          SocCI = unSocio.SocCI,
+                                          SocPrimerNombre = unSocio.SocPrimerNombre,
+                                          SocPrimerApellido = unSocio.SocPrimerApellido,
+                                          SocSegundoNombre = unSocio.SocSegundoNombre,
+                                          SocSegundoApellido = unSocio.SocSegundoApellido,
+                                          SocFechaNacimiento = unSocio.SocFechaNacimiento,
+                                          SocFechaIngreso = unSocio.SocFechaIngreso,
+                                          SocDireccion = unSocio.SocDireccion,
+                                          SocEmail = unSocio.SocEmail,
+                                          SocTel = unSocio.SocTel,
+                                          SocCelular = unSocio.SocCelular,
+                                          SocAtivo = unSocio.SocAtivo,
+                                          SocTipoCuota = unSocio.SocTipoCuota,
+                                      }).ToList();
+                    dgvSocios.Rows.Clear();
+                    if (listaSocios != null)
+                    {
+                        foreach (Socio s in _resultado)
+                        {
+                            string estado = s.SocAtivo ? "Activo" : "Inactivo";                          
+                            dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, s.SocDireccion, s.SocTel, s.SocCelular, estado, false, s.SocTipoCuota);
+                        }
+                    }
+                }
+                else
+                {
+                    var _resultado = (from unSocio in listaSocios
+                                      select new Socio
+                                      {
+                                          SocId = unSocio.SocId,
+                                          SocCI = unSocio.SocCI,
+                                          SocPrimerNombre = unSocio.SocPrimerNombre,
+                                          SocPrimerApellido = unSocio.SocPrimerApellido,
+                                          SocSegundoNombre = unSocio.SocSegundoNombre,
+                                          SocSegundoApellido = unSocio.SocSegundoApellido,
+                                          SocFechaNacimiento = unSocio.SocFechaNacimiento,
+                                          SocFechaIngreso = unSocio.SocFechaIngreso,
+                                          SocDireccion = unSocio.SocDireccion,
+                                          SocEmail = unSocio.SocEmail,
+                                          SocTel = unSocio.SocTel,
+                                          SocCelular = unSocio.SocCelular,
+                                          SocAtivo = unSocio.SocAtivo,
+                                          SocTipoCuota = unSocio.SocTipoCuota,
+                                      }).ToList();
+                    dgvSocios.Rows.Clear();
+
+                    if (listaSocios != null)
+                    {
+                        foreach (Socio s in _resultado)
+                        {
+                            string estado = s.SocAtivo ? "Activo" : "Inactivo";
+                            dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, s.SocDireccion, s.SocTel, s.SocCelular, estado, false, s.SocTipoCuota);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
         #endregion
         #region Eventos
+        private void btnVolver_Click_1(object sender, EventArgs e)
+        {
+
+        }
         private void btnBuscarNF_Click(object sender, EventArgs e)
         {
             try
@@ -441,6 +552,87 @@ namespace Policial
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+        private void txtBuscarCuota_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void checkBox1_CheckStateChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            CargoGrillaSocios();
+        }
         #endregion
+
+        private void btnVolver_Click_2(object sender, EventArgs e)
+        {
+            try
+            {
+                comboBox1.SelectedIndex = -1;
+                comboBox2.SelectedIndex = -1;
+                comboBox3.SelectedIndex = -1;
+                CargoGrillaSocios();
+
+            }
+            catch (Exception ex)
+            {
+                string mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult drPagar = new DialogResult();
+                IServicePolicial lNF = new ServicePolicialClient();
+                bool hayErrores = HayErrorGenerar();
+                
+                if(!hayErrores)
+                {
+                    int totalSeleccion = dgvSocios.Rows.Cast<DataGridViewRow>().
+                   Where(p => Convert.ToBoolean(p.Cells["Generar"].Value)).Count();
+                    if (totalSeleccion > 0)
+                    {
+                        drPagar = MessageBox.Show("Confirma generar " + totalSeleccion + " cuotas seleccionadas?",
+                             "Generar seleccion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    }
+
+                    if (drPagar == DialogResult.OK)
+                    {
+                        foreach (DataGridViewRow row in dgvSocios.Rows)
+                        {
+                            if (Convert.ToBoolean(row.Cells["Generar"].Value))
+                            {
+                                Usuario usuario = Program.usuarioLogueado;
+                                Cuota cuota = new Cuota();
+                                cuota.SocId = Convert.ToInt32(row.Cells["Socio"].Value);
+                                cuota.CuotaFechaDesde = Convert.ToDateTime(dtpEmision.Value);
+                                cuota.CuotaFechaHasta = Convert.ToDateTime(dtpVencimiento.Value);
+                                if (Convert.ToInt32(comboBox3.SelectedIndex) != -1)
+                                    cuota.CuotaTipo = Convert.ToInt32(comboBox3.SelectedItem);
+                                else
+                                    cuota.CuotaTipo = Convert.ToInt32(row.Cells["TipoCuota"].Value);
+                                cuota.CuotaPaga = false;
+                                cuota.CuotaAAAAMM = comboBox1.SelectedItem.ToString() + "/" + comboBox2.SelectedItem.ToString();
+                                PersistirCuota(cuota, usuario);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }

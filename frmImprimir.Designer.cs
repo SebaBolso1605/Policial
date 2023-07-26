@@ -32,6 +32,13 @@ namespace Policial
             this.lblTituloFormulario = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.dgvSocios = new System.Windows.Forms.DataGridView();
+            this.cmbAño = new System.Windows.Forms.ComboBox();
+            this.cmbMes = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnPagarCuotas = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocPrimerNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,13 +48,7 @@ namespace Policial
             this.Pagar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Imprimir = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SocDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbAño = new System.Windows.Forms.ComboBox();
-            this.cmbMes = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnPagarCuotas = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.CuotaFechaPaga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +70,7 @@ namespace Policial
             this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVolver.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolver.ForeColor = System.Drawing.Color.White;
-            this.btnVolver.Location = new System.Drawing.Point(484, 516);
+            this.btnVolver.Location = new System.Drawing.Point(587, 517);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(176, 29);
             this.btnVolver.TabIndex = 136;
@@ -93,13 +94,118 @@ namespace Policial
             this.CuotaAAAAMM,
             this.Pagar,
             this.Imprimir,
-            this.SocDireccion});
+            this.SocDireccion,
+            this.CuotaFechaPaga});
             this.dgvSocios.Location = new System.Drawing.Point(38, 146);
             this.dgvSocios.Name = "dgvSocios";
             this.dgvSocios.RowHeadersVisible = false;
             this.dgvSocios.RowHeadersWidth = 51;
             this.dgvSocios.Size = new System.Drawing.Size(887, 343);
             this.dgvSocios.TabIndex = 135;
+            // 
+            // cmbAño
+            // 
+            this.cmbAño.FormattingEnabled = true;
+            this.cmbAño.Items.AddRange(new object[] {
+            "2022",
+            "2023",
+            "2024",
+            "2025"});
+            this.cmbAño.Location = new System.Drawing.Point(258, 92);
+            this.cmbAño.Name = "cmbAño";
+            this.cmbAño.Size = new System.Drawing.Size(103, 21);
+            this.cmbAño.TabIndex = 191;
+            // 
+            // cmbMes
+            // 
+            this.cmbMes.FormattingEnabled = true;
+            this.cmbMes.Items.AddRange(new object[] {
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12"});
+            this.cmbMes.Location = new System.Drawing.Point(179, 92);
+            this.cmbMes.Name = "cmbMes";
+            this.cmbMes.Size = new System.Drawing.Size(73, 21);
+            this.cmbMes.TabIndex = 190;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(35, 92);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 17);
+            this.label6.TabIndex = 189;
+            this.label6.Text = "Mes / Año";
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.btnImprimir.FlatAppearance.BorderSize = 0;
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.White;
+            this.btnImprimir.Location = new System.Drawing.Point(383, 517);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(176, 29);
+            this.btnImprimir.TabIndex = 192;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.Color.White;
+            this.btnBuscar.Location = new System.Drawing.Point(388, 89);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(198, 24);
+            this.btnBuscar.TabIndex = 193;
+            this.btnBuscar.Text = "Filtrar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnPagarCuotas
+            // 
+            this.btnPagarCuotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.btnPagarCuotas.FlatAppearance.BorderSize = 0;
+            this.btnPagarCuotas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagarCuotas.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagarCuotas.ForeColor = System.Drawing.Color.White;
+            this.btnPagarCuotas.Location = new System.Drawing.Point(179, 517);
+            this.btnPagarCuotas.Name = "btnPagarCuotas";
+            this.btnPagarCuotas.Size = new System.Drawing.Size(176, 29);
+            this.btnPagarCuotas.TabIndex = 194;
+            this.btnPagarCuotas.Text = "Pagar Cuotas";
+            this.btnPagarCuotas.UseVisualStyleBackColor = false;
+            this.btnPagarCuotas.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.ForeColor = System.Drawing.Color.Black;
+            this.checkBox1.Location = new System.Drawing.Point(618, 96);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(124, 17);
+            this.checkBox1.TabIndex = 195;
+            this.checkBox1.Text = "solo Cuotas Impagas";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // SocId
             // 
@@ -165,109 +271,11 @@ namespace Policial
             this.SocDireccion.ReadOnly = true;
             this.SocDireccion.Visible = false;
             // 
-            // cmbAño
+            // CuotaFechaPaga
             // 
-            this.cmbAño.FormattingEnabled = true;
-            this.cmbAño.Items.AddRange(new object[] {
-            "2022",
-            "2023",
-            "2024",
-            "2025"});
-            this.cmbAño.Location = new System.Drawing.Point(258, 92);
-            this.cmbAño.Name = "cmbAño";
-            this.cmbAño.Size = new System.Drawing.Size(103, 21);
-            this.cmbAño.TabIndex = 191;
-            // 
-            // cmbMes
-            // 
-            this.cmbMes.FormattingEnabled = true;
-            this.cmbMes.Items.AddRange(new object[] {
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12"});
-            this.cmbMes.Location = new System.Drawing.Point(179, 92);
-            this.cmbMes.Name = "cmbMes";
-            this.cmbMes.Size = new System.Drawing.Size(73, 21);
-            this.cmbMes.TabIndex = 190;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(35, 92);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 17);
-            this.label6.TabIndex = 189;
-            this.label6.Text = "Mes / Año";
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.btnImprimir.FlatAppearance.BorderSize = 0;
-            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimir.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.Color.White;
-            this.btnImprimir.Location = new System.Drawing.Point(280, 516);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(176, 29);
-            this.btnImprimir.TabIndex = 192;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = false;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(388, 89);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(198, 24);
-            this.btnBuscar.TabIndex = 193;
-            this.btnBuscar.Text = "Filtrar";
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // btnPagarCuotas
-            // 
-            this.btnPagarCuotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.btnPagarCuotas.FlatAppearance.BorderSize = 0;
-            this.btnPagarCuotas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPagarCuotas.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPagarCuotas.ForeColor = System.Drawing.Color.White;
-            this.btnPagarCuotas.Location = new System.Drawing.Point(76, 516);
-            this.btnPagarCuotas.Name = "btnPagarCuotas";
-            this.btnPagarCuotas.Size = new System.Drawing.Size(176, 29);
-            this.btnPagarCuotas.TabIndex = 194;
-            this.btnPagarCuotas.Text = "Pagar Cuotas";
-            this.btnPagarCuotas.UseVisualStyleBackColor = false;
-            this.btnPagarCuotas.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.ForeColor = System.Drawing.Color.Black;
-            this.checkBox1.Location = new System.Drawing.Point(618, 96);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(124, 17);
-            this.checkBox1.TabIndex = 195;
-            this.checkBox1.Text = "solo Cuotas Impagas";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.CuotaFechaPaga.HeaderText = "CuotaFechaPaga";
+            this.CuotaFechaPaga.Name = "CuotaFechaPaga";
+            this.CuotaFechaPaga.Visible = false;
             // 
             // frmImprimir
             // 
@@ -312,5 +320,6 @@ namespace Policial
         private System.Windows.Forms.DataGridViewCheckBoxColumn Pagar;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Imprimir;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocDireccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CuotaFechaPaga;
     }
 }

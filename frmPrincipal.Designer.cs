@@ -30,15 +30,6 @@ namespace Policial
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panelLogo = new System.Windows.Forms.Panel();
-            this.panelTituloBarra = new System.Windows.Forms.Panel();
-            this.lblTituloFormularioHijo = new System.Windows.Forms.Label();
-            this.panelShadow = new System.Windows.Forms.Panel();
-            this.panelEscritorio = new System.Windows.Forms.Panel();
-            this.btnMaximizar = new FontAwesome.Sharp.IconPictureBox();
-            this.btnMinimizar = new FontAwesome.Sharp.IconPictureBox();
-            this.btnCerrar = new FontAwesome.Sharp.IconPictureBox();
-            this.btnHijoActual = new FontAwesome.Sharp.IconButton();
             this.btnimprimir = new FontAwesome.Sharp.IconButton();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
@@ -46,14 +37,23 @@ namespace Policial
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.panelLogo = new System.Windows.Forms.Panel();
             this.btnInicio = new System.Windows.Forms.PictureBox();
+            this.panelTituloBarra = new System.Windows.Forms.Panel();
+            this.btnMaximizar = new FontAwesome.Sharp.IconPictureBox();
+            this.btnMinimizar = new FontAwesome.Sharp.IconPictureBox();
+            this.btnCerrar = new FontAwesome.Sharp.IconPictureBox();
+            this.lblTituloFormularioHijo = new System.Windows.Forms.Label();
+            this.btnHijoActual = new FontAwesome.Sharp.IconButton();
+            this.panelShadow = new System.Windows.Forms.Panel();
+            this.panelEscritorio = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnInicio)).BeginInit();
             this.panelTituloBarra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnInicio)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -74,135 +74,6 @@ namespace Policial
             this.panelMenu.Size = new System.Drawing.Size(250, 878);
             this.panelMenu.TabIndex = 2;
             // 
-            // panelLogo
-            // 
-            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.panelLogo.Controls.Add(this.btnInicio);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Margin = new System.Windows.Forms.Padding(4);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(250, 183);
-            this.panelLogo.TabIndex = 0;
-            // 
-            // panelTituloBarra
-            // 
-            this.panelTituloBarra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.panelTituloBarra.Controls.Add(this.btnMaximizar);
-            this.panelTituloBarra.Controls.Add(this.btnMinimizar);
-            this.panelTituloBarra.Controls.Add(this.btnCerrar);
-            this.panelTituloBarra.Controls.Add(this.lblTituloFormularioHijo);
-            this.panelTituloBarra.Controls.Add(this.btnHijoActual);
-            this.panelTituloBarra.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTituloBarra.Location = new System.Drawing.Point(250, 0);
-            this.panelTituloBarra.Margin = new System.Windows.Forms.Padding(4);
-            this.panelTituloBarra.Name = "panelTituloBarra";
-            this.panelTituloBarra.Size = new System.Drawing.Size(1415, 50);
-            this.panelTituloBarra.TabIndex = 3;
-            this.panelTituloBarra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTituloBarra_MouseDown);
-            // 
-            // lblTituloFormularioHijo
-            // 
-            this.lblTituloFormularioHijo.AutoSize = true;
-            this.lblTituloFormularioHijo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloFormularioHijo.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblTituloFormularioHijo.Location = new System.Drawing.Point(78, 13);
-            this.lblTituloFormularioHijo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTituloFormularioHijo.Name = "lblTituloFormularioHijo";
-            this.lblTituloFormularioHijo.Size = new System.Drawing.Size(51, 21);
-            this.lblTituloFormularioHijo.TabIndex = 1;
-            this.lblTituloFormularioHijo.Text = "Inicio";
-            // 
-            // panelShadow
-            // 
-            this.panelShadow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.panelShadow.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelShadow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(42)))), ((int)(((byte)(26)))));
-            this.panelShadow.Location = new System.Drawing.Point(250, 50);
-            this.panelShadow.Margin = new System.Windows.Forms.Padding(4);
-            this.panelShadow.Name = "panelShadow";
-            this.panelShadow.Size = new System.Drawing.Size(1415, 13);
-            this.panelShadow.TabIndex = 4;
-            // 
-            // panelEscritorio
-            // 
-            this.panelEscritorio.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panelEscritorio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEscritorio.Location = new System.Drawing.Point(250, 63);
-            this.panelEscritorio.Margin = new System.Windows.Forms.Padding(4);
-            this.panelEscritorio.Name = "panelEscritorio";
-            this.panelEscritorio.Size = new System.Drawing.Size(1415, 815);
-            this.panelEscritorio.TabIndex = 5;
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.btnMaximizar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnMaximizar.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMaximizar.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
-            this.btnMaximizar.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnMaximizar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnMaximizar.IconSize = 27;
-            this.btnMaximizar.Location = new System.Drawing.Point(1334, 0);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Padding = new System.Windows.Forms.Padding(0, 10, 10, 0);
-            this.btnMaximizar.Size = new System.Drawing.Size(27, 50);
-            this.btnMaximizar.TabIndex = 7;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
-            this.btnMaximizar.MouseHover += new System.EventHandler(this.btnMaximizar_MouseHover);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.btnMinimizar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnMinimizar.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMinimizar.IconChar = FontAwesome.Sharp.IconChar.Minus;
-            this.btnMinimizar.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnMinimizar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnMinimizar.IconSize = 27;
-            this.btnMinimizar.Location = new System.Drawing.Point(1361, 0);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Padding = new System.Windows.Forms.Padding(0, 10, 10, 0);
-            this.btnMinimizar.Size = new System.Drawing.Size(27, 50);
-            this.btnMinimizar.TabIndex = 6;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            this.btnMinimizar.MouseHover += new System.EventHandler(this.btnMaximizar_MouseHover);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.btnCerrar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnCerrar.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnCerrar.IconChar = FontAwesome.Sharp.IconChar.Times;
-            this.btnCerrar.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCerrar.IconSize = 27;
-            this.btnCerrar.Location = new System.Drawing.Point(1388, 0);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Padding = new System.Windows.Forms.Padding(0, 10, 10, 0);
-            this.btnCerrar.Size = new System.Drawing.Size(27, 50);
-            this.btnCerrar.TabIndex = 5;
-            this.btnCerrar.TabStop = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            this.btnCerrar.MouseHover += new System.EventHandler(this.btnMaximizar_MouseHover);
-            // 
-            // btnHijoActual
-            // 
-            this.btnHijoActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.btnHijoActual.FlatAppearance.BorderSize = 0;
-            this.btnHijoActual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHijoActual.IconChar = FontAwesome.Sharp.IconChar.Home;
-            this.btnHijoActual.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnHijoActual.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnHijoActual.Location = new System.Drawing.Point(8, -7);
-            this.btnHijoActual.Margin = new System.Windows.Forms.Padding(4);
-            this.btnHijoActual.Name = "btnHijoActual";
-            this.btnHijoActual.Size = new System.Drawing.Size(71, 65);
-            this.btnHijoActual.TabIndex = 0;
-            this.btnHijoActual.UseVisualStyleBackColor = false;
-            // 
             // btnimprimir
             // 
             this.btnimprimir.Dock = System.Windows.Forms.DockStyle.Top;
@@ -221,7 +92,7 @@ namespace Policial
             this.btnimprimir.Padding = new System.Windows.Forms.Padding(13, 0, 27, 0);
             this.btnimprimir.Size = new System.Drawing.Size(250, 78);
             this.btnimprimir.TabIndex = 7;
-            this.btnimprimir.Text = "   Cuotas Generales";
+            this.btnimprimir.Text = "   Imprimir Cuotas";
             this.btnimprimir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnimprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnimprimir.UseVisualStyleBackColor = true;
@@ -293,7 +164,7 @@ namespace Policial
             this.iconButton4.Padding = new System.Windows.Forms.Padding(13, 0, 27, 0);
             this.iconButton4.Size = new System.Drawing.Size(250, 78);
             this.iconButton4.TabIndex = 4;
-            this.iconButton4.Text = "   Cuotas Individuales";
+            this.iconButton4.Text = "   Generar Cuotas";
             this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton4.UseVisualStyleBackColor = true;
@@ -371,6 +242,17 @@ namespace Policial
             this.iconButton1.UseVisualStyleBackColor = true;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
+            // panelLogo
+            // 
+            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panelLogo.Controls.Add(this.btnInicio);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(4);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(250, 183);
+            this.panelLogo.TabIndex = 0;
+            // 
             // btnInicio
             // 
             this.btnInicio.Image = global::Policial.Properties.Resources.logo;
@@ -382,6 +264,124 @@ namespace Policial
             this.btnInicio.TabIndex = 0;
             this.btnInicio.TabStop = false;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
+            // 
+            // panelTituloBarra
+            // 
+            this.panelTituloBarra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panelTituloBarra.Controls.Add(this.btnMaximizar);
+            this.panelTituloBarra.Controls.Add(this.btnMinimizar);
+            this.panelTituloBarra.Controls.Add(this.btnCerrar);
+            this.panelTituloBarra.Controls.Add(this.lblTituloFormularioHijo);
+            this.panelTituloBarra.Controls.Add(this.btnHijoActual);
+            this.panelTituloBarra.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTituloBarra.Location = new System.Drawing.Point(250, 0);
+            this.panelTituloBarra.Margin = new System.Windows.Forms.Padding(4);
+            this.panelTituloBarra.Name = "panelTituloBarra";
+            this.panelTituloBarra.Size = new System.Drawing.Size(1415, 50);
+            this.panelTituloBarra.TabIndex = 3;
+            this.panelTituloBarra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTituloBarra_MouseDown);
+            // 
+            // btnMaximizar
+            // 
+            this.btnMaximizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.btnMaximizar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMaximizar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnMaximizar.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
+            this.btnMaximizar.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnMaximizar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMaximizar.IconSize = 27;
+            this.btnMaximizar.Location = new System.Drawing.Point(1334, 0);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Padding = new System.Windows.Forms.Padding(0, 10, 10, 0);
+            this.btnMaximizar.Size = new System.Drawing.Size(27, 50);
+            this.btnMaximizar.TabIndex = 7;
+            this.btnMaximizar.TabStop = false;
+            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            this.btnMaximizar.MouseHover += new System.EventHandler(this.btnMaximizar_MouseHover);
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.btnMinimizar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMinimizar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnMinimizar.IconChar = FontAwesome.Sharp.IconChar.Minus;
+            this.btnMinimizar.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnMinimizar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMinimizar.IconSize = 27;
+            this.btnMinimizar.Location = new System.Drawing.Point(1361, 0);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Padding = new System.Windows.Forms.Padding(0, 10, 10, 0);
+            this.btnMinimizar.Size = new System.Drawing.Size(27, 50);
+            this.btnMinimizar.TabIndex = 6;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            this.btnMinimizar.MouseHover += new System.EventHandler(this.btnMaximizar_MouseHover);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.btnCerrar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCerrar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnCerrar.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnCerrar.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCerrar.IconSize = 27;
+            this.btnCerrar.Location = new System.Drawing.Point(1388, 0);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Padding = new System.Windows.Forms.Padding(0, 10, 10, 0);
+            this.btnCerrar.Size = new System.Drawing.Size(27, 50);
+            this.btnCerrar.TabIndex = 5;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCerrar.MouseHover += new System.EventHandler(this.btnMaximizar_MouseHover);
+            // 
+            // lblTituloFormularioHijo
+            // 
+            this.lblTituloFormularioHijo.AutoSize = true;
+            this.lblTituloFormularioHijo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloFormularioHijo.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblTituloFormularioHijo.Location = new System.Drawing.Point(78, 13);
+            this.lblTituloFormularioHijo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTituloFormularioHijo.Name = "lblTituloFormularioHijo";
+            this.lblTituloFormularioHijo.Size = new System.Drawing.Size(51, 21);
+            this.lblTituloFormularioHijo.TabIndex = 1;
+            this.lblTituloFormularioHijo.Text = "Inicio";
+            // 
+            // btnHijoActual
+            // 
+            this.btnHijoActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.btnHijoActual.FlatAppearance.BorderSize = 0;
+            this.btnHijoActual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHijoActual.IconChar = FontAwesome.Sharp.IconChar.Home;
+            this.btnHijoActual.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnHijoActual.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnHijoActual.Location = new System.Drawing.Point(8, -7);
+            this.btnHijoActual.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHijoActual.Name = "btnHijoActual";
+            this.btnHijoActual.Size = new System.Drawing.Size(71, 65);
+            this.btnHijoActual.TabIndex = 0;
+            this.btnHijoActual.UseVisualStyleBackColor = false;
+            // 
+            // panelShadow
+            // 
+            this.panelShadow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.panelShadow.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelShadow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(42)))), ((int)(((byte)(26)))));
+            this.panelShadow.Location = new System.Drawing.Point(250, 50);
+            this.panelShadow.Margin = new System.Windows.Forms.Padding(4);
+            this.panelShadow.Name = "panelShadow";
+            this.panelShadow.Size = new System.Drawing.Size(1415, 13);
+            this.panelShadow.TabIndex = 4;
+            // 
+            // panelEscritorio
+            // 
+            this.panelEscritorio.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelEscritorio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEscritorio.Location = new System.Drawing.Point(250, 63);
+            this.panelEscritorio.Margin = new System.Windows.Forms.Padding(4);
+            this.panelEscritorio.Name = "panelEscritorio";
+            this.panelEscritorio.Size = new System.Drawing.Size(1415, 815);
+            this.panelEscritorio.TabIndex = 5;
             // 
             // frmPrincipal
             // 
@@ -400,12 +400,12 @@ namespace Policial
             this.Text = "frmPrincipal";
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnInicio)).EndInit();
             this.panelTituloBarra.ResumeLayout(false);
             this.panelTituloBarra.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnInicio)).EndInit();
             this.ResumeLayout(false);
 
         }
