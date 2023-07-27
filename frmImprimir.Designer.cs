@@ -49,6 +49,8 @@ namespace Policial
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnPagarCuotas = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkPagar = new System.Windows.Forms.CheckBox();
+            this.chkImprimir = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -178,7 +180,7 @@ namespace Policial
             "2023",
             "2024",
             "2025"});
-            this.cmbAño.Location = new System.Drawing.Point(258, 92);
+            this.cmbAño.Location = new System.Drawing.Point(209, 91);
             this.cmbAño.Name = "cmbAño";
             this.cmbAño.Size = new System.Drawing.Size(103, 21);
             this.cmbAño.TabIndex = 191;
@@ -199,7 +201,7 @@ namespace Policial
             "10",
             "11",
             "12"});
-            this.cmbMes.Location = new System.Drawing.Point(179, 92);
+            this.cmbMes.Location = new System.Drawing.Point(130, 91);
             this.cmbMes.Name = "cmbMes";
             this.cmbMes.Size = new System.Drawing.Size(73, 21);
             this.cmbMes.TabIndex = 190;
@@ -237,7 +239,7 @@ namespace Policial
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(388, 89);
+            this.btnBuscar.Location = new System.Drawing.Point(328, 88);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(198, 24);
             this.btnBuscar.TabIndex = 193;
@@ -266,7 +268,7 @@ namespace Policial
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.ForeColor = System.Drawing.Color.Black;
-            this.checkBox1.Location = new System.Drawing.Point(618, 96);
+            this.checkBox1.Location = new System.Drawing.Point(536, 95);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(124, 17);
             this.checkBox1.TabIndex = 195;
@@ -274,11 +276,41 @@ namespace Policial
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // chkPagar
+            // 
+            this.chkPagar.AutoSize = true;
+            this.chkPagar.Checked = true;
+            this.chkPagar.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPagar.ForeColor = System.Drawing.Color.Black;
+            this.chkPagar.Location = new System.Drawing.Point(704, 123);
+            this.chkPagar.Name = "chkPagar";
+            this.chkPagar.Size = new System.Drawing.Size(78, 17);
+            this.chkPagar.TabIndex = 196;
+            this.chkPagar.Text = "Pagar todo";
+            this.chkPagar.UseVisualStyleBackColor = true;
+            this.chkPagar.CheckedChanged += new System.EventHandler(this.chkPagar_CheckedChanged);
+            // 
+            // chkImprimir
+            // 
+            this.chkImprimir.AutoSize = true;
+            this.chkImprimir.Checked = true;
+            this.chkImprimir.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImprimir.ForeColor = System.Drawing.Color.Black;
+            this.chkImprimir.Location = new System.Drawing.Point(817, 123);
+            this.chkImprimir.Name = "chkImprimir";
+            this.chkImprimir.Size = new System.Drawing.Size(85, 17);
+            this.chkImprimir.TabIndex = 197;
+            this.chkImprimir.Text = "Imprimir todo";
+            this.chkImprimir.UseVisualStyleBackColor = true;
+            this.chkImprimir.CheckedChanged += new System.EventHandler(this.chkImprimir_CheckedChanged);
+            // 
             // frmImprimir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 605);
+            this.Controls.Add(this.chkImprimir);
+            this.Controls.Add(this.chkPagar);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btnPagarCuotas);
             this.Controls.Add(this.btnBuscar);
@@ -318,5 +350,7 @@ namespace Policial
         private System.Windows.Forms.DataGridViewCheckBoxColumn Imprimir;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocDireccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn CuotaFechaPaga;
+        private System.Windows.Forms.CheckBox chkPagar;
+        private System.Windows.Forms.CheckBox chkImprimir;
     }
 }

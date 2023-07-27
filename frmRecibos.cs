@@ -213,7 +213,11 @@ namespace Policial
                         {
                             string tipoSocio = DevolverCategoria(s.SocTipoCuota);
                             string estado = s.SocAtivo ? "Activo" : "Inactivo";
-                            dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre, 
+                            if (marcarTodos)
+                                dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
+                                s.SocPrimerApellido + " " + s.SocSegundoApellido, tipoSocio, s.SocDireccion, s.SocTel, s.SocCelular, estado, true);
+                            else
+                                dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
                                 s.SocPrimerApellido + " " + s.SocSegundoApellido, tipoSocio, s.SocDireccion, s.SocTel, s.SocCelular, estado, false);
                         }
                     }
@@ -315,156 +319,7 @@ namespace Policial
             //}
         }
         private void btnGuardarNF_Click(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    errorProvider.Clear();
-            //    //ILogicaCuota lNF = FabricaLogica.getLogicaCuota();
-            //    IServicePolicial lNF = new ServicePolicialClient();
-            //    Cuota cuota = new Cuota();
-            //    Usuario _usu = Program.usuarioLogueado;
-            //    bool resultado = false;
-            //    bool ret = HayError();
-                
-            //    #region Agregar
-            //    if (btnGuardarNF.Text == "Agregar")
-            //    {
-            //        if (ret == false)
-            //        {
-            //            cuota.SocId = Convert.ToInt32(txtSocIdNF.Text.Trim());
-            //            cuota.CuotaFechaDesde = dtpDesde.Value;
-            //            cuota.CuotaPaga = true ? rbtPaga.Checked == true : rbtPaga.Checked == false;
-            //            if (rbtPaga.Checked)
-            //                cuota.CuotaFechaPaga = dtpFEchaCuotaPaga.Value;
-            //            cuota.CuotaAAAAMM = cmbMes.SelectedItem + "/" + cmbAño.SelectedItem;
-            //            cuota.CuotaTipo = cmbCategoria.SelectedIndex;
-            //            cuota.FecAlta = DateTime.Now;
-            //            cuota.FecModif = DateTime.Now;
-            //            cuota.UsuIdAlta = Program.usuarioLogueado.UsuId;
-            //            cuota.UsuIdModif = Program.usuarioLogueado.UsuId;
-            //        }
-
-            //        if (cuota != null)
-            //        {
-            //            resultado = PersistirCuota(cuota, _usu);
-
-            //            if (resultado)
-            //            {
-            //                mensaje = "La información se guardó correctamente.";
-            //                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //                string paga = cuota.CuotaPaga == true ? "Paga" : "Impaga";
-            //                string tipoCuota = "";
-            //                string fechaPago = "";
-
-            //                if (cuota.CuotaFechaPaga.ToString() == "1/1/0001")
-            //                    fechaPago = "";
-            //                else
-            //                    fechaPago = cuota.CuotaFechaPaga.ToShortDateString();
-            //                tipoCuota = DevolverCategoria(cuota.CuotaTipo);
-
-            //                dgvSociosNF.Rows.Add(cuota.SocId, cuota.CuotaId, cuota.CuotaFechaDesde.ToShortDateString(), tipoCuota,
-            //                paga, cuota.CuotaAAAAMM.ToString(), fechaPago, "Pagar");
-
-            //                dtpDesde.Value = DateTime.Now;
-            //                rbtPaga.Checked = false;
-            //                txtSocIdNF.Text = "";
-            //                txtNombreSocNF.Text = "";
-            //                cmbCategoria.SelectedIndex = -1;
-            //                cmbAño.SelectedIndex = -1;
-            //                cmbMes.SelectedIndex = -1;
-            //            }
-            //            else
-            //            {
-            //                mensaje = "No se guardó la información.";
-            //                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //            }
-            //        }
-            //    }
-            //    #endregion
-
-            //    #region Pagar
-            //    if (btnGuardarNF.Text == "Pagar")
-            //    {
-            //        errorProvider.Clear();
-            //        cuota.CuotaId = Convert.ToInt32(txtNFId.Text);
-            //        cuota.SocId = Convert.ToInt32(txtSocIdNF.Text.Trim());
-            //        cuota.CuotaPaga = true ? rbtPaga.Checked == true : rbtPaga.Checked == false;
-            //        if (rbtPaga.Checked)
-            //            cuota.CuotaFechaPaga = dtpFEchaCuotaPaga.Value;
-            //        cuota.CuotaAAAAMM = cmbMes.SelectedItem + "/" + cmbAño.SelectedItem;                   
-            //        cuota.FecModif = DateTime.Now;
-            //        cuota.UsuIdModif = Program.usuarioLogueado.UsuId;
-
-            //        if (cuota != null)
-            //        {
-            //            resultado = PagarCuota(cuota, _usu);
-
-            //            if (resultado)
-            //            {
-            //                mensaje = "La información se guardó correctamente.";
-            //                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //                List<Cuota> lSocioNF = new List<Cuota>();
-            //                lSocioNF = lNF.BuscarCuotasSocio(Convert.ToInt32(txtBuscarCuota.Text)).ToList();
-
-            //                if (lSocioNF != null && lSocioNF.Count > 0)
-            //                {
-            //                    lSocioNF.OrderBy(x => x.CuotaId).Reverse().ToList();
-            //                    foreach (Cuota c in lSocioNF)
-            //                    {
-            //                        string paga = c.CuotaPaga == true ? "Paga" : "Impaga";
-            //                        string tipoCuota = "";
-            //                        string fechaPago = "";
-
-            //                        if (c.CuotaTipo > 0)
-            //                            tipoCuota = DevolverCategoria(c.CuotaTipo);
-
-            //                        if (c.CuotaFechaPaga == DateTime.MinValue)
-            //                            fechaPago = "";
-            //                        else
-            //                            fechaPago = c.CuotaFechaPaga.ToShortDateString();
-            //                        dgvSociosNF.Rows.Add(c.SocId, c.CuotaId, c.CuotaFechaDesde.ToShortDateString(), tipoCuota.ToString(),
-            //                        paga, c.CuotaAAAAMM.ToString(), fechaPago, "Pagar");
-            //                    }
-            //                }
-
-            //                dtpDesde.Value = DateTime.Now;
-            //                rbtPaga.Checked = false;
-            //                txtSocIdNF.Text = "";
-            //                txtNombreSocNF.Text = "";
-            //                cmbCategoria.SelectedIndex = -1;
-            //                cmbAño.SelectedIndex = -1;
-            //                cmbMes.SelectedIndex = -1;
-            //                cmbMes.Enabled = true;
-            //                cmbAño.Enabled = true;
-            //                dtpDesde.Enabled = true;
-            //                errorProvider.Clear();
-            //            }
-            //            else
-            //            {
-            //                mensaje = "No se guardó la información.";
-            //                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //                dtpDesde.Value = DateTime.Now;
-            //                rbtPaga.Checked = false;
-            //                txtSocIdNF.Text = "";
-            //                txtNombreSocNF.Text = "";
-            //                cmbCategoria.SelectedIndex = -1;
-            //                cmbAño.SelectedIndex = -1;
-            //                cmbMes.SelectedIndex = -1;
-            //                cmbMes.Enabled = true;
-            //                cmbAño.Enabled = true;
-            //                dtpDesde.Enabled = true;
-            //                errorProvider.Clear();
-            //            }
-            //        }
-            //    }
-            //    #endregion
-            //}
-            //catch (Exception ex)
-            //{
-            //    mensaje = ex.Message;
-            //    MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //} 
-        }
+        {}
         private void dgvSociosNF_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -628,7 +483,7 @@ namespace Policial
                         }
                     }
                     else
-                        MessageBox.Show("No selecciono items.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Seleccione Socio para generar cuotas.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
