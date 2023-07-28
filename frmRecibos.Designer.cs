@@ -387,6 +387,7 @@ namespace Policial
             this.Controls.Add(this.lblTituloFormulario);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.dgvSocios);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmRecibos";
             this.Text = "Cuotas Socios";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

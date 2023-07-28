@@ -38,7 +38,7 @@ namespace Policial
             this.SocPrimerApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CuotaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CuotaAAAAMM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pagar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Imprimir = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SocDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CuotaFechaPaga = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,10 +47,10 @@ namespace Policial
             this.label6 = new System.Windows.Forms.Label();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnPagarCuotas = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.chkPagar = new System.Windows.Forms.CheckBox();
             this.chkImprimir = new System.Windows.Forms.CheckBox();
+            this.txtParametro = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +59,7 @@ namespace Policial
             this.lblTituloFormulario.AutoSize = true;
             this.lblTituloFormulario.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloFormulario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.lblTituloFormulario.Location = new System.Drawing.Point(290, 22);
+            this.lblTituloFormulario.Location = new System.Drawing.Point(31, 9);
             this.lblTituloFormulario.Name = "lblTituloFormulario";
             this.lblTituloFormulario.Size = new System.Drawing.Size(370, 38);
             this.lblTituloFormulario.TabIndex = 137;
@@ -72,7 +72,7 @@ namespace Policial
             this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVolver.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolver.ForeColor = System.Drawing.Color.White;
-            this.btnVolver.Location = new System.Drawing.Point(587, 517);
+            this.btnVolver.Location = new System.Drawing.Point(503, 508);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(176, 29);
             this.btnVolver.TabIndex = 136;
@@ -95,15 +95,15 @@ namespace Policial
             this.SocPrimerApellido,
             this.CuotaId,
             this.CuotaAAAAMM,
-            this.Pagar,
+            this.Estado,
             this.Imprimir,
             this.SocDireccion,
             this.CuotaFechaPaga});
-            this.dgvSocios.Location = new System.Drawing.Point(38, 146);
+            this.dgvSocios.Location = new System.Drawing.Point(33, 146);
             this.dgvSocios.Name = "dgvSocios";
             this.dgvSocios.RowHeadersVisible = false;
             this.dgvSocios.RowHeadersWidth = 51;
-            this.dgvSocios.Size = new System.Drawing.Size(887, 343);
+            this.dgvSocios.Size = new System.Drawing.Size(929, 343);
             this.dgvSocios.TabIndex = 135;
             // 
             // SocId
@@ -148,11 +148,11 @@ namespace Policial
             this.CuotaAAAAMM.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.CuotaAAAAMM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // Pagar
+            // Estado
             // 
-            this.Pagar.HeaderText = "Pagar";
-            this.Pagar.Name = "Pagar";
-            this.Pagar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
             // 
             // Imprimir
             // 
@@ -180,7 +180,7 @@ namespace Policial
             "2023",
             "2024",
             "2025"});
-            this.cmbAño.Location = new System.Drawing.Point(209, 91);
+            this.cmbAño.Location = new System.Drawing.Point(212, 71);
             this.cmbAño.Name = "cmbAño";
             this.cmbAño.Size = new System.Drawing.Size(103, 21);
             this.cmbAño.TabIndex = 191;
@@ -201,7 +201,7 @@ namespace Policial
             "10",
             "11",
             "12"});
-            this.cmbMes.Location = new System.Drawing.Point(130, 91);
+            this.cmbMes.Location = new System.Drawing.Point(124, 71);
             this.cmbMes.Name = "cmbMes";
             this.cmbMes.Size = new System.Drawing.Size(73, 21);
             this.cmbMes.TabIndex = 190;
@@ -211,7 +211,7 @@ namespace Policial
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(35, 92);
+            this.label6.Location = new System.Drawing.Point(46, 72);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 17);
             this.label6.TabIndex = 189;
@@ -224,7 +224,7 @@ namespace Policial
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimir.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.ForeColor = System.Drawing.Color.White;
-            this.btnImprimir.Location = new System.Drawing.Point(383, 517);
+            this.btnImprimir.Location = new System.Drawing.Point(233, 508);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(176, 29);
             this.btnImprimir.TabIndex = 192;
@@ -239,7 +239,7 @@ namespace Policial
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(328, 88);
+            this.btnBuscar.Location = new System.Drawing.Point(337, 68);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(198, 24);
             this.btnBuscar.TabIndex = 193;
@@ -247,28 +247,13 @@ namespace Policial
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // btnPagarCuotas
-            // 
-            this.btnPagarCuotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.btnPagarCuotas.FlatAppearance.BorderSize = 0;
-            this.btnPagarCuotas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPagarCuotas.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPagarCuotas.ForeColor = System.Drawing.Color.White;
-            this.btnPagarCuotas.Location = new System.Drawing.Point(179, 517);
-            this.btnPagarCuotas.Name = "btnPagarCuotas";
-            this.btnPagarCuotas.Size = new System.Drawing.Size(176, 29);
-            this.btnPagarCuotas.TabIndex = 194;
-            this.btnPagarCuotas.Text = "Pagar Cuotas";
-            this.btnPagarCuotas.UseVisualStyleBackColor = false;
-            this.btnPagarCuotas.Click += new System.EventHandler(this.button1_Click);
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.ForeColor = System.Drawing.Color.Black;
-            this.checkBox1.Location = new System.Drawing.Point(536, 95);
+            this.checkBox1.Location = new System.Drawing.Point(555, 73);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(124, 17);
             this.checkBox1.TabIndex = 195;
@@ -276,27 +261,13 @@ namespace Policial
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // chkPagar
-            // 
-            this.chkPagar.AutoSize = true;
-            this.chkPagar.Checked = true;
-            this.chkPagar.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPagar.ForeColor = System.Drawing.Color.Black;
-            this.chkPagar.Location = new System.Drawing.Point(704, 123);
-            this.chkPagar.Name = "chkPagar";
-            this.chkPagar.Size = new System.Drawing.Size(78, 17);
-            this.chkPagar.TabIndex = 196;
-            this.chkPagar.Text = "Pagar todo";
-            this.chkPagar.UseVisualStyleBackColor = true;
-            this.chkPagar.CheckedChanged += new System.EventHandler(this.chkPagar_CheckedChanged);
-            // 
             // chkImprimir
             // 
             this.chkImprimir.AutoSize = true;
             this.chkImprimir.Checked = true;
             this.chkImprimir.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkImprimir.ForeColor = System.Drawing.Color.Black;
-            this.chkImprimir.Location = new System.Drawing.Point(817, 123);
+            this.chkImprimir.Location = new System.Drawing.Point(843, 123);
             this.chkImprimir.Name = "chkImprimir";
             this.chkImprimir.Size = new System.Drawing.Size(85, 17);
             this.chkImprimir.TabIndex = 197;
@@ -304,15 +275,34 @@ namespace Policial
             this.chkImprimir.UseVisualStyleBackColor = true;
             this.chkImprimir.CheckedChanged += new System.EventHandler(this.chkImprimir_CheckedChanged);
             // 
+            // txtParametro
+            // 
+            this.txtParametro.Location = new System.Drawing.Point(124, 109);
+            this.txtParametro.Name = "txtParametro";
+            this.txtParametro.Size = new System.Drawing.Size(191, 20);
+            this.txtParametro.TabIndex = 259;
+            this.txtParametro.TextChanged += new System.EventHandler(this.txtParametro_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(46, 110);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 17);
+            this.label1.TabIndex = 260;
+            this.label1.Text = "Buscar";
+            // 
             // frmImprimir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 605);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtParametro);
             this.Controls.Add(this.chkImprimir);
-            this.Controls.Add(this.chkPagar);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.btnPagarCuotas);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.cmbAño);
@@ -321,6 +311,7 @@ namespace Policial
             this.Controls.Add(this.lblTituloFormulario);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.dgvSocios);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmImprimir";
             this.Text = "frmImprimir";
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).EndInit();
@@ -338,19 +329,19 @@ namespace Policial
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Button btnPagarCuotas;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkImprimir;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocId;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocCI;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocPrimerNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocPrimerApellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn CuotaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn CuotaAAAAMM;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Pagar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Imprimir;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocDireccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn CuotaFechaPaga;
-        private System.Windows.Forms.CheckBox chkPagar;
-        private System.Windows.Forms.CheckBox chkImprimir;
+        private System.Windows.Forms.TextBox txtParametro;
+        private System.Windows.Forms.Label label1;
     }
 }

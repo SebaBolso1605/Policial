@@ -29,10 +29,10 @@ namespace Policial
             btnVolver.BackColor = RGBColors.color4;
             lblTituloFormulario.ForeColor = RGBColors.color4;
             btnBuscar.BackColor = RGBColors.color4;
-            btnPagarCuotas.BackColor = RGBColors.color4;
+            //btnPagarCuotas.BackColor = RGBColors.color4;
             ListarCuotasSocios();
             chkImprimir.Checked = false;
-            chkPagar.Checked = false;
+            //chkPagar.Checked = false;
         }
         public struct RGBColors
         {
@@ -43,53 +43,53 @@ namespace Policial
             public static Color color4 = Color.FromArgb(249, 88, 155);
             public static Color color5 = Color.FromArgb(24, 161, 251);
         }
-        public void PagarCuotas()
-        {
-            try
-            {
-                IServicePolicial ls = new ServicePolicialClient();
-                Cuota cuota = new Cuota();
-                DataTable dtRetorno = new DataTable();
-                var filaSeleccionada = dgvSocios.CurrentRow;
-                DialogResult drPagar = new DialogResult();
-                DialogResult drImprimir;
+        //public void PagarCuotas()
+        //{
+        //    try
+        //    {
+        //        IServicePolicial ls = new ServicePolicialClient();
+        //        Cuota cuota = new Cuota();
+        //        DataTable dtRetorno = new DataTable();
+        //        var filaSeleccionada = dgvSocios.CurrentRow;
+        //        DialogResult drPagar = new DialogResult();
+        //        DialogResult drImprimir;
 
-                int totalSeleccion = dgvSocios.Rows.Cast<DataGridViewRow>().
-                    Where(p => Convert.ToBoolean(p.Cells["Pagar"].Value)).Count();
-                if (totalSeleccion > 0)
-                {
-                    drPagar = MessageBox.Show("Confirma pagar " + totalSeleccion + " cuotas seleccionadas?",
-                         "Pagar seleccion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                }
+        //        int totalSeleccion = dgvSocios.Rows.Cast<DataGridViewRow>().
+        //            Where(p => Convert.ToBoolean(p.Cells["Pagar"].Value)).Count();
+        //        if (totalSeleccion > 0)
+        //        {
+        //            drPagar = MessageBox.Show("Confirma pagar " + totalSeleccion + " cuotas seleccionadas?",
+        //                 "Pagar seleccion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        //        }
 
-                if (drPagar == DialogResult.OK)
-                {
-                    foreach (DataGridViewRow row in dgvSocios.Rows)
-                    {
-                        if (Convert.ToBoolean(row.Cells["Pagar"].Value))
-                        {
-                            Usuario usuario = Program.usuarioLogueado;
-                            cuota.SocId = Convert.ToInt32(row.Cells["SocId"].Value);
-                            cuota.CuotaId = Convert.ToInt32(row.Cells["CuotaId"].Value);
-                            DateTime fechaPago = DateTime.Now;
-                            string dateTime = fechaPago.ToString("yyyyMMdd");
-                            cuota.CuotaFechaPaga = Convert.ToDateTime(dateTime);
-                            //Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd"));
-                            ls.PagarCuotaSocio(cuota, usuario);
-                        }
-                    }
-                }
-                else
-                {
+        //        if (drPagar == DialogResult.OK)
+        //        {
+        //            foreach (DataGridViewRow row in dgvSocios.Rows)
+        //            {
+        //                if (Convert.ToBoolean(row.Cells["Pagar"].Value))
+        //                {
+        //                    Usuario usuario = Program.usuarioLogueado;
+        //                    cuota.SocId = Convert.ToInt32(row.Cells["SocId"].Value);
+        //                    cuota.CuotaId = Convert.ToInt32(row.Cells["CuotaId"].Value);
+        //                    DateTime fechaPago = DateTime.Now;
+        //                    string dateTime = fechaPago.ToString("yyyyMMdd");
+        //                    cuota.CuotaFechaPaga = Convert.ToDateTime(dateTime);
+        //                    //Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd"));
+        //                    ls.PagarCuotaSocio(cuota, usuario);
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
 
-                }
-            }
-            catch (Exception ex)
-            {
-                mensaje = ex.Message;
-                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        mensaje = ex.Message;
+        //        MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        //    }
+        //}
         public void ImprimirCuotas()
         {
             try
@@ -113,7 +113,6 @@ namespace Policial
                 dgvSocios.Rows.Clear();
                 listaSocios = ls.ListarSocios().ToList();
                 bool soloCuotasImpagas = checkBox1.Checked ? true : false;
-                bool pagarTodo = chkPagar.Checked ? true : false;
                 bool imprimirTodo = chkImprimir.Checked ? true : false;
 
                 if (listaSocios.Count > 0)
@@ -128,12 +127,12 @@ namespace Policial
                             {
                                 if (!c.CuotaPaga)
                                 {
-                                    if (pagarTodo && imprimirTodo)
-                                        dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, c.CuotaId, c.CuotaAAAAMM, true, true);
-                                    else if (pagarTodo && !imprimirTodo)
-                                        dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, c.CuotaId, c.CuotaAAAAMM, true);
+                                    if (imprimirTodo)
+                                        dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre, 
+                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM, "Impaga",true);                                
                                     else
-                                        dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, c.CuotaId, c.CuotaAAAAMM, c.CuotaPaga);
+                                        dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
+                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM, "Impaga");
                                 }
                             }
                         }
@@ -141,12 +140,13 @@ namespace Policial
                         {
                             foreach (Cuota c in listaCuotas)
                             {
-                                if (pagarTodo && imprimirTodo)
-                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, c.CuotaId, c.CuotaAAAAMM, true, true);
-                                else if (pagarTodo && !imprimirTodo)
-                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, c.CuotaId, c.CuotaAAAAMM, true);
+                                string estado = c.CuotaPaga ? "Paga" : "Impaga";
+                                if (imprimirTodo)
+                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
+                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM, estado,true);
                                 else
-                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, c.CuotaId, c.CuotaAAAAMM, c.CuotaPaga);
+                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
+                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM,estado);
                             }
                         }
                     }
@@ -243,7 +243,7 @@ namespace Policial
         {
             try
             {
-                PagarCuotas();
+                //PagarCuotas();
             }
             catch (Exception ex)
             {
@@ -288,7 +288,8 @@ namespace Policial
                             foreach (Cuota c in listaCuotas)
                             {
                                 if (!c.CuotaPaga && c.CuotaAAAAMM == mes + "/" + año)
-                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, c.CuotaId, c.CuotaAAAAMM, c.CuotaPaga);
+                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
+                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM,"Impaga");
                             }
                         }
                         if (listaCuotas.Count > 0 && !soloCuotasImpagas)
@@ -296,7 +297,8 @@ namespace Policial
                             foreach (Cuota c in listaCuotas)
                             {
                                 if (c.CuotaPaga && c.CuotaAAAAMM == mes + "/" + año)
-                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, c.CuotaId, c.CuotaAAAAMM, c.CuotaPaga);
+                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
+                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM,"Paga");
                             }
                         }
                     }
@@ -305,18 +307,6 @@ namespace Policial
             catch (Exception ex)
             {
                 string mensaje = ex.Message;
-                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-        private void chkPagar_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                ListarCuotasSocios();
-            }
-            catch (Exception ex)
-            {
-                mensaje = ex.Message;
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
@@ -333,5 +323,72 @@ namespace Policial
             }
         }
         #endregion
+
+        private void txtParametro_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                IServicePolicial lc = new ServicePolicialClient();
+                IServicePolicial ls = new ServicePolicialClient();
+                List<Cuota> listaCuotas = new List<Cuota>();
+                List<Socio> listaSocios = new List<Socio>();
+                listaSocios = ls.ListarSocios().ToList();
+                bool soloCuotasImpagas = checkBox1.Checked ? true : false;
+
+                var _resultado = (from unSocio in listaSocios
+                                  where unSocio.SocId.ToString().ToUpper().Contains(txtParametro.Text.ToUpper()) ||
+                                  unSocio.SocCI.ToString().ToUpper().Contains(txtParametro.Text.ToUpper()) ||
+                                  unSocio.SocPrimerNombre.ToString().ToUpper().Contains(txtParametro.Text.ToUpper()) ||
+                                  unSocio.SocPrimerApellido.ToString().ToUpper().Contains(txtParametro.Text.ToUpper()) ||
+                                  unSocio.SocDireccion.ToString().ToUpper().Contains(txtParametro.Text.ToUpper()) ||
+                                  unSocio.SocTipoCuota.ToString().ToUpper().Contains(txtParametro.Text.ToUpper()) ||
+                                  unSocio.SocSegundoApellido.ToString().ToUpper().Contains(txtParametro.Text.ToUpper())
+                                  select new Socio
+                                  {
+                                      SocId = unSocio.SocId,
+                                      SocCI = unSocio.SocCI,
+                                      SocPrimerNombre = unSocio.SocPrimerNombre,
+                                      SocPrimerApellido = unSocio.SocPrimerApellido,
+                                      SocSegundoNombre = unSocio.SocSegundoNombre,
+                                      SocSegundoApellido = unSocio.SocSegundoApellido,
+                                      SocFechaNacimiento = unSocio.SocFechaNacimiento,
+                                      SocFechaIngreso = unSocio.SocFechaIngreso,
+                                      SocDireccion = unSocio.SocDireccion,
+                                      SocEmail = unSocio.SocEmail,
+                                      SocTel = unSocio.SocTel,
+                                      SocCelular = unSocio.SocCelular,
+                                      SocAtivo = unSocio.SocAtivo,
+                                      SocTipoCuota = unSocio.SocTipoCuota,
+                                  }).ToList();
+
+                dgvSocios.Rows.Clear();
+
+                if (listaSocios.Count > 0)
+                {
+                    foreach (Socio s in listaSocios)
+                    {
+                        listaCuotas = lc.BuscarCuotasSocio(s.SocId).ToList();
+
+                        if (listaCuotas.Count > 0 && soloCuotasImpagas)
+                        {
+                            foreach (Cuota c in listaCuotas)
+                            {
+                                if (!c.CuotaPaga )
+                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
+                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM, "Impaga");
+                                if (c.CuotaPaga)
+                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
+                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM, "Paga");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string mensaje = ex.Message;
+                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }

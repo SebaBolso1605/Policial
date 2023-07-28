@@ -246,13 +246,6 @@ namespace Policial
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
-
-
-
-
-
-
         private void btnBuscarNF_Click(object sender, EventArgs e)
         {
             //try

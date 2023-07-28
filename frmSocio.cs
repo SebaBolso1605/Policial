@@ -191,7 +191,8 @@ namespace Policial
                     foreach (Socio s in _resultado)
                     {
                         string estado = s.SocAtivo ? "Activo" : "Inactivo";
-                        dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, s.SocDireccion, s.SocTel, s.SocCelular, estado,"Editar");
+                        dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
+                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, s.SocDireccion, s.SocTel, s.SocCelular, estado,"Editar");
                     }
                 }
             }
