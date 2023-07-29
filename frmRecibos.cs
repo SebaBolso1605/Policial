@@ -465,7 +465,7 @@ namespace Policial
                                 int tipo = DevolverCategoriaDescrip(row.Cells["TipoCuota"].Value.ToString());
                                 cuota.CuotaTipo = tipo;    
                                 cuota.CuotaPaga = false;
-                                cuota.CuotaAAAAMM = comboBox1.SelectedItem.ToString() + "/" + comboBox2.SelectedItem.ToString();
+                                cuota.CuotaAAAAMM = comboBox2.SelectedItem.ToString() + "/" + comboBox1.SelectedItem.ToString();
 
                                 bool retorno = PersistirCuota(cuota, usuario);
                                 if(retorno)

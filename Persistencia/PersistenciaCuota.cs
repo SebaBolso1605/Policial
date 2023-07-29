@@ -304,8 +304,6 @@ namespace Persistencia
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@IdSocio", c.SocId);
             cmd.Parameters.AddWithValue("@IdCuota", c.CuotaId);
-            cmd.Parameters.AddWithValue("@CuotaFechaPaga", c.CuotaFechaPaga);
-            cmd.Parameters.AddWithValue("@FechaModifica", c.FecModif);
             cmd.Parameters.AddWithValue("@UsuIdModifica", usu.UsuId);
 
             SqlParameter prmRetorno = new SqlParameter("@Retorno", SqlDbType.Int);
