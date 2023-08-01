@@ -238,7 +238,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\plantilla.bmp" />
-    <None Include="Resources\plantillaHTML.html" />
+    <None Include="Resources\plantillaHTML.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

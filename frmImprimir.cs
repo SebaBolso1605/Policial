@@ -11,6 +11,7 @@ using System.IO;
 using Policial.ServicePolicial;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
 using iTextSharp.tool.xml;
 
 namespace Policial
@@ -43,53 +44,6 @@ namespace Policial
             public static Color color4 = Color.FromArgb(249, 88, 155);
             public static Color color5 = Color.FromArgb(24, 161, 251);
         }
-        //public void PagarCuotas()
-        //{
-        //    try
-        //    {
-        //        IServicePolicial ls = new ServicePolicialClient();
-        //        Cuota cuota = new Cuota();
-        //        DataTable dtRetorno = new DataTable();
-        //        var filaSeleccionada = dgvSocios.CurrentRow;
-        //        DialogResult drPagar = new DialogResult();
-        //        DialogResult drImprimir;
-
-        //        int totalSeleccion = dgvSocios.Rows.Cast<DataGridViewRow>().
-        //            Where(p => Convert.ToBoolean(p.Cells["Pagar"].Value)).Count();
-        //        if (totalSeleccion > 0)
-        //        {
-        //            drPagar = MessageBox.Show("Confirma pagar " + totalSeleccion + " cuotas seleccionadas?",
-        //                 "Pagar seleccion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-        //        }
-
-        //        if (drPagar == DialogResult.OK)
-        //        {
-        //            foreach (DataGridViewRow row in dgvSocios.Rows)
-        //            {
-        //                if (Convert.ToBoolean(row.Cells["Pagar"].Value))
-        //                {
-        //                    Usuario usuario = Program.usuarioLogueado;
-        //                    cuota.SocId = Convert.ToInt32(row.Cells["SocId"].Value);
-        //                    cuota.CuotaId = Convert.ToInt32(row.Cells["CuotaId"].Value);
-        //                    DateTime fechaPago = DateTime.Now;
-        //                    string dateTime = fechaPago.ToString("yyyyMMdd");
-        //                    cuota.CuotaFechaPaga = Convert.ToDateTime(dateTime);
-        //                    //Convert.ToDateTime(DateTime.Now.ToString("yyyy/MM/dd"));
-        //                    ls.PagarCuotaSocio(cuota, usuario);
-        //                }
-        //            }
-        //        }
-        //        else
-        //        {
-
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        mensaje = ex.Message;
-        //        MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        //    }
-        //}
         public void ImprimirCuotas()
         {
             try
@@ -165,31 +119,12 @@ namespace Policial
             try
             {
                 var filaSeleccionada = dgvSocios.CurrentRow;
-                //SaveFileDialog guardar = new SaveFileDialog();
-                //guardar.FileName = DateTime.Now.ToString("ddMMyyyy") + ".pdf";
+                SaveFileDialog guardar = new SaveFileDialog();
                 string nombre = DateTime.Now.ToString("ddMMyyyy") + ".pdf";
                 string plantillaHtlm = Properties.Resources.plantillaHTML.ToString();
 
-
-
-                System.IO.FileStream fileStream = new FileStream(nombre, FileMode.Create);
-
-                    Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 10, 10);
-                    PdfWriter writer = PdfWriter.GetInstance(doc, fileStream);
-
-                    doc.Open();
-                    doc.Add(new Phrase(""));
-
-                    using (StreamReader reader = new StreamReader(plantillaHtlm))
-                    {
-                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, reader);
-                    }
-
-                    doc.Close();
-                    fileStream.Close();
-
-
-                //plantillaHtlm = plantillaHtlm.Replace("@Socio", filaSeleccionada.Cells["SocId"].Value.ToString());
+                //System.IO.FileStream fileStream = new FileStream(@"C:\Users\Admin\Desktop\prueba.pdf", FileMode.Create);
+                plantillaHtlm = plantillaHtlm.Replace("@Socio", filaSeleccionada.Cells["SocId"].Value.ToString());
                 //plantillaHtlm = plantillaHtlm.Replace("@Nombre", filaSeleccionada.Cells["SocPrimerNombre"].Value.ToString() + filaSeleccionada.Cells["SocPrimerApellido"].Value.ToString());
                 //plantillaHtlm = plantillaHtlm.Replace("@Direccion", filaSeleccionada.Cells["SocDireccion"].Value.ToString());
                 //plantillaHtlm = plantillaHtlm.Replace("@CuotaSocial", filaSeleccionada.Cells["SocId"].Value.ToString());
@@ -198,25 +133,39 @@ namespace Policial
                 //plantillaHtlm = plantillaHtlm.Replace("@FechaDeIngreso", filaSeleccionada.Cells["SocId"].Value.ToString());
                 //plantillaHtlm = plantillaHtlm.Replace("@AnioMes", filaSeleccionada.Cells["CuotaAAAAMM"].Value.ToString());
 
-                //if (guardar.ShowDialog() == DialogResult.OK)
-                //{
-                //    using (FileStream fileStream = new FileStream(guardar.FileName, FileMode.Create, FileAccess.Write))
-                //    {
-                //        Document doc = new Document(iTextSharp.text.PageSize.A4,10,10,10,10);
-                //        PdfWriter writer = PdfWriter.GetInstance(doc,fileStream);
+                //Document doc = new Document(PageSize.A4);
+                //PdfWriter writer = PdfWriter.GetInstance(doc, fileStream);
 
-                //        doc.Open();
-                //        doc.Add(new Phrase(""));
+                //doc.Open();
+                ////doc.Add(new Phrase(""));           
 
-                //        using(StreamReader reader = new StreamReader(plantillaHtlm))
-                //        {
-                //            XMLWorkerHelper.GetInstance().ParseXHtml(writer,doc,reader); 
-                //        }
+                //using (StreamReader reader = new StreamReader(@"C:\Users\Admin\Desktop\plantillaHTML.html"))
+                // {
+                //    XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, reader);
+                // }
 
-                //        doc.Close();
-                //        fileStream.Close();
-                //    }
-                //}
+                //doc.Close();
+                //fileStream.Close();
+
+                if (guardar.ShowDialog() == DialogResult.OK)
+                {
+                    using (FileStream fileStream = new FileStream(@"C:\Users\Admin\Desktop\prueba.pdf", FileMode.Create, FileAccess.Write))
+                    {
+                        Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 10, 10);
+                        PdfWriter writer = PdfWriter.GetInstance(doc, fileStream);
+
+                        doc.Open();
+                        doc.Add(new Phrase(""));
+
+                        using (StreamReader reader = new StreamReader(plantillaHtlm))
+                        {
+                            XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, reader);
+                        }
+
+                        doc.Close();
+                        fileStream.Close();
+                    }
+                }
                 //else { }
             }
             catch (Exception ex)
