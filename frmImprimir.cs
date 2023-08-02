@@ -120,11 +120,12 @@ namespace Policial
             {
                 var filaSeleccionada = dgvSocios.CurrentRow;
                 SaveFileDialog guardar = new SaveFileDialog();
-                string nombre = DateTime.Now.ToString("ddMMyyyy") + ".pdf";
+                string nombre = guardar.FileName;
                 string plantillaHtlm = Properties.Resources.plantillaHTML.ToString();
 
+
                 //System.IO.FileStream fileStream = new FileStream(@"C:\Users\Admin\Desktop\prueba.pdf", FileMode.Create);
-                plantillaHtlm = plantillaHtlm.Replace("@Socio", filaSeleccionada.Cells["SocId"].Value.ToString());
+               // plantillaHtlm = plantillaHtlm.Replace("@Socio", filaSeleccionada.Cells["SocId"].Value.ToString());
                 //plantillaHtlm = plantillaHtlm.Replace("@Nombre", filaSeleccionada.Cells["SocPrimerNombre"].Value.ToString() + filaSeleccionada.Cells["SocPrimerApellido"].Value.ToString());
                 //plantillaHtlm = plantillaHtlm.Replace("@Direccion", filaSeleccionada.Cells["SocDireccion"].Value.ToString());
                 //plantillaHtlm = plantillaHtlm.Replace("@CuotaSocial", filaSeleccionada.Cells["SocId"].Value.ToString());
@@ -139,7 +140,7 @@ namespace Policial
                 //doc.Open();
                 ////doc.Add(new Phrase(""));           
 
-                //using (StreamReader reader = new StreamReader(@"C:\Users\Admin\Desktop\plantillaHTML.html"))
+                //using (StreamReader reader = new StreamReader(@"C:\Users\Admin\Desktop\plantillaHTML.html")) //@"C:\Users\Admin\Desktop\prueba.pdf"
                 // {
                 //    XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, reader);
                 // }
@@ -149,7 +150,7 @@ namespace Policial
 
                 if (guardar.ShowDialog() == DialogResult.OK)
                 {
-                    using (FileStream fileStream = new FileStream(@"C:\Users\Admin\Desktop\prueba.pdf", FileMode.Create, FileAccess.Write))
+                    using (FileStream fileStream = new FileStream(guardar.FileName, FileMode.Create, FileAccess.Write))
                     {
                         Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 10, 10);
                         PdfWriter writer = PdfWriter.GetInstance(doc, fileStream);

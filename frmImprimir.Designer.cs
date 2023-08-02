@@ -61,9 +61,9 @@ namespace Policial
             this.lblTituloFormulario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
             this.lblTituloFormulario.Location = new System.Drawing.Point(31, 9);
             this.lblTituloFormulario.Name = "lblTituloFormulario";
-            this.lblTituloFormulario.Size = new System.Drawing.Size(370, 38);
+            this.lblTituloFormulario.Size = new System.Drawing.Size(261, 38);
             this.lblTituloFormulario.TabIndex = 137;
-            this.lblTituloFormulario.Text = "Generar Cuotas Socios";
+            this.lblTituloFormulario.Text = "Imprimir Cuotas";
             // 
             // btnVolver
             // 

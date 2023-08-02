@@ -201,9 +201,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Club-Sportivo-Policial.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Reportes\" />
   </ItemGroup>
   <ItemGroup>
@@ -237,10 +234,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\plantilla.bmp" />
-    <None Include="Resources\plantillaHTML.html">
+    <Content Include="Resources\plantillaHTML.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

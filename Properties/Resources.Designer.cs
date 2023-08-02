@@ -63,16 +63,6 @@ namespace Policial.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Club_Sportivo_Policial {
-            get {
-                object obj = ResourceManager.GetObject("Club-Sportivo-Policial", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
@@ -83,11 +73,19 @@ namespace Policial.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
         ///&lt;html&gt;
-        ///   &lt;head&gt;
-        ///   &lt;/head&gt;
-        ///   &lt;body&gt;
-        ///   &lt;/body&gt;
-        ///&lt;/html&gt;.
+        ///&lt;head&gt;
+        ///    &lt;title&gt;&lt;/title&gt;
+        ///&lt;/head&gt;
+        ///&lt;body&gt;
+        ///    &lt;table border=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+        ///        &lt;tr&gt;
+        ///            &lt;td&gt;
+        ///                &lt;table&gt;
+        ///                    &lt;tr&gt;&lt;td&gt;Socio:&lt;/td&gt;&lt;td&gt;@Socio&lt;/td&gt;&lt;/tr&gt;
+        ///                    &lt;tr&gt;&lt;td&gt;Nombre:&lt;/td&gt;&lt;td&gt;@Nombre&lt;/td&gt;&lt;/tr&gt;
+        ///                    &lt;tr&gt;&lt;td&gt;Direccion:&lt;/td&gt;&lt;td&gt;@Direccion&lt;/td&gt;&lt;/tr&gt;
+        ///                    &lt;tr&gt;&lt;td&gt;Cuota Social:&lt;/td&gt;&lt;td&gt;@CuotaSocial&lt;/td&gt;&lt;/tr&gt;
+        ///                    &lt;tr&gt;&lt;td&gt;Fecha Emision:&lt;/td&gt;&lt;td&gt;@FechaDeEmision&lt;/td&gt;&lt;/t [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string plantillaHTML {
             get {
