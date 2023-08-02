@@ -120,18 +120,31 @@ namespace Policial
             {
                 var filaSeleccionada = dgvSocios.CurrentRow;
                 SaveFileDialog guardar = new SaveFileDialog();
-                string nombre = DateTime.Now.ToString("ddMMyyyy") + ".pdf";
-                string plantillaHtlm = Properties.Resources.plantillaHTML.ToString();
+
+                //como está el código ahora solo vas a seleccionar una, porque no estas iterando, en caso de tenes varias seleccionadas tendrás una lista y habrá que iterar.
+                //esto del nombre ves si lo usas, porque hay que iterar, sino de mientras comenta el if y ponele el nombre que quieras.
+                string nombre = "";
+                if (chkImprimir.Checked)
+                {
+                    nombre = "Todas las cuotas";
+                }
+                else
+                {
+                    nombre = "Cuota del Socio " + filaSeleccionada.Cells["SocPrimerNombre"].Value.ToString() + filaSeleccionada.Cells["SocPrimerApellido"].Value.ToString() + ".pdf";
+                }
+                 //DateTime.Now.ToString("ddMMyyyy") + ".pdf";
+                guardar.FileName = nombre;               
+                string plantillaHtlm = Properties.Resources.plantillaHTML.ToString();  //Properties.Resources.plantilla.ToString();
 
                 //System.IO.FileStream fileStream = new FileStream(@"C:\Users\Admin\Desktop\prueba.pdf", FileMode.Create);
                 plantillaHtlm = plantillaHtlm.Replace("@Socio", filaSeleccionada.Cells["SocId"].Value.ToString());
-                //plantillaHtlm = plantillaHtlm.Replace("@Nombre", filaSeleccionada.Cells["SocPrimerNombre"].Value.ToString() + filaSeleccionada.Cells["SocPrimerApellido"].Value.ToString());
+                plantillaHtlm = plantillaHtlm.Replace("@Nombre", filaSeleccionada.Cells["SocPrimerNombre"].Value.ToString() + filaSeleccionada.Cells["SocPrimerApellido"].Value.ToString());
                 //plantillaHtlm = plantillaHtlm.Replace("@Direccion", filaSeleccionada.Cells["SocDireccion"].Value.ToString());
-                //plantillaHtlm = plantillaHtlm.Replace("@CuotaSocial", filaSeleccionada.Cells["SocId"].Value.ToString());
-                //plantillaHtlm = plantillaHtlm.Replace("@FechaDeEmision", filaSeleccionada.Cells["SocId"].Value.ToString());
-                //plantillaHtlm = plantillaHtlm.Replace("@Email", filaSeleccionada.Cells["SocId"].Value.ToString());
-                //plantillaHtlm = plantillaHtlm.Replace("@FechaDeIngreso", filaSeleccionada.Cells["SocId"].Value.ToString());
-                //plantillaHtlm = plantillaHtlm.Replace("@AnioMes", filaSeleccionada.Cells["CuotaAAAAMM"].Value.ToString());
+                plantillaHtlm = plantillaHtlm.Replace("@CuotaSocial", filaSeleccionada.Cells["SocId"].Value.ToString());
+                plantillaHtlm = plantillaHtlm.Replace("@FechaDeEmision", filaSeleccionada.Cells["SocId"].Value.ToString());
+                plantillaHtlm = plantillaHtlm.Replace("@Email", filaSeleccionada.Cells["SocId"].Value.ToString());
+                plantillaHtlm = plantillaHtlm.Replace("@FechaDeIngreso", filaSeleccionada.Cells["SocId"].Value.ToString());
+                plantillaHtlm = plantillaHtlm.Replace("@AnioMes", filaSeleccionada.Cells["CuotaAAAAMM"].Value.ToString());
 
                 //Document doc = new Document(PageSize.A4);
                 //PdfWriter writer = PdfWriter.GetInstance(doc, fileStream);
@@ -149,15 +162,16 @@ namespace Policial
 
                 if (guardar.ShowDialog() == DialogResult.OK)
                 {
-                    using (FileStream fileStream = new FileStream(@"C:\Users\Admin\Desktop\prueba.pdf", FileMode.Create, FileAccess.Write))
+                    using (FileStream fileStream = new FileStream(guardar.FileName, FileMode.Create)) //, FileAccess.Write))
                     {
-                        Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 10, 10);
+                        Document doc = new Document(PageSize.A4, 10, 10, 10, 10);
                         PdfWriter writer = PdfWriter.GetInstance(doc, fileStream);
 
                         doc.Open();
                         doc.Add(new Phrase(""));
 
-                        using (StreamReader reader = new StreamReader(plantillaHtlm))
+
+                        using (StringReader reader = new StringReader(plantillaHtlm))
                         {
                             XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, reader);
                         }
