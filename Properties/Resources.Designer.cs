@@ -77,15 +77,18 @@ namespace Policial.Properties {
         ///    &lt;title&gt;&lt;/title&gt;
         ///&lt;/head&gt;
         ///&lt;body&gt;
-        ///    &lt;table border=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+        ///    &lt;table border=&quot;1&quot; style=&quot;width:100%&quot; ;&gt;
         ///        &lt;tr&gt;
         ///            &lt;td&gt;
         ///                &lt;table&gt;
-        ///                    &lt;tr&gt;&lt;td&gt;Socio:&lt;/td&gt;&lt;td&gt;@Socio&lt;/td&gt;&lt;/tr&gt;
-        ///                    &lt;tr&gt;&lt;td&gt;Nombre:&lt;/td&gt;&lt;td&gt;@Nombre&lt;/td&gt;&lt;/tr&gt;
-        ///                    &lt;tr&gt;&lt;td&gt;Direccion:&lt;/td&gt;&lt;td&gt;@Direccion&lt;/td&gt;&lt;/tr&gt;
-        ///                    &lt;tr&gt;&lt;td&gt;Cuota Social:&lt;/td&gt;&lt;td&gt;@CuotaSocial&lt;/td&gt;&lt;/tr&gt;
-        ///                    &lt;tr&gt;&lt;td&gt;Fecha Emision:&lt;/td&gt;&lt;td&gt;@FechaDeEmision&lt;/td&gt;&lt;/t [resto de la cadena truncado]&quot;;.
+        ///                    &lt;tr&gt;
+        ///                        &lt;td style=&quot;width:20%&quot;&gt;Socio:&lt;/td&gt;
+        ///                        &lt;td style=&quot;width:40%;&quot;&gt;@Socio&lt;/td&gt;
+        ///                    &lt;/tr&gt;
+        ///                    &lt;tr&gt;
+        ///                        &lt;td style=&quot;width:30%&quot;&gt;Nombre:&lt;/td&gt;
+        ///                        &lt;td style=&quot;width:70%;&quot;&gt;@Nombre&lt;/td&gt;
+        ///                     [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string plantillaHTML {
             get {

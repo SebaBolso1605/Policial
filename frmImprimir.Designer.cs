@@ -32,16 +32,6 @@ namespace Policial
             this.lblTituloFormulario = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.dgvSocios = new System.Windows.Forms.DataGridView();
-            this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocPrimerNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocPrimerApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CuotaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CuotaAAAAMM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Imprimir = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SocDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CuotaFechaPaga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbAño = new System.Windows.Forms.ComboBox();
             this.cmbMes = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -51,6 +41,18 @@ namespace Policial
             this.chkImprimir = new System.Windows.Forms.CheckBox();
             this.txtParametro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocPrimerNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocPrimerApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CuotaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CuotaAAAAMM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CuotaFechaDesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Imprimir = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SocDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CuotaFechaPaga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,81 +98,17 @@ namespace Policial
             this.CuotaId,
             this.CuotaAAAAMM,
             this.Estado,
+            this.CuotaFechaDesde,
             this.Imprimir,
             this.SocDireccion,
-            this.CuotaFechaPaga});
+            this.CuotaFechaPaga,
+            this.SocEmail});
             this.dgvSocios.Location = new System.Drawing.Point(33, 146);
             this.dgvSocios.Name = "dgvSocios";
             this.dgvSocios.RowHeadersVisible = false;
             this.dgvSocios.RowHeadersWidth = 51;
             this.dgvSocios.Size = new System.Drawing.Size(929, 343);
             this.dgvSocios.TabIndex = 135;
-            // 
-            // SocId
-            // 
-            this.SocId.HeaderText = "Socio";
-            this.SocId.Name = "SocId";
-            this.SocId.ReadOnly = true;
-            // 
-            // SocCI
-            // 
-            this.SocCI.HeaderText = "Cédula";
-            this.SocCI.MinimumWidth = 6;
-            this.SocCI.Name = "SocCI";
-            this.SocCI.ReadOnly = true;
-            // 
-            // SocPrimerNombre
-            // 
-            this.SocPrimerNombre.HeaderText = "Nombre";
-            this.SocPrimerNombre.MinimumWidth = 6;
-            this.SocPrimerNombre.Name = "SocPrimerNombre";
-            this.SocPrimerNombre.ReadOnly = true;
-            // 
-            // SocPrimerApellido
-            // 
-            this.SocPrimerApellido.HeaderText = "Apellido";
-            this.SocPrimerApellido.Name = "SocPrimerApellido";
-            this.SocPrimerApellido.ReadOnly = true;
-            // 
-            // CuotaId
-            // 
-            this.CuotaId.HeaderText = "Cuota";
-            this.CuotaId.MinimumWidth = 6;
-            this.CuotaId.Name = "CuotaId";
-            this.CuotaId.ReadOnly = true;
-            // 
-            // CuotaAAAAMM
-            // 
-            this.CuotaAAAAMM.HeaderText = "Mes/Año";
-            this.CuotaAAAAMM.MinimumWidth = 6;
-            this.CuotaAAAAMM.Name = "CuotaAAAAMM";
-            this.CuotaAAAAMM.ReadOnly = true;
-            this.CuotaAAAAMM.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CuotaAAAAMM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            // 
-            // Imprimir
-            // 
-            this.Imprimir.HeaderText = "Imprimir";
-            this.Imprimir.Name = "Imprimir";
-            // 
-            // SocDireccion
-            // 
-            this.SocDireccion.HeaderText = "SocDireccion";
-            this.SocDireccion.Name = "SocDireccion";
-            this.SocDireccion.ReadOnly = true;
-            this.SocDireccion.Visible = false;
-            // 
-            // CuotaFechaPaga
-            // 
-            this.CuotaFechaPaga.HeaderText = "CuotaFechaPaga";
-            this.CuotaFechaPaga.Name = "CuotaFechaPaga";
-            this.CuotaFechaPaga.Visible = false;
             // 
             // cmbAño
             // 
@@ -294,6 +232,83 @@ namespace Policial
             this.label1.TabIndex = 260;
             this.label1.Text = "Buscar";
             // 
+            // SocId
+            // 
+            this.SocId.HeaderText = "Socio";
+            this.SocId.Name = "SocId";
+            this.SocId.ReadOnly = true;
+            // 
+            // SocCI
+            // 
+            this.SocCI.HeaderText = "Cédula";
+            this.SocCI.MinimumWidth = 6;
+            this.SocCI.Name = "SocCI";
+            this.SocCI.ReadOnly = true;
+            // 
+            // SocPrimerNombre
+            // 
+            this.SocPrimerNombre.HeaderText = "Nombre";
+            this.SocPrimerNombre.MinimumWidth = 6;
+            this.SocPrimerNombre.Name = "SocPrimerNombre";
+            this.SocPrimerNombre.ReadOnly = true;
+            // 
+            // SocPrimerApellido
+            // 
+            this.SocPrimerApellido.HeaderText = "Apellido";
+            this.SocPrimerApellido.Name = "SocPrimerApellido";
+            this.SocPrimerApellido.ReadOnly = true;
+            // 
+            // CuotaId
+            // 
+            this.CuotaId.HeaderText = "Cuota";
+            this.CuotaId.MinimumWidth = 6;
+            this.CuotaId.Name = "CuotaId";
+            this.CuotaId.ReadOnly = true;
+            // 
+            // CuotaAAAAMM
+            // 
+            this.CuotaAAAAMM.HeaderText = "Mes/Año";
+            this.CuotaAAAAMM.MinimumWidth = 6;
+            this.CuotaAAAAMM.Name = "CuotaAAAAMM";
+            this.CuotaAAAAMM.ReadOnly = true;
+            this.CuotaAAAAMM.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CuotaAAAAMM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            // 
+            // CuotaFechaDesde
+            // 
+            this.CuotaFechaDesde.HeaderText = "Fecha Emisión";
+            this.CuotaFechaDesde.Name = "CuotaFechaDesde";
+            // 
+            // Imprimir
+            // 
+            this.Imprimir.HeaderText = "Imprimir";
+            this.Imprimir.Name = "Imprimir";
+            // 
+            // SocDireccion
+            // 
+            this.SocDireccion.HeaderText = "SocDireccion";
+            this.SocDireccion.Name = "SocDireccion";
+            this.SocDireccion.ReadOnly = true;
+            this.SocDireccion.Visible = false;
+            // 
+            // CuotaFechaPaga
+            // 
+            this.CuotaFechaPaga.HeaderText = "CuotaFechaPaga";
+            this.CuotaFechaPaga.Name = "CuotaFechaPaga";
+            this.CuotaFechaPaga.Visible = false;
+            // 
+            // SocEmail
+            // 
+            this.SocEmail.HeaderText = "Email";
+            this.SocEmail.Name = "SocEmail";
+            this.SocEmail.Visible = false;
+            // 
             // frmImprimir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,6 +346,8 @@ namespace Policial
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox chkImprimir;
+        private System.Windows.Forms.TextBox txtParametro;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocId;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocCI;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocPrimerNombre;
@@ -338,10 +355,10 @@ namespace Policial
         private System.Windows.Forms.DataGridViewTextBoxColumn CuotaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn CuotaAAAAMM;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CuotaFechaDesde;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Imprimir;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocDireccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn CuotaFechaPaga;
-        private System.Windows.Forms.TextBox txtParametro;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SocEmail;
     }
 }

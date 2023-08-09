@@ -234,6 +234,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\logo.jpeg" />
+    <None Include="Resources\logo.png" />
     <Content Include="Resources\plantillaHTML.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

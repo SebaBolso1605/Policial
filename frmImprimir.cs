@@ -82,11 +82,11 @@ namespace Policial
                                 if (!c.CuotaPaga)
                                 {
                                     if (imprimirTodo)
-                                        dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre, 
-                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM, "Impaga",true);                                
+                                        dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre, s.SocPrimerApellido + " " + s.SocSegundoApellido,
+                                            c.CuotaId, c.CuotaAAAAMM, "Impaga", c.CuotaFechaDesde, true, s.SocDireccion, s.SocEmail);                                
                                     else
-                                        dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
-                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM, "Impaga");
+                                        dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre, s.SocPrimerApellido + " " + s.SocSegundoApellido, 
+                                            c.CuotaId, c.CuotaAAAAMM, "Impaga", c.CuotaFechaDesde, false, s.SocDireccion, s.SocEmail);
                                 }
                             }
                         }
@@ -96,11 +96,11 @@ namespace Policial
                             {
                                 string estado = c.CuotaPaga ? "Paga" : "Impaga";
                                 if (imprimirTodo)
-                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
-                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM, estado,true);
+                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre, s.SocPrimerApellido + " " + s.SocSegundoApellido, 
+                                        c.CuotaId, c.CuotaAAAAMM, estado, c.CuotaFechaDesde,true, s.SocDireccion, s.SocEmail);
                                 else
-                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
-                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM,estado);
+                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre, s.SocPrimerApellido + " " + s.SocSegundoApellido, 
+                                        c.CuotaId, c.CuotaAAAAMM, estado, c.CuotaFechaDesde, false, s.SocDireccion, s.SocEmail);
                             }
                         }
                     }
@@ -120,45 +120,41 @@ namespace Policial
             {
                 var filaSeleccionada = dgvSocios.CurrentRow;
                 SaveFileDialog guardar = new SaveFileDialog();
-                string nombre = guardar.FileName;
+                string nombre = "";
+                if (chkImprimir.Checked)
+                    nombre = "Todas las cuotas";
+                else
+                    nombre = "Cuota del Socio" + filaSeleccionada.Cells["SocPrimerNombre"].Value.ToString() + filaSeleccionada.Cells["SocPrimerNombre"].Value.ToString() + ".pdf";
+
                 string plantillaHtlm = Properties.Resources.plantillaHTML.ToString();
-
-
-                //System.IO.FileStream fileStream = new FileStream(@"C:\Users\Admin\Desktop\prueba.pdf", FileMode.Create);
-               // plantillaHtlm = plantillaHtlm.Replace("@Socio", filaSeleccionada.Cells["SocId"].Value.ToString());
-                //plantillaHtlm = plantillaHtlm.Replace("@Nombre", filaSeleccionada.Cells["SocPrimerNombre"].Value.ToString() + filaSeleccionada.Cells["SocPrimerApellido"].Value.ToString());
-                //plantillaHtlm = plantillaHtlm.Replace("@Direccion", filaSeleccionada.Cells["SocDireccion"].Value.ToString());
-                //plantillaHtlm = plantillaHtlm.Replace("@CuotaSocial", filaSeleccionada.Cells["SocId"].Value.ToString());
-                //plantillaHtlm = plantillaHtlm.Replace("@FechaDeEmision", filaSeleccionada.Cells["SocId"].Value.ToString());
-                //plantillaHtlm = plantillaHtlm.Replace("@Email", filaSeleccionada.Cells["SocId"].Value.ToString());
-                //plantillaHtlm = plantillaHtlm.Replace("@FechaDeIngreso", filaSeleccionada.Cells["SocId"].Value.ToString());
-                //plantillaHtlm = plantillaHtlm.Replace("@AnioMes", filaSeleccionada.Cells["CuotaAAAAMM"].Value.ToString());
-
-                //Document doc = new Document(PageSize.A4);
-                //PdfWriter writer = PdfWriter.GetInstance(doc, fileStream);
-
-                //doc.Open();
-                ////doc.Add(new Phrase(""));           
-
-                //using (StreamReader reader = new StreamReader(@"C:\Users\Admin\Desktop\plantillaHTML.html")) //@"C:\Users\Admin\Desktop\prueba.pdf"
-                // {
-                //    XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, reader);
-                // }
-
-                //doc.Close();
-                //fileStream.Close();
+                plantillaHtlm = plantillaHtlm.Replace("@Socio", filaSeleccionada.Cells["SocId"].Value.ToString());
+                plantillaHtlm = plantillaHtlm.Replace("@Nombre", filaSeleccionada.Cells["SocPrimerNombre"].Value.ToString() + filaSeleccionada.Cells["SocPrimerApellido"].Value.ToString());
+                plantillaHtlm = plantillaHtlm.Replace("@Direccion", filaSeleccionada.Cells["SocDireccion"].Value.ToString());
+                plantillaHtlm = plantillaHtlm.Replace("@CuotaSocial", filaSeleccionada.Cells["CuotaId"].Value.ToString());
+                plantillaHtlm = plantillaHtlm.Replace("@FechaDeEmision", filaSeleccionada.Cells["CuotaFechaDesde"].Value.ToString());
+                //if(!string.IsNullOrEmpty(filaSeleccionada.Cells["SocEmail"].Value.ToString()))
+                //    plantillaHtlm = plantillaHtlm.Replace("@Email", filaSeleccionada.Cells["SocEmail"].Value.ToString());
+                //else
+                //    plantillaHtlm = plantillaHtlm.Replace("@Email", "");
+                // plantillaHtlm = plantillaHtlm.Replace("@FechaDeIngreso", filaSeleccionada.Cells["SocId"].Value.ToString());
+                plantillaHtlm = plantillaHtlm.Replace("@AnioMes", filaSeleccionada.Cells["CuotaAAAAMM"].Value.ToString());
 
                 if (guardar.ShowDialog() == DialogResult.OK)
                 {
-                    using (FileStream fileStream = new FileStream(guardar.FileName, FileMode.Create, FileAccess.Write))
+                    using (FileStream fileStream = new FileStream(guardar.FileName, FileMode.Create))
                     {
-                        Document doc = new Document(iTextSharp.text.PageSize.A4, 10, 10, 10, 10);
+                        Document doc = new Document(PageSize.A4, 10, 10, 10, 10);
                         PdfWriter writer = PdfWriter.GetInstance(doc, fileStream);
 
                         doc.Open();
                         doc.Add(new Phrase(""));
 
-                        using (StreamReader reader = new StreamReader(plantillaHtlm))
+                        iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.logo,System.Drawing.Imaging.ImageFormat.Png);
+                        img.ScaleToFit(80, 60);
+                        img.Alignment = iTextSharp.text.Image.UNDERLYING;
+                        img.SetAbsolutePosition(doc.LeftMargin, doc.Top - 60);
+
+                        using (StringReader reader = new StringReader(plantillaHtlm))
                         {
                             XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, reader);
                         }
@@ -166,8 +162,13 @@ namespace Policial
                         doc.Close();
                         fileStream.Close();
                     }
+
+                    MessageBox.Show("Se generaron cuotas marcadas para imprimir.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-                //else { }
+                else
+                {
+                    MessageBox.Show("Seleccione ubicación de destino.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
             catch (Exception ex)
             {
