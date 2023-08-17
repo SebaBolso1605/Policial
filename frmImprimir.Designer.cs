@@ -32,15 +32,6 @@ namespace Policial
             this.lblTituloFormulario = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.dgvSocios = new System.Windows.Forms.DataGridView();
-            this.cmbAño = new System.Windows.Forms.ComboBox();
-            this.cmbMes = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.chkImprimir = new System.Windows.Forms.CheckBox();
-            this.txtParametro = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocPrimerNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +44,15 @@ namespace Policial
             this.SocDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CuotaFechaPaga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbAño = new System.Windows.Forms.ComboBox();
+            this.cmbMes = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkImprimir = new System.Windows.Forms.CheckBox();
+            this.txtParametro = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +77,7 @@ namespace Policial
             this.btnVolver.Location = new System.Drawing.Point(503, 508);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(176, 29);
-            this.btnVolver.TabIndex = 136;
+            this.btnVolver.TabIndex = 8;
             this.btnVolver.Text = "Limpiar";
             this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
@@ -108,129 +108,7 @@ namespace Policial
             this.dgvSocios.RowHeadersVisible = false;
             this.dgvSocios.RowHeadersWidth = 51;
             this.dgvSocios.Size = new System.Drawing.Size(929, 343);
-            this.dgvSocios.TabIndex = 135;
-            // 
-            // cmbAño
-            // 
-            this.cmbAño.FormattingEnabled = true;
-            this.cmbAño.Items.AddRange(new object[] {
-            "2022",
-            "2023",
-            "2024",
-            "2025"});
-            this.cmbAño.Location = new System.Drawing.Point(212, 71);
-            this.cmbAño.Name = "cmbAño";
-            this.cmbAño.Size = new System.Drawing.Size(103, 21);
-            this.cmbAño.TabIndex = 191;
-            // 
-            // cmbMes
-            // 
-            this.cmbMes.FormattingEnabled = true;
-            this.cmbMes.Items.AddRange(new object[] {
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12"});
-            this.cmbMes.Location = new System.Drawing.Point(124, 71);
-            this.cmbMes.Name = "cmbMes";
-            this.cmbMes.Size = new System.Drawing.Size(73, 21);
-            this.cmbMes.TabIndex = 190;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(46, 72);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 17);
-            this.label6.TabIndex = 189;
-            this.label6.Text = "Mes / Año";
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.btnImprimir.FlatAppearance.BorderSize = 0;
-            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimir.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.Color.White;
-            this.btnImprimir.Location = new System.Drawing.Point(233, 508);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(176, 29);
-            this.btnImprimir.TabIndex = 192;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = false;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(337, 68);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(198, 24);
-            this.btnBuscar.TabIndex = 193;
-            this.btnBuscar.Text = "Filtrar";
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.ForeColor = System.Drawing.Color.Black;
-            this.checkBox1.Location = new System.Drawing.Point(555, 73);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(124, 17);
-            this.checkBox1.TabIndex = 195;
-            this.checkBox1.Text = "solo Cuotas Impagas";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // chkImprimir
-            // 
-            this.chkImprimir.AutoSize = true;
-            this.chkImprimir.Checked = true;
-            this.chkImprimir.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkImprimir.ForeColor = System.Drawing.Color.Black;
-            this.chkImprimir.Location = new System.Drawing.Point(843, 123);
-            this.chkImprimir.Name = "chkImprimir";
-            this.chkImprimir.Size = new System.Drawing.Size(85, 17);
-            this.chkImprimir.TabIndex = 197;
-            this.chkImprimir.Text = "Imprimir todo";
-            this.chkImprimir.UseVisualStyleBackColor = true;
-            this.chkImprimir.CheckedChanged += new System.EventHandler(this.chkImprimir_CheckedChanged);
-            // 
-            // txtParametro
-            // 
-            this.txtParametro.Location = new System.Drawing.Point(124, 109);
-            this.txtParametro.Name = "txtParametro";
-            this.txtParametro.Size = new System.Drawing.Size(191, 20);
-            this.txtParametro.TabIndex = 259;
-            this.txtParametro.TextChanged += new System.EventHandler(this.txtParametro_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(46, 110);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 17);
-            this.label1.TabIndex = 260;
-            this.label1.Text = "Buscar";
+            this.dgvSocios.TabIndex = 6;
             // 
             // SocId
             // 
@@ -308,6 +186,128 @@ namespace Policial
             this.SocEmail.HeaderText = "Email";
             this.SocEmail.Name = "SocEmail";
             this.SocEmail.Visible = false;
+            // 
+            // cmbAño
+            // 
+            this.cmbAño.FormattingEnabled = true;
+            this.cmbAño.Items.AddRange(new object[] {
+            "2022",
+            "2023",
+            "2024",
+            "2025"});
+            this.cmbAño.Location = new System.Drawing.Point(212, 71);
+            this.cmbAño.Name = "cmbAño";
+            this.cmbAño.Size = new System.Drawing.Size(103, 21);
+            this.cmbAño.TabIndex = 1;
+            // 
+            // cmbMes
+            // 
+            this.cmbMes.FormattingEnabled = true;
+            this.cmbMes.Items.AddRange(new object[] {
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12"});
+            this.cmbMes.Location = new System.Drawing.Point(124, 71);
+            this.cmbMes.Name = "cmbMes";
+            this.cmbMes.Size = new System.Drawing.Size(73, 21);
+            this.cmbMes.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(46, 72);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 17);
+            this.label6.TabIndex = 189;
+            this.label6.Text = "Mes / Año";
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.btnImprimir.FlatAppearance.BorderSize = 0;
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.White;
+            this.btnImprimir.Location = new System.Drawing.Point(233, 508);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(176, 29);
+            this.btnImprimir.TabIndex = 7;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.Color.White;
+            this.btnBuscar.Location = new System.Drawing.Point(337, 68);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(198, 24);
+            this.btnBuscar.TabIndex = 3;
+            this.btnBuscar.Text = "Filtrar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.ForeColor = System.Drawing.Color.Black;
+            this.checkBox1.Location = new System.Drawing.Point(555, 73);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(124, 17);
+            this.checkBox1.TabIndex = 4;
+            this.checkBox1.Text = "solo Cuotas Impagas";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // chkImprimir
+            // 
+            this.chkImprimir.AutoSize = true;
+            this.chkImprimir.Checked = true;
+            this.chkImprimir.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkImprimir.ForeColor = System.Drawing.Color.Black;
+            this.chkImprimir.Location = new System.Drawing.Point(843, 123);
+            this.chkImprimir.Name = "chkImprimir";
+            this.chkImprimir.Size = new System.Drawing.Size(85, 17);
+            this.chkImprimir.TabIndex = 5;
+            this.chkImprimir.Text = "Imprimir todo";
+            this.chkImprimir.UseVisualStyleBackColor = true;
+            this.chkImprimir.CheckedChanged += new System.EventHandler(this.chkImprimir_CheckedChanged);
+            // 
+            // txtParametro
+            // 
+            this.txtParametro.Location = new System.Drawing.Point(124, 109);
+            this.txtParametro.Name = "txtParametro";
+            this.txtParametro.Size = new System.Drawing.Size(191, 20);
+            this.txtParametro.TabIndex = 2;
+            this.txtParametro.TextChanged += new System.EventHandler(this.txtParametro_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(46, 110);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 17);
+            this.label1.TabIndex = 260;
+            this.label1.Text = "Buscar";
             // 
             // frmImprimir
             // 

@@ -162,7 +162,7 @@ namespace Policial
             this.tabModifcar.Name = "tabModifcar";
             this.tabModifcar.SelectedIndex = 0;
             this.tabModifcar.Size = new System.Drawing.Size(1067, 588);
-            this.tabModifcar.TabIndex = 1;
+            this.tabModifcar.TabIndex = 0;
             this.tabModifcar.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabModifcar_Selected);
             // 
             // tabListaSocios
@@ -190,8 +190,8 @@ namespace Policial
             this.checkBox1.ForeColor = System.Drawing.Color.Black;
             this.checkBox1.Location = new System.Drawing.Point(334, 78);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(126, 20);
-            this.checkBox1.TabIndex = 135;
+            this.checkBox1.Size = new System.Drawing.Size(125, 20);
+            this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "solo Socios activos";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
@@ -201,7 +201,7 @@ namespace Policial
             this.txtParametro.Location = new System.Drawing.Point(66, 76);
             this.txtParametro.Name = "txtParametro";
             this.txtParametro.Size = new System.Drawing.Size(262, 21);
-            this.txtParametro.TabIndex = 134;
+            this.txtParametro.TabIndex = 1;
             this.txtParametro.TextChanged += new System.EventHandler(this.textBox18_TextChanged);
             // 
             // lblCantSocios
@@ -395,10 +395,11 @@ namespace Policial
             // 
             // dtpFechaCuotaDesde
             // 
+            this.dtpFechaCuotaDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaCuotaDesde.Location = new System.Drawing.Point(593, 177);
             this.dtpFechaCuotaDesde.Name = "dtpFechaCuotaDesde";
             this.dtpFechaCuotaDesde.Size = new System.Drawing.Size(259, 23);
-            this.dtpFechaCuotaDesde.TabIndex = 84;
+            this.dtpFechaCuotaDesde.TabIndex = 10;
             // 
             // label26
             // 
@@ -446,10 +447,11 @@ namespace Policial
             // 
             // dtpFechaIngreso
             // 
+            this.dtpFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaIngreso.Location = new System.Drawing.Point(594, 104);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
             this.dtpFechaIngreso.Size = new System.Drawing.Size(259, 23);
-            this.dtpFechaIngreso.TabIndex = 78;
+            this.dtpFechaIngreso.TabIndex = 8;
             // 
             // label21
             // 
@@ -490,7 +492,7 @@ namespace Policial
             this.cmbTC.Location = new System.Drawing.Point(594, 139);
             this.cmbTC.Name = "cmbTC";
             this.cmbTC.Size = new System.Drawing.Size(259, 25);
-            this.cmbTC.TabIndex = 74;
+            this.cmbTC.TabIndex = 9;
             this.cmbTC.SelectedIndexChanged += new System.EventHandler(this.cmbTC_SelectedIndexChanged);
             this.cmbTC.SelectedValueChanged += new System.EventHandler(this.cmbTC_SelectedValueChanged);
             // 
@@ -513,14 +515,15 @@ namespace Policial
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtObservaciones.Size = new System.Drawing.Size(327, 43);
-            this.txtObservaciones.TabIndex = 71;
+            this.txtObservaciones.TabIndex = 13;
             // 
             // dtpFechaNacimiento
             // 
+            this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaNacimiento.Location = new System.Drawing.Point(183, 276);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(200, 23);
-            this.dtpFechaNacimiento.TabIndex = 70;
+            this.dtpFechaNacimiento.TabIndex = 5;
             this.dtpFechaNacimiento.ValueChanged += new System.EventHandler(this.dtpFechaNacimiento_ValueChanged);
             // 
             // label16
@@ -562,7 +565,7 @@ namespace Policial
             this.txtCelular.Location = new System.Drawing.Point(183, 347);
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(145, 23);
-            this.txtCelular.TabIndex = 66;
+            this.txtCelular.TabIndex = 7;
             // 
             // label12
             // 
@@ -614,7 +617,7 @@ namespace Policial
             this.txtCI.Location = new System.Drawing.Point(183, 242);
             this.txtCI.Name = "txtCI";
             this.txtCI.Size = new System.Drawing.Size(199, 23);
-            this.txtCI.TabIndex = 60;
+            this.txtCI.TabIndex = 4;
             this.txtCI.Validating += new System.ComponentModel.CancelEventHandler(this.txtCI_Validating);
             // 
             // label7
@@ -634,7 +637,7 @@ namespace Policial
             this.txtTel.Location = new System.Drawing.Point(183, 314);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(145, 23);
-            this.txtTel.TabIndex = 58;
+            this.txtTel.TabIndex = 6;
             // 
             // label6
             // 
@@ -653,7 +656,7 @@ namespace Policial
             this.txtEmail.Location = new System.Drawing.Point(593, 279);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(327, 23);
-            this.txtEmail.TabIndex = 56;
+            this.txtEmail.TabIndex = 12;
             // 
             // label5
             // 
@@ -672,7 +675,7 @@ namespace Policial
             this.txtSegundoNombre.Location = new System.Drawing.Point(183, 141);
             this.txtSegundoNombre.Name = "txtSegundoNombre";
             this.txtSegundoNombre.Size = new System.Drawing.Size(199, 23);
-            this.txtSegundoNombre.TabIndex = 54;
+            this.txtSegundoNombre.TabIndex = 1;
             // 
             // label4
             // 
@@ -691,7 +694,7 @@ namespace Policial
             this.txtPrimerApellido.Location = new System.Drawing.Point(183, 177);
             this.txtPrimerApellido.Name = "txtPrimerApellido";
             this.txtPrimerApellido.Size = new System.Drawing.Size(199, 23);
-            this.txtPrimerApellido.TabIndex = 52;
+            this.txtPrimerApellido.TabIndex = 2;
             this.txtPrimerApellido.TextChanged += new System.EventHandler(this.txtPrimerApellido_TextChanged);
             // 
             // label3
@@ -711,7 +714,7 @@ namespace Policial
             this.txtSegundoApellido.Location = new System.Drawing.Point(183, 209);
             this.txtSegundoApellido.Name = "txtSegundoApellido";
             this.txtSegundoApellido.Size = new System.Drawing.Size(199, 23);
-            this.txtSegundoApellido.TabIndex = 50;
+            this.txtSegundoApellido.TabIndex = 3;
             this.txtSegundoApellido.TextChanged += new System.EventHandler(this.txtSegundoApellido_TextChanged);
             // 
             // label2
@@ -731,7 +734,7 @@ namespace Policial
             this.txtDireccion.Location = new System.Drawing.Point(593, 244);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(327, 23);
-            this.txtDireccion.TabIndex = 48;
+            this.txtDireccion.TabIndex = 11;
             // 
             // label14
             // 
@@ -750,7 +753,7 @@ namespace Policial
             this.txtPrimerNombre.Location = new System.Drawing.Point(183, 107);
             this.txtPrimerNombre.Name = "txtPrimerNombre";
             this.txtPrimerNombre.Size = new System.Drawing.Size(199, 23);
-            this.txtPrimerNombre.TabIndex = 46;
+            this.txtPrimerNombre.TabIndex = 0;
             this.txtPrimerNombre.TextChanged += new System.EventHandler(this.txtPrimerNombre_TextChanged);
             // 
             // btnCancelar
@@ -764,7 +767,7 @@ namespace Policial
             this.btnCancelar.Location = new System.Drawing.Point(545, 433);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(176, 25);
-            this.btnCancelar.TabIndex = 44;
+            this.btnCancelar.TabIndex = 15;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
@@ -790,7 +793,7 @@ namespace Policial
             this.btnGuardar.Location = new System.Drawing.Point(276, 433);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(176, 25);
-            this.btnGuardar.TabIndex = 43;
+            this.btnGuardar.TabIndex = 14;
             this.btnGuardar.Text = "Agregar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -848,7 +851,7 @@ namespace Policial
             this.button1.Location = new System.Drawing.Point(189, 90);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(199, 21);
-            this.button1.TabIndex = 134;
+            this.button1.TabIndex = 1;
             this.button1.Text = "Buscar  Documento";
             this.button1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button1.UseVisualStyleBackColor = false;
@@ -859,7 +862,7 @@ namespace Policial
             this.txtBuscarModif.Location = new System.Drawing.Point(59, 90);
             this.txtBuscarModif.Name = "txtBuscarModif";
             this.txtBuscarModif.Size = new System.Drawing.Size(119, 21);
-            this.txtBuscarModif.TabIndex = 133;
+            this.txtBuscarModif.TabIndex = 0;
             this.txtBuscarModif.TextChanged += new System.EventHandler(this.txtBuscarModif_TextChanged);
             this.txtBuscarModif.Validating += new System.ComponentModel.CancelEventHandler(this.txtBuscarModif_Validating);
             // 
@@ -902,7 +905,7 @@ namespace Policial
             this.cmbTPModif.Location = new System.Drawing.Point(599, 130);
             this.cmbTPModif.Name = "cmbTPModif";
             this.cmbTPModif.Size = new System.Drawing.Size(259, 24);
-            this.cmbTPModif.TabIndex = 119;
+            this.cmbTPModif.TabIndex = 9;
             // 
             // label37
             // 
@@ -923,7 +926,7 @@ namespace Policial
             this.txtObservacionesModif.Name = "txtObservacionesModif";
             this.txtObservacionesModif.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtObservacionesModif.Size = new System.Drawing.Size(327, 54);
-            this.txtObservacionesModif.TabIndex = 117;
+            this.txtObservacionesModif.TabIndex = 12;
             // 
             // label39
             // 
@@ -953,7 +956,7 @@ namespace Policial
             this.txtCelularModif.Location = new System.Drawing.Point(189, 335);
             this.txtCelularModif.Name = "txtCelularModif";
             this.txtCelularModif.Size = new System.Drawing.Size(145, 21);
-            this.txtCelularModif.TabIndex = 112;
+            this.txtCelularModif.TabIndex = 8;
             // 
             // label41
             // 
@@ -1005,7 +1008,7 @@ namespace Policial
             this.txtCIModif.Location = new System.Drawing.Point(189, 267);
             this.txtCIModif.Name = "txtCIModif";
             this.txtCIModif.Size = new System.Drawing.Size(199, 21);
-            this.txtCIModif.TabIndex = 107;
+            this.txtCIModif.TabIndex = 6;
             // 
             // label45
             // 
@@ -1024,7 +1027,7 @@ namespace Policial
             this.txtTelModif.Location = new System.Drawing.Point(189, 302);
             this.txtTelModif.Name = "txtTelModif";
             this.txtTelModif.Size = new System.Drawing.Size(145, 21);
-            this.txtTelModif.TabIndex = 105;
+            this.txtTelModif.TabIndex = 7;
             // 
             // label46
             // 
@@ -1043,7 +1046,7 @@ namespace Policial
             this.txtEmailModif.Location = new System.Drawing.Point(599, 212);
             this.txtEmailModif.Name = "txtEmailModif";
             this.txtEmailModif.Size = new System.Drawing.Size(327, 21);
-            this.txtEmailModif.TabIndex = 103;
+            this.txtEmailModif.TabIndex = 11;
             // 
             // label47
             // 
@@ -1062,7 +1065,7 @@ namespace Policial
             this.txtSegundoNombreModif.Location = new System.Drawing.Point(189, 166);
             this.txtSegundoNombreModif.Name = "txtSegundoNombreModif";
             this.txtSegundoNombreModif.Size = new System.Drawing.Size(199, 21);
-            this.txtSegundoNombreModif.TabIndex = 101;
+            this.txtSegundoNombreModif.TabIndex = 3;
             // 
             // label48
             // 
@@ -1081,7 +1084,7 @@ namespace Policial
             this.txtPrimerApellidoModif.Location = new System.Drawing.Point(189, 202);
             this.txtPrimerApellidoModif.Name = "txtPrimerApellidoModif";
             this.txtPrimerApellidoModif.Size = new System.Drawing.Size(199, 21);
-            this.txtPrimerApellidoModif.TabIndex = 99;
+            this.txtPrimerApellidoModif.TabIndex = 4;
             // 
             // label49
             // 
@@ -1100,7 +1103,7 @@ namespace Policial
             this.txtSegundoApellidoModif.Location = new System.Drawing.Point(189, 234);
             this.txtSegundoApellidoModif.Name = "txtSegundoApellidoModif";
             this.txtSegundoApellidoModif.Size = new System.Drawing.Size(199, 21);
-            this.txtSegundoApellidoModif.TabIndex = 97;
+            this.txtSegundoApellidoModif.TabIndex = 5;
             // 
             // label50
             // 
@@ -1119,7 +1122,7 @@ namespace Policial
             this.txtDireccionModif.Location = new System.Drawing.Point(599, 177);
             this.txtDireccionModif.Name = "txtDireccionModif";
             this.txtDireccionModif.Size = new System.Drawing.Size(327, 21);
-            this.txtDireccionModif.TabIndex = 95;
+            this.txtDireccionModif.TabIndex = 10;
             // 
             // label51
             // 
@@ -1138,7 +1141,7 @@ namespace Policial
             this.txtPrimerNombreModif.Location = new System.Drawing.Point(189, 132);
             this.txtPrimerNombreModif.Name = "txtPrimerNombreModif";
             this.txtPrimerNombreModif.Size = new System.Drawing.Size(199, 21);
-            this.txtPrimerNombreModif.TabIndex = 93;
+            this.txtPrimerNombreModif.TabIndex = 2;
             // 
             // btnCancelarModificarSocio
             // 
@@ -1151,7 +1154,7 @@ namespace Policial
             this.btnCancelarModificarSocio.Location = new System.Drawing.Point(548, 458);
             this.btnCancelarModificarSocio.Name = "btnCancelarModificarSocio";
             this.btnCancelarModificarSocio.Size = new System.Drawing.Size(176, 25);
-            this.btnCancelarModificarSocio.TabIndex = 91;
+            this.btnCancelarModificarSocio.TabIndex = 14;
             this.btnCancelarModificarSocio.Text = "Cancelar";
             this.btnCancelarModificarSocio.UseVisualStyleBackColor = false;
             // 
@@ -1177,7 +1180,7 @@ namespace Policial
             this.btnModificarSocio.Location = new System.Drawing.Point(278, 458);
             this.btnModificarSocio.Name = "btnModificarSocio";
             this.btnModificarSocio.Size = new System.Drawing.Size(176, 25);
-            this.btnModificarSocio.TabIndex = 90;
+            this.btnModificarSocio.TabIndex = 13;
             this.btnModificarSocio.Text = "Modificar";
             this.btnModificarSocio.UseVisualStyleBackColor = false;
             this.btnModificarSocio.Click += new System.EventHandler(this.btnModificarSocio_Click);
@@ -1220,7 +1223,7 @@ namespace Policial
             this.button3.Location = new System.Drawing.Point(685, 393);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(176, 25);
-            this.button3.TabIndex = 160;
+            this.button3.TabIndex = 5;
             this.button3.Text = "Cancelar";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -1231,7 +1234,7 @@ namespace Policial
             this.dtpFechaBaja.Location = new System.Drawing.Point(582, 187);
             this.dtpFechaBaja.Name = "dtpFechaBaja";
             this.dtpFechaBaja.Size = new System.Drawing.Size(110, 21);
-            this.dtpFechaBaja.TabIndex = 158;
+            this.dtpFechaBaja.TabIndex = 2;
             // 
             // label54
             // 
@@ -1263,7 +1266,7 @@ namespace Policial
             this.txtMotivoBaja.Name = "txtMotivoBaja";
             this.txtMotivoBaja.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtMotivoBaja.Size = new System.Drawing.Size(327, 48);
-            this.txtMotivoBaja.TabIndex = 155;
+            this.txtMotivoBaja.TabIndex = 3;
             // 
             // label58
             // 
@@ -1356,7 +1359,7 @@ namespace Policial
             this.btnEliminarSocio.Location = new System.Drawing.Point(404, 393);
             this.btnEliminarSocio.Name = "btnEliminarSocio";
             this.btnEliminarSocio.Size = new System.Drawing.Size(176, 25);
-            this.btnEliminarSocio.TabIndex = 138;
+            this.btnEliminarSocio.TabIndex = 4;
             this.btnEliminarSocio.Text = "Eliminar";
             this.btnEliminarSocio.UseVisualStyleBackColor = false;
             this.btnEliminarSocio.Click += new System.EventHandler(this.btnEliminarSocio_Click);
@@ -1371,7 +1374,7 @@ namespace Policial
             this.button2.Location = new System.Drawing.Point(205, 116);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(199, 25);
-            this.button2.TabIndex = 137;
+            this.button2.TabIndex = 1;
             this.button2.Text = "Buscar Documento";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -1381,7 +1384,7 @@ namespace Policial
             this.txtBuscarEliminar.Location = new System.Drawing.Point(75, 118);
             this.txtBuscarEliminar.Name = "txtBuscarEliminar";
             this.txtBuscarEliminar.Size = new System.Drawing.Size(119, 21);
-            this.txtBuscarEliminar.TabIndex = 136;
+            this.txtBuscarEliminar.TabIndex = 0;
             this.txtBuscarEliminar.Validating += new System.ComponentModel.CancelEventHandler(this.txtBuscarEliminar_Validating);
             // 
             // label53

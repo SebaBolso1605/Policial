@@ -89,6 +89,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="c" nillable="true" type="q10:Socio" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q11:Usuario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -102,8 +103,8 @@
   <xs:element name="AltaNucleoFamiliar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="c" nillable="true" type="q11:NucleoFamiliar" />
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q12:Usuario" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="c" nillable="true" type="q12:NucleoFamiliar" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q13:Usuario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -117,8 +118,8 @@
   <xs:element name="ModificarNF">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="c" nillable="true" type="q13:NucleoFamiliar" />
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q14:Usuario" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="c" nillable="true" type="q14:NucleoFamiliar" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q15:Usuario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -153,7 +154,7 @@
   <xs:element name="BuscarNucleoFamiliarPorCIResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="BuscarNucleoFamiliarPorCIResult" nillable="true" type="q15:ArrayOfNucleoFamiliar" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="BuscarNucleoFamiliarPorCIResult" nillable="true" type="q16:ArrayOfNucleoFamiliar" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -167,15 +168,15 @@
   <xs:element name="BuscarCuotasSocioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="BuscarCuotasSocioResult" nillable="true" type="q16:ArrayOfCuota" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="BuscarCuotasSocioResult" nillable="true" type="q17:ArrayOfCuota" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AltaCuentaSocio">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="c" nillable="true" type="q17:Cuota" />
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q18:Usuario" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="c" nillable="true" type="q18:Cuota" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q19:Usuario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -189,8 +190,8 @@
   <xs:element name="PagarCuotaSocio">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="c" nillable="true" type="q19:Cuota" />
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q20:Usuario" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="c" nillable="true" type="q20:Cuota" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q21:Usuario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -204,8 +205,8 @@
   <xs:element name="AltaCuota">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="c" nillable="true" type="q21:TipoCuota" />
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q22:Usuario" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="c" nillable="true" type="q22:TipoCuota" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q23:Usuario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -219,8 +220,8 @@
   <xs:element name="ModificarCuota">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="c" nillable="true" type="q23:TipoCuota" />
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q24:Usuario" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="c" nillable="true" type="q24:TipoCuota" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q25:Usuario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -235,7 +236,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" type="xs:int" />
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q25:Usuario" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/EntidadesCompartidas" minOccurs="0" name="_usu" nillable="true" type="q26:Usuario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

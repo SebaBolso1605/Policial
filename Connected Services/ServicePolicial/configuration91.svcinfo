@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="0cHtD7NypCFKzhqcbuJqzxzyBsoz55cCFG8Ez8xgcY8=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="pt/ogIRI5qAdEqYw64HApyiJskiiC0T55e5F1mC4fzY=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IServicePolicial">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IServicePolicial" contract="ServicePolicial.IServicePolicial" bindingType="basicHttpBinding" address="http://192.168.1.15/ServicePolicial/ServicePolicial.svc" bindingConfiguration="BasicHttpBinding_IServicePolicial">
+    <endpoint name="BasicHttpBinding_IServicePolicial" contract="ServicePolicial.IServicePolicial" bindingType="basicHttpBinding" address="http://localhost/ServicePolicial.svc" bindingConfiguration="BasicHttpBinding_IServicePolicial">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://192.168.1.15/ServicePolicial/ServicePolicial.svc</serializedValue>
+          <serializedValue>http://localhost/ServicePolicial.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -1173,7 +1173,7 @@ namespace Policial.ServicePolicial {
         bool ModificarSocio(Policial.ServicePolicial.Socio s, Policial.ServicePolicial.Usuario _usu);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicial/BajaSocio", ReplyAction="http://tempuri.org/IServicePolicial/BajaSocioResponse")]
-        bool BajaSocio(Policial.ServicePolicial.Socio c);
+        bool BajaSocio(Policial.ServicePolicial.Socio c, Policial.ServicePolicial.Usuario _usu);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicial/AltaNucleoFamiliar", ReplyAction="http://tempuri.org/IServicePolicial/AltaNucleoFamiliarResponse")]
         bool AltaNucleoFamiliar(Policial.ServicePolicial.NucleoFamiliar c, Policial.ServicePolicial.Usuario _usu);
@@ -1257,8 +1257,8 @@ namespace Policial.ServicePolicial {
             return base.Channel.ModificarSocio(s, _usu);
         }
         
-        public bool BajaSocio(Policial.ServicePolicial.Socio c) {
-            return base.Channel.BajaSocio(c);
+        public bool BajaSocio(Policial.ServicePolicial.Socio c, Policial.ServicePolicial.Usuario _usu) {
+            return base.Channel.BajaSocio(c, _usu);
         }
         
         public bool AltaNucleoFamiliar(Policial.ServicePolicial.NucleoFamiliar c, Policial.ServicePolicial.Usuario _usu) {
