@@ -219,7 +219,7 @@ namespace Persistencia
             cmd.Parameters.AddWithValue("@SocEmail", s.SocEmail);
             cmd.Parameters.AddWithValue("@SocObservaciones", s.SocEmail);
             cmd.Parameters.AddWithValue("@SocTipoCuota", s.SocTipoCuota);
-            cmd.Parameters.AddWithValue("@UsuIdModif", _usu.UsuId);
+            cmd.Parameters.AddWithValue("@UsuIdAlta", _usu.UsuId);
             cmd.Parameters.Add("@SocId", SqlDbType.Int).Direction = ParameterDirection.Output;
 
             SqlParameter prmRetorno = new SqlParameter("@Retorno", SqlDbType.Int);

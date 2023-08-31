@@ -228,6 +228,11 @@ namespace Policial
                         txtObservacionesModif.Text = soc.SocObservaciones;
                         cmbTPModif.SelectedItem = soc.SocTipoCuota;
                     }
+                    else
+                    {
+                        MessageBox.Show("No se encontro socio para el documento ingresado", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        txtBuscarModif.Text = "";
+                    }       
                 }
             }
             catch (Exception ex)

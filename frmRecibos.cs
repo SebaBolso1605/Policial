@@ -453,6 +453,7 @@ namespace Policial
 
                     if (drPagar == DialogResult.OK)
                     {
+                        bool retorno = false;
                         foreach (DataGridViewRow row in dgvSocios.Rows)
                         {
                             if (Convert.ToBoolean(row.Cells["Generar"].Value))
@@ -467,13 +468,18 @@ namespace Policial
                                 cuota.CuotaPaga = false;
                                 cuota.CuotaAAAAMM = comboBox2.SelectedItem.ToString() + "/" + comboBox1.SelectedItem.ToString();
 
-                                bool retorno = PersistirCuota(cuota, usuario);
-                                if(retorno)
-                                    MessageBox.Show("Se crearon " + totalSeleccion + " seleccionadas.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                else
-                                    MessageBox.Show("No se pudo generar seleccion.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                retorno = PersistirCuota(cuota, usuario);
                             }
                         }
+                        if (retorno)
+                        {
+                            MessageBox.Show("Se crearon " + totalSeleccion + " seleccionadas.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtParametro.Text = "";
+                            comboBox1.SelectedItem = -1;
+                            comboBox2.SelectedItem = -1;
+                        }
+                        else
+                            MessageBox.Show("No se pudo generar seleccion.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
                         MessageBox.Show("Seleccione Socio para generar cuotas.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
