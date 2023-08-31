@@ -476,11 +476,14 @@ namespace Policial
             try
             {
                 int boton = int.Parse(e.ColumnIndex + "");
+                int docum = Convert.ToInt32(dgvSocios.Rows[e.RowIndex].Cells[1].Value.ToString());
                 switch (boton)
                 {
                     case 8:
                         //tabModifcar.Focus();
                         this.tabModifcar.SelectedIndex = 2;
+                        txtBuscarModif.Text = docum.ToString();
+                        button1_Click_2(null,null);
                         break;
                     default:
                         break;
