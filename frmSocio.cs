@@ -479,7 +479,8 @@ namespace Policial
                 switch (boton)
                 {
                     case 8:
-                        tabModifcar.Focus();
+                        //tabModifcar.Focus();
+                        this.tabModifcar.SelectedIndex = 2;
                         break;
                     default:
                         break;
