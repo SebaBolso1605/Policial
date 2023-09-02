@@ -50,6 +50,13 @@ namespace Logica
             resp = FSocio.ModificarSocio(s, _usu);
             return resp;
         }
+        public bool ActivarSocio(Socio s, Usuario _usu)
+        {
+            bool resp = false;
+            IPersistenciaSocio FSocio = FabricaPersistencia.getPersistenciaSocio();
+            resp = FSocio.ActivarSocio(s, _usu);
+            return resp;
+        }
         public bool BajaSocio(Socio c, Usuario _usu)
         {
             bool resp = false;

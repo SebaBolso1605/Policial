@@ -268,6 +268,54 @@ namespace Persistencia
                 cnn.Close();
             }
         }
+        public bool ActivarSocio(Socio s, Usuario _usu)
+        {
+
+            SqlConnection cnn = new SqlConnection(Conexion.Cnn);
+            SqlCommand cmd = new SqlCommand("activar_socio", cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@SocCI", s.SocCI);
+            cmd.Parameters.AddWithValue("@UsuIdModif", _usu.UsuId);
+            cmd.Parameters.Add("@SocId", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+            SqlParameter prmRetorno = new SqlParameter("@Retorno", SqlDbType.Int);
+            prmRetorno.Direction = ParameterDirection.ReturnValue;
+            cmd.Parameters.Add(prmRetorno);
+
+            int resp = -1;
+            int Id;
+            bool respuesta = false;
+
+            SqlTransaction tran = null;
+            try
+            {
+                cnn.Open();
+                tran = cnn.BeginTransaction();
+                cmd.Transaction = tran;
+                cmd.ExecuteNonQuery();
+
+                resp = (int)cmd.Parameters["@Retorno"].Value;
+                if (resp == -1)
+                    throw new Exception("No existe un socio con este documento.");
+                else if (resp == -2)
+                    throw new Exception("El número de socio ingresado no existe.");
+
+                tran.Commit();
+                respuesta = true;
+
+                return respuesta;
+            }
+            catch (Exception ex)
+            {
+                tran.Rollback();
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
         public bool BajaSocio(Socio s, Usuario _usu)
         {
             bool res = false;

@@ -15,5 +15,6 @@ namespace Persistencia
         List<Socio> ListarSocios();
         bool ModificarSocio(Socio s, Usuario _usu);
         bool BajaSocio(Socio s, Usuario _usu);
+        bool ActivarSocio(Socio s, Usuario _usu);
     }
 }

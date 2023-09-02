@@ -832,5 +832,10 @@ namespace Policial
                     break;
             }
         }
+
+        private void btnCancelarModificarSocio_Click(object sender, EventArgs e)
+        {
+            LimpiarEliminar();
+        }
     }
 }

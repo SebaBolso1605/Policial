@@ -190,7 +190,7 @@ namespace Policial
             this.checkBox1.ForeColor = System.Drawing.Color.Black;
             this.checkBox1.Location = new System.Drawing.Point(334, 78);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(125, 20);
+            this.checkBox1.Size = new System.Drawing.Size(126, 20);
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "solo Socios activos";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -1157,6 +1157,7 @@ namespace Policial
             this.btnCancelarModificarSocio.TabIndex = 14;
             this.btnCancelarModificarSocio.Text = "Cancelar";
             this.btnCancelarModificarSocio.UseVisualStyleBackColor = false;
+            this.btnCancelarModificarSocio.Click += new System.EventHandler(this.btnCancelarModificarSocio_Click);
             // 
             // label52
             // 
