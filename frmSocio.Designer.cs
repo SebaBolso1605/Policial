@@ -47,6 +47,7 @@ namespace Policial
             this.SocCelular = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ver = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Activar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabAgregarSocio = new System.Windows.Forms.TabPage();
             this.label25 = new System.Windows.Forms.Label();
             this.dtpFechaCuotaDesde = new System.Windows.Forms.DateTimePicker();
@@ -259,7 +260,8 @@ namespace Policial
             this.SocTel,
             this.SocCelular,
             this.SocActivo,
-            this.Ver});
+            this.Ver,
+            this.Activar});
             this.dgvSocios.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvSocios.Location = new System.Drawing.Point(36, 116);
             this.dgvSocios.Name = "dgvSocios";
@@ -330,6 +332,12 @@ namespace Policial
             this.Ver.HeaderText = "Ver";
             this.Ver.Name = "Ver";
             this.Ver.ReadOnly = true;
+            // 
+            // Activar
+            // 
+            this.Activar.HeaderText = "Activar";
+            this.Activar.Name = "Activar";
+            this.Activar.ReadOnly = true;
             // 
             // tabAgregarSocio
             // 
@@ -493,8 +501,6 @@ namespace Policial
             this.cmbTC.Name = "cmbTC";
             this.cmbTC.Size = new System.Drawing.Size(259, 25);
             this.cmbTC.TabIndex = 9;
-            this.cmbTC.SelectedIndexChanged += new System.EventHandler(this.cmbTC_SelectedIndexChanged);
-            this.cmbTC.SelectedValueChanged += new System.EventHandler(this.cmbTC_SelectedValueChanged);
             // 
             // label18
             // 
@@ -1151,7 +1157,7 @@ namespace Policial
             this.btnCancelarModificarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarModificarSocio.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarModificarSocio.ForeColor = System.Drawing.Color.White;
-            this.btnCancelarModificarSocio.Location = new System.Drawing.Point(548, 458);
+            this.btnCancelarModificarSocio.Location = new System.Drawing.Point(504, 445);
             this.btnCancelarModificarSocio.Name = "btnCancelarModificarSocio";
             this.btnCancelarModificarSocio.Size = new System.Drawing.Size(176, 25);
             this.btnCancelarModificarSocio.TabIndex = 14;
@@ -1178,7 +1184,7 @@ namespace Policial
             this.btnModificarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarSocio.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificarSocio.ForeColor = System.Drawing.Color.White;
-            this.btnModificarSocio.Location = new System.Drawing.Point(278, 458);
+            this.btnModificarSocio.Location = new System.Drawing.Point(234, 445);
             this.btnModificarSocio.Name = "btnModificarSocio";
             this.btnModificarSocio.Size = new System.Drawing.Size(176, 25);
             this.btnModificarSocio.TabIndex = 13;
@@ -1221,7 +1227,7 @@ namespace Policial
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(685, 393);
+            this.button3.Location = new System.Drawing.Point(486, 387);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(176, 25);
             this.button3.TabIndex = 5;
@@ -1357,7 +1363,7 @@ namespace Policial
             this.btnEliminarSocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarSocio.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarSocio.ForeColor = System.Drawing.Color.White;
-            this.btnEliminarSocio.Location = new System.Drawing.Point(404, 393);
+            this.btnEliminarSocio.Location = new System.Drawing.Point(205, 387);
             this.btnEliminarSocio.Name = "btnEliminarSocio";
             this.btnEliminarSocio.Size = new System.Drawing.Size(176, 25);
             this.btnEliminarSocio.TabIndex = 4;
@@ -1533,6 +1539,8 @@ namespace Policial
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocId;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocCI;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocPrimerNombre;
@@ -1542,7 +1550,6 @@ namespace Policial
         private System.Windows.Forms.DataGridViewTextBoxColumn SocCelular;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocActivo;
         private System.Windows.Forms.DataGridViewButtonColumn Ver;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridViewButtonColumn Activar;
     }
 }

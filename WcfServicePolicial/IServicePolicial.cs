@@ -26,6 +26,9 @@ namespace WcfServicePolicial
         bool AltaSocio(Socio s, Cuota c, Usuario _usu);
 
         [OperationContract]
+        bool ActivarSocio(Socio s, Usuario _usu);
+
+        [OperationContract]
         Socio BuscarSocioPorCI(int _cedula);
 
         [OperationContract]

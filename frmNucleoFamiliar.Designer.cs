@@ -30,7 +30,7 @@ namespace Policial
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label24 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.txtObservacionesNF = new System.Windows.Forms.TextBox();
@@ -119,6 +119,7 @@ namespace Policial
             this.txtObservacionesNF.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtObservacionesNF.Size = new System.Drawing.Size(366, 58);
             this.txtObservacionesNF.TabIndex = 114;
+            this.txtObservacionesNF.TextChanged += new System.EventHandler(this.txtSegundoNombreNF_TextChanged);
             // 
             // dtpFechaNacimientoNF
             // 
@@ -167,6 +168,7 @@ namespace Policial
             this.txtCelularNF.Name = "txtCelularNF";
             this.txtCelularNF.Size = new System.Drawing.Size(145, 20);
             this.txtCelularNF.TabIndex = 109;
+            this.txtCelularNF.TextChanged += new System.EventHandler(this.txtSegundoNombreNF_TextChanged);
             // 
             // label12
             // 
@@ -219,6 +221,7 @@ namespace Policial
             this.txtCINF.Name = "txtCINF";
             this.txtCINF.Size = new System.Drawing.Size(181, 20);
             this.txtCINF.TabIndex = 104;
+            this.txtCINF.TextChanged += new System.EventHandler(this.txtSegundoNombreNF_TextChanged);
             // 
             // label7
             // 
@@ -238,6 +241,7 @@ namespace Policial
             this.txtTelNF.Name = "txtTelNF";
             this.txtTelNF.Size = new System.Drawing.Size(145, 20);
             this.txtTelNF.TabIndex = 102;
+            this.txtTelNF.TextChanged += new System.EventHandler(this.txtSegundoNombreNF_TextChanged);
             // 
             // label5
             // 
@@ -257,6 +261,7 @@ namespace Policial
             this.txtSegundoNombreNF.Name = "txtSegundoNombreNF";
             this.txtSegundoNombreNF.Size = new System.Drawing.Size(181, 20);
             this.txtSegundoNombreNF.TabIndex = 98;
+            this.txtSegundoNombreNF.TextChanged += new System.EventHandler(this.txtSegundoNombreNF_TextChanged);
             // 
             // label4
             // 
@@ -276,6 +281,7 @@ namespace Policial
             this.txtPrimerApellidoNF.Name = "txtPrimerApellidoNF";
             this.txtPrimerApellidoNF.Size = new System.Drawing.Size(181, 20);
             this.txtPrimerApellidoNF.TabIndex = 96;
+            this.txtPrimerApellidoNF.TextChanged += new System.EventHandler(this.txtSegundoNombreNF_TextChanged);
             // 
             // label3
             // 
@@ -295,6 +301,7 @@ namespace Policial
             this.txtSegundoApellidoNF.Name = "txtSegundoApellidoNF";
             this.txtSegundoApellidoNF.Size = new System.Drawing.Size(181, 20);
             this.txtSegundoApellidoNF.TabIndex = 94;
+            this.txtSegundoApellidoNF.TextChanged += new System.EventHandler(this.txtSegundoNombreNF_TextChanged);
             // 
             // label14
             // 
@@ -314,6 +321,7 @@ namespace Policial
             this.txtPrimerNombreNF.Name = "txtPrimerNombreNF";
             this.txtPrimerNombreNF.Size = new System.Drawing.Size(181, 20);
             this.txtPrimerNombreNF.TabIndex = 90;
+            this.txtPrimerNombreNF.TextChanged += new System.EventHandler(this.txtPrimerNombreNF_TextChanged);
             // 
             // btnCancelarNF
             // 
@@ -379,14 +387,14 @@ namespace Policial
             this.NFId,
             this.SocSegundoApellido,
             this.SocSegundoNombre});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSociosNF.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSociosNF.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSociosNF.Location = new System.Drawing.Point(12, 370);
             this.dgvSociosNF.Name = "dgvSociosNF";
             this.dgvSociosNF.ReadOnly = true;
@@ -584,6 +592,10 @@ namespace Policial
             // cmbTipoVinculo
             // 
             this.cmbTipoVinculo.FormattingEnabled = true;
+            this.cmbTipoVinculo.Items.AddRange(new object[] {
+            "Seleccione opción",
+            "Cónyugue",
+            "Hijo/a"});
             this.cmbTipoVinculo.Location = new System.Drawing.Point(540, 174);
             this.cmbTipoVinculo.Name = "cmbTipoVinculo";
             this.cmbTipoVinculo.Size = new System.Drawing.Size(200, 21);

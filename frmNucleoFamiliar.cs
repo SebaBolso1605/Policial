@@ -28,6 +28,7 @@ namespace Policial
             btnCancelarNF.BackColor = RGBColors.color2;
             btnGuardarNF.BackColor = RGBColors.color2;
             btnGuardarNF.Text = "Guardar";
+            cmbTipoVinculo.SelectedIndex = 0;
         }
         public struct RGBColors
         {
@@ -499,6 +500,16 @@ namespace Policial
                 mensaje = ex.Message;
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void txtPrimerNombreNF_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+        }
+
+        private void txtSegundoNombreNF_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
         }
     }
 }

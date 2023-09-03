@@ -1163,6 +1163,9 @@ namespace Policial.ServicePolicial {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicial/AltaSocio", ReplyAction="http://tempuri.org/IServicePolicial/AltaSocioResponse")]
         bool AltaSocio(Policial.ServicePolicial.Socio s, Policial.ServicePolicial.Cuota c, Policial.ServicePolicial.Usuario _usu);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicial/ActivarSocio", ReplyAction="http://tempuri.org/IServicePolicial/ActivarSocioResponse")]
+        bool ActivarSocio(Policial.ServicePolicial.Socio s, Policial.ServicePolicial.Usuario _usu);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicial/BuscarSocioPorCI", ReplyAction="http://tempuri.org/IServicePolicial/BuscarSocioPorCIResponse")]
         Policial.ServicePolicial.Socio BuscarSocioPorCI(int _cedula);
         
@@ -1243,6 +1246,10 @@ namespace Policial.ServicePolicial {
         
         public bool AltaSocio(Policial.ServicePolicial.Socio s, Policial.ServicePolicial.Cuota c, Policial.ServicePolicial.Usuario _usu) {
             return base.Channel.AltaSocio(s, c, _usu);
+        }
+        
+        public bool ActivarSocio(Policial.ServicePolicial.Socio s, Policial.ServicePolicial.Usuario _usu) {
+            return base.Channel.ActivarSocio(s, _usu);
         }
         
         public Policial.ServicePolicial.Socio BuscarSocioPorCI(int _cedula) {

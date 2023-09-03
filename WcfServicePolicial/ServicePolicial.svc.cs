@@ -45,6 +45,11 @@ namespace WcfServicePolicial
             return (FabricaLogica.getLogicaSocio().ModificarSocio(s, _usu));
         }
 
+        bool IServicePolicial.ActivarSocio(Socio s, Usuario _usu)
+        {
+            return (FabricaLogica.getLogicaSocio().ActivarSocio(s, _usu));
+        }
+
         bool IServicePolicial.BajaSocio(Socio c, Usuario _usu)
         {
             return (FabricaLogica.getLogicaSocio().BajaSocio(c, _usu));
