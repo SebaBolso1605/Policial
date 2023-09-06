@@ -31,6 +31,7 @@ namespace Persistencia
             cmd.Parameters.AddWithValue("@NFPrimerNombre", nf.NFPrimerNombre);
             cmd.Parameters.AddWithValue("@NFSegundoNombre", nf.NFSegundoNombre);
             cmd.Parameters.AddWithValue("@NFFechaNacimiento", nf.NFFechaNacimiento);
+            cmd.Parameters.AddWithValue("@NFTipoVinculo", nf.NfTipoVinculo); 
             cmd.Parameters.AddWithValue("@NFTel", nf.NFTel);
             cmd.Parameters.AddWithValue("@NFCelular", nf.NFCelular);
             cmd.Parameters.AddWithValue("@NFObservaciones", nf.NFobservaciones);
@@ -155,7 +156,8 @@ namespace Persistencia
                         c.NFPrimerNombre = (string)_lector["NFPrimerNombre"];
                         c.NFPrimerApellido = (string)_lector["NFPrimerApellido"];
                         c.NFSegundoNombre = (string)_lector["NFSegundoNombre"];
-                        c.NFSegundoApellido = (string)_lector["NFSegundoApellido"];
+                        c.NFSegundoApellido = (string)_lector["NFSegundoApellido"]; 
+                        c.NFSegundoApellido = (string)_lector["NFTipoVinculo"];
                         c.NFTel = (string)_lector["NFTel"];
                         c.NFCelular = (string)_lector["NFCelular"];
                         c.NFobservaciones = (string)_lector["NFObservaciones"];
@@ -191,6 +193,7 @@ namespace Persistencia
             cmd.Parameters.AddWithValue("@NFSegundoApellido", s.NFSegundoNombre);
             cmd.Parameters.AddWithValue("@NFPrimerNombre", s.NFPrimerNombre);
             cmd.Parameters.AddWithValue("@NFSegundoNombre", s.NFSegundoApellido);
+            cmd.Parameters.AddWithValue("@NFTipoVinculo", s.NfTipoVinculo); 
             cmd.Parameters.AddWithValue("@NFTel", s.NFTel);
             cmd.Parameters.AddWithValue("@NFCelular", s.NFCelular);
             cmd.Parameters.AddWithValue("@NFObservaciones", s.NFobservaciones);

@@ -914,6 +914,9 @@ namespace Policial.ServicePolicial {
         private string NFobservacionesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NfTipoVinculoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int SocIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1097,6 +1100,19 @@ namespace Policial.ServicePolicial {
                 if ((object.ReferenceEquals(this.NFobservacionesField, value) != true)) {
                     this.NFobservacionesField = value;
                     this.RaisePropertyChanged("NFobservaciones");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NfTipoVinculo {
+            get {
+                return this.NfTipoVinculoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NfTipoVinculoField, value) != true)) {
+                    this.NfTipoVinculoField = value;
+                    this.RaisePropertyChanged("NfTipoVinculo");
                 }
             }
         }

@@ -64,12 +64,12 @@ namespace Policial
                         
                         if (socListaNF.Count > 0)
                         {
-                            foreach(NucleoFamiliar c in socListaNF)
+                            foreach (NucleoFamiliar c in socListaNF)
                             {
                                 int edad1 = fecha.Year - c.NFFechaNacimiento.Year;
-
+                                txtNFId.Text = Convert.ToString(c.NFId);
                                 if (DateTime.Today < c.NFFechaNacimiento.AddYears(edad1)) edad1--;
-                                dgvSociosNF.Rows.Add(c.SocId, c.NFCI, c.NFPrimerNombre, c.NFPrimerApellido, edad1 + " años" ,c.NFTel, c.NFCelular, 
+                                dgvSociosNF.Rows.Add(c.SocId, c.NFCI, c.NFPrimerNombre, c.NFPrimerApellido,edad1 + " años" ,c.NfTipoVinculo, c.NFTel, c.NFCelular, 
                                     "Editar", "Eliminar",c.NFFechaNacimiento,c.NFSegundoNombre,c.NFSegundoApellido, c.NFobservaciones,c.NFId);
                             }
                         }
@@ -116,11 +116,7 @@ namespace Policial
                 errorProvider.SetError(label10, "Selecciones vinculo.");
                 error = true;
             }
-            if (dtpFechaNacimientoNF.Value.Date > DateTime.Now.Date.AddYears(-8))
-            {
-                errorProvider.SetError(label22, "Seleccione fecha de nacimiento.");
-                error = true;
-            }
+
             return error;
             #endregion
         }
@@ -152,9 +148,8 @@ namespace Policial
                         else
                             socNF.NFSegundoNombre = "";
 
-                        //REVISAR
-                        //if ((int)cmbTipoVinculo.SelectedIndex <= 0)
-                        //    socNF.NTipoPersona = cmbTipoVinculo.SelectedItem.ToString();
+                        if ((int)cmbTipoVinculo.SelectedIndex >= 0)
+                            socNF.NfTipoVinculo = cmbTipoVinculo.SelectedItem.ToString();
 
                         if (!string.IsNullOrEmpty(txtCelularNF.Text))
                             socNF.NFCelular = txtCelularNF.Text;
@@ -186,7 +181,10 @@ namespace Policial
                             {
                                 mensaje = "La información se guardó exitosamente.";
                                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                dgvSociosNF.Rows.Add(socNF.SocId, socNF.NFCI, socNF.NFPrimerNombre, socNF.NFPrimerApellido, socNF.NFTel, socNF.NFCelular, "Editar", "Eliminar");
+                                DateTime fecha = DateTime.Today;
+                                int edad1 = fecha.Year - socNF.NFFechaNacimiento.Year;
+                                dgvSociosNF.Rows.Add(socNF.SocId, socNF.NFCI, socNF.NFPrimerNombre, socNF.NFPrimerApellido, edad1 + " años" , socNF.NfTipoVinculo ,socNF.NFTel,
+                                    socNF.NFCelular, "Editar", "Eliminar");
                                 LimpioFrmNF();
                                 txtSocIdNF.Text = "";
                                 txtNombreSocNF.Text = "";
@@ -221,6 +219,9 @@ namespace Policial
                             socNF.NFSegundoNombre = txtSegundoNombreNF.Text;
                         else
                             socNF.NFSegundoNombre = "";
+
+                        if ((int)cmbTipoVinculo.SelectedIndex >= 0)
+                            socNF.NfTipoVinculo = cmbTipoVinculo.SelectedItem.ToString();
 
                         if (!string.IsNullOrEmpty(txtCelularNF.Text))
                             socNF.NFCelular = txtCelularNF.Text;
@@ -260,7 +261,7 @@ namespace Policial
                                 {
                                     int edad1 = fecha.Year - c.NFFechaNacimiento.Year;
                                     if (DateTime.Today < c.NFFechaNacimiento.AddYears(edad1)) edad1--;
-                                    dgvSociosNF.Rows.Add(c.SocId, c.NFCI, c.NFPrimerNombre, c.NFPrimerApellido, edad1 + " años", c.NFTel, c.NFCelular,
+                                    dgvSociosNF.Rows.Add(c.SocId, c.NFCI, c.NFPrimerNombre, c.NFPrimerApellido, edad1 + " años", c.NfTipoVinculo, c.NFTel, c.NFCelular,
                                                         "Editar", "Eliminar", c.NFFechaNacimiento, c.NFSegundoNombre, c.NFSegundoApellido, c.NFobservaciones, c.NFId);
                                 }
                             }
@@ -290,6 +291,9 @@ namespace Policial
                             socNF.NFSegundoNombre = txtSegundoNombreNF.Text;
                         else
                             socNF.NFSegundoNombre = "";
+
+                        if ((int)cmbTipoVinculo.SelectedIndex >= 0)
+                            socNF.NfTipoVinculo = cmbTipoVinculo.SelectedItem.ToString();
 
                         if (!string.IsNullOrEmpty(txtCelularNF.Text))
                             socNF.NFCelular = txtCelularNF.Text;
@@ -329,7 +333,7 @@ namespace Policial
                                 {
                                     int edad1 = fecha.Year - c.NFFechaNacimiento.Year;
                                     if (DateTime.Today < c.NFFechaNacimiento.AddYears(edad1)) edad1--;
-                                    dgvSociosNF.Rows.Add(c.SocId, c.NFCI, c.NFPrimerNombre, c.NFPrimerApellido, edad1 + " años", c.NFTel, c.NFCelular,
+                                    dgvSociosNF.Rows.Add(c.SocId, c.NFCI, c.NFPrimerNombre, c.NFPrimerApellido, edad1 + " años", c.NfTipoVinculo, c.NFTel, c.NFCelular,
                                                         "Editar", "Eliminar", c.NFFechaNacimiento, c.NFSegundoNombre, c.NFSegundoApellido, c.NFobservaciones, c.NFId);
                                 }
                             }
@@ -361,6 +365,7 @@ namespace Policial
             txtCelularNF.Text = "";
             txtObservacionesNF.Text = "";
             dtpFechaNacimientoNF.Value = DateTime.Now;
+            cmbTipoVinculo.SelectedIndex = 0;
         }
         private bool PersistirNucleoFamiliar(NucleoFamiliar c, Usuario usu)
         {

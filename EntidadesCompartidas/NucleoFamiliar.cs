@@ -17,6 +17,7 @@ namespace EntidadesCompartidas
         private string nFSegundoNombre;
         private int nFCI;
         private DateTime nFFechaNacimiento;
+        private string nfTipoVinculo;
         private string nFTel;
         private string nFCelular;
         private string nFobservaciones;
@@ -74,10 +75,13 @@ namespace EntidadesCompartidas
         [DataMember]
         public string NFobservaciones { get => nFobservaciones; set => nFobservaciones = value; }
 
+        [DataMember]
+        public string NfTipoVinculo { get => nfTipoVinculo; set => nfTipoVinculo = value; }
+
         public NucleoFamiliar(){ }
 
         public NucleoFamiliar(int nFId, int socId, string nFPrimerApellido, string nFSegundoApellido, string nFPrimerNombre, string nFSegundoNombre, 
-            int nFCI, DateTime nFFechaNacimiento, string nFTel, string nFCelular, string nFobservaciones, bool nFActivo,
+            int nFCI, DateTime nFFechaNacimiento,string nfTipoVinculo, string nFTel, string nFCelular, string nFobservaciones, bool nFActivo,
             DateTime fecAlta, DateTime fecModif, int usuIdModif, int usuIdAlta)
         {
             this.nFId = nFId;
@@ -88,6 +92,7 @@ namespace EntidadesCompartidas
             this.nFSegundoNombre = nFSegundoNombre;
             this.nFCI = nFCI;
             this.nFFechaNacimiento = nFFechaNacimiento;
+            this.nfTipoVinculo = nfTipoVinculo;
             this.nFTel = nFTel;
             this.nFCelular = nFCelular;
             this.nFobservaciones = nFobservaciones;

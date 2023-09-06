@@ -30,7 +30,7 @@ namespace Policial
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label24 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.txtObservacionesNF = new System.Windows.Forms.TextBox();
@@ -58,20 +58,6 @@ namespace Policial
             this.label1 = new System.Windows.Forms.Label();
             this.btnGuardarNF = new System.Windows.Forms.Button();
             this.dgvSociosNF = new System.Windows.Forms.DataGridView();
-            this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocPrimerNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocPrimerApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocTel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocCelular = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.SocFN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocObser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NFId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocSegundoApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocSegundoNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnBuscarNF = new System.Windows.Forms.Button();
             this.txtBuscarNF = new System.Windows.Forms.TextBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
@@ -84,6 +70,21 @@ namespace Policial
             this.cmbTipoVinculo = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocPrimerNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocPrimerApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NFTipoVinculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocTel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocCelular = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.SocFN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocObser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NFId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocSegundoApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocSegundoNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSociosNF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -378,6 +379,7 @@ namespace Policial
             this.SocPrimerNombre,
             this.SocPrimerApellido,
             this.SocDireccion,
+            this.NFTipoVinculo,
             this.SocTel,
             this.SocCelular,
             this.Editar,
@@ -387,14 +389,14 @@ namespace Policial
             this.NFId,
             this.SocSegundoApellido,
             this.SocSegundoNombre});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSociosNF.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSociosNF.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSociosNF.Location = new System.Drawing.Point(12, 370);
             this.dgvSociosNF.Name = "dgvSociosNF";
             this.dgvSociosNF.ReadOnly = true;
@@ -403,104 +405,6 @@ namespace Policial
             this.dgvSociosNF.Size = new System.Drawing.Size(894, 116);
             this.dgvSociosNF.TabIndex = 124;
             this.dgvSociosNF.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSociosNF_CellContentClick);
-            // 
-            // SocId
-            // 
-            this.SocId.HeaderText = "Socio Nº";
-            this.SocId.Name = "SocId";
-            this.SocId.ReadOnly = true;
-            this.SocId.Width = 80;
-            // 
-            // SocCI
-            // 
-            this.SocCI.HeaderText = "Cédula";
-            this.SocCI.MinimumWidth = 6;
-            this.SocCI.Name = "SocCI";
-            this.SocCI.ReadOnly = true;
-            this.SocCI.Width = 80;
-            // 
-            // SocPrimerNombre
-            // 
-            this.SocPrimerNombre.HeaderText = "Nombre";
-            this.SocPrimerNombre.MinimumWidth = 6;
-            this.SocPrimerNombre.Name = "SocPrimerNombre";
-            this.SocPrimerNombre.ReadOnly = true;
-            // 
-            // SocPrimerApellido
-            // 
-            this.SocPrimerApellido.HeaderText = "Apellido";
-            this.SocPrimerApellido.Name = "SocPrimerApellido";
-            this.SocPrimerApellido.ReadOnly = true;
-            // 
-            // SocDireccion
-            // 
-            this.SocDireccion.HeaderText = "Edad";
-            this.SocDireccion.MinimumWidth = 6;
-            this.SocDireccion.Name = "SocDireccion";
-            this.SocDireccion.ReadOnly = true;
-            // 
-            // SocTel
-            // 
-            this.SocTel.HeaderText = "Teléfono";
-            this.SocTel.MinimumWidth = 6;
-            this.SocTel.Name = "SocTel";
-            this.SocTel.ReadOnly = true;
-            this.SocTel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SocTel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.SocTel.Width = 140;
-            // 
-            // SocCelular
-            // 
-            this.SocCelular.HeaderText = "Celular";
-            this.SocCelular.Name = "SocCelular";
-            this.SocCelular.ReadOnly = true;
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            // 
-            // SocFN
-            // 
-            this.SocFN.HeaderText = "SocFN";
-            this.SocFN.Name = "SocFN";
-            this.SocFN.ReadOnly = true;
-            this.SocFN.Visible = false;
-            // 
-            // SocObser
-            // 
-            this.SocObser.HeaderText = "SocObser";
-            this.SocObser.Name = "SocObser";
-            this.SocObser.ReadOnly = true;
-            this.SocObser.Visible = false;
-            // 
-            // NFId
-            // 
-            this.NFId.HeaderText = "NFId";
-            this.NFId.Name = "NFId";
-            this.NFId.ReadOnly = true;
-            this.NFId.Visible = false;
-            // 
-            // SocSegundoApellido
-            // 
-            this.SocSegundoApellido.HeaderText = "SocSegundoApellido";
-            this.SocSegundoApellido.Name = "SocSegundoApellido";
-            this.SocSegundoApellido.ReadOnly = true;
-            this.SocSegundoApellido.Visible = false;
-            // 
-            // SocSegundoNombre
-            // 
-            this.SocSegundoNombre.HeaderText = "SocSegundoNombre";
-            this.SocSegundoNombre.Name = "SocSegundoNombre";
-            this.SocSegundoNombre.ReadOnly = true;
-            this.SocSegundoNombre.Visible = false;
             // 
             // btnBuscarNF
             // 
@@ -623,6 +527,110 @@ namespace Policial
             this.label10.TabIndex = 144;
             this.label10.Text = "*";
             // 
+            // SocId
+            // 
+            this.SocId.HeaderText = "Socio Nº";
+            this.SocId.Name = "SocId";
+            this.SocId.ReadOnly = true;
+            this.SocId.Width = 80;
+            // 
+            // SocCI
+            // 
+            this.SocCI.HeaderText = "Cédula";
+            this.SocCI.MinimumWidth = 6;
+            this.SocCI.Name = "SocCI";
+            this.SocCI.ReadOnly = true;
+            this.SocCI.Width = 80;
+            // 
+            // SocPrimerNombre
+            // 
+            this.SocPrimerNombre.HeaderText = "Nombre";
+            this.SocPrimerNombre.MinimumWidth = 6;
+            this.SocPrimerNombre.Name = "SocPrimerNombre";
+            this.SocPrimerNombre.ReadOnly = true;
+            // 
+            // SocPrimerApellido
+            // 
+            this.SocPrimerApellido.HeaderText = "Apellido";
+            this.SocPrimerApellido.Name = "SocPrimerApellido";
+            this.SocPrimerApellido.ReadOnly = true;
+            // 
+            // SocDireccion
+            // 
+            this.SocDireccion.HeaderText = "Edad";
+            this.SocDireccion.MinimumWidth = 6;
+            this.SocDireccion.Name = "SocDireccion";
+            this.SocDireccion.ReadOnly = true;
+            // 
+            // NFTipoVinculo
+            // 
+            this.NFTipoVinculo.HeaderText = "Vinculo";
+            this.NFTipoVinculo.Name = "NFTipoVinculo";
+            this.NFTipoVinculo.ReadOnly = true;
+            // 
+            // SocTel
+            // 
+            this.SocTel.HeaderText = "Teléfono";
+            this.SocTel.MinimumWidth = 6;
+            this.SocTel.Name = "SocTel";
+            this.SocTel.ReadOnly = true;
+            this.SocTel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SocTel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.SocTel.Width = 140;
+            // 
+            // SocCelular
+            // 
+            this.SocCelular.HeaderText = "Celular";
+            this.SocCelular.Name = "SocCelular";
+            this.SocCelular.ReadOnly = true;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            // 
+            // SocFN
+            // 
+            this.SocFN.HeaderText = "SocFN";
+            this.SocFN.Name = "SocFN";
+            this.SocFN.ReadOnly = true;
+            this.SocFN.Visible = false;
+            // 
+            // SocObser
+            // 
+            this.SocObser.HeaderText = "SocObser";
+            this.SocObser.Name = "SocObser";
+            this.SocObser.ReadOnly = true;
+            this.SocObser.Visible = false;
+            // 
+            // NFId
+            // 
+            this.NFId.HeaderText = "NFId";
+            this.NFId.Name = "NFId";
+            this.NFId.ReadOnly = true;
+            this.NFId.Visible = false;
+            // 
+            // SocSegundoApellido
+            // 
+            this.SocSegundoApellido.HeaderText = "SocSegundoApellido";
+            this.SocSegundoApellido.Name = "SocSegundoApellido";
+            this.SocSegundoApellido.ReadOnly = true;
+            this.SocSegundoApellido.Visible = false;
+            // 
+            // SocSegundoNombre
+            // 
+            this.SocSegundoNombre.HeaderText = "SocSegundoNombre";
+            this.SocSegundoNombre.Name = "SocSegundoNombre";
+            this.SocSegundoNombre.ReadOnly = true;
+            this.SocSegundoNombre.Visible = false;
+            // 
             // frmNucleoFamiliar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -711,11 +719,17 @@ namespace Policial
         private System.Windows.Forms.TextBox txtSocIdNF;
         private System.Windows.Forms.TextBox txtNombreSocNF;
         private System.Windows.Forms.TextBox txtNFId;
+        private System.Windows.Forms.TextBox txtSocCI;
+        private System.Windows.Forms.ComboBox cmbTipoVinculo;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocId;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocCI;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocPrimerNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocPrimerApellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocDireccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NFTipoVinculo;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocTel;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocCelular;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
@@ -725,10 +739,5 @@ namespace Policial
         private System.Windows.Forms.DataGridViewTextBoxColumn NFId;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocSegundoApellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn SocSegundoNombre;
-        private System.Windows.Forms.TextBox txtSocCI;
-        private System.Windows.Forms.ComboBox cmbTipoVinculo;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label22;
     }
 }
