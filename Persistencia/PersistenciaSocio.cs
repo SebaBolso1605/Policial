@@ -217,9 +217,9 @@ namespace Persistencia
             cmd.Parameters.AddWithValue("@SocTel", s.SocTel);
             cmd.Parameters.AddWithValue("@SocCelular", s.SocCelular);
             cmd.Parameters.AddWithValue("@SocEmail", s.SocEmail);
-            cmd.Parameters.AddWithValue("@SocObservaciones", s.SocEmail);
+            cmd.Parameters.AddWithValue("@SocObservaciones", s.SocObservaciones);
             cmd.Parameters.AddWithValue("@SocTipoCuota", s.SocTipoCuota);
-            cmd.Parameters.AddWithValue("@UsuIdAlta", _usu.UsuId);
+            cmd.Parameters.AddWithValue("@UsuIdModif", _usu.UsuId);
             cmd.Parameters.Add("@SocId", SqlDbType.Int).Direction = ParameterDirection.Output;
 
             SqlParameter prmRetorno = new SqlParameter("@Retorno", SqlDbType.Int);
@@ -249,13 +249,12 @@ namespace Persistencia
                     throw new Exception("Problema al guardar el socio.");
                 else if (resp == 1)
                 {
-                    Id = (int)cmd.Parameters["@SocCI"].Value;
-                    PersistenciaCuota.ModificarCuota(s.SocCI, s.SocTipoCuota, _usu);
-                }
+                    //Id = (int)cmd.Parameters["@SocCI"].Value;
+                    //PersistenciaCuota.ModificarCuota(s.SocCI, s.SocTipoCuota, _usu);
 
-                tran.Commit();
-                respuesta = true;
-
+                    tran.Commit();
+                    respuesta = true;
+                }               
                 return respuesta;
             }
             catch (Exception ex)

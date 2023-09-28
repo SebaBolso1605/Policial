@@ -216,7 +216,7 @@ namespace Policial
                         txtTelModif.Text = soc.SocTel;
                         txtCelularModif.Text = soc.SocCelular;
                         txtObservacionesModif.Text = soc.SocObservaciones;
-                        cmbTPModif.SelectedItem = soc.SocTipoCuota;
+                        cmbTPModif.SelectedIndex = soc.SocTipoCuota;
                     }
                     else
                     {
@@ -273,50 +273,62 @@ namespace Policial
         {
             try
             {
-                IServicePolicial lSocio = new ServicePolicialClient();
-                Socio soc = new Socio();
-                if (!string.IsNullOrEmpty(txtBuscarModif.Text))
+                bool resultado = false;
+                DialogResult resul = MessageBox.Show("¿Confirma guardar los cambios?", titulo, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (resul == DialogResult.OK)
                 {
-                    int ci = Convert.ToInt32(txtBuscarModif.Text);
-                    bool ret = HayErrorModif();
-                    if (ret == false)
+                    IServicePolicial lSocio = new ServicePolicialClient();
+                    Socio soc = new Socio();
+                    if (!string.IsNullOrEmpty(txtBuscarModif.Text))
                     {
-                        soc.SocCI = ci;
-                        soc.SocPrimerNombre = txtPrimerNombreModif.Text;
-                        soc.SocPrimerApellido = txtPrimerApellidoModif.Text;
-                        soc.SocSegundoApellido = txtSegundoApellidoModif.Text;
+                        int ci = Convert.ToInt32(txtBuscarModif.Text);
+                        bool ret = HayErrorModif();
+                        if (ret == false)
+                        {
+                            soc.SocCI = ci;
+                            soc.SocPrimerNombre = txtPrimerNombreModif.Text;
+                            soc.SocPrimerApellido = txtPrimerApellidoModif.Text;
+                            soc.SocSegundoApellido = txtSegundoApellidoModif.Text;
 
-                        if (!string.IsNullOrEmpty(txtSegundoNombreModif.Text))
-                            soc.SocSegundoNombre = txtSegundoNombreModif.Text;
-                        else
-                            soc.SocSegundoNombre = "";
+                            if (!string.IsNullOrEmpty(txtSegundoNombreModif.Text))
+                                soc.SocSegundoNombre = txtSegundoNombreModif.Text;
+                            else
+                                soc.SocSegundoNombre = "";
 
-                        if (!string.IsNullOrEmpty(txtEmailModif.Text))
-                            soc.SocEmail = txtEmailModif.Text;
-                        else
-                            soc.SocEmail = "";
+                            if (!string.IsNullOrEmpty(txtEmailModif.Text))
+                                soc.SocEmail = txtEmailModif.Text;
+                            else
+                                soc.SocEmail = "";
 
-                        if (!string.IsNullOrEmpty(txtDireccionModif.Text))
-                            soc.SocDireccion = txtDireccionModif.Text;
-                        else
-                            soc.SocDireccion = "";
+                            if (!string.IsNullOrEmpty(txtDireccionModif.Text))
+                                soc.SocDireccion = txtDireccionModif.Text;
+                            else
+                                soc.SocDireccion = "";
 
-                        if (!string.IsNullOrEmpty(txtCelularModif.Text))
-                            soc.SocCelular = txtCelularModif.Text;
-                        else
-                            soc.SocCelular = "";
+                            if (!string.IsNullOrEmpty(txtCelularModif.Text))
+                                soc.SocCelular = txtCelularModif.Text;
+                            else
+                                soc.SocCelular = "";
 
-                        if (!string.IsNullOrEmpty(txtTelModif.Text))
-                            soc.SocTel = txtTelModif.Text;
-                        else
-                            soc.SocTel = "";
+                            if (!string.IsNullOrEmpty(txtTelModif.Text))
+                                soc.SocTel = txtTelModif.Text;
+                            else
+                                soc.SocTel = "";
 
-                        if (!string.IsNullOrEmpty(txtObservacionesModif.Text))
-                            soc.SocObservaciones = txtObservacionesModif.Text;
-                        else
-                            soc.SocObservaciones = "";
+                            if (!string.IsNullOrEmpty(txtObservacionesModif.Text))
+                                soc.SocObservaciones = txtObservacionesModif.Text;
+                            else
+                                soc.SocObservaciones = "";
 
-                        lSocio.ModificarSocio(soc, Program.usuarioLogueado);
+                            soc.SocTipoCuota = Convert.ToInt32(cmbTPModif.SelectedIndex);
+
+                            resultado = lSocio.ModificarSocio(soc, Program.usuarioLogueado);
+                            if (resultado)
+                            {
+                                mensaje = "La información del Socio se guardó exitosamente.";
+                                MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
                     }
                 }
             }
@@ -861,6 +873,7 @@ namespace Policial
                 IServicePolicial tipoCuota = new ServicePolicialClient();
                 listaTC = tipoCuota.ListarTC().ToList();
                 cmbTC.Items.Add("Seleccionar");
+                cmbTPModif.Items.Add("Seleccionar");
 
                 foreach (TipoCuota e in listaTC)
                 {

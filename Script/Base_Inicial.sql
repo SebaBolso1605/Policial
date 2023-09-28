@@ -734,8 +734,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
---create PROCEDURE [dbo].[modificar_socio]
-CREATE PROCEDURE [dbo].[modificar_socio]
+--CREATE PROCEDURE [dbo].[modificar_socio]
+ALTER PROCEDURE [dbo].[modificar_socio]
 @SocCI int,
 @SocPrimerApellido VARCHAR (50),
 @SocSegundoApellido VARCHAR (50),
@@ -747,6 +747,7 @@ CREATE PROCEDURE [dbo].[modificar_socio]
 @SocEmail varchar(50),
 @SocObservaciones varchar(250),
 @SocTipoCuota int,
+@UsuIdModif INT,
 @UsuIdAlta INT,
 @SocId INT OUTPUT
 AS
