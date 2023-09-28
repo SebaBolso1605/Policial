@@ -1,5 +1,4 @@
-﻿
-namespace Policial
+﻿namespace Policial
 {
     partial class frmSocio
     {
@@ -34,7 +33,7 @@ namespace Policial
             this.tabListaSocios = new System.Windows.Forms.TabPage();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.txtParametro = new System.Windows.Forms.TextBox();
-            this.lblCantSocios = new System.Windows.Forms.Label();
+            this.lblCantSociosTotales = new System.Windows.Forms.Label();
             this.lblTituloFormulario = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.dgvSocios = new System.Windows.Forms.DataGridView();
@@ -142,6 +141,8 @@ namespace Policial
             this.txtBuscarEliminar = new System.Windows.Forms.TextBox();
             this.label53 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblCantSociosActivos = new System.Windows.Forms.Label();
+            this.lblCantSociosInactivos = new System.Windows.Forms.Label();
             this.tabModifcar.SuspendLayout();
             this.tabListaSocios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
@@ -169,9 +170,11 @@ namespace Policial
             // tabListaSocios
             // 
             this.tabListaSocios.BackColor = System.Drawing.SystemColors.Control;
+            this.tabListaSocios.Controls.Add(this.lblCantSociosInactivos);
+            this.tabListaSocios.Controls.Add(this.lblCantSociosActivos);
             this.tabListaSocios.Controls.Add(this.checkBox1);
             this.tabListaSocios.Controls.Add(this.txtParametro);
-            this.tabListaSocios.Controls.Add(this.lblCantSocios);
+            this.tabListaSocios.Controls.Add(this.lblCantSociosTotales);
             this.tabListaSocios.Controls.Add(this.lblTituloFormulario);
             this.tabListaSocios.Controls.Add(this.btnVolver);
             this.tabListaSocios.Controls.Add(this.dgvSocios);
@@ -191,7 +194,7 @@ namespace Policial
             this.checkBox1.ForeColor = System.Drawing.Color.Black;
             this.checkBox1.Location = new System.Drawing.Point(334, 78);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(126, 20);
+            this.checkBox1.Size = new System.Drawing.Size(125, 20);
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "solo Socios activos";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -205,17 +208,17 @@ namespace Policial
             this.txtParametro.TabIndex = 1;
             this.txtParametro.TextChanged += new System.EventHandler(this.textBox18_TextChanged);
             // 
-            // lblCantSocios
+            // lblCantSociosTotales
             // 
-            this.lblCantSocios.AutoSize = true;
-            this.lblCantSocios.BackColor = System.Drawing.Color.Transparent;
-            this.lblCantSocios.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantSocios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.lblCantSocios.Location = new System.Drawing.Point(62, 480);
-            this.lblCantSocios.Name = "lblCantSocios";
-            this.lblCantSocios.Size = new System.Drawing.Size(181, 19);
-            this.lblCantSocios.TabIndex = 30;
-            this.lblCantSocios.Text = "Cantidad de Socios : 0";
+            this.lblCantSociosTotales.AutoSize = true;
+            this.lblCantSociosTotales.BackColor = System.Drawing.Color.Transparent;
+            this.lblCantSociosTotales.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantSociosTotales.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.lblCantSociosTotales.Location = new System.Drawing.Point(62, 521);
+            this.lblCantSociosTotales.Name = "lblCantSociosTotales";
+            this.lblCantSociosTotales.Size = new System.Drawing.Size(134, 19);
+            this.lblCantSociosTotales.TabIndex = 30;
+            this.lblCantSociosTotales.Text = "Socios Totales : 0";
             // 
             // lblTituloFormulario
             // 
@@ -1409,6 +1412,30 @@ namespace Policial
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // lblCantSociosActivos
+            // 
+            this.lblCantSociosActivos.AutoSize = true;
+            this.lblCantSociosActivos.BackColor = System.Drawing.Color.Transparent;
+            this.lblCantSociosActivos.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantSociosActivos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.lblCantSociosActivos.Location = new System.Drawing.Point(62, 477);
+            this.lblCantSociosActivos.Name = "lblCantSociosActivos";
+            this.lblCantSociosActivos.Size = new System.Drawing.Size(137, 19);
+            this.lblCantSociosActivos.TabIndex = 31;
+            this.lblCantSociosActivos.Text = "Socios Activos : 0";
+            // 
+            // lblCantSociosInactivos
+            // 
+            this.lblCantSociosInactivos.AutoSize = true;
+            this.lblCantSociosInactivos.BackColor = System.Drawing.Color.Transparent;
+            this.lblCantSociosInactivos.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantSociosInactivos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.lblCantSociosInactivos.Location = new System.Drawing.Point(62, 499);
+            this.lblCantSociosInactivos.Name = "lblCantSociosInactivos";
+            this.lblCantSociosInactivos.Size = new System.Drawing.Size(150, 19);
+            this.lblCantSociosInactivos.TabIndex = 32;
+            this.lblCantSociosInactivos.Text = "Socios Inactivos : 0";
+            // 
             // frmSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1441,7 +1468,7 @@ namespace Policial
 
         private System.Windows.Forms.TabControl tabModifcar;
         private System.Windows.Forms.TabPage tabListaSocios;
-        private System.Windows.Forms.Label lblCantSocios;
+        private System.Windows.Forms.Label lblCantSociosTotales;
         private System.Windows.Forms.Label lblTituloFormulario;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.DataGridView dgvSocios;
@@ -1551,5 +1578,7 @@ namespace Policial
         private System.Windows.Forms.DataGridViewTextBoxColumn SocActivo;
         private System.Windows.Forms.DataGridViewButtonColumn Ver;
         private System.Windows.Forms.DataGridViewButtonColumn Activar;
+        private System.Windows.Forms.Label lblCantSociosInactivos;
+        private System.Windows.Forms.Label lblCantSociosActivos;
     }
 }

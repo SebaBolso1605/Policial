@@ -72,7 +72,7 @@ namespace Persistencia
                 {
                     Id = (int)cmd.Parameters["@SocId"].Value;
                     c.SocId = Id;
-                 }
+                }
 
                 tran.Commit();
                 respuesta = true;
@@ -201,7 +201,7 @@ namespace Persistencia
             }
             return _ListaSocios;
         }
-        public bool ModificarSocio(Socio s,Usuario _usu)
+        public bool ModificarSocio(Socio s, Usuario _usu)
         {
 
             SqlConnection cnn = new SqlConnection(Conexion.Cnn);
@@ -250,7 +250,7 @@ namespace Persistencia
                 else if (resp == 1)
                 {
                     Id = (int)cmd.Parameters["@SocCI"].Value;
-                    PersistenciaCuota.ModificarCuota(s.SocCI , s.SocTipoCuota,_usu);
+                    PersistenciaCuota.ModificarCuota(s.SocCI, s.SocTipoCuota, _usu);
                 }
 
                 tran.Commit();
@@ -277,7 +277,7 @@ namespace Persistencia
 
             cmd.Parameters.AddWithValue("@SocCI", s.SocCI);
             cmd.Parameters.AddWithValue("@UsuIdModif", _usu.UsuId);
-            cmd.Parameters.Add("@SocId", SqlDbType.Int).Direction = ParameterDirection.Output;
+            //cmd.Parameters.Add("@SocId", SqlDbType.Int).Direction = ParameterDirection.Output;
 
             SqlParameter prmRetorno = new SqlParameter("@Retorno", SqlDbType.Int);
             prmRetorno.Direction = ParameterDirection.ReturnValue;
@@ -300,9 +300,11 @@ namespace Persistencia
                     throw new Exception("No existe un socio con este documento.");
                 else if (resp == -2)
                     throw new Exception("El número de socio ingresado no existe.");
-
-                tran.Commit();
-                respuesta = true;
+                else if (resp == 1)
+                {
+                    tran.Commit();
+                    respuesta = true;
+                }
 
                 return respuesta;
             }

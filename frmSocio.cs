@@ -24,6 +24,9 @@ namespace Policial
         private Cuota cuota;
         private List<Socio> listaSocios;
         private Usuario usuarioLogueado = Program.usuarioLogueado;
+        private int cantidadSociosActivos;
+        private int cantidadSociosInactivos;
+        private int cantidadSocios;
         #endregion
         public frmSocio()
         {
@@ -219,7 +222,7 @@ namespace Policial
                     {
                         MessageBox.Show("No se encontro socio para el documento ingresado", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         txtBuscarModif.Text = "";
-                    }       
+                    }
                 }
             }
             catch (Exception ex)
@@ -497,7 +500,12 @@ namespace Policial
         {
             try
             {
+                string texto = "";
                 int boton = int.Parse(e.ColumnIndex + "");
+                if (!String.IsNullOrEmpty(dgvSocios.Rows[e.RowIndex].Cells[9].Value.ToString()))
+                    texto = dgvSocios.Rows[e.RowIndex].Cells[9].Value.ToString();
+                else
+                    texto = "";
                 int docum = Convert.ToInt32(dgvSocios.Rows[e.RowIndex].Cells[1].Value.ToString());
 
                 //string SocApellido1 = dgvSocios.Rows[e.RowIndex].Cells[3].Value.ToString();
@@ -511,20 +519,26 @@ namespace Policial
                     case 8:
                         this.tabModifcar.SelectedIndex = 2;
                         txtBuscarModif.Text = docum.ToString();
-                        button1_Click_2(null,null);
+                        button1_Click_2(null, null);
                         break;
                     case 9:
-                        if(String.IsNullOrEmpty(docum.ToString()))
+                        if (texto == "Activar")
                         {
-                            bool resp = false;
-                            resp = ActivarSocio(soc, Program.usuarioLogueado);
-                            if(resp)
+                            if (!String.IsNullOrEmpty(docum.ToString()))
                             {
-                                MessageBox.Show("Se activo Socio seleccionado.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("No se pudo activar Socio seleccionado.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                                bool resp = false;
+                                resp = ActivarSocio(soc, Program.usuarioLogueado);
+                                if (resp)
+                                {
+                                    MessageBox.Show("Se activo Socio seleccionado.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    CargoGrillaSocios();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se pudo activar Socio seleccionado.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    CargoGrillaSocios();
+                                }
                             }
                         }
                         break;
@@ -625,7 +639,7 @@ namespace Policial
             try
             {
                 bool ret = HayError();
-                if (ret==false)
+                if (ret == false)
                 {
                     socio = new Socio();
                     cuota = new Cuota();
@@ -698,7 +712,7 @@ namespace Policial
             try
             {
                 IServicePolicial FSocio = new ServicePolicialClient();
-                resp = FSocio.AltaSocio(s, c,usu);
+                resp = FSocio.AltaSocio(s, c, usu);
                 return resp;
             }
             catch (Exception ex)
@@ -756,27 +770,28 @@ namespace Policial
                 //ILogicaSocio FSocio = FabricaLogica.getLogicaSocio();
                 IServicePolicial FSocio = new ServicePolicialClient();
                 listaSocios = FSocio.ListarSocios().ToList();
+                cantidadSocios = listaSocios.Count();
                 bool socioActivo = checkBox1.Checked ? true : false;
                 if (socioActivo)
                 {
-                     var _resultado = (from unSocio in listaSocios
-                                  where unSocio.SocAtivo == socioActivo
-                                  select new Socio
-                                  {
-                                      SocId = unSocio.SocId,
-                                      SocCI = unSocio.SocCI,
-                                      SocPrimerNombre = unSocio.SocPrimerNombre,
-                                      SocPrimerApellido = unSocio.SocPrimerApellido,
-                                      SocSegundoNombre = unSocio.SocSegundoNombre,
-                                      SocSegundoApellido = unSocio.SocSegundoApellido,
-                                      SocFechaNacimiento = unSocio.SocFechaNacimiento,
-                                      SocFechaIngreso = unSocio.SocFechaIngreso,
-                                      SocDireccion = unSocio.SocDireccion,
-                                      SocEmail = unSocio.SocEmail,
-                                      SocTel = unSocio.SocTel,
-                                      SocCelular = unSocio.SocCelular,
-                                      SocAtivo = unSocio.SocAtivo,
-                                  }).ToList();
+                    var _resultado = (from unSocio in listaSocios
+                                      where unSocio.SocAtivo == socioActivo
+                                      select new Socio
+                                      {
+                                          SocId = unSocio.SocId,
+                                          SocCI = unSocio.SocCI,
+                                          SocPrimerNombre = unSocio.SocPrimerNombre,
+                                          SocPrimerApellido = unSocio.SocPrimerApellido,
+                                          SocSegundoNombre = unSocio.SocSegundoNombre,
+                                          SocSegundoApellido = unSocio.SocSegundoApellido,
+                                          SocFechaNacimiento = unSocio.SocFechaNacimiento,
+                                          SocFechaIngreso = unSocio.SocFechaIngreso,
+                                          SocDireccion = unSocio.SocDireccion,
+                                          SocEmail = unSocio.SocEmail,
+                                          SocTel = unSocio.SocTel,
+                                          SocCelular = unSocio.SocCelular,
+                                          SocAtivo = unSocio.SocAtivo,
+                                      }).ToList();
                     dgvSocios.Rows.Clear();
                     if (listaSocios != null)
                     {
@@ -784,7 +799,7 @@ namespace Policial
                         {
                             string estado = s.SocAtivo ? "Activo" : "Inactivo";
                             if (estado == "Activo")
-                                dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, s.SocDireccion, s.SocTel, s.SocCelular, estado, "Editar");
+                                dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, s.SocDireccion, s.SocTel, s.SocCelular, estado, "Editar", "");
                             else
                                 dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, s.SocDireccion, s.SocTel, s.SocCelular, estado, "Editar", "Activar");
                         }
@@ -817,12 +832,19 @@ namespace Policial
                         {
                             string estado = s.SocAtivo ? "Activo" : "Inactivo";
                             if (estado == "Activo")
-                                dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, s.SocDireccion, s.SocTel, s.SocCelular, estado, "Editar");
+                                dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, s.SocDireccion, s.SocTel, s.SocCelular, estado, "Editar", "");
                             else
                                 dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre, s.SocPrimerApellido, s.SocDireccion, s.SocTel, s.SocCelular, estado, "Editar", "Activar");
                         }
                     }
                 }
+                var _inactivos = (from soc in listaSocios where soc.SocAtivo == false select soc).Count();
+                cantidadSociosInactivos = _inactivos;
+                var _activos = (from soc in listaSocios where soc.SocAtivo == true select soc).Count();
+                cantidadSociosActivos = _activos;
+                lblCantSociosInactivos.Text = "Socios Inactivos: " + cantidadSociosInactivos.ToString();
+                lblCantSociosActivos.Text = "Socios Activos: " + cantidadSociosActivos.ToString();
+                lblCantSociosTotales.Text = "Socios en Total: " + cantidadSocios.ToString();
             }
             catch (Exception ex)
             {
@@ -899,10 +921,10 @@ namespace Policial
                     CargoGrillaSocios();
                     break;
                 case "1":
-                    
+
                     break;
                 case "2":
-                    
+
                     break;
                 case "3":
                     LimpiarEliminar();

@@ -814,6 +814,31 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE [dbo].[activar_socio]
+--ALTER PROCEDURE [dbo].[activar_socio]
+@SocCI int,
+@UsuIdModif int
+AS
+BEGIN
+	IF NOT EXISTS(SELECT * FROM Socios WHERE SocCI = @SocCI)
+	BEGIN
+		RETURN -1
+	END
+	BEGIN TRAN			
+		UPDATE Socios SET SocAtivo = 1,
+						  FecModif = GETDATE(),
+						  UsuIdModif = @UsuIdModif
+					   WHERE SocCI = @SocCI	
+		IF @@ERROR <> 0
+		BEGIN
+			ROLLBACK TRAN
+			RETURN -2
+		END	
+	COMMIT TRAN
+	RETURN 1	
+END
+GO
+
 exec alta_TC 'Policial', 850, 1
 GO
 exec alta_TC 'Civil', 950, 1
