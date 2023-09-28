@@ -733,7 +733,6 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-
 --CREATE PROCEDURE [dbo].[modificar_socio]
 ALTER PROCEDURE [dbo].[modificar_socio]
 @SocCI int,
@@ -748,7 +747,6 @@ ALTER PROCEDURE [dbo].[modificar_socio]
 @SocObservaciones varchar(250),
 @SocTipoCuota int,
 @UsuIdModif INT,
-@UsuIdAlta INT,
 @SocId INT OUTPUT
 AS
 BEGIN
@@ -756,19 +754,20 @@ BEGIN
 	BEGIN
 		RETURN -1
 	END
-	SET @SocCI = (SELECT S.SocCI FROM Socios S  WHERE S.SocId = @SocCI)	
-	IF NOT EXISTS(SELECT * FROM Socios S WHERE S.SocCI = @SocCI)
-		BEGIN
-			RETURN -2
-		END
+	--SET @SocCI = (SELECT S.SocCI FROM Socios S  WHERE S.SocId = @SocCI)	
+	--IF NOT EXISTS(SELECT * FROM Socios S WHERE S.SocCI = @SocCI)
+	--	BEGIN
+	--		RETURN -2
+	--	END
 	ELSE
 	BEGIN TRAN			
-		UPDATE Socios SET SocPrimerApellido = @SocPrimerNombre, SocSegundoApellido = @SocSegundoNombre,
+		UPDATE Socios SET SocPrimerApellido = @SocPrimerApellido, SocSegundoApellido = @SocSegundoApellido,
 						  SocPrimerNombre = @SocPrimerNombre, SocSegundoNombre = @SocSegundoNombre,
 						  SocDireccion = @SocDireccion, SocObservaciones = @SocObservaciones,
 						  SocTel = @SocTel, SocCelular = @SocCelular,
-						  SocEmail = @SocEmail, SocTipoCuota = @SocTipoCuota
-					  WHERE SocId = @SocId	
+						  SocEmail = @SocEmail, SocTipoCuota = @SocTipoCuota,
+						  FecModif = GETDATE(), UsuIdModif = @UsuIdModif
+					  WHERE SocCI = @SocCI	
 		IF @@ERROR <> 0
 		BEGIN
 			ROLLBACK TRAN
