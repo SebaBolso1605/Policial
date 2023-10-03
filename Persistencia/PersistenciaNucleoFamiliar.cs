@@ -134,7 +134,7 @@ namespace Persistencia
             SqlCommand _comando = new SqlCommand("buscar_nf", _cnn);
             _comando.CommandType = CommandType.StoredProcedure;
             NucleoFamiliar c = new NucleoFamiliar();
-            List<NucleoFamiliar> s = null;
+            List<NucleoFamiliar> s = new List<NucleoFamiliar>();
 
             try
             {
