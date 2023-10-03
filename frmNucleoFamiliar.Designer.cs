@@ -58,18 +58,6 @@ namespace Policial
             this.label1 = new System.Windows.Forms.Label();
             this.btnGuardarNF = new System.Windows.Forms.Button();
             this.dgvSociosNF = new System.Windows.Forms.DataGridView();
-            this.btnBuscarNF = new System.Windows.Forms.Button();
-            this.txtBuscarNF = new System.Windows.Forms.TextBox();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtSocIdNF = new System.Windows.Forms.TextBox();
-            this.txtNombreSocNF = new System.Windows.Forms.TextBox();
-            this.txtNFId = new System.Windows.Forms.TextBox();
-            this.txtSocCI = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cmbTipoVinculo = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocPrimerNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,6 +73,18 @@ namespace Policial
             this.NFId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocSegundoApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocSegundoNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnBuscarNF = new System.Windows.Forms.Button();
+            this.txtBuscarNF = new System.Windows.Forms.TextBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtSocIdNF = new System.Windows.Forms.TextBox();
+            this.txtNombreSocNF = new System.Windows.Forms.TextBox();
+            this.txtNFId = new System.Windows.Forms.TextBox();
+            this.txtSocCI = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbTipoVinculo = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSociosNF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -406,127 +406,6 @@ namespace Policial
             this.dgvSociosNF.TabIndex = 124;
             this.dgvSociosNF.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSociosNF_CellContentClick);
             // 
-            // btnBuscarNF
-            // 
-            this.btnBuscarNF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.btnBuscarNF.FlatAppearance.BorderSize = 0;
-            this.btnBuscarNF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarNF.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarNF.ForeColor = System.Drawing.Color.White;
-            this.btnBuscarNF.Location = new System.Drawing.Point(146, 82);
-            this.btnBuscarNF.Name = "btnBuscarNF";
-            this.btnBuscarNF.Size = new System.Drawing.Size(181, 21);
-            this.btnBuscarNF.TabIndex = 136;
-            this.btnBuscarNF.Text = "Buscar Documento";
-            this.btnBuscarNF.UseVisualStyleBackColor = false;
-            this.btnBuscarNF.Click += new System.EventHandler(this.btnBuscarNF_Click);
-            // 
-            // txtBuscarNF
-            // 
-            this.txtBuscarNF.Location = new System.Drawing.Point(16, 82);
-            this.txtBuscarNF.Name = "txtBuscarNF";
-            this.txtBuscarNF.Size = new System.Drawing.Size(119, 20);
-            this.txtBuscarNF.TabIndex = 135;
-            this.txtBuscarNF.Validated += new System.EventHandler(this.txtBuscarNF_Validated);
-            // 
-            // errorProvider
-            // 
-            this.errorProvider.ContainerControl = this;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(402, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 17);
-            this.label2.TabIndex = 138;
-            this.label2.Text = "Socio de referencia";
-            // 
-            // txtSocIdNF
-            // 
-            this.txtSocIdNF.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSocIdNF.Enabled = false;
-            this.txtSocIdNF.Location = new System.Drawing.Point(540, 80);
-            this.txtSocIdNF.Name = "txtSocIdNF";
-            this.txtSocIdNF.Size = new System.Drawing.Size(62, 20);
-            this.txtSocIdNF.TabIndex = 137;
-            // 
-            // txtNombreSocNF
-            // 
-            this.txtNombreSocNF.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNombreSocNF.Enabled = false;
-            this.txtNombreSocNF.Location = new System.Drawing.Point(615, 80);
-            this.txtNombreSocNF.Name = "txtNombreSocNF";
-            this.txtNombreSocNF.Size = new System.Drawing.Size(223, 20);
-            this.txtNombreSocNF.TabIndex = 139;
-            // 
-            // txtNFId
-            // 
-            this.txtNFId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNFId.Enabled = false;
-            this.txtNFId.Location = new System.Drawing.Point(557, 29);
-            this.txtNFId.Name = "txtNFId";
-            this.txtNFId.Size = new System.Drawing.Size(62, 20);
-            this.txtNFId.TabIndex = 140;
-            this.txtNFId.Visible = false;
-            // 
-            // txtSocCI
-            // 
-            this.txtSocCI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSocCI.Enabled = false;
-            this.txtSocCI.Location = new System.Drawing.Point(625, 28);
-            this.txtSocCI.Name = "txtSocCI";
-            this.txtSocCI.Size = new System.Drawing.Size(62, 20);
-            this.txtSocCI.TabIndex = 141;
-            this.txtSocCI.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(415, 174);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 17);
-            this.label6.TabIndex = 142;
-            this.label6.Text = "Tipo Persona";
-            // 
-            // cmbTipoVinculo
-            // 
-            this.cmbTipoVinculo.FormattingEnabled = true;
-            this.cmbTipoVinculo.Items.AddRange(new object[] {
-            "Seleccione opción",
-            "Cónyugue",
-            "Hijo/a"});
-            this.cmbTipoVinculo.Location = new System.Drawing.Point(540, 174);
-            this.cmbTipoVinculo.Name = "cmbTipoVinculo";
-            this.cmbTipoVinculo.Size = new System.Drawing.Size(200, 21);
-            this.cmbTipoVinculo.TabIndex = 143;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(746, 140);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(16, 21);
-            this.label22.TabIndex = 121;
-            this.label22.Text = "*";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(746, 174);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(16, 21);
-            this.label10.TabIndex = 144;
-            this.label10.Text = "*";
-            // 
             // SocId
             // 
             this.SocId.HeaderText = "Socio Nº";
@@ -630,6 +509,127 @@ namespace Policial
             this.SocSegundoNombre.Name = "SocSegundoNombre";
             this.SocSegundoNombre.ReadOnly = true;
             this.SocSegundoNombre.Visible = false;
+            // 
+            // btnBuscarNF
+            // 
+            this.btnBuscarNF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.btnBuscarNF.FlatAppearance.BorderSize = 0;
+            this.btnBuscarNF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarNF.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarNF.ForeColor = System.Drawing.Color.White;
+            this.btnBuscarNF.Location = new System.Drawing.Point(146, 82);
+            this.btnBuscarNF.Name = "btnBuscarNF";
+            this.btnBuscarNF.Size = new System.Drawing.Size(181, 21);
+            this.btnBuscarNF.TabIndex = 136;
+            this.btnBuscarNF.Text = "Buscar Documento";
+            this.btnBuscarNF.UseVisualStyleBackColor = false;
+            this.btnBuscarNF.Click += new System.EventHandler(this.btnBuscarNF_Click);
+            // 
+            // txtBuscarNF
+            // 
+            this.txtBuscarNF.Location = new System.Drawing.Point(16, 82);
+            this.txtBuscarNF.Name = "txtBuscarNF";
+            this.txtBuscarNF.Size = new System.Drawing.Size(119, 20);
+            this.txtBuscarNF.TabIndex = 135;
+            this.txtBuscarNF.Validated += new System.EventHandler(this.txtBuscarNF_Validated);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(402, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(132, 17);
+            this.label2.TabIndex = 138;
+            this.label2.Text = "Socio de referencia";
+            // 
+            // txtSocIdNF
+            // 
+            this.txtSocIdNF.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSocIdNF.Enabled = false;
+            this.txtSocIdNF.Location = new System.Drawing.Point(540, 80);
+            this.txtSocIdNF.Name = "txtSocIdNF";
+            this.txtSocIdNF.Size = new System.Drawing.Size(62, 20);
+            this.txtSocIdNF.TabIndex = 137;
+            // 
+            // txtNombreSocNF
+            // 
+            this.txtNombreSocNF.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNombreSocNF.Enabled = false;
+            this.txtNombreSocNF.Location = new System.Drawing.Point(615, 80);
+            this.txtNombreSocNF.Name = "txtNombreSocNF";
+            this.txtNombreSocNF.Size = new System.Drawing.Size(223, 20);
+            this.txtNombreSocNF.TabIndex = 139;
+            // 
+            // txtNFId
+            // 
+            this.txtNFId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNFId.Enabled = false;
+            this.txtNFId.Location = new System.Drawing.Point(557, 29);
+            this.txtNFId.Name = "txtNFId";
+            this.txtNFId.Size = new System.Drawing.Size(62, 20);
+            this.txtNFId.TabIndex = 140;
+            this.txtNFId.Visible = false;
+            // 
+            // txtSocCI
+            // 
+            this.txtSocCI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSocCI.Enabled = false;
+            this.txtSocCI.Location = new System.Drawing.Point(625, 28);
+            this.txtSocCI.Name = "txtSocCI";
+            this.txtSocCI.Size = new System.Drawing.Size(62, 20);
+            this.txtSocCI.TabIndex = 141;
+            this.txtSocCI.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(415, 174);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(86, 17);
+            this.label6.TabIndex = 142;
+            this.label6.Text = "Tipo Vínculo";
+            // 
+            // cmbTipoVinculo
+            // 
+            this.cmbTipoVinculo.FormattingEnabled = true;
+            this.cmbTipoVinculo.Items.AddRange(new object[] {
+            "Seleccione opción",
+            "Cónyugue",
+            "Hijo/a"});
+            this.cmbTipoVinculo.Location = new System.Drawing.Point(540, 174);
+            this.cmbTipoVinculo.Name = "cmbTipoVinculo";
+            this.cmbTipoVinculo.Size = new System.Drawing.Size(200, 21);
+            this.cmbTipoVinculo.TabIndex = 143;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Black;
+            this.label22.Location = new System.Drawing.Point(746, 140);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(16, 21);
+            this.label22.TabIndex = 121;
+            this.label22.Text = "*";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(746, 174);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(16, 21);
+            this.label10.TabIndex = 144;
+            this.label10.Text = "*";
             // 
             // frmNucleoFamiliar
             // 

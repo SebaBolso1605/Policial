@@ -327,6 +327,18 @@ namespace Policial
                             {
                                 mensaje = "La información del Socio se guardó exitosamente.";
                                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtBuscarModif.Text = "";
+                                txtPrimerNombreModif.Text = "";
+                                txtPrimerApellidoModif.Text = "";
+                                txtSegundoNombreModif.Text = "";
+                                txtSegundoApellidoModif.Text = "";
+                                txtDireccionModif.Text = "";
+                                txtCelularModif.Text = "";
+                                txtTelModif.Text = "";
+                                txtCIModif.Text = "";
+                                txtObservacionesModif.Text = "";
+                                txtEmailModif.Text = "";
+                                cmbTPModif.SelectedIndex = -1;
                             }
                         }
                     }
