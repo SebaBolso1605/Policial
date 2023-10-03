@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.tabModifcar = new System.Windows.Forms.TabControl();
             this.tabListaSocios = new System.Windows.Forms.TabPage();
+            this.lblCantSociosInactivos = new System.Windows.Forms.Label();
+            this.lblCantSociosActivos = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.txtParametro = new System.Windows.Forms.TextBox();
             this.lblCantSociosTotales = new System.Windows.Forms.Label();
@@ -141,8 +143,6 @@
             this.txtBuscarEliminar = new System.Windows.Forms.TextBox();
             this.label53 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblCantSociosActivos = new System.Windows.Forms.Label();
-            this.lblCantSociosInactivos = new System.Windows.Forms.Label();
             this.tabModifcar.SuspendLayout();
             this.tabListaSocios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
@@ -178,13 +178,37 @@
             this.tabListaSocios.Controls.Add(this.lblTituloFormulario);
             this.tabListaSocios.Controls.Add(this.btnVolver);
             this.tabListaSocios.Controls.Add(this.dgvSocios);
-            this.tabListaSocios.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabListaSocios.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabListaSocios.Location = new System.Drawing.Point(4, 25);
             this.tabListaSocios.Name = "tabListaSocios";
             this.tabListaSocios.Padding = new System.Windows.Forms.Padding(3);
             this.tabListaSocios.Size = new System.Drawing.Size(1059, 559);
             this.tabListaSocios.TabIndex = 0;
             this.tabListaSocios.Text = "Gestión Socios";
+            // 
+            // lblCantSociosInactivos
+            // 
+            this.lblCantSociosInactivos.AutoSize = true;
+            this.lblCantSociosInactivos.BackColor = System.Drawing.Color.Transparent;
+            this.lblCantSociosInactivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantSociosInactivos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.lblCantSociosInactivos.Location = new System.Drawing.Point(894, 477);
+            this.lblCantSociosInactivos.Name = "lblCantSociosInactivos";
+            this.lblCantSociosInactivos.Size = new System.Drawing.Size(129, 17);
+            this.lblCantSociosInactivos.TabIndex = 32;
+            this.lblCantSociosInactivos.Text = "Socios Inactivos : 0";
+            // 
+            // lblCantSociosActivos
+            // 
+            this.lblCantSociosActivos.AutoSize = true;
+            this.lblCantSociosActivos.BackColor = System.Drawing.Color.Transparent;
+            this.lblCantSociosActivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantSociosActivos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.lblCantSociosActivos.Location = new System.Drawing.Point(760, 477);
+            this.lblCantSociosActivos.Name = "lblCantSociosActivos";
+            this.lblCantSociosActivos.Size = new System.Drawing.Size(119, 17);
+            this.lblCantSociosActivos.TabIndex = 31;
+            this.lblCantSociosActivos.Text = "Socios Activos : 0";
             // 
             // checkBox1
             // 
@@ -194,7 +218,7 @@
             this.checkBox1.ForeColor = System.Drawing.Color.Black;
             this.checkBox1.Location = new System.Drawing.Point(334, 78);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(125, 20);
+            this.checkBox1.Size = new System.Drawing.Size(117, 17);
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "solo Socios activos";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -204,7 +228,7 @@
             // 
             this.txtParametro.Location = new System.Drawing.Point(66, 76);
             this.txtParametro.Name = "txtParametro";
-            this.txtParametro.Size = new System.Drawing.Size(262, 21);
+            this.txtParametro.Size = new System.Drawing.Size(262, 20);
             this.txtParametro.TabIndex = 1;
             this.txtParametro.TextChanged += new System.EventHandler(this.textBox18_TextChanged);
             // 
@@ -212,11 +236,11 @@
             // 
             this.lblCantSociosTotales.AutoSize = true;
             this.lblCantSociosTotales.BackColor = System.Drawing.Color.Transparent;
-            this.lblCantSociosTotales.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantSociosTotales.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantSociosTotales.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.lblCantSociosTotales.Location = new System.Drawing.Point(62, 521);
+            this.lblCantSociosTotales.Location = new System.Drawing.Point(760, 503);
             this.lblCantSociosTotales.Name = "lblCantSociosTotales";
-            this.lblCantSociosTotales.Size = new System.Drawing.Size(134, 19);
+            this.lblCantSociosTotales.Size = new System.Drawing.Size(121, 17);
             this.lblCantSociosTotales.TabIndex = 30;
             this.lblCantSociosTotales.Text = "Socios Totales : 0";
             // 
@@ -1411,30 +1435,6 @@
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // lblCantSociosActivos
-            // 
-            this.lblCantSociosActivos.AutoSize = true;
-            this.lblCantSociosActivos.BackColor = System.Drawing.Color.Transparent;
-            this.lblCantSociosActivos.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantSociosActivos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.lblCantSociosActivos.Location = new System.Drawing.Point(62, 477);
-            this.lblCantSociosActivos.Name = "lblCantSociosActivos";
-            this.lblCantSociosActivos.Size = new System.Drawing.Size(137, 19);
-            this.lblCantSociosActivos.TabIndex = 31;
-            this.lblCantSociosActivos.Text = "Socios Activos : 0";
-            // 
-            // lblCantSociosInactivos
-            // 
-            this.lblCantSociosInactivos.AutoSize = true;
-            this.lblCantSociosInactivos.BackColor = System.Drawing.Color.Transparent;
-            this.lblCantSociosInactivos.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantSociosInactivos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.lblCantSociosInactivos.Location = new System.Drawing.Point(62, 499);
-            this.lblCantSociosInactivos.Name = "lblCantSociosInactivos";
-            this.lblCantSociosInactivos.Size = new System.Drawing.Size(150, 19);
-            this.lblCantSociosInactivos.TabIndex = 32;
-            this.lblCantSociosInactivos.Text = "Socios Inactivos : 0";
             // 
             // frmSocio
             // 

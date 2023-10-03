@@ -405,7 +405,7 @@ namespace Policial
         {
             try
             {
-                if(e.ColumnIndex == 7) //editar
+                if(e.ColumnIndex == 8) //editar
                 {
                     var filaSeleccionada = dgvSociosNF.CurrentRow;
                     if (dgvSociosNF.SelectedRows != null)
@@ -436,7 +436,7 @@ namespace Policial
                         txtBuscarNF.Focus();
                     }
                 }
-                else if (e.ColumnIndex == 8) //eliminar
+                else if (e.ColumnIndex == 9) //eliminar
                 {
                     var filaSeleccionada = dgvSociosNF.CurrentRow;
                     if (dgvSociosNF.SelectedRows != null)
