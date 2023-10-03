@@ -338,6 +338,7 @@ namespace Policial
             this.btnCancelarNF.TabIndex = 88;
             this.btnCancelarNF.Text = "Cancelar";
             this.btnCancelarNF.UseVisualStyleBackColor = false;
+            this.btnCancelarNF.Click += new System.EventHandler(this.btnCancelarNF_Click);
             // 
             // label1
             // 

@@ -141,7 +141,7 @@ namespace Policial
                         socNF.NFPrimerNombre = txtPrimerNombreNF.Text;
                         socNF.NFPrimerApellido = txtPrimerApellidoNF.Text;
                         socNF.NFSegundoApellido = txtSegundoApellidoNF.Text;
-                        socNF.NFId = Convert.ToInt32(txtNFId.Text);
+                        //socNF.NFId = Convert.ToInt32(txtNFId.Text);
 
                         if (!string.IsNullOrEmpty(txtSegundoNombreNF.Text))
                             socNF.NFSegundoNombre = txtSegundoNombreNF.Text;
@@ -192,6 +192,7 @@ namespace Policial
                             else
                             {
                                 mensaje = "No se guardó la información.";
+                                LimpiarTExtos();
                                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
                         }
@@ -366,6 +367,9 @@ namespace Policial
             txtObservacionesNF.Text = "";
             dtpFechaNacimientoNF.Value = DateTime.Now;
             cmbTipoVinculo.SelectedIndex = 0;
+            txtSocCI.Text = "";
+            txtNFId.Text = "";
+            dgvSociosNF.Rows.Clear();
         }
         private bool PersistirNucleoFamiliar(NucleoFamiliar c, Usuario usu)
         {
@@ -515,6 +519,28 @@ namespace Policial
         private void txtSegundoNombreNF_TextChanged(object sender, EventArgs e)
         {
             errorProvider.Clear();
+        }
+
+        private void btnCancelarNF_Click(object sender, EventArgs e)
+        {
+            LimpiarTExtos();
+        }
+        public void LimpiarTExtos()
+        {
+            txtBuscarNF.Text = "";
+            txtNombreSocNF.Text = "";
+            txtPrimerApellidoNF.Text = "";
+            txtPrimerNombreNF.Text = "";
+            txtCelularNF.Text = "";
+            txtCINF.Text = "";
+            txtNFId.Text = "";
+            txtSegundoApellidoNF.Text = "";
+            txtSegundoNombreNF.Text = "";
+            txtTelNF.Text = "";
+            txtSocCI.Text = "";
+            cmbTipoVinculo.SelectedIndex = 0;
+            txtObservacionesNF.Text = "";
+            txtNombreSocNF.Text = "";
         }
     }
 }
