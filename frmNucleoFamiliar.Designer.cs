@@ -119,15 +119,16 @@ namespace Policial
             this.txtObservacionesNF.Name = "txtObservacionesNF";
             this.txtObservacionesNF.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtObservacionesNF.Size = new System.Drawing.Size(366, 58);
-            this.txtObservacionesNF.TabIndex = 114;
+            this.txtObservacionesNF.TabIndex = 11;
             this.txtObservacionesNF.TextChanged += new System.EventHandler(this.txtSegundoNombreNF_TextChanged);
             // 
             // dtpFechaNacimientoNF
             // 
+            this.dtpFechaNacimientoNF.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaNacimientoNF.Location = new System.Drawing.Point(540, 140);
             this.dtpFechaNacimientoNF.Name = "dtpFechaNacimientoNF";
             this.dtpFechaNacimientoNF.Size = new System.Drawing.Size(200, 20);
-            this.dtpFechaNacimientoNF.TabIndex = 113;
+            this.dtpFechaNacimientoNF.TabIndex = 7;
             // 
             // label16
             // 
@@ -168,7 +169,7 @@ namespace Policial
             this.txtCelularNF.Location = new System.Drawing.Point(542, 243);
             this.txtCelularNF.Name = "txtCelularNF";
             this.txtCelularNF.Size = new System.Drawing.Size(145, 20);
-            this.txtCelularNF.TabIndex = 109;
+            this.txtCelularNF.TabIndex = 10;
             this.txtCelularNF.TextChanged += new System.EventHandler(this.txtSegundoNombreNF_TextChanged);
             // 
             // label12
@@ -221,8 +222,9 @@ namespace Policial
             this.txtCINF.Location = new System.Drawing.Point(146, 275);
             this.txtCINF.Name = "txtCINF";
             this.txtCINF.Size = new System.Drawing.Size(181, 20);
-            this.txtCINF.TabIndex = 104;
+            this.txtCINF.TabIndex = 6;
             this.txtCINF.TextChanged += new System.EventHandler(this.txtSegundoNombreNF_TextChanged);
+            this.txtCINF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCINF_KeyPress);
             // 
             // label7
             // 
@@ -241,7 +243,7 @@ namespace Policial
             this.txtTelNF.Location = new System.Drawing.Point(542, 210);
             this.txtTelNF.Name = "txtTelNF";
             this.txtTelNF.Size = new System.Drawing.Size(145, 20);
-            this.txtTelNF.TabIndex = 102;
+            this.txtTelNF.TabIndex = 9;
             this.txtTelNF.TextChanged += new System.EventHandler(this.txtSegundoNombreNF_TextChanged);
             // 
             // label5
@@ -261,7 +263,7 @@ namespace Policial
             this.txtSegundoNombreNF.Location = new System.Drawing.Point(146, 174);
             this.txtSegundoNombreNF.Name = "txtSegundoNombreNF";
             this.txtSegundoNombreNF.Size = new System.Drawing.Size(181, 20);
-            this.txtSegundoNombreNF.TabIndex = 98;
+            this.txtSegundoNombreNF.TabIndex = 3;
             this.txtSegundoNombreNF.TextChanged += new System.EventHandler(this.txtSegundoNombreNF_TextChanged);
             // 
             // label4
@@ -281,7 +283,7 @@ namespace Policial
             this.txtPrimerApellidoNF.Location = new System.Drawing.Point(146, 210);
             this.txtPrimerApellidoNF.Name = "txtPrimerApellidoNF";
             this.txtPrimerApellidoNF.Size = new System.Drawing.Size(181, 20);
-            this.txtPrimerApellidoNF.TabIndex = 96;
+            this.txtPrimerApellidoNF.TabIndex = 4;
             this.txtPrimerApellidoNF.TextChanged += new System.EventHandler(this.txtSegundoNombreNF_TextChanged);
             // 
             // label3
@@ -301,7 +303,7 @@ namespace Policial
             this.txtSegundoApellidoNF.Location = new System.Drawing.Point(146, 242);
             this.txtSegundoApellidoNF.Name = "txtSegundoApellidoNF";
             this.txtSegundoApellidoNF.Size = new System.Drawing.Size(181, 20);
-            this.txtSegundoApellidoNF.TabIndex = 94;
+            this.txtSegundoApellidoNF.TabIndex = 5;
             this.txtSegundoApellidoNF.TextChanged += new System.EventHandler(this.txtSegundoNombreNF_TextChanged);
             // 
             // label14
@@ -321,7 +323,7 @@ namespace Policial
             this.txtPrimerNombreNF.Location = new System.Drawing.Point(146, 140);
             this.txtPrimerNombreNF.Name = "txtPrimerNombreNF";
             this.txtPrimerNombreNF.Size = new System.Drawing.Size(181, 20);
-            this.txtPrimerNombreNF.TabIndex = 90;
+            this.txtPrimerNombreNF.TabIndex = 2;
             this.txtPrimerNombreNF.TextChanged += new System.EventHandler(this.txtPrimerNombreNF_TextChanged);
             // 
             // btnCancelarNF
@@ -335,7 +337,7 @@ namespace Policial
             this.btnCancelarNF.Location = new System.Drawing.Point(453, 534);
             this.btnCancelarNF.Name = "btnCancelarNF";
             this.btnCancelarNF.Size = new System.Drawing.Size(176, 25);
-            this.btnCancelarNF.TabIndex = 88;
+            this.btnCancelarNF.TabIndex = 14;
             this.btnCancelarNF.Text = "Cancelar";
             this.btnCancelarNF.UseVisualStyleBackColor = false;
             this.btnCancelarNF.Click += new System.EventHandler(this.btnCancelarNF_Click);
@@ -362,7 +364,7 @@ namespace Policial
             this.btnGuardarNF.Location = new System.Drawing.Point(245, 534);
             this.btnGuardarNF.Name = "btnGuardarNF";
             this.btnGuardarNF.Size = new System.Drawing.Size(176, 25);
-            this.btnGuardarNF.TabIndex = 87;
+            this.btnGuardarNF.TabIndex = 13;
             this.btnGuardarNF.Text = "Agregar";
             this.btnGuardarNF.UseVisualStyleBackColor = false;
             this.btnGuardarNF.Click += new System.EventHandler(this.btnGuardarNF_Click);
@@ -404,7 +406,7 @@ namespace Policial
             this.dgvSociosNF.RowHeadersVisible = false;
             this.dgvSociosNF.RowHeadersWidth = 51;
             this.dgvSociosNF.Size = new System.Drawing.Size(894, 116);
-            this.dgvSociosNF.TabIndex = 124;
+            this.dgvSociosNF.TabIndex = 12;
             this.dgvSociosNF.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSociosNF_CellContentClick);
             // 
             // SocId
@@ -521,7 +523,7 @@ namespace Policial
             this.btnBuscarNF.Location = new System.Drawing.Point(146, 82);
             this.btnBuscarNF.Name = "btnBuscarNF";
             this.btnBuscarNF.Size = new System.Drawing.Size(181, 21);
-            this.btnBuscarNF.TabIndex = 136;
+            this.btnBuscarNF.TabIndex = 1;
             this.btnBuscarNF.Text = "Buscar Documento";
             this.btnBuscarNF.UseVisualStyleBackColor = false;
             this.btnBuscarNF.Click += new System.EventHandler(this.btnBuscarNF_Click);
@@ -531,7 +533,7 @@ namespace Policial
             this.txtBuscarNF.Location = new System.Drawing.Point(16, 82);
             this.txtBuscarNF.Name = "txtBuscarNF";
             this.txtBuscarNF.Size = new System.Drawing.Size(119, 20);
-            this.txtBuscarNF.TabIndex = 135;
+            this.txtBuscarNF.TabIndex = 0;
             this.txtBuscarNF.Validated += new System.EventHandler(this.txtBuscarNF_Validated);
             // 
             // errorProvider
@@ -553,7 +555,7 @@ namespace Policial
             // 
             this.txtSocIdNF.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSocIdNF.Enabled = false;
-            this.txtSocIdNF.Location = new System.Drawing.Point(540, 80);
+            this.txtSocIdNF.Location = new System.Drawing.Point(542, 79);
             this.txtSocIdNF.Name = "txtSocIdNF";
             this.txtSocIdNF.Size = new System.Drawing.Size(62, 20);
             this.txtSocIdNF.TabIndex = 137;
@@ -608,7 +610,7 @@ namespace Policial
             this.cmbTipoVinculo.Location = new System.Drawing.Point(540, 174);
             this.cmbTipoVinculo.Name = "cmbTipoVinculo";
             this.cmbTipoVinculo.Size = new System.Drawing.Size(200, 21);
-            this.cmbTipoVinculo.TabIndex = 143;
+            this.cmbTipoVinculo.TabIndex = 8;
             // 
             // label22
             // 

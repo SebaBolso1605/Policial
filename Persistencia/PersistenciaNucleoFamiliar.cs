@@ -157,7 +157,7 @@ namespace Persistencia
                         c.NFPrimerApellido = (string)_lector["NFPrimerApellido"];
                         c.NFSegundoNombre = (string)_lector["NFSegundoNombre"];
                         c.NFSegundoApellido = (string)_lector["NFSegundoApellido"]; 
-                        c.NFSegundoApellido = (string)_lector["NFTipoVinculo"];
+                        c.NfTipoVinculo = (string)_lector["NFTipoVinculo"];
                         c.NFTel = (string)_lector["NFTel"];
                         c.NFCelular = (string)_lector["NFCelular"];
                         c.NFobservaciones = (string)_lector["NFObservaciones"];
@@ -225,9 +225,11 @@ namespace Persistencia
                     throw new Exception("Problema al modificar la informacion.");
                 else if (resp == -3)
                     throw new Exception("Problema al modificar la informacion .");
-
-                tran.Commit();
-                respuesta = true;
+                else if (resp == 1)
+                {
+                    tran.Commit();
+                    respuesta = true;
+                }
 
                 return respuesta;
             }
@@ -264,11 +266,15 @@ namespace Persistencia
                 if (resp != 1)
                     throw new Exception("Error al dar de baja el/la integrante.");
                 else if (resp == 1)
+                {
+                    tran.Commit();
                     res = true;
+                }
                 return res;
             }
             catch (Exception ex)
             {
+                tran.Rollback();
                 throw new ApplicationException(ex.Message);
             }
             finally

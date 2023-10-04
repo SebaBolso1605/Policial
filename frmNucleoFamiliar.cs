@@ -19,6 +19,7 @@ namespace Policial
         private string titulo = "Nucleo Familiar";
         NucleoFamiliar nucleoFamiliar;
         private string mensaje = "";
+        private int IdNFSeleccionado = -1;
         
         public frmNucleoFamiliar()
         {
@@ -29,6 +30,7 @@ namespace Policial
             btnGuardarNF.BackColor = RGBColors.color2;
             btnGuardarNF.Text = "Guardar";
             cmbTipoVinculo.SelectedIndex = 0;
+            txtBuscarNF.Focus();
         }
         public struct RGBColors
         {
@@ -44,6 +46,7 @@ namespace Policial
             try
             {
                 errorProvider.Clear();
+                dgvSociosNF.Rows.Clear();
                 //ILogicaNucleoFamiliar lSocioNF = FabricaLogica.getLogicaNucleoFamiliar();
                 //ILogicaSocio lSocio = FabricaLogica.getLogicaSocio();
                 IServicePolicial lSocioNF = new ServicePolicialClient();
@@ -69,15 +72,20 @@ namespace Policial
                                 int edad1 = fecha.Year - c.NFFechaNacimiento.Year;
                                 txtNFId.Text = Convert.ToString(c.NFId);
                                 if (DateTime.Today < c.NFFechaNacimiento.AddYears(edad1)) edad1--;
-                                dgvSociosNF.Rows.Add(c.SocId, c.NFCI, c.NFPrimerNombre, c.NFPrimerApellido,edad1 + " años" ,c.NfTipoVinculo, c.NFTel, c.NFCelular, 
-                                    "Editar", "Eliminar",c.NFFechaNacimiento,c.NFSegundoNombre,c.NFSegundoApellido, c.NFobservaciones,c.NFId);
+                                dgvSociosNF.Rows.Add(c.SocId, c.NFCI, c.NFPrimerNombre, c.NFPrimerApellido, edad1 + " años", c.NfTipoVinculo, c.NFTel, c.NFCelular,
+                                    "Editar", "Eliminar", c.NFFechaNacimiento, c.NFobservaciones, c.NFId, c.NFSegundoApellido, c.NFSegundoNombre);
                             }
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontro socio para la cédula ingresada.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        txtBuscarNF.Focus();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No se encontro socio para la cedula ingresada.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Debe indicar una cédula.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtBuscarNF.Focus();
                 }
             }
@@ -87,6 +95,7 @@ namespace Policial
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+       
         private bool HayError()
         {
             #region Controlo errores campos
@@ -185,14 +194,15 @@ namespace Policial
                                 int edad1 = fecha.Year - socNF.NFFechaNacimiento.Year;
                                 dgvSociosNF.Rows.Add(socNF.SocId, socNF.NFCI, socNF.NFPrimerNombre, socNF.NFPrimerApellido, edad1 + " años" , socNF.NfTipoVinculo ,socNF.NFTel,
                                     socNF.NFCelular, "Editar", "Eliminar");
-                                LimpioFrmNF();
-                                txtSocIdNF.Text = "";
-                                txtNombreSocNF.Text = "";
+                                LimpioFrmNF();                                
+                                //txtSocIdNF.Text = "";
+                                //txtNombreSocNF.Text = "";
+                                btnBuscarNF_Click(null, null);
                             }
                             else
                             {
                                 mensaje = "No se guardó la información.";
-                                LimpiarTExtos();
+                                LimpiarTextos();
                                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
                         }
@@ -214,7 +224,7 @@ namespace Policial
                         socNF.NFPrimerNombre = txtPrimerNombreNF.Text;
                         socNF.NFPrimerApellido = txtPrimerApellidoNF.Text;
                         socNF.NFSegundoApellido = txtSegundoApellidoNF.Text;
-                        socNF.NFId = Convert.ToInt32(txtNFId.Text);
+                        socNF.NFId = IdNFSeleccionado;
 
                         if (!string.IsNullOrEmpty(txtSegundoNombreNF.Text))
                             socNF.NFSegundoNombre = txtSegundoNombreNF.Text;
@@ -255,7 +265,7 @@ namespace Policial
                             DateTime fecha = DateTime.Today;
                             List<NucleoFamiliar> socListaNF = new List<NucleoFamiliar>();
                             socListaNF = lNF.BuscarNucleoFamiliarPorCI(socNF.SocId).ToList();
-                            dgvSociosNF.Rows.Clear();
+                            LimpioFrmNF();
                             if (socListaNF.Count > 0)
                             {
                                 foreach(NucleoFamiliar c in socListaNF)
@@ -263,10 +273,10 @@ namespace Policial
                                     int edad1 = fecha.Year - c.NFFechaNacimiento.Year;
                                     if (DateTime.Today < c.NFFechaNacimiento.AddYears(edad1)) edad1--;
                                     dgvSociosNF.Rows.Add(c.SocId, c.NFCI, c.NFPrimerNombre, c.NFPrimerApellido, edad1 + " años", c.NfTipoVinculo, c.NFTel, c.NFCelular,
-                                                        "Editar", "Eliminar", c.NFFechaNacimiento, c.NFSegundoNombre, c.NFSegundoApellido, c.NFobservaciones, c.NFId);
+                                                        "Editar", "Eliminar", c.NFFechaNacimiento, c.NFobservaciones, c.NFId, c.NFSegundoApellido, c.NFSegundoNombre);
                                 }
-                            }
-                            LimpioFrmNF();
+                            }                            
+                            txtBuscarNF.Focus();
                         }
                         else
                         {
@@ -286,7 +296,7 @@ namespace Policial
                         socNF.NFPrimerNombre = txtPrimerNombreNF.Text;
                         socNF.NFPrimerApellido = txtPrimerApellidoNF.Text;
                         socNF.NFSegundoApellido = txtSegundoApellidoNF.Text;
-                        socNF.NFId = Convert.ToInt32(txtNFId.Text);
+                        socNF.NFId = IdNFSeleccionado;
 
                         if (!string.IsNullOrEmpty(txtSegundoNombreNF.Text))
                             socNF.NFSegundoNombre = txtSegundoNombreNF.Text;
@@ -314,7 +324,7 @@ namespace Policial
                         socNF.NFFechaNacimiento = dtpFechaNacimientoNF.Value;
                         socNF.FecModif = DateTime.Now;
                         socNF.UsuIdModif = Program.usuarioLogueado.UsuId;
-                    }
+                   }
 
                     if (socNF != null)
                     {
@@ -327,7 +337,8 @@ namespace Policial
                             DateTime fecha = DateTime.Today;
                             List<NucleoFamiliar> socListaNF = new List<NucleoFamiliar>();
                             socListaNF = lNF.BuscarNucleoFamiliarPorCI(socNF.SocId).ToList();
-                            dgvSociosNF.Rows.Clear();
+                            //dgvSociosNF.Rows.Clear();
+                            LimpioFrmNF();
                             if (socListaNF.Count > 0)
                             {
                                 foreach (NucleoFamiliar c in socListaNF)
@@ -335,10 +346,9 @@ namespace Policial
                                     int edad1 = fecha.Year - c.NFFechaNacimiento.Year;
                                     if (DateTime.Today < c.NFFechaNacimiento.AddYears(edad1)) edad1--;
                                     dgvSociosNF.Rows.Add(c.SocId, c.NFCI, c.NFPrimerNombre, c.NFPrimerApellido, edad1 + " años", c.NfTipoVinculo, c.NFTel, c.NFCelular,
-                                                        "Editar", "Eliminar", c.NFFechaNacimiento, c.NFSegundoNombre, c.NFSegundoApellido, c.NFobservaciones, c.NFId);
+                                                        "Editar", "Eliminar", c.NFFechaNacimiento, c.NFobservaciones, c.NFId, c.NFSegundoApellido, c.NFSegundoNombre );
                                 }
-                            }
-                            LimpioFrmNF();
+                            }                            
                         }
                         else
                         {
@@ -357,6 +367,9 @@ namespace Policial
         }
         public void LimpioFrmNF()
         {
+            //txtBuscarNF.Text = "";
+            //txtSocIdNF.Text = "";
+            //txtNombreSocNF.Text = "";
             txtPrimerApellidoNF.Text = "";
             txtPrimerNombreNF.Text = "";
             txtSegundoNombreNF.Text = "";
@@ -367,9 +380,10 @@ namespace Policial
             txtObservacionesNF.Text = "";
             dtpFechaNacimientoNF.Value = DateTime.Now;
             cmbTipoVinculo.SelectedIndex = 0;
-            txtSocCI.Text = "";
-            txtNFId.Text = "";
+            //txtSocCI.Text = "";
+            //txtNFId.Text = "";
             dgvSociosNF.Rows.Clear();
+            btnGuardarNF.Text = "Guardar";
         }
         private bool PersistirNucleoFamiliar(NucleoFamiliar c, Usuario usu)
         {
@@ -414,23 +428,19 @@ namespace Policial
                     var filaSeleccionada = dgvSociosNF.CurrentRow;
                     if (dgvSociosNF.SelectedRows != null)
                     {
+                        IdNFSeleccionado = -1;
                         int id = Convert.ToInt32(filaSeleccionada.Cells[0].Value);
-                        txtSocIdNF.Text = filaSeleccionada.Cells["SocId"].Value.ToString();
-                        txtCINF.Text = filaSeleccionada.Cells["SocCI"].Value.ToString();
+                        IdNFSeleccionado = Convert.ToInt32(filaSeleccionada.Cells["NFId"].Value);
                         txtPrimerNombreNF.Text = filaSeleccionada.Cells["SocPrimerNombre"].Value.ToString();
+                        txtSegundoNombreNF.Text = filaSeleccionada.Cells["SocSegundoNombre"].Value.ToString();
                         txtPrimerApellidoNF.Text = filaSeleccionada.Cells["SocPrimerApellido"].Value.ToString();
-                        string edad = filaSeleccionada.Cells["SocDireccion"].Value.ToString();
+                        txtSegundoApellidoNF.Text = filaSeleccionada.Cells["SocSegundoApellido"].Value.ToString();
+                        txtCINF.Text = filaSeleccionada.Cells["SocCI"].Value.ToString();
+                        dtpFechaNacimientoNF.Value = Convert.ToDateTime(filaSeleccionada.Cells["SocFN"].Value);
+                        cmbTipoVinculo.SelectedItem = filaSeleccionada.Cells["NFTipoVinculo"].Value;
                         txtTelNF.Text = filaSeleccionada.Cells["SocTel"].Value.ToString();
                         txtCelularNF.Text = filaSeleccionada.Cells["SocCelular"].Value.ToString();
-                        string a = filaSeleccionada.Cells["SocCelular"].Value.ToString();
-                        string b = filaSeleccionada.Cells["SocCelular"].Value.ToString();
-                        dtpFechaNacimientoNF.Value = Convert.ToDateTime(filaSeleccionada.Cells["SocFN"].Value);
-                        txtObservacionesNF.Text = filaSeleccionada.Cells["SocObser"].Value.ToString();
-                        string c = filaSeleccionada.Cells["SocCelular"].Value.ToString();
-                        string d = filaSeleccionada.Cells["SocCelular"].Value.ToString();
-                        txtSegundoApellidoNF.Text = filaSeleccionada.Cells["NFId"].Value.ToString();
-                        txtNFId.Text = filaSeleccionada.Cells["SocSegundoNombre"].Value.ToString();
-                        txtSegundoNombreNF.Text = filaSeleccionada.Cells["SocSegundoApellido"].Value.ToString();
+                        txtObservacionesNF.Text = filaSeleccionada.Cells["SocObser"].Value.ToString();                                              
 
                         btnGuardarNF.Text = "Modificar";   
                     }
@@ -445,29 +455,20 @@ namespace Policial
                     var filaSeleccionada = dgvSociosNF.CurrentRow;
                     if (dgvSociosNF.SelectedRows != null)
                     {
+                        IdNFSeleccionado = -1;
                         int id = Convert.ToInt32(filaSeleccionada.Cells[0].Value);
-
-                        txtSocIdNF.Text = filaSeleccionada.Cells["SocId"].Value.ToString();
-                        txtCINF.Text = filaSeleccionada.Cells["SocCI"].Value.ToString();
+                        IdNFSeleccionado = Convert.ToInt32(filaSeleccionada.Cells["NFId"].Value);
                         txtPrimerNombreNF.Text = filaSeleccionada.Cells["SocPrimerNombre"].Value.ToString();
+                        txtSegundoNombreNF.Text = filaSeleccionada.Cells["SocSegundoNombre"].Value.ToString();
                         txtPrimerApellidoNF.Text = filaSeleccionada.Cells["SocPrimerApellido"].Value.ToString();
-                        string edad = filaSeleccionada.Cells["SocDireccion"].Value.ToString();
-                        string j = filaSeleccionada.Cells["SocTel"].Value.ToString();
-                        string f = filaSeleccionada.Cells["SocCelular"].Value.ToString();
-                        string a = filaSeleccionada.Cells["SocCelular"].Value.ToString();
-                        string b = filaSeleccionada.Cells["SocCelular"].Value.ToString();
-                        string g = filaSeleccionada.Cells["SocFN"].Value.ToString();
-                        string h = filaSeleccionada.Cells["SocObser"].Value.ToString();
-                        string c = filaSeleccionada.Cells["SocCelular"].Value.ToString();
-                        string d = filaSeleccionada.Cells["SocCelular"].Value.ToString();
-                        txtSegundoApellidoNF.Text = filaSeleccionada.Cells["NFId"].Value.ToString();
-                        txtNFId.Text = filaSeleccionada.Cells["SocSegundoNombre"].Value.ToString();
-                        txtSegundoNombreNF.Text = filaSeleccionada.Cells["SocSegundoApellido"].Value.ToString();
+                        txtSegundoApellidoNF.Text = filaSeleccionada.Cells["SocSegundoApellido"].Value.ToString();
+                        txtCINF.Text = filaSeleccionada.Cells["SocCI"].Value.ToString();
+                        dtpFechaNacimientoNF.Value = Convert.ToDateTime(filaSeleccionada.Cells["SocFN"].Value);
+                        cmbTipoVinculo.SelectedItem = filaSeleccionada.Cells["NFTipoVinculo"].Value;
+                        txtTelNF.Text = filaSeleccionada.Cells["SocTel"].Value.ToString();
+                        txtCelularNF.Text = filaSeleccionada.Cells["SocCelular"].Value.ToString();
+                        txtObservacionesNF.Text = filaSeleccionada.Cells["SocObser"].Value.ToString();
 
-                        txtCelularNF.Enabled = false;
-                        txtObservacionesNF.Enabled = false;
-                        txtTelNF.Enabled = false;
-                        dtpFechaNacimientoNF.Enabled = false;
                         btnGuardarNF.Text = "Eliminar";
                     }
                     else
@@ -523,9 +524,9 @@ namespace Policial
 
         private void btnCancelarNF_Click(object sender, EventArgs e)
         {
-            LimpiarTExtos();
+            LimpiarTextos();
         }
-        public void LimpiarTExtos()
+        public void LimpiarTextos()
         {
             txtBuscarNF.Text = "";
             txtNombreSocNF.Text = "";
@@ -536,11 +537,23 @@ namespace Policial
             txtNFId.Text = "";
             txtSegundoApellidoNF.Text = "";
             txtSegundoNombreNF.Text = "";
+            txtSocIdNF.Text = "";
             txtTelNF.Text = "";
             txtSocCI.Text = "";
             cmbTipoVinculo.SelectedIndex = 0;
             txtObservacionesNF.Text = "";
             txtNombreSocNF.Text = "";
+            btnGuardarNF.Text = "Guardar";
+            dgvSociosNF.Rows.Clear();
+            dtpFechaNacimientoNF.Value = Convert.ToDateTime(DateTime.Today);
+        }
+
+        private void txtCINF_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
