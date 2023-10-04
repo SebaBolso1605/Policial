@@ -679,20 +679,21 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
---create PROCEDURE [dbo].[modificar_nf]
-CREATE PROCEDURE [dbo].[modificar_nf]
+create PROCEDURE [dbo].[modificar_nf]
+--ALTER PROCEDURE [dbo].[modificar_nf]
 
 @Id int,
+@NFCI int,
 @SocId int,
 @NFPrimerApellido VARCHAR (50),
 @NFSegundoApellido VARCHAR (50),
 @NFPrimerNombre VARCHAR (50),
 @NFSegundoNombre VARCHAR (50),
-@NFCI int,
-@NFFechaNacimiento datetime,
+@NFTipoVinculo VARCHAR (50),
 @NFTel VARCHAR (20),
 @NFCelular VARCHAR (10),
 @NFObservaciones VARCHAR (250),
+@NFFechaNacimiento datetime,
 @FecModif datetime,
 @UsuIdModif int,
 @NFId INT OUTPUT
@@ -709,11 +710,11 @@ BEGIN
 		END
 	ELSE
 	BEGIN TRAN			
-		UPDATE NucleoFamiliar SET NFPrimerApellido = @NFPrimerApellido, NFSegundoApellido = @NFSegundoNombre,
-						  NFPrimerNombre = @NFPrimerNombre, NFSegundoNombre = @NFSegundoNombre,
-						  NFObservaciones = @NFObservaciones,NFTel = @NFTel, NFCelular = @NFCelular,
-						  NFCI = @NFCI, NFFechaNacimiento = @NFFechaNacimiento, FecModif = @FecModif, UsuIdModif = @UsuIdModif
-					  WHERE NFId = @Id	
+		UPDATE NucleoFamiliar SET NFCI = @NFCI, NFPrimerApellido = @NFPrimerApellido, NFSegundoApellido = @NFSegundoApellido,
+						  NFPrimerNombre = @NFPrimerNombre, NFSegundoNombre = @NFSegundoNombre, NFTipoVinculo = @NFTipoVinculo,
+						  NFTel = @NFTel, NFCelular = @NFCelular, NFObservaciones = @NFObservaciones,
+						  NFFechaNacimiento = @NFFechaNacimiento, FecModif = @FecModif, UsuIdModif = @UsuIdModif
+					  WHERE NFId = @NFId	
 		IF @@ERROR <> 0
 		BEGIN
 			ROLLBACK TRAN
@@ -733,8 +734,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
---CREATE PROCEDURE [dbo].[modificar_socio]
-ALTER PROCEDURE [dbo].[modificar_socio]
+CREATE PROCEDURE [dbo].[modificar_socio]
+--ALTER PROCEDURE [dbo].[modificar_socio]
 @SocCI int,
 @SocPrimerApellido VARCHAR (50),
 @SocSegundoApellido VARCHAR (50),
@@ -853,3 +854,4 @@ GO
 
 --select * from TipoCuota
 
+select * from NucleoFamiliar
