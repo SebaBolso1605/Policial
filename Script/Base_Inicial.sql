@@ -789,13 +789,37 @@ GO
 
 
 --create PROC [dbo].[PagoCuotaSocio]
-CREATE PROC [dbo].[PagoCuotaSocio]
+--CREATE PROC [dbo].[PagoCuotaSocio]
+--@IdCuota INT,
+--@IdSocio INT,
+--@CuotaFechaPaga datetime,
+--@FechaModifica DATE,
+--@UsuIdModifica INT
+
+--AS
+--BEGIN
+--	IF NOT EXISTS(SELECT * FROM CuotaSocio WHERE SocId = @IdSocio and CuotaId = @IdCuota)
+--	BEGIN
+--		RETURN -1
+--	END
+--	ELSE
+--	BEGIN 
+--		UPDATE CuotaSocio SET CuotaPaga = 1, FecModif = @FechaModifica, UsuIdModif = @UsuIdModifica, CuotaFechaPaga = @CuotaFechaPaga 
+--		where SocId = @IdSocio and CuotaId = @IdCuota 
+--		IF @@ERROR <> 0
+--		BEGIN
+--			RETURN -2
+--		END		
+--		RETURN 1	
+--	END
+--END
+--GO
+
+--create PROC [dbo].[PagoCuotaSocio]
+ALTER PROC [dbo].[PagoCuotaSocio]
 @IdCuota INT,
 @IdSocio INT,
-@CuotaFechaPaga datetime,
-@FechaModifica DATE,
 @UsuIdModifica INT
-
 AS
 BEGIN
 	IF NOT EXISTS(SELECT * FROM CuotaSocio WHERE SocId = @IdSocio and CuotaId = @IdCuota)
@@ -804,7 +828,7 @@ BEGIN
 	END
 	ELSE
 	BEGIN 
-		UPDATE CuotaSocio SET CuotaPaga = 1, FecModif = @FechaModifica, UsuIdModif = @UsuIdModifica, CuotaFechaPaga = @CuotaFechaPaga 
+		UPDATE CuotaSocio SET CuotaPaga = 1, FecModif = SYSDATETIME(), UsuIdModif = @UsuIdModifica, CuotaFechaPaga = SYSDATETIME()
 		where SocId = @IdSocio and CuotaId = @IdCuota 
 		IF @@ERROR <> 0
 		BEGIN
@@ -814,7 +838,6 @@ BEGIN
 	END
 END
 GO
-
 CREATE PROCEDURE [dbo].[activar_socio]
 --ALTER PROCEDURE [dbo].[activar_socio]
 @SocCI int,

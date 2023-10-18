@@ -152,6 +152,7 @@ namespace Persistencia
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@SocId", _c.SocId);
             cmd.Parameters.AddWithValue("@CuotaFechaDesde", _c.CuotaFechaDesde);
+            cmd.Parameters.AddWithValue("@CuotaFechaHasta", _c.CuotaFechaHasta);
             cmd.Parameters.AddWithValue("@CuotaTipo", _c.CuotaTipo);
             cmd.Parameters.AddWithValue("@CuotaPaga", _c.CuotaPaga);
             if (_c.CuotaPaga)
