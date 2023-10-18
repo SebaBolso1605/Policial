@@ -23,11 +23,11 @@ namespace Policial
             ListarTC();
             btnPagar.BackColor = RGBColors.color;
             btnCancelar.BackColor = RGBColors.color;
-            button2.Text = "Agregar";
+            btnAgregar.Text = "Agregar";
             label1.ForeColor = RGBColors.color;
             label10.ForeColor = RGBColors.color;
             button1.BackColor = RGBColors.color;
-            button2.BackColor = RGBColors.color;
+            btnAgregar.BackColor = RGBColors.color;
             ListarCuotasSocios();
             chkPagar.Checked = false;
         }
@@ -238,7 +238,7 @@ namespace Policial
                         textBox1.Text = filaSeleccionada.Cells["TCId"].Value.ToString().Trim();
                         txtDescripcion.Text = filaSeleccionada.Cells["TCDescripcion"].Value.ToString().Trim();
                         txtMonto.Text = filaSeleccionada.Cells["TCMonto"].Value.ToString().Trim();
-                        btnPagar.Text = "Modificar";
+                        btnAgregar.Text = "Modificar";
                     }
                     else
                         MessageBox.Show("Seleccione linea de la grilla.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -251,7 +251,7 @@ namespace Policial
                         textBox1.Text = filaSeleccionada.Cells["TCId"].Value.ToString();
                         txtDescripcion.Text = filaSeleccionada.Cells["TCDescripcion"].Value.ToString();
                         txtMonto.Text = filaSeleccionada.Cells["TCMonto"].Value.ToString();
-                        btnPagar.Text = "Eliminar";
+                        btnAgregar.Text = "Eliminar";
                     }
                     else
                         MessageBox.Show("Seleccione linea de la grilla.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -275,7 +275,7 @@ namespace Policial
                 Usuario _usu = Program.usuarioLogueado;
                 bool resultado = false;
                 bool ret = HayError();
-                if (btnPagar.Text == "Agregar")
+                if (btnAgregar.Text == "Agregar")
                 {
                     if (ret == false)
                     {
@@ -310,7 +310,7 @@ namespace Policial
                 #region Modificar
                 errorProvider.Clear();
                 ret = HayError();
-                if (btnPagar.Text == "Modificar")
+                if (btnAgregar.Text == "Modificar")
                 {
                     if (ret == false)
                     {
@@ -334,20 +334,20 @@ namespace Policial
                                 txtDescripcion.Text = "";
                                 mensaje = "La información se modifico correctamente.";
                                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                btnPagar.Text = "Agregar";
+                                btnAgregar.Text = "Agregar";
                             }
                             else
                             {
                                 mensaje = "No se modifico la información.";
                                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                btnPagar.Text = "Agregar";
+                                btnAgregar.Text = "Agregar";
                             }
                         }
                     }
                 }
                 #endregion
                 #region Eliminar
-                if (btnPagar.Text == "Eliminar")
+                if (btnAgregar.Text == "Eliminar")
                 {
                     if (ret == false)
                     {
@@ -372,13 +372,13 @@ namespace Policial
                             txtDescripcion.Text = "";
                             mensaje = "La información se elimino correctamente.";
                             MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            btnPagar.Text = "Agregar";
+                            btnAgregar.Text = "Agregar";
                         }
                         else
                         {
                             mensaje = "No se elimino la información.";
                             MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            btnPagar.Text = "Agregar";
+                            btnAgregar.Text = "Agregar";
                         }
                     }
                 }

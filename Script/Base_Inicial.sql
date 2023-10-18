@@ -278,10 +278,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
---create PROC [dbo].[alta_cuenta_socio]
-CREATE PROC [dbo].[alta_cuenta_socio]
+create PROC [dbo].[alta_cuenta_socio]
+--ALTER PROC [dbo].[alta_cuenta_socio]
 @SocId INT,
 @CuotaFechaDesde datetime,
+@CuotaFechaHasta datetime,
 @CuotaTipo int,
 @CuotaPaga bit,
 @CuotaFechaPaga datetime,
@@ -296,8 +297,8 @@ BEGIN
 		END
 	ELSE
 	BEGIN TRAN
-		INSERT CuotaSocio(SocId,CuotaFechaDesde, CuotaTipo,CuotaPaga,CuotaFechaPaga,CuotaAAAAMM, FecAlta, FecModif, UsuIdAlta, UsuIdModif) 
-					VALUES (@SocId,@CuotaFechaDesde,@CuotaTipo,@CuotaPaga,@CuotaFechaPaga,@CuotaAAAAMM,GETDATE(),GETDATE(),@UsuIdAlta,@UsuIdAlta)
+		INSERT CuotaSocio(SocId,CuotaFechaDesde, CuotaFechaHasta, CuotaTipo,CuotaPaga,CuotaFechaPaga,CuotaAAAAMM, FecAlta, FecModif, UsuIdAlta, UsuIdModif) 
+					VALUES (@SocId,@CuotaFechaDesde,@CuotaFechaHasta,@CuotaTipo,@CuotaPaga,@CuotaFechaPaga,@CuotaAAAAMM,GETDATE(),GETDATE(),@UsuIdAlta,@UsuIdAlta)
 					SET @CuotaId = (SELECT IDENT_CURRENT('CuotaSocio'))
 		IF @@ERROR <> 0
 		BEGIN
@@ -346,6 +347,7 @@ BEGIN
 END
 
 GO
+
 
 /****** Object:  StoredProcedure [dbo].[alta_socio]    Script Date: 13/7/2023 12:59:20 ******/
 SET ANSI_NULLS ON
@@ -838,6 +840,7 @@ BEGIN
 	END
 END
 GO
+
 CREATE PROCEDURE [dbo].[activar_socio]
 --ALTER PROCEDURE [dbo].[activar_socio]
 @SocCI int,

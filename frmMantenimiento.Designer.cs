@@ -38,6 +38,17 @@ namespace Policial
             this.txtParametro = new System.Windows.Forms.TextBox();
             this.chkPagar = new System.Windows.Forms.CheckBox();
             this.dgvSocios = new System.Windows.Forms.DataGridView();
+            this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocPrimerNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SocPrimerApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CuotaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoCuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CuotaAAAAMM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pagar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.SocDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CuotaFechaPaga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPagar = new System.Windows.Forms.Button();
@@ -53,23 +64,12 @@ namespace Policial
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocPrimerNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SocPrimerApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CuotaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoCuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CuotaAAAAMM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pagar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SocDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CuotaFechaPaga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.tabModifcar.SuspendLayout();
             this.tabPagarCuotas.SuspendLayout();
@@ -121,7 +121,7 @@ namespace Policial
             this.checkBox1.ForeColor = System.Drawing.Color.Black;
             this.checkBox1.Location = new System.Drawing.Point(342, 86);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(140, 20);
+            this.checkBox1.Size = new System.Drawing.Size(139, 20);
             this.checkBox1.TabIndex = 263;
             this.checkBox1.Text = "solo Cuotas Impagas";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -154,7 +154,7 @@ namespace Policial
             this.chkPagar.ForeColor = System.Drawing.Color.Black;
             this.chkPagar.Location = new System.Drawing.Point(868, 98);
             this.chkPagar.Name = "chkPagar";
-            this.chkPagar.Size = new System.Drawing.Size(89, 20);
+            this.chkPagar.Size = new System.Drawing.Size(88, 20);
             this.chkPagar.TabIndex = 199;
             this.chkPagar.Text = "Pagar todo";
             this.chkPagar.UseVisualStyleBackColor = true;
@@ -186,6 +186,78 @@ namespace Policial
             this.dgvSocios.RowHeadersWidth = 51;
             this.dgvSocios.Size = new System.Drawing.Size(929, 330);
             this.dgvSocios.TabIndex = 198;
+            // 
+            // SocId
+            // 
+            this.SocId.HeaderText = "Socio";
+            this.SocId.Name = "SocId";
+            this.SocId.ReadOnly = true;
+            // 
+            // SocCI
+            // 
+            this.SocCI.HeaderText = "Cédula";
+            this.SocCI.MinimumWidth = 6;
+            this.SocCI.Name = "SocCI";
+            this.SocCI.ReadOnly = true;
+            // 
+            // SocPrimerNombre
+            // 
+            this.SocPrimerNombre.HeaderText = "Nombre";
+            this.SocPrimerNombre.MinimumWidth = 6;
+            this.SocPrimerNombre.Name = "SocPrimerNombre";
+            this.SocPrimerNombre.ReadOnly = true;
+            // 
+            // SocPrimerApellido
+            // 
+            this.SocPrimerApellido.HeaderText = "Apellido";
+            this.SocPrimerApellido.Name = "SocPrimerApellido";
+            this.SocPrimerApellido.ReadOnly = true;
+            // 
+            // CuotaId
+            // 
+            this.CuotaId.HeaderText = "Cuota";
+            this.CuotaId.MinimumWidth = 6;
+            this.CuotaId.Name = "CuotaId";
+            this.CuotaId.ReadOnly = true;
+            // 
+            // TipoCuota
+            // 
+            this.TipoCuota.HeaderText = "Tipo Cuota";
+            this.TipoCuota.Name = "TipoCuota";
+            this.TipoCuota.ReadOnly = true;
+            // 
+            // CuotaAAAAMM
+            // 
+            this.CuotaAAAAMM.HeaderText = "Mes/Año";
+            this.CuotaAAAAMM.MinimumWidth = 6;
+            this.CuotaAAAAMM.Name = "CuotaAAAAMM";
+            this.CuotaAAAAMM.ReadOnly = true;
+            this.CuotaAAAAMM.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CuotaAAAAMM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            // 
+            // Pagar
+            // 
+            this.Pagar.HeaderText = "Pagar";
+            this.Pagar.Name = "Pagar";
+            // 
+            // SocDireccion
+            // 
+            this.SocDireccion.HeaderText = "SocDireccion";
+            this.SocDireccion.Name = "SocDireccion";
+            this.SocDireccion.ReadOnly = true;
+            this.SocDireccion.Visible = false;
+            // 
+            // CuotaFechaPaga
+            // 
+            this.CuotaFechaPaga.HeaderText = "CuotaFechaPaga";
+            this.CuotaFechaPaga.Name = "CuotaFechaPaga";
+            this.CuotaFechaPaga.Visible = false;
             // 
             // btnCancelar
             // 
@@ -237,7 +309,7 @@ namespace Policial
             this.tabModificarCuota.Controls.Add(this.txtDescripcion);
             this.tabModificarCuota.Controls.Add(this.dgvCategorias);
             this.tabModificarCuota.Controls.Add(this.button1);
-            this.tabModificarCuota.Controls.Add(this.button2);
+            this.tabModificarCuota.Controls.Add(this.btnAgregar);
             this.tabModificarCuota.Controls.Add(this.label10);
             this.tabModificarCuota.Controls.Add(this.label17);
             this.tabModificarCuota.Controls.Add(this.label27);
@@ -360,21 +432,21 @@ namespace Policial
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // button2
+            // btnAgregar
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(185, 390);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(176, 25);
-            this.button2.TabIndex = 203;
-            this.button2.Text = "Agregar";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.btnAgregar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.Color.White;
+            this.btnAgregar.Location = new System.Drawing.Point(185, 390);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(176, 25);
+            this.btnAgregar.TabIndex = 203;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // label10
             // 
@@ -431,78 +503,6 @@ namespace Policial
             this.label29.TabIndex = 198;
             this.label29.Text = "Categoria";
             // 
-            // SocId
-            // 
-            this.SocId.HeaderText = "Socio";
-            this.SocId.Name = "SocId";
-            this.SocId.ReadOnly = true;
-            // 
-            // SocCI
-            // 
-            this.SocCI.HeaderText = "Cédula";
-            this.SocCI.MinimumWidth = 6;
-            this.SocCI.Name = "SocCI";
-            this.SocCI.ReadOnly = true;
-            // 
-            // SocPrimerNombre
-            // 
-            this.SocPrimerNombre.HeaderText = "Nombre";
-            this.SocPrimerNombre.MinimumWidth = 6;
-            this.SocPrimerNombre.Name = "SocPrimerNombre";
-            this.SocPrimerNombre.ReadOnly = true;
-            // 
-            // SocPrimerApellido
-            // 
-            this.SocPrimerApellido.HeaderText = "Apellido";
-            this.SocPrimerApellido.Name = "SocPrimerApellido";
-            this.SocPrimerApellido.ReadOnly = true;
-            // 
-            // CuotaId
-            // 
-            this.CuotaId.HeaderText = "Cuota";
-            this.CuotaId.MinimumWidth = 6;
-            this.CuotaId.Name = "CuotaId";
-            this.CuotaId.ReadOnly = true;
-            // 
-            // TipoCuota
-            // 
-            this.TipoCuota.HeaderText = "Tipo Cuota";
-            this.TipoCuota.Name = "TipoCuota";
-            this.TipoCuota.ReadOnly = true;
-            // 
-            // CuotaAAAAMM
-            // 
-            this.CuotaAAAAMM.HeaderText = "Mes/Año";
-            this.CuotaAAAAMM.MinimumWidth = 6;
-            this.CuotaAAAAMM.Name = "CuotaAAAAMM";
-            this.CuotaAAAAMM.ReadOnly = true;
-            this.CuotaAAAAMM.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CuotaAAAAMM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            // 
-            // Pagar
-            // 
-            this.Pagar.HeaderText = "Pagar";
-            this.Pagar.Name = "Pagar";
-            // 
-            // SocDireccion
-            // 
-            this.SocDireccion.HeaderText = "SocDireccion";
-            this.SocDireccion.Name = "SocDireccion";
-            this.SocDireccion.ReadOnly = true;
-            this.SocDireccion.Visible = false;
-            // 
-            // CuotaFechaPaga
-            // 
-            this.CuotaFechaPaga.HeaderText = "CuotaFechaPaga";
-            this.CuotaFechaPaga.Name = "CuotaFechaPaga";
-            this.CuotaFechaPaga.Visible = false;
-            // 
             // frmMantenimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -543,7 +543,7 @@ namespace Policial
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label27;
