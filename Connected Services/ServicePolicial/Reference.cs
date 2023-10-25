@@ -684,6 +684,9 @@ namespace Policial.ServicePolicial {
         private int SocIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Policial.ServicePolicial.TipoCuota TCField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int UsuIdAltaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -825,6 +828,19 @@ namespace Policial.ServicePolicial {
                 if ((this.SocIdField.Equals(value) != true)) {
                     this.SocIdField = value;
                     this.RaisePropertyChanged("SocId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Policial.ServicePolicial.TipoCuota TC {
+            get {
+                return this.TCField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TCField, value) != true)) {
+                    this.TCField = value;
+                    this.RaisePropertyChanged("TC");
                 }
             }
         }
@@ -1166,6 +1182,67 @@ namespace Policial.ServicePolicial {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Impresion", Namespace="http://schemas.datacontract.org/2004/07/EntidadesCompartidas")]
+    [System.SerializableAttribute()]
+    public partial class Impresion : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Policial.ServicePolicial.Cuota CuotaImpField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Policial.ServicePolicial.Socio SocioImpField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Policial.ServicePolicial.Cuota CuotaImp {
+            get {
+                return this.CuotaImpField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CuotaImpField, value) != true)) {
+                    this.CuotaImpField = value;
+                    this.RaisePropertyChanged("CuotaImp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Policial.ServicePolicial.Socio SocioImp {
+            get {
+                return this.SocioImpField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SocioImpField, value) != true)) {
+                    this.SocioImpField = value;
+                    this.RaisePropertyChanged("SocioImp");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServicePolicial.IServicePolicial")]
     public interface IServicePolicial {
@@ -1223,6 +1300,9 @@ namespace Policial.ServicePolicial {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicial/BajarCuota", ReplyAction="http://tempuri.org/IServicePolicial/BajarCuotaResponse")]
         bool BajarCuota(int id, Policial.ServicePolicial.Usuario _usu);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicial/ListarImpresion", ReplyAction="http://tempuri.org/IServicePolicial/ListarImpresionResponse")]
+        Policial.ServicePolicial.Impresion[] ListarImpresion();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1322,6 +1402,10 @@ namespace Policial.ServicePolicial {
         
         public bool BajarCuota(int id, Policial.ServicePolicial.Usuario _usu) {
             return base.Channel.BajarCuota(id, _usu);
+        }
+        
+        public Policial.ServicePolicial.Impresion[] ListarImpresion() {
+            return base.Channel.ListarImpresion();
         }
     }
 }

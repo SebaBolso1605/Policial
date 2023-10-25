@@ -105,5 +105,9 @@ namespace WcfServicePolicial
             return (FabricaLogica.getLogicaCuota().BajarCuota(id,_usu));
         }
 
+        List<Impresion> IServicePolicial.ListarImpresion()
+        {
+            return (FabricaLogica.getLogicaCuota().ListarImpresion());
+        }
     }
 }

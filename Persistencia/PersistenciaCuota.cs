@@ -252,6 +252,7 @@ namespace Persistencia
             SqlCommand _comando = new SqlCommand("buscar_cuotaSocio", _cnn);
             _comando.CommandType = CommandType.StoredProcedure;
             Cuota c = new Cuota();
+            TipoCuota tc = new TipoCuota();
             List<Cuota> s = new List<Cuota>();
 
             try
@@ -269,10 +270,12 @@ namespace Persistencia
                     while (_lector.Read())
                     {
                         c = new Cuota();
+                        tc = new TipoCuota();
                         c.SocId = (int)_lector["SocId"];
                         c.CuotaId = (int)_lector["CuotaId"];
                         c.CuotaFechaDesde = (DateTime)_lector["CuotaFechaDesde"];
-                        //c.CuotaFechaHasta = (DateTime)_lector["CuotaFechaHasta"];
+                        if (!string.IsNullOrEmpty(_lector["CuotaFechaHasta"].ToString()))
+                            c.CuotaFechaHasta = (DateTime)_lector["CuotaFechaHasta"];
                         c.CuotaAAAAMM = (string)_lector["CuotaAAAAMM"];
                         c.CuotaPaga = (bool)_lector["CuotaPaga"];
                         if (!string.IsNullOrEmpty(_lector["CuotaFechaPaga"].ToString()))
@@ -282,6 +285,10 @@ namespace Persistencia
                         c.FecModif = (DateTime)_lector["FecModif"];
                         c.UsuIdAlta = (int)_lector["UsuIdAlta"];
                         c.UsuIdModif = (int)_lector["UsuIdModif"];
+                        tc.TCId = (int)_lector["SocId"];
+                        tc.TCDescripcion = (string)_lector["TCDescripcion"];
+                        tc.TCMonto = (int)_lector["TCMonto"];                       
+                        c.TC = tc;
                         s.Add(c);
                     }
                 }

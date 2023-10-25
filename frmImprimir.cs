@@ -13,6 +13,9 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.tool.xml;
+using System.Diagnostics;
+using System.Threading;
+using Policial.Properties;
 
 namespace Policial
 {
@@ -83,10 +86,12 @@ namespace Policial
                                 {
                                     if (imprimirTodo)
                                         dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre, s.SocPrimerApellido + " " + s.SocSegundoApellido,
-                                            c.CuotaId, c.CuotaAAAAMM, "Impaga", c.CuotaFechaDesde, true, s.SocDireccion, s.SocEmail);                                
+                                            c.CuotaId, c.CuotaAAAAMM, "Impaga", c.CuotaFechaDesde, true, c.CuotaFechaPaga, s.SocDireccion, s.SocEmail, s.SocFechaIngreso,
+                                            s.SocPrimerNombre, s.SocSegundoNombre, s.SocPrimerApellido, s.SocSegundoApellido, c.TC.TCMonto, c.TC.TCDescripcion);
                                     else
-                                        dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre, s.SocPrimerApellido + " " + s.SocSegundoApellido, 
-                                            c.CuotaId, c.CuotaAAAAMM, "Impaga", c.CuotaFechaDesde, false, s.SocDireccion, s.SocEmail);
+                                        dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre, s.SocPrimerApellido + " " + s.SocSegundoApellido,
+                                            c.CuotaId, c.CuotaAAAAMM, "Impaga", c.CuotaFechaDesde, false, c.CuotaFechaPaga, s.SocDireccion, s.SocEmail, s.SocFechaIngreso,
+                                            s.SocPrimerNombre, s.SocSegundoNombre, s.SocPrimerApellido, s.SocSegundoApellido, c.TC.TCMonto, c.TC.TCDescripcion);
                                 }
                             }
                         }
@@ -96,11 +101,13 @@ namespace Policial
                             {
                                 string estado = c.CuotaPaga ? "Paga" : "Impaga";
                                 if (imprimirTodo)
-                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre, s.SocPrimerApellido + " " + s.SocSegundoApellido, 
-                                        c.CuotaId, c.CuotaAAAAMM, estado, c.CuotaFechaDesde,true, s.SocDireccion, s.SocEmail);
+                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre, s.SocPrimerApellido + " " + s.SocSegundoApellido,
+                                        c.CuotaId, c.CuotaAAAAMM, estado, c.CuotaFechaDesde, true, c.CuotaFechaPaga, s.SocDireccion, s.SocEmail, s.SocFechaIngreso,
+                                        s.SocPrimerNombre, s.SocSegundoNombre, s.SocPrimerApellido, s.SocSegundoApellido, c.TC.TCMonto, c.TC.TCDescripcion);
                                 else
-                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre, s.SocPrimerApellido + " " + s.SocSegundoApellido, 
-                                        c.CuotaId, c.CuotaAAAAMM, estado, c.CuotaFechaDesde, false, s.SocDireccion, s.SocEmail);
+                                    dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre, s.SocPrimerApellido + " " + s.SocSegundoApellido,
+                                        c.CuotaId, c.CuotaAAAAMM, estado, c.CuotaFechaDesde, false, c.CuotaFechaPaga, s.SocDireccion, s.SocEmail, s.SocFechaIngreso,
+                                        s.SocPrimerNombre, s.SocSegundoNombre, s.SocPrimerApellido, s.SocSegundoApellido, c.TC.TCMonto, c.TC.TCDescripcion);
                             }
                         }
                     }
@@ -118,8 +125,10 @@ namespace Policial
         {
             try
             {
+                Document doc = new Document();
+                List<Impresion> listaImpresion = new List<Impresion>();
                 bool seleccionado = false;
-                string cuotas = "";
+
                 foreach (DataGridViewRow row in dgvSocios.Rows)
                 {
                     if (row.Cells["imprimir"].Value != null)
@@ -127,71 +136,47 @@ namespace Policial
                         if ((bool)row.Cells["imprimir"].Value)
                         {
                             seleccionado = true;
-                            string nombre = "";
-                            if (chkImprimir.Checked)
-                                nombre = "Todas las cuotas";
+                            Impresion i = new Impresion();
+                            Socio s = new Socio();
+                            Cuota c = new Cuota();
+                            TipoCuota tc = new TipoCuota();
+
+                            i.SocioImp = s;
+                            c.TC = tc;
+                            i.CuotaImp = c;
+
+                            s.SocId = Convert.ToInt32(row.Cells["SocId"].Value.ToString());
+                            s.SocCI = Convert.ToInt32(row.Cells["SocCI"].Value.ToString());
+                            s.SocPrimerNombre = row.Cells["SocPrimerNombre"].Value.ToString();
+                            s.SocSegundoNombre = row.Cells["SocSegundoNombre"].Value.ToString();
+                            s.SocPrimerApellido = row.Cells["SocPrimerApellido"].Value.ToString();
+                            s.SocSegundoApellido = row.Cells["SocSegundoApellido"].Value.ToString();
+                            s.SocFechaIngreso = Convert.ToDateTime(row.Cells["FechaIngreso"].Value.ToString());
+                            s.SocDireccion = row.Cells["SocDireccion"].Value.ToString();
+
+                            if (!string.IsNullOrEmpty(row.Cells["SocEmail"].Value.ToString()))
+                                s.SocEmail = row.Cells["SocEmail"].Value.ToString();
                             else
-                                nombre = "Cuota del Socio" + row.Cells["SocPrimerNombre"].Value.ToString() + row.Cells["SocPrimerNombre"].Value.ToString() + ".pdf";
+                                s.SocEmail = "";
+                            c.CuotaId = Convert.ToInt32(row.Cells["CuotaId"].Value.ToString());
+                            c.CuotaFechaDesde = Convert.ToDateTime(row.Cells["CuotaFechaDesde"].Value.ToString());
+                            c.CuotaAAAAMM = row.Cells["CuotaAAAAMM"].Value.ToString();
+                            tc.TCMonto = Convert.ToInt32(row.Cells["TCMonto"].Value.ToString());
+                            tc.TCDescripcion = row.Cells["TCDescripcion"].Value.ToString();
 
-                            string plantillaHtlm = Properties.Resources.plantillaHTML.ToString();
-                            plantillaHtlm = plantillaHtlm.Replace("@Socio", row.Cells["SocId"].Value.ToString());
-                            plantillaHtlm = plantillaHtlm.Replace("@Nombre", row.Cells["SocPrimerNombre"].Value.ToString() + row.Cells["SocPrimerApellido"].Value.ToString());
-                            plantillaHtlm = plantillaHtlm.Replace("@Direccion", row.Cells["SocDireccion"].Value.ToString());
-                            plantillaHtlm = plantillaHtlm.Replace("@CuotaSocial", row.Cells["CuotaId"].Value.ToString());
-                            plantillaHtlm = plantillaHtlm.Replace("@FechaDeEmision", row.Cells["CuotaFechaDesde"].Value.ToString());
-                            //if(!string.IsNullOrEmpty(filaSeleccionada.Cells["SocEmail"].Value.ToString()))
-                            //    plantillaHtlm = plantillaHtlm.Replace("@Email", filaSeleccionada.Cells["SocEmail"].Value.ToString());
-                            //else
-                            //    plantillaHtlm = plantillaHtlm.Replace("@Email", "");
-                            // plantillaHtlm = plantillaHtlm.Replace("@FechaDeIngreso", filaSeleccionada.Cells["SocId"].Value.ToString());
-                            plantillaHtlm = plantillaHtlm.Replace("@AnioMes", row.Cells["CuotaAAAAMM"].Value.ToString());
 
-                            cuotas = cuotas + plantillaHtlm;                            
+                            listaImpresion.Add(i);
                         }
                     }
                 }
+                //  ACA VA LA PARTE DE CREAR EL PDF
                 if (!seleccionado)
                 {
                     MessageBox.Show("Debe seleccionar al menos una cuota para imprimir.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-                else {
-                    var filaSeleccionada = dgvSocios.CurrentRow;
-                    SaveFileDialog guardar = new SaveFileDialog();
-                    string plantillaFinal = Properties.Resources.plantillaFinal.ToString();
-
-                    plantillaFinal = plantillaFinal.Replace("@Cuota", cuotas);
-
-                    if (guardar.ShowDialog() == DialogResult.OK)
-                    {
-                        using (FileStream fileStream = new FileStream(guardar.FileName, FileMode.Create))
-                        {
-                            Document doc = new Document(PageSize.A4, 10, 10, 10, 10);
-                            PdfWriter writer = PdfWriter.GetInstance(doc, fileStream);
-
-                            doc.Open();
-                            doc.Add(new Phrase(""));
-
-                            iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.logo, System.Drawing.Imaging.ImageFormat.Png);
-                            img.ScaleToFit(80, 60);
-                            img.Alignment = iTextSharp.text.Image.UNDERLYING;
-                            img.SetAbsolutePosition(doc.LeftMargin, doc.Top - 60);
-
-                            using (StringReader reader = new StringReader(plantillaFinal))
-                            {
-                                XMLWorkerHelper.GetInstance().ParseXHtml(writer, doc, reader);
-                            }
-
-                            doc.Close();
-                            fileStream.Close();
-                        }
-
-                        MessageBox.Show("Se generaron cuotas marcadas para imprimir.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Seleccione ubicación de destino.", titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                    }
+                else
+                {
+                    PDFImpresion(listaImpresion);
                 }
             }
             catch (Exception ex)
@@ -213,7 +198,7 @@ namespace Policial
                 mensaje = ex.Message;
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-        }      
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -230,13 +215,13 @@ namespace Policial
         {
             try
             {
-                ListarCuotasSocios(); 
+                ListarCuotasSocios();
             }
             catch (Exception ex)
             {
                 mensaje = ex.Message;
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }            
+            }
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -264,7 +249,8 @@ namespace Policial
                             {
                                 if (!c.CuotaPaga && c.CuotaAAAAMM == mes + "/" + año)
                                     dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
-                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM,"Impaga");
+                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM, "Impaga", c.CuotaFechaDesde, false, c.CuotaFechaPaga, 
+                                            s.SocDireccion, s.SocEmail, s.SocFechaIngreso, s.SocPrimerNombre, s.SocSegundoNombre, s.SocPrimerApellido, s.SocSegundoApellido, c.TC.TCMonto, c.TC.TCDescripcion);
                             }
                         }
                         if (listaCuotas.Count > 0 && !soloCuotasImpagas)
@@ -273,7 +259,8 @@ namespace Policial
                             {
                                 if (c.CuotaPaga && c.CuotaAAAAMM == mes + "/" + año)
                                     dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
-                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM,"Paga");
+                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM, "Paga", c.CuotaFechaDesde, false, c.CuotaFechaPaga,
+                                            s.SocDireccion, s.SocEmail, s.SocFechaIngreso, s.SocPrimerNombre, s.SocSegundoNombre, s.SocPrimerApellido, s.SocSegundoApellido, c.TC.TCMonto, c.TC.TCDescripcion);
                             }
                         }
                     }
@@ -348,12 +335,14 @@ namespace Policial
                         {
                             foreach (Cuota c in listaCuotas)
                             {
-                                if (!c.CuotaPaga )
+                                if (!c.CuotaPaga)
                                     dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
-                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM, "Impaga");
+                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM, "Impaga", c.CuotaFechaDesde, false, c.CuotaFechaPaga,
+                                            s.SocDireccion, s.SocEmail, s.SocFechaIngreso, s.SocPrimerNombre, s.SocSegundoNombre, s.SocPrimerApellido, s.SocSegundoApellido, c.TC.TCMonto, c.TC.TCDescripcion);
                                 if (c.CuotaPaga)
                                     dgvSocios.Rows.Add(s.SocId, s.SocCI, s.SocPrimerNombre + " " + s.SocSegundoNombre,
-                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM, "Paga");
+                                            s.SocPrimerApellido + " " + s.SocSegundoApellido, c.CuotaId, c.CuotaAAAAMM, "Paga", c.CuotaFechaDesde, false, c.CuotaFechaPaga,
+                                            s.SocDireccion, s.SocEmail, s.SocFechaIngreso, s.SocPrimerNombre, s.SocSegundoNombre, s.SocPrimerApellido, s.SocSegundoApellido, c.TC.TCMonto, c.TC.TCDescripcion);
                             }
                         }
                     }
@@ -363,6 +352,149 @@ namespace Policial
             {
                 string mensaje = ex.Message;
                 MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+        void PDFImpresion(List<Impresion> lista)
+        {
+            string path = "c:\\Reportes";
+            try
+            {
+                if (lista != null)
+                {
+                    if (lista.Count > 0)
+                    {
+                        string nombreReporte = "Cuotas";
+                        Document doc = new Document(PageSize.A4);
+                        doc.SetMargins(28f, 28f, 70f, 85f);
+                        string NombrePDF = nombreReporte + "-" + DateTime.Today.Day + "-" + DateTime.Today.Month + "-" + DateTime.Today.Year + "-" + DateTime.Now.Hour + "-" + DateTime.Now.Minute;
+
+                        // Se crea carpeta si no existe
+                        if (!Directory.Exists(path))
+                        {
+                            Directory.CreateDirectory(path);
+                        }
+
+                        PdfWriter.GetInstance(doc, new FileStream(path + NombrePDF + ".pdf", FileMode.Create));
+                        doc.Open();
+
+                        BaseFont _textoGrande = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1250, true);
+                        iTextSharp.text.Font textoGrande = new iTextSharp.text.Font(_textoGrande, 11f, iTextSharp.text.Font.BOLDITALIC, new BaseColor(0, 0, 0));
+
+                        BaseFont _textoLeyenda = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1250, true);
+                        iTextSharp.text.Font textoLeyenda = new iTextSharp.text.Font(_textoLeyenda, 6f, iTextSharp.text.Font.BOLDITALIC, new BaseColor(0, 0, 0));
+
+                        BaseFont _textoLabel = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, true);
+                        iTextSharp.text.Font textoLabel = new iTextSharp.text.Font(_textoLabel, 6f, iTextSharp.text.Font.BOLD, new BaseColor(0, 0, 0));
+
+                        BaseFont _textoInfo = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, true);
+                        iTextSharp.text.Font textoInfo = new iTextSharp.text.Font(_textoInfo, 6f, iTextSharp.text.Font.BOLD, new BaseColor(0, 0, 0));
+
+                        BaseFont _textoBlanco = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, true);
+                        iTextSharp.text.Font textoBlanco = new iTextSharp.text.Font(_textoBlanco, 6f, iTextSharp.text.Font.BOLD, new BaseColor(Color.White));
+
+                        iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(Resources.logo, System.Drawing.Imaging.ImageFormat.Png);
+                        logo.ScaleAbsoluteWidth(40);
+                        logo.ScaleAbsoluteHeight(26);
+                        logo.Alignment = Element.ALIGN_RIGHT;
+
+                        doc.Add(Chunk.NEWLINE);
+
+                        int n = 0;
+                        int nl = lista.Count();
+
+                        foreach (Impresion i in lista)
+                        {
+                            n = n + 1;
+
+                            var tbl = new PdfPTable(new float[] { 5f, 8f, 1f, 1f, 10f, 5f, 5f, 5f, 5f, 5f, }) { WidthPercentage = 100f };
+                            tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Colspan = 2 });;
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
+                            tbl.AddCell(new PdfPCell(logo) { Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_CENTER, Padding = 2f });
+                            tbl.AddCell(new PdfPCell(new Phrase("CLUB SPORTIVO POLICIAL Y CÍRCULO POLICIAL", textoGrande)) { Colspan = 5, Rowspan = 2 });
+                            tbl.AddCell(new PdfPCell(new Phrase("Socio: ", textoLabel)) { Colspan = 1 });
+                            tbl.AddCell(new PdfPCell(new Phrase(i.CuotaImp.TC.TCDescripcion.ToString().Trim() + "     Nº: " + i.SocioImp.SocId, textoInfo)) { Colspan = 1 });
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });                         
+                            tbl.AddCell(new PdfPCell(new Phrase("Nombre: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase(i.SocioImp.SocPrimerNombre.ToString() + " " + i.SocioImp.SocSegundoNombre.ToString() + " "
+                                                  + i.SocioImp.SocPrimerApellido.ToString() + " " + i.SocioImp.SocSegundoApellido.ToString(), textoInfo)));
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
+                            tbl.AddCell(new PdfPCell(new Phrase("Fundado el 27 de agosto de 1947 - Personería Jurídica desde el 12 de diciembre", textoLeyenda)) { Colspan = 5, });
+                            //------
+                            tbl.AddCell(new PdfPCell(new Phrase("Domicilio: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase(i.SocioImp.SocDireccion.ToString(), textoInfo)));
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
+                            tbl.AddCell(new PdfPCell(new Phrase("Cuota Social: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase("$ " + i.CuotaImp.TC.TCMonto.ToString(), textoInfo)));
+                            tbl.AddCell(new PdfPCell(new Phrase("Email: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase(i.SocioImp.SocEmail.ToString().Trim(), textoLabel)) { Colspan = 3 });
+                            //------
+                            tbl.AddCell(new PdfPCell(new Phrase("Cuota Social: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase("$ " + i.CuotaImp.TC.TCMonto.ToString(), textoInfo)));
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
+                            tbl.AddCell(new PdfPCell(new Phrase("Nº de Socio: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase(i.SocioImp.SocId.ToString(), textoInfo)));
+                            tbl.AddCell(new PdfPCell(new Phrase("Fecha de Ingreso: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase(i.SocioImp.SocFechaIngreso.ToString("dd/MM/yyyy"), textoInfo)) { Colspan = 3 });
+                            //------
+                            tbl.AddCell(new PdfPCell(new Phrase("Fecha de Emisión: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase(i.CuotaImp.CuotaFechaDesde.ToString("dd/MM/yyyy"), textoInfo)));
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
+                            tbl.AddCell(new PdfPCell(new Phrase("Nombre: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase(i.SocioImp.SocPrimerNombre.ToString() + " " + i.SocioImp.SocSegundoNombre.ToString() + " "
+                                                  + i.SocioImp.SocPrimerApellido.ToString() + " " + i.SocioImp.SocSegundoApellido.ToString(), textoInfo))
+                            { Colspan = 5 });
+                            //------
+                            tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Colspan = 2 });
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
+                            tbl.AddCell(new PdfPCell(new Phrase("Domicilio: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase(i.SocioImp.SocDireccion.ToString(), textoInfo)) { Colspan = 5 });
+                            //------
+                            tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Colspan = 2 });
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
+                            tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
+                            tbl.AddCell(new PdfPCell(new Phrase("Pago del Mes: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase(i.CuotaImp.CuotaFechaDesde.ToString("MM/yyyy"), textoInfo)) { Colspan = 2 });
+                            tbl.AddCell(new PdfPCell(new Phrase("Fecha de Emisión: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase(i.CuotaImp.CuotaFechaDesde.ToString("dd/MM/yyyy"), textoInfo)) { Colspan = 3 });
+
+                            if (n < nl)
+                            {
+                                //------
+                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthRight = 0, BorderColor = BaseColor.CYAN });
+                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthRight = 0, BorderColor = BaseColor.CYAN });
+                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
+                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthRight = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
+                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthRight = 0, BorderColor = BaseColor.CYAN });
+                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Colspan = 5, BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthRight = 0, BorderColor = BaseColor.CYAN });
+                                //------
+                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Border = 0 });
+                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Border = 0 });
+                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthBottom = 0, BorderColor = BaseColor.CYAN });
+                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Border = 0 });
+                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Border = 0 });
+                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Colspan = 5, Border = 0 });
+                            }
+
+                            doc.Add(tbl);
+
+                        }
+
+
+                        doc.Close();
+                        Process.Start(path + NombrePDF + ".pdf");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

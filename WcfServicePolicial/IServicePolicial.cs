@@ -69,7 +69,9 @@ namespace WcfServicePolicial
 
         [OperationContract]
         bool BajarCuota(int id, Usuario _usu);
-        
+
+        [OperationContract]
+        List<Impresion> ListarImpresion();       
 
     }
 }

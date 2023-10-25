@@ -115,6 +115,12 @@
   <wsdl:message name="IServicePolicial_BajarCuota_OutputMessage">
     <wsdl:part name="parameters" element="tns:BajarCuotaResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicePolicial_ListarImpresion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarImpresion" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_ListarImpresion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarImpresionResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServicePolicial">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/Login" message="tns:IServicePolicial_Login_InputMessage" />
@@ -187,6 +193,10 @@
     <wsdl:operation name="BajarCuota">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/BajarCuota" message="tns:IServicePolicial_BajarCuota_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/BajarCuotaResponse" message="tns:IServicePolicial_BajarCuota_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarImpresion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/ListarImpresion" message="tns:IServicePolicial_ListarImpresion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/ListarImpresionResponse" message="tns:IServicePolicial_ListarImpresion_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicePolicial" type="tns:IServicePolicial">
@@ -346,6 +356,15 @@
     </wsdl:operation>
     <wsdl:operation name="BajarCuota">
       <soap:operation soapAction="http://tempuri.org/IServicePolicial/BajarCuota" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarImpresion">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/ListarImpresion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

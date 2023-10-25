@@ -60,5 +60,11 @@ namespace Logica
             resp = FSocio.BajarCuota(id, _usu);
             return resp;
         }
+        List<Impresion> ILogicaCuota.ListarImpresion()
+        {
+            List<Impresion> i = null;
+
+            return i;
+        }
     }
 }

@@ -248,7 +248,7 @@ AS
 BEGIN
 	SELECT * FROM TipoCuota	
 	where TCActivo = 1
-	order by TCDescripcion
+	order by TCId
 END
 					
 GO
@@ -573,12 +573,14 @@ CREATE PROC [dbo].[buscar_cuotaSocio]
 @Documento INT
 AS
 BEGIN
-	SELECT P.* FROM CuotaSocio P
+	SELECT P.*, TC.* FROM CuotaSocio P
 	left join Socios on p.SocId = Socios.SocId 
+	left join TipoCuota TC on P.CuotaTipo = TC.TCId
 	WHERE p.SocId = @Documento
 	and socios.SocAtivo = 1
 END
 GO
+--exec buscar_cuotaSocio 1
 
 /****** Object:  StoredProcedure [dbo].[buscar_socio_x_cedula]    Script Date: 19/7/2023 22:02:06 ******/
 SET ANSI_NULLS ON

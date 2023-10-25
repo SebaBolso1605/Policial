@@ -67,6 +67,7 @@
       <xs:element minOccurs="0" name="FecAlta" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FecModif" type="xs:dateTime" />
       <xs:element minOccurs="0" name="SocId" type="xs:int" />
+      <xs:element minOccurs="0" name="TC" nillable="true" type="tns:TipoCuota" />
       <xs:element minOccurs="0" name="UsuIdAlta" type="xs:int" />
       <xs:element minOccurs="0" name="UsuIdModif" type="xs:int" />
     </xs:sequence>
@@ -112,4 +113,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfCuota" nillable="true" type="tns:ArrayOfCuota" />
+  <xs:complexType name="ArrayOfImpresion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Impresion" nillable="true" type="tns:Impresion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfImpresion" nillable="true" type="tns:ArrayOfImpresion" />
+  <xs:complexType name="Impresion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CuotaImp" nillable="true" type="tns:Cuota" />
+      <xs:element minOccurs="0" name="SocioImp" nillable="true" type="tns:Socio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Impresion" nillable="true" type="tns:Impresion" />
 </xs:schema>

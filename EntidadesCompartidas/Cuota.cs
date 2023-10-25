@@ -21,6 +21,7 @@ namespace EntidadesCompartidas
         private DateTime fecModif;
         private int usuIdAlta;
         private int usuIdModif;
+        private TipoCuota tc;
 
         [DataMember]
         public int CuotaId { get => cuotaId; set => cuotaId = value; }
@@ -58,6 +59,9 @@ namespace EntidadesCompartidas
         [DataMember]
         public string CuotaAAAAMM { get => cuotaAAAAMM; set => cuotaAAAAMM = value; }
 
+        [DataMember]
+        public TipoCuota TC { get => tc; set => tc = value; }
+
         public Cuota(){ }
 
         public Cuota(int cuotaId, int socId, DateTime cuotaFechaDesde, DateTime cuotaFechaHasta, int cuotaTipo, DateTime cuotafechaPago,bool cuotaPaga, string cuotaAAAAMM,
@@ -75,6 +79,24 @@ namespace EntidadesCompartidas
             this.fecModif = fecModif;
             this.usuIdAlta = usuIdAlta;
             this.usuIdModif = usuIdModif;
+        }
+
+        public Cuota(int cuotaId, int socId, DateTime cuotaFechaDesde, DateTime cuotaFechaHasta, int cuotaTipo, DateTime cuotafechaPago, bool cuotaPaga, string cuotaAAAAMM,
+            DateTime fecAlta, DateTime fecModif, int usuIdAlta, int usuIdModif, TipoCuota tc)
+        {
+            this.cuotaId = cuotaId;
+            this.socId = socId;
+            this.cuotaFechaDesde = cuotaFechaDesde;
+            this.cuotaFechaHasta = cuotaFechaHasta;
+            this.cuotaTipo = cuotaTipo;
+            this.cuotaPaga = cuotaPaga;
+            this.cuotaAAAAMM = cuotaAAAAMM;
+            this.cuotaFechaDesde = cuotafechaPago;
+            this.fecAlta = fecAlta;
+            this.fecModif = fecModif;
+            this.usuIdAlta = usuIdAlta;
+            this.usuIdModif = usuIdModif;
+            this.tc = tc;
         }
     }
 }
