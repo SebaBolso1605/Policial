@@ -243,12 +243,12 @@ GO
 
 
 CREATE PROC [dbo].[listar_tipoCuota]
---ALTER PROC listar_tipoCuenta
+--ALTER PROC [dbo].[listar_tipoCuota]
 AS
 BEGIN
 	SELECT * FROM TipoCuota	
 	where TCActivo = 1
-	order by TCId
+	order by TCId asc
 END
 					
 GO
@@ -358,7 +358,7 @@ GO
 
 --////////// Alta Socios /////////////
 --create PROCEDURE [dbo].[alta_socio]
-CREATE PROCEDURE [dbo].[alta_socio]
+ALTER PROCEDURE [dbo].[alta_socio]
 @SocCI int,
 @SocPrimerApellido VARCHAR (50),
 @SocSegundoApellido VARCHAR (50),
