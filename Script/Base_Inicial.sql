@@ -357,8 +357,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 --////////// Alta Socios /////////////
---create PROCEDURE [dbo].[alta_socio]
-ALTER PROCEDURE [dbo].[alta_socio]
+create PROCEDURE [dbo].[alta_socio]
+--ALTER PROCEDURE [dbo].[alta_socio]
 @SocCI int,
 @SocPrimerApellido VARCHAR (50),
 @SocSegundoApellido VARCHAR (50),
@@ -518,21 +518,24 @@ GO
 CREATE PROC [dbo].[baja_socio]
 @SocCI INT,
 @SocFechaEgreso DATETIME,
-@SocMotivoEgreso varchar(250)
+@SocMotivoEgreso varchar(250),
+@UsuIdModif INT
 AS
 BEGIN
-		IF EXISTS(SELECT * FROM Socios WHERE SocCI = @SocCI)
-		BEGIN
-			update Socios set SocAtivo = 0,
-			SocFechaEgreso = @SocFechaEgreso,
-			@SocMotivoEgreso = @SocMotivoEgreso
-			WHERE SocCI= @SocCI
-			IF @@ERROR <> 0
-					RETURN -2 
+		IF NOT EXISTS(SELECT * FROM Socios WHERE SocCI = @SocCI)
+			RETURN -2
+		ELSE
+			BEGIN
+				update Socios set SocAtivo = 0,
+				SocFechaEgreso = @SocFechaEgreso,
+				SocMotivoEgreso = @SocMotivoEgreso,
+				UsuIdModif = @UsuIdModif,
+				FecModif = GETDATE()
+				WHERE SocCI= @SocCI
+				IF @@ERROR <> 0
+					RETURN -1 
 			RETURN 1 -- SE DIO DE BAJA CORRECTAMENTE
 		END
-		ELSE
-			RETURN -1 
 END
 
 GO
@@ -819,8 +822,8 @@ GO
 --END
 --GO
 
---create PROC [dbo].[PagoCuotaSocio]
-ALTER PROC [dbo].[PagoCuotaSocio]
+create PROC [dbo].[PagoCuotaSocio]
+--ALTER PROC [dbo].[PagoCuotaSocio]
 @IdCuota INT,
 @IdSocio INT,
 @UsuIdModifica INT
@@ -882,4 +885,43 @@ GO
 
 --select * from TipoCuota
 
-select * from NucleoFamiliar
+--select * from NucleoFamiliar
+
+--select * from Usuario
+
+IF NOT EXISTS (SELECT name FROM sys.server_principals WHERE name = 'IIS APPPOOL\DefaultAppPool')
+BEGIN
+    CREATE LOGIN [IIS APPPOOL\DefaultAppPool] 
+      FROM WINDOWS WITH DEFAULT_DATABASE=[master], 
+      DEFAULT_LANGUAGE=[us_english]
+END
+GO
+CREATE USER [WebDatabaseUser] 
+  FOR LOGIN [IIS APPPOOL\DefaultAppPool]
+GO
+EXEC sp_addrolemember 'db_owner', 'WebDatabaseUser'
+GO@SocCI INT,
+@SocFechaEgreso DATETIME,
+@SocMotivoEgreso varchar(250),
+@UsuIdModif INT
+AS
+BEGIN
+		IF NOT EXISTS(SELECT * FROM Socios WHERE SocCI = @SocCI)
+			RETURN -2
+		ELSE
+			BEGIN
+				update Socios set SocAtivo = 0,
+				SocFechaEgreso = @SocFechaEgreso,
+				SocMotivoEgreso = @SocMotivoEgreso,
+				UsuIdModif = @UsuIdModif,
+				FecModif = GETDATE()
+				WHERE SocCI= @SocCI
+				IF @@ERROR <> 0
+					RETURN -1 
+			RETURN 1 -- SE DIO DE BAJA CORRECTAMENTE
+		END
+END
+
+go
+
+select * from Socios

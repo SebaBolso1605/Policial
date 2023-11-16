@@ -35,7 +35,7 @@ namespace Persistencia
             cmd.Parameters.AddWithValue("@SocTel", s.SocTel);
             cmd.Parameters.AddWithValue("@SocCelular", s.SocCelular);
             cmd.Parameters.AddWithValue("@SocEmail", s.SocEmail);
-            cmd.Parameters.AddWithValue("@SocObservaciones", s.SocEmail);
+            cmd.Parameters.AddWithValue("@SocObservaciones", s.SocObservaciones);
             cmd.Parameters.AddWithValue("@SocAtivo", s.SocAtivo);
             cmd.Parameters.AddWithValue("@SocFechaIngreso", s.SocFechaIngreso);
             cmd.Parameters.AddWithValue("@SocTipoCuota", s.SocTipoCuota);

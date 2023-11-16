@@ -356,7 +356,7 @@ namespace Policial
         }
         void PDFImpresion(List<Impresion> lista)
         {
-            string path = "c:\\Reportes";
+            string path = "c:\\Reportes\\";
             try
             {
                 if (lista != null)
