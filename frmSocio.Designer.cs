@@ -69,7 +69,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtCelular = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCI = new System.Windows.Forms.TextBox();
@@ -103,7 +102,6 @@
             this.label40 = new System.Windows.Forms.Label();
             this.txtCelularModif = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.txtCIModif = new System.Windows.Forms.TextBox();
@@ -388,7 +386,6 @@
             this.tabAgregarSocio.Controls.Add(this.label13);
             this.tabAgregarSocio.Controls.Add(this.txtCelular);
             this.tabAgregarSocio.Controls.Add(this.label12);
-            this.tabAgregarSocio.Controls.Add(this.label11);
             this.tabAgregarSocio.Controls.Add(this.label9);
             this.tabAgregarSocio.Controls.Add(this.label8);
             this.tabAgregarSocio.Controls.Add(this.txtCI);
@@ -610,17 +607,6 @@
             this.label12.Size = new System.Drawing.Size(16, 21);
             this.label12.TabIndex = 65;
             this.label12.Text = "*";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(388, 211);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(16, 21);
-            this.label11.TabIndex = 64;
-            this.label11.Text = "*";
             // 
             // label9
             // 
@@ -846,7 +832,6 @@
             this.tabModificar.Controls.Add(this.label40);
             this.tabModificar.Controls.Add(this.txtCelularModif);
             this.tabModificar.Controls.Add(this.label41);
-            this.tabModificar.Controls.Add(this.label42);
             this.tabModificar.Controls.Add(this.label43);
             this.tabModificar.Controls.Add(this.label44);
             this.tabModificar.Controls.Add(this.txtCIModif);
@@ -1001,17 +986,6 @@
             this.label41.Size = new System.Drawing.Size(16, 21);
             this.label41.TabIndex = 111;
             this.label41.Text = "*";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.ForeColor = System.Drawing.Color.Black;
-            this.label42.Location = new System.Drawing.Point(394, 230);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(16, 21);
-            this.label42.TabIndex = 110;
-            this.label42.Text = "*";
             // 
             // label43
             // 
@@ -1478,7 +1452,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtCelular;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtCI;
@@ -1563,7 +1536,6 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label1;

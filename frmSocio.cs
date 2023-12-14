@@ -592,11 +592,11 @@ namespace Policial
                 errorProvider.SetError(label12, "Ingrese Primer Apellido.");
                 error = true;
             }
-            if (string.IsNullOrEmpty(txtSegundoApellido.Text.Trim()))
-            {
-                errorProvider.SetError(label11, "Ingrese Segundo Apellido.");
-                error = true;
-            }
+            //if (string.IsNullOrEmpty(txtSegundoApellido.Text.Trim()))
+            //{
+            //    errorProvider.SetError(label11, "Ingrese Segundo Apellido.");
+            //    error = true;
+            //}
             if (string.IsNullOrEmpty(txtPrimerNombre.Text.Trim()))
             {
                 errorProvider.SetError(label9, "Ingrese Primer Nombre.");
@@ -640,11 +640,11 @@ namespace Policial
                 errorProvider.SetError(label43, "Ingrese Primer Apellido.");
                 error = true;
             }
-            if (string.IsNullOrEmpty(txtSegundoApellidoModif.Text.Trim()))
-            {
-                errorProvider.SetError(label41, "Ingrese Segundo Apellido.");
-                error = true;
-            }
+            //if (string.IsNullOrEmpty(txtSegundoApellidoModif.Text.Trim()))
+            //{
+            //    errorProvider.SetError(label41, "Ingrese Segundo Apellido.");
+            //    error = true;
+            //}
             if (string.IsNullOrEmpty(txtPrimerNombreModif.Text.Trim()))
             {
                 errorProvider.SetError(label9, "Ingrese Primer Nombre.");

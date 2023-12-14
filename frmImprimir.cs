@@ -378,7 +378,7 @@ namespace Policial
                         doc.Open();
 
                         BaseFont _textoGrande = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1250, true);
-                        iTextSharp.text.Font textoGrande = new iTextSharp.text.Font(_textoGrande, 11f, iTextSharp.text.Font.BOLDITALIC, new BaseColor(0, 0, 0));
+                        iTextSharp.text.Font textoGrande = new iTextSharp.text.Font(_textoGrande, 10f, iTextSharp.text.Font.BOLDITALIC, new BaseColor(0, 0, 0));
 
                         BaseFont _textoLeyenda = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1250, true);
                         iTextSharp.text.Font textoLeyenda = new iTextSharp.text.Font(_textoLeyenda, 6f, iTextSharp.text.Font.BOLDITALIC, new BaseColor(0, 0, 0));
@@ -411,7 +411,7 @@ namespace Policial
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
                             tbl.AddCell(new PdfPCell(logo) { Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_CENTER, Padding = 2f });
-                            tbl.AddCell(new PdfPCell(new Phrase("CLUB SPORTIVO POLICIAL Y CÍRCULO POLICIAL", textoGrande)) { Colspan = 5, Rowspan = 2 });
+                            tbl.AddCell(new PdfPCell(new Phrase("CLUB SPORTIVO Y CÍRCULO POLICIAL TACUAREMBO", textoGrande)) { Colspan = 5, Rowspan = 2 });
                             tbl.AddCell(new PdfPCell(new Phrase("Socio: ", textoLabel)) { Colspan = 1 });
                             tbl.AddCell(new PdfPCell(new Phrase(i.CuotaImp.TC.TCDescripcion.ToString().Trim() + "     Nº: " + i.SocioImp.SocId, textoInfo)) { Colspan = 1 });
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
