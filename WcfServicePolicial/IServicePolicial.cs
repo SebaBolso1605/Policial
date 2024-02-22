@@ -35,6 +35,9 @@ namespace WcfServicePolicial
         List<Socio> ListarSocios();
 
         [OperationContract]
+        List<Socio> ListarSociosImprimirRecibos();
+
+        [OperationContract]
         bool ModificarSocio(Socio s, Usuario _usu);
 
         [OperationContract]

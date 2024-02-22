@@ -43,6 +43,12 @@
   <wsdl:message name="IServicePolicial_ListarSocios_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarSociosResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicePolicial_ListarSociosImprimirRecibos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarSociosImprimirRecibos" />
+  </wsdl:message>
+  <wsdl:message name="IServicePolicial_ListarSociosImprimirRecibos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarSociosImprimirRecibosResponse" />
+  </wsdl:message>
   <wsdl:message name="IServicePolicial_ModificarSocio_InputMessage">
     <wsdl:part name="parameters" element="tns:ModificarSocio" />
   </wsdl:message>
@@ -146,6 +152,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/ListarSocios" message="tns:IServicePolicial_ListarSocios_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/ListarSociosResponse" message="tns:IServicePolicial_ListarSocios_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ListarSociosImprimirRecibos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/ListarSociosImprimirRecibos" message="tns:IServicePolicial_ListarSociosImprimirRecibos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/ListarSociosImprimirRecibosResponse" message="tns:IServicePolicial_ListarSociosImprimirRecibos_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ModificarSocio">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicePolicial/ModificarSocio" message="tns:IServicePolicial_ModificarSocio_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicePolicial/ModificarSocioResponse" message="tns:IServicePolicial_ModificarSocio_OutputMessage" />
@@ -248,6 +258,15 @@
     </wsdl:operation>
     <wsdl:operation name="ListarSocios">
       <soap:operation soapAction="http://tempuri.org/IServicePolicial/ListarSocios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarSociosImprimirRecibos">
+      <soap:operation soapAction="http://tempuri.org/IServicePolicial/ListarSociosImprimirRecibos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

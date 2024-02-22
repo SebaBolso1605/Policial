@@ -141,6 +141,8 @@
             this.txtBuscarEliminar = new System.Windows.Forms.TextBox();
             this.label53 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.chkImprimeRecibo = new System.Windows.Forms.CheckBox();
+            this.chkImprimeReciboMod = new System.Windows.Forms.CheckBox();
             this.tabModifcar.SuspendLayout();
             this.tabListaSocios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
@@ -367,6 +369,7 @@
             // tabAgregarSocio
             // 
             this.tabAgregarSocio.BackColor = System.Drawing.SystemColors.Control;
+            this.tabAgregarSocio.Controls.Add(this.chkImprimeRecibo);
             this.tabAgregarSocio.Controls.Add(this.label25);
             this.tabAgregarSocio.Controls.Add(this.dtpFechaCuotaDesde);
             this.tabAgregarSocio.Controls.Add(this.label26);
@@ -786,7 +789,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(545, 433);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(176, 25);
-            this.btnCancelar.TabIndex = 15;
+            this.btnCancelar.TabIndex = 16;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
@@ -812,7 +815,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(276, 433);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(176, 25);
-            this.btnGuardar.TabIndex = 14;
+            this.btnGuardar.TabIndex = 15;
             this.btnGuardar.Text = "Agregar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -820,6 +823,7 @@
             // tabModificar
             // 
             this.tabModificar.BackColor = System.Drawing.SystemColors.Control;
+            this.tabModificar.Controls.Add(this.chkImprimeReciboMod);
             this.tabModificar.Controls.Add(this.button1);
             this.tabModificar.Controls.Add(this.txtBuscarModif);
             this.tabModificar.Controls.Add(this.label31);
@@ -1161,7 +1165,7 @@
             this.btnCancelarModificarSocio.Location = new System.Drawing.Point(504, 445);
             this.btnCancelarModificarSocio.Name = "btnCancelarModificarSocio";
             this.btnCancelarModificarSocio.Size = new System.Drawing.Size(176, 25);
-            this.btnCancelarModificarSocio.TabIndex = 14;
+            this.btnCancelarModificarSocio.TabIndex = 15;
             this.btnCancelarModificarSocio.Text = "Cancelar";
             this.btnCancelarModificarSocio.UseVisualStyleBackColor = false;
             this.btnCancelarModificarSocio.Click += new System.EventHandler(this.btnCancelarModificarSocio_Click);
@@ -1188,7 +1192,7 @@
             this.btnModificarSocio.Location = new System.Drawing.Point(234, 445);
             this.btnModificarSocio.Name = "btnModificarSocio";
             this.btnModificarSocio.Size = new System.Drawing.Size(176, 25);
-            this.btnModificarSocio.TabIndex = 13;
+            this.btnModificarSocio.TabIndex = 14;
             this.btnModificarSocio.Text = "Modificar";
             this.btnModificarSocio.UseVisualStyleBackColor = false;
             this.btnModificarSocio.Click += new System.EventHandler(this.btnModificarSocio_Click);
@@ -1410,6 +1414,29 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // chkImprimeRecibo
+            // 
+            this.chkImprimeRecibo.AutoSize = true;
+            this.chkImprimeRecibo.ForeColor = System.Drawing.Color.Black;
+            this.chkImprimeRecibo.Location = new System.Drawing.Point(593, 374);
+            this.chkImprimeRecibo.Name = "chkImprimeRecibo";
+            this.chkImprimeRecibo.Size = new System.Drawing.Size(129, 21);
+            this.chkImprimeRecibo.TabIndex = 14;
+            this.chkImprimeRecibo.Text = "Imprime Recibo";
+            this.chkImprimeRecibo.UseVisualStyleBackColor = true;
+            // 
+            // chkImprimeReciboMod
+            // 
+            this.chkImprimeReciboMod.AutoSize = true;
+            this.chkImprimeReciboMod.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkImprimeReciboMod.ForeColor = System.Drawing.Color.Black;
+            this.chkImprimeReciboMod.Location = new System.Drawing.Point(599, 366);
+            this.chkImprimeReciboMod.Name = "chkImprimeReciboMod";
+            this.chkImprimeReciboMod.Size = new System.Drawing.Size(129, 21);
+            this.chkImprimeReciboMod.TabIndex = 13;
+            this.chkImprimeReciboMod.Text = "Imprime Recibo";
+            this.chkImprimeReciboMod.UseVisualStyleBackColor = true;
+            // 
             // frmSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1552,5 +1579,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn Activar;
         private System.Windows.Forms.Label lblCantSociosInactivos;
         private System.Windows.Forms.Label lblCantSociosActivos;
+        private System.Windows.Forms.CheckBox chkImprimeRecibo;
+        private System.Windows.Forms.CheckBox chkImprimeReciboMod;
     }
 }

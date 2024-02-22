@@ -45,6 +45,7 @@ namespace Persistencia
             cmd.Parameters.AddWithValue("@FecModif", s.FecModif);
             cmd.Parameters.AddWithValue("@UsuIdModif", s.UsuIdModif);
             cmd.Parameters.AddWithValue("@UsuIdAlta", s.UsuIdAlta);
+            cmd.Parameters.AddWithValue("@SocImprimeRecibo", s.SocImprimeRecibo);
             cmd.Parameters.Add("@SocId", SqlDbType.Int).Direction = ParameterDirection.Output;
 
             SqlParameter prmRetorno = new SqlParameter("@Retorno", SqlDbType.Int);
@@ -128,6 +129,7 @@ namespace Persistencia
                         s.SocObservaciones = (string)_lector["SocObservaciones"];
                         s.SocFechaIngreso = (DateTime)_lector["SocFechaIngreso"];
                         s.SocFechaNacimiento = (DateTime)_lector["SocFechaNacimiento"];
+                        s.SocImprimeRecibo = (bool)_lector["SocImprimeRecibo"];
                         //s.ListaMascotas = FabricaPersistencia.getPersistenciaMascota().ListarMascotasPorSocio((int)_lector["Id"]);
                         //s.Cuenta = FabricaPersistencia.getPersistenciaCuentaSocio().BuscarCuentaXSocio((int)_lector["Id"]);
                         //s.ListaCuotas = FabricaPersistencia.getPersistenciaCuotaSocio().ListarCuotaSocio_PorId((int)_lector["Id"]);
@@ -182,6 +184,64 @@ namespace Persistencia
                         s.SocObservaciones = (string)_lector["SocObservaciones"];
                         s.SocFechaIngreso = (DateTime)_lector["SocFechaIngreso"];
                         s.SocFechaNacimiento = (DateTime)_lector["SocFechaNacimiento"];
+                        s.SocImprimeRecibo = (bool)_lector["SocImprimeRecibo"];
+                        //s.ListaMascotas = FabricaPersistencia.getPersistenciaMascota().ListarMascotasPorSocio((int)_lector["Id"]);
+                        //s.Cuenta = FabricaPersistencia.getPersistenciaCuentaSocio().BuscarCuentaXSocio((int)_lector["Id"]);
+                        //s.ListaCuotas = FabricaPersistencia.getPersistenciaCuotaSocio().ListarCuotaSocio_PorId((int)_lector["Id"]);
+
+                        _ListaSocios.Add(s);
+                    }
+                }
+                _lector.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                _cnn.Close();
+            }
+            return _ListaSocios;
+        }
+
+        public List<Socio> ListarSociosImprimirRecibos()
+        {
+            SqlConnection _cnn = new SqlConnection(Conexion.Cnn);
+            SqlCommand _comando = new SqlCommand("listar_socios_imprimir_recibos", _cnn);
+            _comando.CommandType = CommandType.StoredProcedure;
+            List<Socio> _ListaSocios = new List<Socio>();
+
+            try
+            {
+                _cnn.Open();
+                SqlDataReader _lector = _comando.ExecuteReader();
+
+                if (_lector.HasRows)
+                {
+                    _ListaSocios = new List<Socio>();
+                    while (_lector.Read())
+                    {
+                        Socio s = null;
+                        s = new Socio();
+                        s.SocId = (int)_lector["SocId"];
+                        s.SocCI = (int)_lector["SocCI"];
+                        s.SocPrimerNombre = (string)_lector["SocPrimerNombre"];
+                        s.SocPrimerApellido = (string)_lector["SocPrimerApellido"];
+                        s.SocSegundoNombre = (string)_lector["SocSegundoNombre"];
+                        s.SocSegundoApellido = (string)_lector["SocSegundoApellido"];
+                        s.SocDireccion = (string)_lector["SocDireccion"];
+                        s.SocFechaIngreso = (DateTime)_lector["SocFechaIngreso"];
+                        s.SocDireccion = (string)_lector["SocDireccion"];
+                        s.SocEmail = (string)_lector["SocEmail"];
+                        s.SocAtivo = (bool)_lector["SocAtivo"];
+                        s.SocTel = (string)_lector["SocTel"];
+                        s.SocCelular = (string)_lector["SocCelular"];
+                        s.SocTipoCuota = (int)_lector["SocTipoCuota"];
+                        s.SocObservaciones = (string)_lector["SocObservaciones"];
+                        s.SocFechaIngreso = (DateTime)_lector["SocFechaIngreso"];
+                        s.SocFechaNacimiento = (DateTime)_lector["SocFechaNacimiento"];
+                        s.SocImprimeRecibo = (bool)_lector["SocImprimeRecibo"];
                         //s.ListaMascotas = FabricaPersistencia.getPersistenciaMascota().ListarMascotasPorSocio((int)_lector["Id"]);
                         //s.Cuenta = FabricaPersistencia.getPersistenciaCuentaSocio().BuscarCuentaXSocio((int)_lector["Id"]);
                         //s.ListaCuotas = FabricaPersistencia.getPersistenciaCuotaSocio().ListarCuotaSocio_PorId((int)_lector["Id"]);
@@ -220,6 +280,7 @@ namespace Persistencia
             cmd.Parameters.AddWithValue("@SocObservaciones", s.SocObservaciones);
             cmd.Parameters.AddWithValue("@SocTipoCuota", s.SocTipoCuota);
             cmd.Parameters.AddWithValue("@UsuIdModif", _usu.UsuId);
+            cmd.Parameters.AddWithValue("@SocImprimeRecibo", s.SocImprimeRecibo);
             cmd.Parameters.Add("@SocId", SqlDbType.Int).Direction = ParameterDirection.Output;
 
             SqlParameter prmRetorno = new SqlParameter("@Retorno", SqlDbType.Int);

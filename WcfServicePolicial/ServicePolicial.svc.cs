@@ -40,6 +40,11 @@ namespace WcfServicePolicial
             return (FabricaLogica.getLogicaSocio().ListarSocios());
         }
 
+        List<Socio> IServicePolicial.ListarSociosImprimirRecibos()
+        {
+            return (FabricaLogica.getLogicaSocio().ListarSociosImprimirRecibos());
+        }
+
         bool IServicePolicial.ModificarSocio(Socio s, Usuario _usu)
         {
             return (FabricaLogica.getLogicaSocio().ModificarSocio(s, _usu));

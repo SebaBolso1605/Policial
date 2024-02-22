@@ -42,6 +42,7 @@
       <xs:element minOccurs="0" name="SocFechaIngreso" type="xs:dateTime" />
       <xs:element minOccurs="0" name="SocFechaNacimiento" type="xs:dateTime" />
       <xs:element minOccurs="0" name="SocId" type="xs:int" />
+      <xs:element minOccurs="0" name="SocImprimeRecibo" type="xs:boolean" />
       <xs:element minOccurs="0" name="SocMotivoEgreso" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SocObservaciones" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SocPrimerApellido" nillable="true" type="xs:string" />

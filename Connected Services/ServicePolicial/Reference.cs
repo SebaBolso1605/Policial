@@ -322,6 +322,9 @@ namespace Policial.ServicePolicial {
         private int SocIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool SocImprimeReciboField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SocMotivoEgresoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -500,6 +503,19 @@ namespace Policial.ServicePolicial {
                 if ((this.SocIdField.Equals(value) != true)) {
                     this.SocIdField = value;
                     this.RaisePropertyChanged("SocId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool SocImprimeRecibo {
+            get {
+                return this.SocImprimeReciboField;
+            }
+            set {
+                if ((this.SocImprimeReciboField.Equals(value) != true)) {
+                    this.SocImprimeReciboField = value;
+                    this.RaisePropertyChanged("SocImprimeRecibo");
                 }
             }
         }
@@ -1265,6 +1281,9 @@ namespace Policial.ServicePolicial {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicial/ListarSocios", ReplyAction="http://tempuri.org/IServicePolicial/ListarSociosResponse")]
         Policial.ServicePolicial.Socio[] ListarSocios();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicial/ListarSociosImprimirRecibos", ReplyAction="http://tempuri.org/IServicePolicial/ListarSociosImprimirRecibosResponse")]
+        Policial.ServicePolicial.Socio[] ListarSociosImprimirRecibos();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicial/ModificarSocio", ReplyAction="http://tempuri.org/IServicePolicial/ModificarSocioResponse")]
         bool ModificarSocio(Policial.ServicePolicial.Socio s, Policial.ServicePolicial.Usuario _usu);
         
@@ -1354,6 +1373,10 @@ namespace Policial.ServicePolicial {
         
         public Policial.ServicePolicial.Socio[] ListarSocios() {
             return base.Channel.ListarSocios();
+        }
+        
+        public Policial.ServicePolicial.Socio[] ListarSociosImprimirRecibos() {
+            return base.Channel.ListarSociosImprimirRecibos();
         }
         
         public bool ModificarSocio(Policial.ServicePolicial.Socio s, Policial.ServicePolicial.Usuario _usu) {

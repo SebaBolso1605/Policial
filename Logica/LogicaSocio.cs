@@ -43,6 +43,11 @@ namespace Logica
             IPersistenciaSocio FSocio = FabricaPersistencia.getPersistenciaSocio();
             return (FSocio.ListarSocios());
         }
+        public List<Socio> ListarSociosImprimirRecibos()
+        {
+            IPersistenciaSocio FSocio = FabricaPersistencia.getPersistenciaSocio();
+            return (FSocio.ListarSociosImprimirRecibos());
+        }
         public bool ModificarSocio(Socio s ,Usuario _usu)
         {
             bool resp = false;

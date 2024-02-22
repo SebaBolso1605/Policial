@@ -79,6 +79,7 @@ namespace Policial
                         txtEmail.Text = "";
                         txtObservaciones.Text = "";
                         cmbTC.SelectedIndex = -1;
+                        chkImprimeRecibo.Checked = false;
                     }
                     else
                     {
@@ -217,6 +218,10 @@ namespace Policial
                         txtCelularModif.Text = soc.SocCelular;
                         txtObservacionesModif.Text = soc.SocObservaciones;
                         cmbTPModif.SelectedIndex = soc.SocTipoCuota;
+                        if (soc.SocImprimeRecibo)
+                            chkImprimeReciboMod.Checked = true;
+                        else
+                            chkImprimeReciboMod.Checked = false;
                     }
                     else
                     {
@@ -322,6 +327,11 @@ namespace Policial
 
                             soc.SocTipoCuota = Convert.ToInt32(cmbTPModif.SelectedIndex);
 
+                            if (chkImprimeReciboMod.Checked)
+                                soc.SocImprimeRecibo = true;
+                            else
+                                soc.SocImprimeRecibo = false;
+
                             resultado = lSocio.ModificarSocio(soc, Program.usuarioLogueado);
                             if (resultado)
                             {
@@ -339,6 +349,7 @@ namespace Policial
                                 txtObservacionesModif.Text = "";
                                 txtEmailModif.Text = "";
                                 cmbTPModif.SelectedIndex = -1;
+                                chkImprimeReciboMod.Checked = false;
                             }
                         }
                     }
@@ -582,7 +593,7 @@ namespace Policial
         {
             #region Controlo errores campos
             bool error = false;
-            if (cmbTC.SelectedIndex == 0)
+            if (cmbTC.SelectedIndex <= 0)
             {
                 errorProvider.SetError(label20, "Seleccione categoria.");
                 error = true;
@@ -630,7 +641,7 @@ namespace Policial
             #region Controlo errores campos
             bool error = false;
 
-            if (cmbTPModif.SelectedIndex < 0)
+            if (cmbTPModif.SelectedIndex <= 0)
             {
                 errorProvider.SetError(label35, "Seleccione categoria.");
                 error = true;
@@ -704,7 +715,7 @@ namespace Policial
                         socio.SocObservaciones = "";
 
                     socio.SocFechaNacimiento = dtpFechaNacimiento.Value;
-                    socio.SocFechaIngreso = dtpFechaNacimiento.Value;
+                    socio.SocFechaIngreso = dtpFechaIngreso.Value;
                     socio.SocTipoCuota = cmbTC.SelectedIndex;
                     //socio.SocTipoCuota = listaTC.FirstOrDefault(x => x.TCId == cmbTC.SelectedIndex);
                     socio.SocAtivo = true;
@@ -712,6 +723,10 @@ namespace Policial
                     socio.FecModif = DateTime.Now;
                     socio.UsuIdAlta = Program.usuarioLogueado.UsuId;
                     socio.UsuIdModif = Program.usuarioLogueado.UsuId;
+                    if (chkImprimeRecibo.Checked)
+                        socio.SocImprimeRecibo = true;
+                    else
+                        socio.SocImprimeRecibo = false;
 
                     cuota.SocId = socio.SocId;
                     cuota.CuotaFechaDesde = dtpFechaCuotaDesde.Value;

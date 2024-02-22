@@ -30,6 +30,7 @@ namespace EntidadesCompartidas
         private DateTime fecModif;
         private int usuIdModif;
         private int usuIdAlta;
+        private bool socImprimeRecibo;
 
         [DataMember]
         public int SocId { get => socId; set => socId = value; }
@@ -93,13 +94,15 @@ namespace EntidadesCompartidas
 
         [DataMember]
         public int SocTipoCuota { get => socTipoCuota; set => socTipoCuota = value; }
+        [DataMember]
+        public bool SocImprimeRecibo { get => socImprimeRecibo; set => socImprimeRecibo = value; }
 
         public Socio(){ }
 
         public Socio(int socId, string socPrimerApellido, string socSegundoApellido, string socPrimerNombre, string socSegundoNombre,
            int socCI, DateTime socFechaNacimiento, string socDireccion, string socTel, string socCelular, string socEmail,
            string socObservaciones, bool socAtivo, DateTime socFechaIngreso, int SocTipoCuota,DateTime socFechaEgreso,
-           string socMotivoEgreso, DateTime fecAlta, DateTime fecModif, int usuIdModif, int usuIdAlta)
+           string socMotivoEgreso, DateTime fecAlta, DateTime fecModif, int usuIdModif, int usuIdAlta, bool socImprimeRecibo)
         {
             SocId = socId;
             SocPrimerApellido = socPrimerApellido;
@@ -121,7 +124,8 @@ namespace EntidadesCompartidas
             FecAlta = fecAlta;
             FecModif = fecModif;
             UsuIdModif = usuIdModif;
-            UsuIdAlta = usuIdAlta;        
+            UsuIdAlta = usuIdAlta;
+            SocImprimeRecibo = socImprimeRecibo;
         }
     }
 }

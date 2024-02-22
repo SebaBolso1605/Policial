@@ -68,7 +68,7 @@ namespace Policial
                 List<Cuota> listaCuotas = new List<Cuota>();
                 List<Socio> listaSocios = new List<Socio>();
                 dgvSocios.Rows.Clear();
-                listaSocios = ls.ListarSocios().ToList();
+                listaSocios = ls.ListarSociosImprimirRecibos().ToList();
                 bool soloCuotasImpagas = checkBox1.Checked ? true : false;
                 bool imprimirTodo = chkImprimir.Checked ? true : false;
 
@@ -192,6 +192,7 @@ namespace Policial
                 ListarCuotasSocios();
                 cmbAño.SelectedIndex = -1;
                 cmbMes.SelectedIndex = -1;
+                txtParametro.Text = "";
             }
             catch (Exception ex)
             {
@@ -294,7 +295,7 @@ namespace Policial
                 IServicePolicial ls = new ServicePolicialClient();
                 List<Cuota> listaCuotas = new List<Cuota>();
                 List<Socio> listaSocios = new List<Socio>();
-                listaSocios = ls.ListarSocios().ToList();
+                listaSocios = ls.ListarSociosImprimirRecibos().ToList();
                 bool soloCuotasImpagas = checkBox1.Checked ? true : false;
 
                 var _resultado = (from unSocio in listaSocios
@@ -327,7 +328,7 @@ namespace Policial
 
                 if (listaSocios.Count > 0)
                 {
-                    foreach (Socio s in listaSocios)
+                    foreach (Socio s in _resultado)
                     {
                         listaCuotas = lc.BuscarCuotasSocio(s.SocId).ToList();
 
@@ -401,10 +402,18 @@ namespace Policial
 
                         int n = 0;
                         int nl = lista.Count();
+                        int contador = 0;
 
                         foreach (Impresion i in lista)
                         {
+                            contador = contador + 1;
                             n = n + 1;
+
+                            //if (contador == 8)
+                            //{
+                            //    doc.NewPage();
+                            //    contador = 0;
+                            //}
 
                             var tbl = new PdfPTable(new float[] { 5f, 8f, 1f, 1f, 10f, 5f, 5f, 5f, 5f, 5f, }) { WidthPercentage = 100f };
                             tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Colspan = 2 });;
@@ -466,24 +475,32 @@ namespace Policial
 
                             if (n < nl)
                             {
-                                //------
-                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthRight = 0, BorderColor = BaseColor.CYAN });
-                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthRight = 0, BorderColor = BaseColor.CYAN });
-                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
-                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthRight = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
-                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthRight = 0, BorderColor = BaseColor.CYAN });
-                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Colspan = 5, BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthRight = 0, BorderColor = BaseColor.CYAN });
-                                //------
-                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Border = 0 });
-                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Border = 0 });
-                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthBottom = 0, BorderColor = BaseColor.CYAN });
-                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Border = 0 });
-                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Border = 0 });
-                                tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Colspan = 5, Border = 0 });
+                                if (contador < 6)
+                                {
+                                    //------
+                                    tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthRight = 0, BorderColor = BaseColor.CYAN });
+                                    tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthRight = 0, BorderColor = BaseColor.CYAN });
+                                    tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
+                                    tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthRight = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
+                                    tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthRight = 0, BorderColor = BaseColor.CYAN });
+                                    tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Colspan = 5, BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthRight = 0, BorderColor = BaseColor.CYAN });
+                                    //------
+                                    tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Border = 0 });
+                                    tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Border = 0 });
+                                    tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { BorderWidthTop = 0, BorderWidthLeft = 0, BorderWidthBottom = 0, BorderColor = BaseColor.CYAN });
+                                    tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Border = 0 });
+                                    tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Border = 0 });
+                                    tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Colspan = 5, Border = 0 });
+                                }
                             }
 
                             doc.Add(tbl);
 
+                            if (contador == 6)
+                            {
+                                doc.NewPage();
+                                contador = 0;
+                            }
                         }
 
 

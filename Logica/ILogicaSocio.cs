@@ -12,6 +12,7 @@ namespace Logica
         bool AltaSocio(Socio s,Cuota c, Usuario _usu);
         Socio BuscarSocioPorCI(int _ci);
         List<Socio> ListarSocios();
+        List<Socio> ListarSociosImprimirRecibos();
         bool ModificarSocio(Socio s, Usuario _usu);
         bool BajaSocio(Socio s, Usuario _usu);
         bool ActivarSocio(Socio s, Usuario _usu);
