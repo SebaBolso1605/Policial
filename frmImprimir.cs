@@ -366,7 +366,7 @@ namespace Policial
                     {
                         string nombreReporte = "Cuotas";
                         Document doc = new Document(PageSize.A4);
-                        doc.SetMargins(28f, 28f, 70f, 85f);
+                        doc.SetMargins(28f, 28f, 30f, 20f);
                         string NombrePDF = nombreReporte + "-" + DateTime.Today.Day + "-" + DateTime.Today.Month + "-" + DateTime.Today.Year + "-" + DateTime.Now.Hour + "-" + DateTime.Now.Minute;
 
                         // Se crea carpeta si no existe
@@ -379,23 +379,29 @@ namespace Policial
                         doc.Open();
 
                         BaseFont _textoGrande = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1250, true);
-                        iTextSharp.text.Font textoGrande = new iTextSharp.text.Font(_textoGrande, 10f, iTextSharp.text.Font.BOLDITALIC, new BaseColor(0, 0, 0));
+                        iTextSharp.text.Font textoGrande = new iTextSharp.text.Font(_textoGrande, 10.5f, iTextSharp.text.Font.BOLDITALIC, new BaseColor(0, 0, 0));
 
                         BaseFont _textoLeyenda = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1250, true);
-                        iTextSharp.text.Font textoLeyenda = new iTextSharp.text.Font(_textoLeyenda, 6f, iTextSharp.text.Font.BOLDITALIC, new BaseColor(0, 0, 0));
+                        iTextSharp.text.Font textoLeyenda = new iTextSharp.text.Font(_textoLeyenda, 7.5f, iTextSharp.text.Font.ITALIC, new BaseColor(0, 0, 0));
 
                         BaseFont _textoLabel = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, true);
-                        iTextSharp.text.Font textoLabel = new iTextSharp.text.Font(_textoLabel, 6f, iTextSharp.text.Font.BOLD, new BaseColor(0, 0, 0));
+                        iTextSharp.text.Font textoLabel = new iTextSharp.text.Font(_textoLabel, 8.5f, iTextSharp.text.Font.BOLD, new BaseColor(0, 0, 0));
 
                         BaseFont _textoInfo = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, true);
-                        iTextSharp.text.Font textoInfo = new iTextSharp.text.Font(_textoInfo, 6f, iTextSharp.text.Font.BOLD, new BaseColor(0, 0, 0));
+                        iTextSharp.text.Font textoInfo = new iTextSharp.text.Font(_textoInfo, 8.5f, iTextSharp.text.Font.NORMAL, new BaseColor(0, 0, 0));
+
+                        BaseFont _textoInfoChico = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, true);
+                        iTextSharp.text.Font textoInfoChico = new iTextSharp.text.Font(_textoInfoChico, 7f, iTextSharp.text.Font.NORMAL, new BaseColor(0, 0, 0));
 
                         BaseFont _textoBlanco = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, true);
-                        iTextSharp.text.Font textoBlanco = new iTextSharp.text.Font(_textoBlanco, 6f, iTextSharp.text.Font.BOLD, new BaseColor(Color.White));
+                        iTextSharp.text.Font textoBlanco = new iTextSharp.text.Font(_textoBlanco, 8.5f, iTextSharp.text.Font.BOLD, new BaseColor(Color.White));
+
+                        BaseFont _textoFecha = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, true);
+                        iTextSharp.text.Font textoFecha = new iTextSharp.text.Font(_textoFecha, 8f, iTextSharp.text.Font.BOLD, new BaseColor(0, 0, 0));
 
                         iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(Resources.logo, System.Drawing.Imaging.ImageFormat.Png);
                         logo.ScaleAbsoluteWidth(40);
-                        logo.ScaleAbsoluteHeight(26);
+                        logo.ScaleAbsoluteHeight(30);
                         logo.Alignment = Element.ALIGN_RIGHT;
 
                         doc.Add(Chunk.NEWLINE);
@@ -409,13 +415,7 @@ namespace Policial
                             contador = contador + 1;
                             n = n + 1;
 
-                            //if (contador == 8)
-                            //{
-                            //    doc.NewPage();
-                            //    contador = 0;
-                            //}
-
-                            var tbl = new PdfPTable(new float[] { 5f, 8f, 1f, 1f, 10f, 5f, 5f, 5f, 5f, 5f, }) { WidthPercentage = 100f };
+                            var tbl = new PdfPTable(new float[] { 6f, 9f, 1f, 1f, 6f, 5f, 6f, 6f, 5f, 5f, }) { WidthPercentage = 100f };
                             tbl.AddCell(new PdfPCell(new Phrase("-", textoBlanco)) { Colspan = 2 });;
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
@@ -427,19 +427,19 @@ namespace Policial
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });                         
                             tbl.AddCell(new PdfPCell(new Phrase("Nombre: ", textoLabel)));
                             tbl.AddCell(new PdfPCell(new Phrase(i.SocioImp.SocPrimerNombre.ToString() + " " + i.SocioImp.SocSegundoNombre.ToString() + " "
-                                                  + i.SocioImp.SocPrimerApellido.ToString() + " " + i.SocioImp.SocSegundoApellido.ToString(), textoInfo)));
+                                                  + i.SocioImp.SocPrimerApellido.ToString() + " " + i.SocioImp.SocSegundoApellido.ToString(), textoInfoChico)));
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
                             tbl.AddCell(new PdfPCell(new Phrase("Fundado el 27 de agosto de 1947 - Personería Jurídica desde el 12 de diciembre", textoLeyenda)) { Colspan = 5, });
                             //------
                             tbl.AddCell(new PdfPCell(new Phrase("Domicilio: ", textoLabel)));
-                            tbl.AddCell(new PdfPCell(new Phrase(i.SocioImp.SocDireccion.ToString(), textoInfo)));
+                            tbl.AddCell(new PdfPCell(new Phrase(i.SocioImp.SocDireccion.ToString(), textoInfoChico)));
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
                             tbl.AddCell(new PdfPCell(new Phrase("Cuota Social: ", textoLabel)));
-                            tbl.AddCell(new PdfPCell(new Phrase("$ " + i.CuotaImp.TC.TCMonto.ToString(), textoInfo)));
+                            tbl.AddCell(new PdfPCell(new Phrase("$ " + i.CuotaImp.TC.TCMonto.ToString(), textoLabel)));
                             tbl.AddCell(new PdfPCell(new Phrase("Email: ", textoLabel)));
-                            tbl.AddCell(new PdfPCell(new Phrase(i.SocioImp.SocEmail.ToString().Trim(), textoLabel)) { Colspan = 3 });
+                            tbl.AddCell(new PdfPCell(new Phrase(i.SocioImp.SocEmail.ToString().Trim(), textoInfo)) { Colspan = 3 });
                             //------
                             tbl.AddCell(new PdfPCell(new Phrase("Cuota Social: ", textoLabel)));
                             tbl.AddCell(new PdfPCell(new Phrase("$ " + i.CuotaImp.TC.TCMonto.ToString(), textoInfo)));
@@ -447,10 +447,10 @@ namespace Policial
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
                             tbl.AddCell(new PdfPCell(new Phrase("Nº de Socio: ", textoLabel)));
                             tbl.AddCell(new PdfPCell(new Phrase(i.SocioImp.SocId.ToString(), textoInfo)));
-                            tbl.AddCell(new PdfPCell(new Phrase("Fecha de Ingreso: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase("Fecha de Ingreso: ", textoFecha)));
                             tbl.AddCell(new PdfPCell(new Phrase(i.SocioImp.SocFechaIngreso.ToString("dd/MM/yyyy"), textoInfo)) { Colspan = 3 });
                             //------
-                            tbl.AddCell(new PdfPCell(new Phrase("Fecha de Emisión: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase("Fecha de Emisión: ", textoFecha)));
                             tbl.AddCell(new PdfPCell(new Phrase(i.CuotaImp.CuotaFechaDesde.ToString("dd/MM/yyyy"), textoInfo)));
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
@@ -470,7 +470,7 @@ namespace Policial
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
                             tbl.AddCell(new PdfPCell(new Phrase("Pago del Mes: ", textoLabel)));
                             tbl.AddCell(new PdfPCell(new Phrase(i.CuotaImp.CuotaFechaDesde.ToString("MM/yyyy"), textoInfo)) { Colspan = 2 });
-                            tbl.AddCell(new PdfPCell(new Phrase("Fecha de Emisión: ", textoLabel)));
+                            tbl.AddCell(new PdfPCell(new Phrase("Fecha de Emisión: ", textoFecha)));
                             tbl.AddCell(new PdfPCell(new Phrase(i.CuotaImp.CuotaFechaDesde.ToString("dd/MM/yyyy"), textoInfo)) { Colspan = 3 });
 
                             if (n < nl)
