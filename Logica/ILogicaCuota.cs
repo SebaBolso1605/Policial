@@ -15,5 +15,6 @@ namespace Logica
         bool ModificarCuota(TipoCuota _c, Usuario _usu);
         bool BajarCuota(int _c, Usuario _usu);
         List<Impresion> ListarImpresion();
+        void ModificarCuotaImpresa(List<int> listaId, Usuario _usu);
     }
 }

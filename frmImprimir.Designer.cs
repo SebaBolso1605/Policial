@@ -32,15 +32,6 @@ namespace Policial
             this.lblTituloFormulario = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.dgvSocios = new System.Windows.Forms.DataGridView();
-            this.cmbAño = new System.Windows.Forms.ComboBox();
-            this.cmbMes = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.chkImprimir = new System.Windows.Forms.CheckBox();
-            this.txtParametro = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.SocId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SocNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +51,15 @@ namespace Policial
             this.SocSegundoApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TCMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TCDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbAño = new System.Windows.Forms.ComboBox();
+            this.cmbMes = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkImprimir = new System.Windows.Forms.CheckBox();
+            this.txtParametro = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSocios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,6 +123,125 @@ namespace Policial
             this.dgvSocios.RowHeadersWidth = 51;
             this.dgvSocios.Size = new System.Drawing.Size(929, 343);
             this.dgvSocios.TabIndex = 6;
+            // 
+            // SocId
+            // 
+            this.SocId.HeaderText = "Socio";
+            this.SocId.Name = "SocId";
+            this.SocId.ReadOnly = true;
+            // 
+            // SocCI
+            // 
+            this.SocCI.HeaderText = "Cédula";
+            this.SocCI.MinimumWidth = 6;
+            this.SocCI.Name = "SocCI";
+            this.SocCI.ReadOnly = true;
+            // 
+            // SocNombre
+            // 
+            this.SocNombre.HeaderText = "Nombre";
+            this.SocNombre.MinimumWidth = 6;
+            this.SocNombre.Name = "SocNombre";
+            this.SocNombre.ReadOnly = true;
+            // 
+            // SocApellido
+            // 
+            this.SocApellido.HeaderText = "Apellido";
+            this.SocApellido.Name = "SocApellido";
+            this.SocApellido.ReadOnly = true;
+            // 
+            // CuotaId
+            // 
+            this.CuotaId.HeaderText = "Cuota";
+            this.CuotaId.MinimumWidth = 6;
+            this.CuotaId.Name = "CuotaId";
+            this.CuotaId.ReadOnly = true;
+            // 
+            // CuotaAAAAMM
+            // 
+            this.CuotaAAAAMM.HeaderText = "Mes/Año";
+            this.CuotaAAAAMM.MinimumWidth = 6;
+            this.CuotaAAAAMM.Name = "CuotaAAAAMM";
+            this.CuotaAAAAMM.ReadOnly = true;
+            this.CuotaAAAAMM.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CuotaAAAAMM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            // 
+            // CuotaFechaDesde
+            // 
+            this.CuotaFechaDesde.HeaderText = "Fecha Emisión";
+            this.CuotaFechaDesde.Name = "CuotaFechaDesde";
+            // 
+            // Imprimir
+            // 
+            this.Imprimir.HeaderText = "Imprimir";
+            this.Imprimir.Name = "Imprimir";
+            // 
+            // CuotaFechaPaga
+            // 
+            this.CuotaFechaPaga.HeaderText = "CuotaFechaPaga";
+            this.CuotaFechaPaga.Name = "CuotaFechaPaga";
+            this.CuotaFechaPaga.Visible = false;
+            // 
+            // SocDireccion
+            // 
+            this.SocDireccion.HeaderText = "SocDireccion";
+            this.SocDireccion.Name = "SocDireccion";
+            this.SocDireccion.ReadOnly = true;
+            this.SocDireccion.Visible = false;
+            // 
+            // SocEmail
+            // 
+            this.SocEmail.HeaderText = "Email";
+            this.SocEmail.Name = "SocEmail";
+            this.SocEmail.Visible = false;
+            // 
+            // FechaIngreso
+            // 
+            this.FechaIngreso.HeaderText = "Fecha de Ingreso";
+            this.FechaIngreso.Name = "FechaIngreso";
+            this.FechaIngreso.Visible = false;
+            // 
+            // SocPrimerNombre
+            // 
+            this.SocPrimerNombre.HeaderText = "SocPrimerNombre";
+            this.SocPrimerNombre.Name = "SocPrimerNombre";
+            this.SocPrimerNombre.Visible = false;
+            // 
+            // SocSegundoNombre
+            // 
+            this.SocSegundoNombre.HeaderText = "SocSegundoNombre";
+            this.SocSegundoNombre.Name = "SocSegundoNombre";
+            this.SocSegundoNombre.Visible = false;
+            // 
+            // SocPrimerApellido
+            // 
+            this.SocPrimerApellido.HeaderText = "SocPrimerApellido";
+            this.SocPrimerApellido.Name = "SocPrimerApellido";
+            this.SocPrimerApellido.Visible = false;
+            // 
+            // SocSegundoApellido
+            // 
+            this.SocSegundoApellido.HeaderText = "SocSegundoApellido";
+            this.SocSegundoApellido.Name = "SocSegundoApellido";
+            this.SocSegundoApellido.Visible = false;
+            // 
+            // TCMonto
+            // 
+            this.TCMonto.HeaderText = "TCMonto";
+            this.TCMonto.Name = "TCMonto";
+            this.TCMonto.Visible = false;
+            // 
+            // TCDescripcion
+            // 
+            this.TCDescripcion.HeaderText = "TCDescripcion";
+            this.TCDescripcion.Name = "TCDescripcion";
+            this.TCDescripcion.Visible = false;
             // 
             // cmbAño
             // 
@@ -245,125 +364,6 @@ namespace Policial
             this.label1.Size = new System.Drawing.Size(49, 17);
             this.label1.TabIndex = 260;
             this.label1.Text = "Buscar";
-            // 
-            // SocId
-            // 
-            this.SocId.HeaderText = "Socio";
-            this.SocId.Name = "SocId";
-            this.SocId.ReadOnly = true;
-            // 
-            // SocCI
-            // 
-            this.SocCI.HeaderText = "Cédula";
-            this.SocCI.MinimumWidth = 6;
-            this.SocCI.Name = "SocCI";
-            this.SocCI.ReadOnly = true;
-            // 
-            // SocNombre
-            // 
-            this.SocNombre.HeaderText = "Nombre";
-            this.SocNombre.MinimumWidth = 6;
-            this.SocNombre.Name = "SocNombre";
-            this.SocNombre.ReadOnly = true;
-            // 
-            // SocApellido
-            // 
-            this.SocApellido.HeaderText = "Apellido";
-            this.SocApellido.Name = "SocApellido";
-            this.SocApellido.ReadOnly = true;
-            // 
-            // CuotaId
-            // 
-            this.CuotaId.HeaderText = "Cuota";
-            this.CuotaId.MinimumWidth = 6;
-            this.CuotaId.Name = "CuotaId";
-            this.CuotaId.ReadOnly = true;
-            // 
-            // CuotaAAAAMM
-            // 
-            this.CuotaAAAAMM.HeaderText = "Mes/Año";
-            this.CuotaAAAAMM.MinimumWidth = 6;
-            this.CuotaAAAAMM.Name = "CuotaAAAAMM";
-            this.CuotaAAAAMM.ReadOnly = true;
-            this.CuotaAAAAMM.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CuotaAAAAMM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            // 
-            // CuotaFechaDesde
-            // 
-            this.CuotaFechaDesde.HeaderText = "Fecha Emisión";
-            this.CuotaFechaDesde.Name = "CuotaFechaDesde";
-            // 
-            // Imprimir
-            // 
-            this.Imprimir.HeaderText = "Imprimir";
-            this.Imprimir.Name = "Imprimir";
-            // 
-            // CuotaFechaPaga
-            // 
-            this.CuotaFechaPaga.HeaderText = "CuotaFechaPaga";
-            this.CuotaFechaPaga.Name = "CuotaFechaPaga";
-            this.CuotaFechaPaga.Visible = false;
-            // 
-            // SocDireccion
-            // 
-            this.SocDireccion.HeaderText = "SocDireccion";
-            this.SocDireccion.Name = "SocDireccion";
-            this.SocDireccion.ReadOnly = true;
-            this.SocDireccion.Visible = false;
-            // 
-            // SocEmail
-            // 
-            this.SocEmail.HeaderText = "Email";
-            this.SocEmail.Name = "SocEmail";
-            this.SocEmail.Visible = false;
-            // 
-            // FechaIngreso
-            // 
-            this.FechaIngreso.HeaderText = "Fecha de Ingreso";
-            this.FechaIngreso.Name = "FechaIngreso";
-            this.FechaIngreso.Visible = false;
-            // 
-            // SocPrimerNombre
-            // 
-            this.SocPrimerNombre.HeaderText = "SocPrimerNombre";
-            this.SocPrimerNombre.Name = "SocPrimerNombre";
-            this.SocPrimerNombre.Visible = false;
-            // 
-            // SocSegundoNombre
-            // 
-            this.SocSegundoNombre.HeaderText = "SocSegundoNombre";
-            this.SocSegundoNombre.Name = "SocSegundoNombre";
-            this.SocSegundoNombre.Visible = false;
-            // 
-            // SocPrimerApellido
-            // 
-            this.SocPrimerApellido.HeaderText = "SocPrimerApellido";
-            this.SocPrimerApellido.Name = "SocPrimerApellido";
-            this.SocPrimerApellido.Visible = false;
-            // 
-            // SocSegundoApellido
-            // 
-            this.SocSegundoApellido.HeaderText = "SocSegundoApellido";
-            this.SocSegundoApellido.Name = "SocSegundoApellido";
-            this.SocSegundoApellido.Visible = false;
-            // 
-            // TCMonto
-            // 
-            this.TCMonto.HeaderText = "TCMonto";
-            this.TCMonto.Name = "TCMonto";
-            this.TCMonto.Visible = false;
-            // 
-            // TCDescripcion
-            // 
-            this.TCDescripcion.HeaderText = "TCDescripcion";
-            this.TCDescripcion.Name = "TCDescripcion";
-            this.TCDescripcion.Visible = false;
             // 
             // frmImprimir
             // 

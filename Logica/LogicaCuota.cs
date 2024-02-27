@@ -66,5 +66,14 @@ namespace Logica
 
             return i;
         }
+
+        public void ModificarCuotaImpresa(List<int> listaId, Usuario _usu)
+        {
+            bool resp = false;
+            IPersistenciaCuota FSocio = FabricaPersistencia.getPersistenciaCuota();
+            //resp =
+            FSocio.ModificarCuotaImpresa(listaId, _usu);
+            //return resp;
+        }
     }
 }

@@ -22,6 +22,8 @@ namespace EntidadesCompartidas
         private int usuIdAlta;
         private int usuIdModif;
         private TipoCuota tc;
+        private bool sinImprimir;
+
 
         [DataMember]
         public int CuotaId { get => cuotaId; set => cuotaId = value; }
@@ -62,10 +64,13 @@ namespace EntidadesCompartidas
         [DataMember]
         public TipoCuota TC { get => tc; set => tc = value; }
 
+        [DataMember]
+        public bool SinImprimir { get => sinImprimir; set => sinImprimir = value; }
+
         public Cuota(){ }
 
         public Cuota(int cuotaId, int socId, DateTime cuotaFechaDesde, DateTime cuotaFechaHasta, int cuotaTipo, DateTime cuotafechaPago,bool cuotaPaga, string cuotaAAAAMM,
-            DateTime fecAlta, DateTime fecModif, int usuIdAlta, int usuIdModif)
+            DateTime fecAlta, DateTime fecModif, int usuIdAlta, int usuIdModif, bool sinImprimir)
         {
             this.cuotaId = cuotaId;
             this.socId = socId;
@@ -79,10 +84,11 @@ namespace EntidadesCompartidas
             this.fecModif = fecModif;
             this.usuIdAlta = usuIdAlta;
             this.usuIdModif = usuIdModif;
+            this.sinImprimir = sinImprimir;
         }
 
         public Cuota(int cuotaId, int socId, DateTime cuotaFechaDesde, DateTime cuotaFechaHasta, int cuotaTipo, DateTime cuotafechaPago, bool cuotaPaga, string cuotaAAAAMM,
-            DateTime fecAlta, DateTime fecModif, int usuIdAlta, int usuIdModif, TipoCuota tc)
+            DateTime fecAlta, DateTime fecModif, int usuIdAlta, int usuIdModif, TipoCuota tc, bool sinImprimir)
         {
             this.cuotaId = cuotaId;
             this.socId = socId;
@@ -97,6 +103,7 @@ namespace EntidadesCompartidas
             this.usuIdAlta = usuIdAlta;
             this.usuIdModif = usuIdModif;
             this.tc = tc;
+            this.sinImprimir = sinImprimir;
         }
     }
 }

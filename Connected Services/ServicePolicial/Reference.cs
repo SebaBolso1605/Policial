@@ -697,6 +697,9 @@ namespace Policial.ServicePolicial {
         private System.DateTime FecModifField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool SinImprimirField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int SocIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -831,6 +834,19 @@ namespace Policial.ServicePolicial {
                 if ((this.FecModifField.Equals(value) != true)) {
                     this.FecModifField = value;
                     this.RaisePropertyChanged("FecModif");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool SinImprimir {
+            get {
+                return this.SinImprimirField;
+            }
+            set {
+                if ((this.SinImprimirField.Equals(value) != true)) {
+                    this.SinImprimirField = value;
+                    this.RaisePropertyChanged("SinImprimir");
                 }
             }
         }
@@ -1322,6 +1338,9 @@ namespace Policial.ServicePolicial {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicial/ListarImpresion", ReplyAction="http://tempuri.org/IServicePolicial/ListarImpresionResponse")]
         Policial.ServicePolicial.Impresion[] ListarImpresion();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePolicial/ModificarCuotaImpresa", ReplyAction="http://tempuri.org/IServicePolicial/ModificarCuotaImpresaResponse")]
+        void ModificarCuotaImpresa(int[] listaId, Policial.ServicePolicial.Usuario _usu);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1429,6 +1448,10 @@ namespace Policial.ServicePolicial {
         
         public Policial.ServicePolicial.Impresion[] ListarImpresion() {
             return base.Channel.ListarImpresion();
+        }
+        
+        public void ModificarCuotaImpresa(int[] listaId, Policial.ServicePolicial.Usuario _usu) {
+            base.Channel.ModificarCuotaImpresa(listaId, _usu);
         }
     }
 }

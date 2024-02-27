@@ -285,6 +285,7 @@ namespace Persistencia
                         c.FecModif = (DateTime)_lector["FecModif"];
                         c.UsuIdAlta = (int)_lector["UsuIdAlta"];
                         c.UsuIdModif = (int)_lector["UsuIdModif"];
+                        c.SinImprimir = (bool)_lector["CuotaImpresa"];
                         tc.TCId = (int)_lector["SocId"];
                         tc.TCDescripcion = (string)_lector["TCDescripcion"];
                         tc.TCMonto = (int)_lector["TCMonto"];                       
@@ -347,6 +348,50 @@ namespace Persistencia
             finally
             {
                 cnn.Close();
+            }
+        }
+
+        public void ModificarCuotaImpresa(List<int> listaId, Usuario _usu)
+        {           
+
+            foreach (int CuotaId in listaId)
+            {
+                SqlConnection cnn = new SqlConnection(Conexion.Cnn);
+                SqlCommand cmd = new SqlCommand("modificar_cuota_impresa", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@CuotaId", CuotaId);
+                cmd.Parameters.AddWithValue("@UsuIdModif", _usu.UsuId);
+
+                SqlParameter prmRetorno = new SqlParameter("@Retorno", SqlDbType.Int);
+                prmRetorno.Direction = ParameterDirection.ReturnValue;
+                cmd.Parameters.Add(prmRetorno);
+                bool respuesta = false;
+                int resp = -1;
+                int Id;
+                SqlTransaction tran = null;
+                try
+                {
+                    cnn.Open();
+                    tran = cnn.BeginTransaction();
+                    cmd.Transaction = tran;
+                    cmd.ExecuteNonQuery();
+                    resp = (int)cmd.Parameters["@Retorno"].Value;
+                    if (resp == -1)
+                        throw new Exception("No se marcaron las cuotas impresas.");
+
+                    tran.Commit();
+                    respuesta = true;
+
+                    //return respuesta;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
             }
         }
     }

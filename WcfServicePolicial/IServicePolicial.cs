@@ -74,8 +74,10 @@ namespace WcfServicePolicial
         bool BajarCuota(int id, Usuario _usu);
 
         [OperationContract]
-        List<Impresion> ListarImpresion();       
+        List<Impresion> ListarImpresion();
 
+        [OperationContract]
+        void ModificarCuotaImpresa(List<int> listaId, Usuario _usu);
     }
 }
 

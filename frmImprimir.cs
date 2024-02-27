@@ -128,6 +128,8 @@ namespace Policial
                 Document doc = new Document();
                 List<Impresion> listaImpresion = new List<Impresion>();
                 bool seleccionado = false;
+                List<int> listaId = new List<int>();
+                int[] listaId_;
 
                 foreach (DataGridViewRow row in dgvSocios.Rows)
                 {
@@ -164,6 +166,7 @@ namespace Policial
                             tc.TCMonto = Convert.ToInt32(row.Cells["TCMonto"].Value.ToString());
                             tc.TCDescripcion = row.Cells["TCDescripcion"].Value.ToString();
 
+                            listaId.Add(c.CuotaId);
 
                             listaImpresion.Add(i);
                         }
@@ -177,6 +180,11 @@ namespace Policial
                 else
                 {
                     PDFImpresion(listaImpresion);
+                    //llamo metodo para marcar impresas
+                    IServicePolicial lc = new ServicePolicialClient();
+                    bool resultado = false;
+                    lc.ModificarCuotaImpresa(listaId.ToArray(), Program.usuarioLogueado);
+                    btnVolver_Click(null, null);
                 }
             }
             catch (Exception ex)
@@ -469,7 +477,7 @@ namespace Policial
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { BorderWidthTop = 0, BorderWidthBottom = 0, BorderWidthLeft = 0, BorderColor = BaseColor.CYAN });
                             tbl.AddCell(new PdfPCell(new Phrase("", textoLabel)) { Border = 0 });
                             tbl.AddCell(new PdfPCell(new Phrase("Pago del Mes: ", textoLabel)));
-                            tbl.AddCell(new PdfPCell(new Phrase(i.CuotaImp.CuotaFechaDesde.ToString("MM/yyyy"), textoInfo)) { Colspan = 2 });
+                            tbl.AddCell(new PdfPCell(new Phrase(i.CuotaImp.CuotaAAAAMM.ToString(), textoInfo)) { Colspan = 2 });
                             tbl.AddCell(new PdfPCell(new Phrase("Fecha de Emisión: ", textoFecha)));
                             tbl.AddCell(new PdfPCell(new Phrase(i.CuotaImp.CuotaFechaDesde.ToString("dd/MM/yyyy"), textoInfo)) { Colspan = 3 });
 
@@ -513,6 +521,11 @@ namespace Policial
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void chkSinImprimir_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

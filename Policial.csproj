@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Fernando\Desktop\WebSite\23-02-2024\</PublishUrl>
+    <PublishUrl>C:\Users\Fernando\Desktop\WebSite\27-02-2024\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -232,6 +232,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServicePolicial\ServicePolicial2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServicePolicial\ServicePolicial3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />

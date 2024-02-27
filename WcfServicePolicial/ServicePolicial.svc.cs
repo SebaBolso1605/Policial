@@ -114,5 +114,10 @@ namespace WcfServicePolicial
         {
             return (FabricaLogica.getLogicaCuota().ListarImpresion());
         }
+
+        void IServicePolicial.ModificarCuotaImpresa(List<int> listaId, Usuario _usu)
+        {
+            FabricaLogica.getLogicaCuota().ModificarCuotaImpresa(listaId, _usu);
+        }
     }
 }

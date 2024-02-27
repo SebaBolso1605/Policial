@@ -15,5 +15,6 @@ namespace Persistencia
         bool AltaCuota(TipoCuota _c, Usuario _usu);
         bool ModificarCuota(TipoCuota _c, Usuario _usu);
         bool BajarCuota(int _c, Usuario _usu);
+        void ModificarCuotaImpresa(List<int> listaId, Usuario _usu);
     }
 }

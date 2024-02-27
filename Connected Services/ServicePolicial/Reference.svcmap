@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="3f498be3-403b-4ea4-a28f-15162fdde8b7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="8bd0760a-442b-417f-ba0f-059db683a9d2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -21,11 +21,12 @@
     <MetadataSource Address="http://localhost/ServicePolicial.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServicePolicial.xsd" MetadataType="Schema" ID="d470352e-4bdc-49f5-ac7a-13f2ba95ac44" SourceId="1" SourceUrl="http://localhost/ServicePolicial.svc?xsd=xsd1" />
-    <MetadataFile FileName="ServicePolicial1.xsd" MetadataType="Schema" ID="ddab1b43-1f78-43ce-b458-8f77b281bb91" SourceId="1" SourceUrl="http://localhost/ServicePolicial.svc?xsd=xsd0" />
-    <MetadataFile FileName="ServicePolicial.disco" MetadataType="Disco" ID="6d625143-ea8e-4be7-b3b7-b73f5909532e" SourceId="1" SourceUrl="http://localhost/ServicePolicial.svc?disco" />
-    <MetadataFile FileName="ServicePolicial2.xsd" MetadataType="Schema" ID="0b974abf-384f-4713-bf8a-e38a7519f575" SourceId="1" SourceUrl="http://localhost/ServicePolicial.svc?xsd=xsd2" />
-    <MetadataFile FileName="ServicePolicial.wsdl" MetadataType="Wsdl" ID="07d28ac1-0190-48cc-9a6d-f0a61ca665b9" SourceId="1" SourceUrl="http://localhost/ServicePolicial.svc?wsdl" />
+    <MetadataFile FileName="ServicePolicial.wsdl" MetadataType="Wsdl" ID="3a3fcc42-5976-4f19-b550-d601e8b8f44c" SourceId="1" SourceUrl="http://localhost/ServicePolicial.svc?wsdl" />
+    <MetadataFile FileName="ServicePolicial.xsd" MetadataType="Schema" ID="e7ed44f2-2121-489f-b614-598d160d76d8" SourceId="1" SourceUrl="http://localhost/ServicePolicial.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServicePolicial1.xsd" MetadataType="Schema" ID="781773d5-d6c0-4b76-b024-a30d694e13a7" SourceId="1" SourceUrl="http://localhost/ServicePolicial.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServicePolicial2.xsd" MetadataType="Schema" ID="2201e830-2d6b-4654-a0d0-d90684f9d87d" SourceId="1" SourceUrl="http://localhost/ServicePolicial.svc?xsd=xsd3" />
+    <MetadataFile FileName="ServicePolicial3.xsd" MetadataType="Schema" ID="d4619318-2d3a-4aab-8fa8-58edade31757" SourceId="1" SourceUrl="http://localhost/ServicePolicial.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServicePolicial.disco" MetadataType="Disco" ID="59705c31-9c33-4805-9e9a-c84cf772c8ee" SourceId="1" SourceUrl="http://localhost/ServicePolicial.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
